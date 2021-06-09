@@ -1,0 +1,943 @@
+
+# 1 "deca_mutex.c"
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
+typedef unsigned char bool;
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 48 "main.h"
+extern bool TX_ANCHOR;
+extern uint8_t ADDR[8];
+typedef struct
+{
+uint32_t Lsb;
+uint32_t Msb;
+}uint64_t;
+
+
+void print_uint8_t(uint8_t val);
+void print_uint16_t(uint16_t val);
+void print_uint32_t(uint32_t val);
+void print_uint64_t(uint64_t num);
+void Sleep(uint32_t time);
+
+# 67 "deca_device_api.h"
+typedef enum
+{
+AOA,
+NON_AOA
+}dw3000type_e;
+
+typedef enum {
+DW3000_SPI_RD_BIT = 0x0000U,
+DW3000_SPI_WR_BIT = 0x8000U,
+DW3000_SPI_AND_OR_8 = 0x8001U,
+DW3000_SPI_AND_OR_16 = 0x8002U,
+DW3000_SPI_AND_OR_32 = 0x8003U,
+}spi_modes_e;
+
+# 187
+typedef enum
+{
+DWT_SPI_CRC_MODE_NO = 0,
+DWT_SPI_CRC_MODE_WR,
+DWT_SPI_CRC_MODE_WRRD
+}dwt_spi_crc_mode_e;
+
+# 346
+typedef struct
+{
+uint32_t status;
+uint16_t status_hi;
+uint16_t datalength;
+uint8_t rx_flags;
+} dwt_cb_data_t;
+
+
+typedef void(*dwt_spierrcb_t)(void);
+
+
+typedef void (*dwt_cb_t)(const dwt_cb_data_t *);
+
+# 369
+typedef enum
+{
+DWT_DISABLE_INT=0,
+DWT_ENABLE_INT,
+DWT_ENABLE_INT_ONLY
+} dwt_INT_options_e;
+
+
+
+typedef enum
+{
+DWT_STS_LEN_32 =0,
+DWT_STS_LEN_64 =1,
+DWT_STS_LEN_128 =2,
+DWT_STS_LEN_256 =3,
+DWT_STS_LEN_512 =4,
+DWT_STS_LEN_1024=5,
+DWT_STS_LEN_2048=6
+} dwt_sts_lengths_e;
+
+
+
+
+typedef enum
+{
+DWT_DGC_SEL_CH5=0,
+DWT_DGC_SEL_CH9
+} dwt_dgc_chan_sel;
+
+
+typedef enum
+{
+DWT_DGC_LOAD_FROM_SW=0,
+DWT_DGC_LOAD_FROM_OTP
+} dwt_dgc_load_location;
+
+# 411
+typedef struct
+{
+uint8_t chan ;
+uint8_t txPreambLength ;
+uint8_t rxPAC ;
+uint8_t txCode ;
+uint8_t rxCode ;
+uint8_t sfdType;
+uint8_t dataRate ;
+uint8_t phrMode ;
+uint8_t phrRate;
+uint16_t sfdTO ;
+uint8_t stsMode;
+dwt_sts_lengths_e stsLength;
+uint8_t pdoaMode;
+} dwt_config_t ;
+
+
+typedef struct
+{
+uint8_t PGdly;
+
+# 437
+uint32_t power;
+uint16_t PGcount;
+} dwt_txconfig_t ;
+
+
+typedef struct
+{
+uint8_t ipatovRxTime[5] ;
+uint8_t ipatovRxStatus ;
+uint16_t ipatovPOA ;
+
+uint8_t stsRxTime[5] ;
+uint16_t stsRxStatus ;
+uint16_t stsPOA;
+uint8_t sts2RxTime[5];
+uint16_t sts2RxStatus;
+uint16_t sts2POA;
+
+uint8_t tdoa[6];
+int16_t pdoa;
+
+int16_t xtalOffset ;
+uint32_t ciaDiag1 ;
+
+uint32_t ipatovPeak ;
+uint32_t ipatovPower ;
+uint32_t ipatovF1 ;
+uint32_t ipatovF2 ;
+uint32_t ipatovF3 ;
+uint16_t ipatovFpIndex ;
+uint16_t ipatovAccumCount ;
+
+uint32_t stsPeak ;
+uint16_t stsPower ;
+uint32_t stsF1 ;
+uint32_t stsF2 ;
+uint32_t stsF3 ;
+uint16_t stsFpIndex ;
+uint16_t stsAccumCount ;
+
+uint32_t sts2Peak;
+uint16_t sts2Power;
+uint32_t sts2F1;
+uint32_t sts2F2;
+uint32_t sts2F3;
+uint16_t sts2FpIndex;
+uint16_t sts2AccumCount;
+
+} dwt_rxdiag_t ;
+
+
+typedef struct
+{
+
+uint16_t PHE;
+uint16_t RSL;
+uint16_t CRCG;
+uint16_t CRCB;
+uint8_t ARFE;
+uint8_t OVER;
+uint16_t SFDTO;
+uint16_t PTO;
+uint8_t RTO;
+uint16_t TXF;
+uint8_t HPW;
+uint8_t CRCE;
+uint16_t PREJ;
+
+} dwt_deviceentcnts_t ;
+
+# 514
+typedef enum {
+MIC_0 = 0,
+MIC_4, MIC_6, MIC_8, MIC_10, MIC_12, MIC_14, MIC_16
+}dwt_mic_size_e;
+
+
+typedef enum {
+AES_KEY_128bit = 0,
+AES_KEY_192bit = 1,
+AES_KEY_256bit = 2
+}dwt_aes_key_size_e;
+
+
+typedef enum {
+AES_KEY_No_Load = 0,
+AES_KEY_Load
+}dwt_aes_key_load_e;
+
+
+typedef enum {
+AES_KEY_Src_Register = 0,
+AES_KEY_Src_RAMorOTP
+
+# 537
+}dwt_aes_key_src_e;
+
+
+typedef enum {
+AES_Encrypt = 0,
+AES_Decrypt
+}dwt_aes_mode_e;
+
+
+typedef enum {
+AES_Src_Scratch = 0,
+AES_Src_Rx_buf_0,
+AES_Src_Rx_buf_1,
+AES_Src_Tx_buf
+}dwt_aes_src_port_e;
+
+
+typedef enum {
+AES_Dst_Scratch = 0,
+AES_Dst_Rx_buf_0,
+AES_Dst_Rx_buf_1,
+AES_Dst_Tx_buf,
+AES_Dst_STS_key
+}dwt_aes_dst_port_e;
+
+
+typedef struct {
+uint32_t key0;
+uint32_t key1;
+uint32_t key2;
+uint32_t key3;
+uint32_t key4;
+uint32_t key5;
+uint32_t key6;
+uint32_t key7;
+}dwt_aes_key_t;
+
+typedef enum
+{
+AES_core_type_GCM=0,
+AES_core_type_CCM
+}dwt_aes_core_type_e;
+
+
+typedef enum
+{
+AES_key_RAM =0,
+AES_key_OTP
+}dwt_aes_key_otp_type_e;
+
+typedef struct {
+dwt_aes_key_otp_type_e aes_key_otp_type;
+dwt_aes_core_type_e aes_core_type;
+dwt_mic_size_e mic;
+dwt_aes_key_src_e key_src;
+dwt_aes_key_load_e key_load;
+uint8_t key_addr;
+dwt_aes_key_size_e key_size;
+dwt_aes_mode_e mode;
+} dwt_aes_config_t ;
+
+typedef struct {
+uint8_t *nonce;
+uint8_t *header;
+uint8_t *payload;
+uint8_t header_len;
+uint16_t payload_len;
+dwt_aes_src_port_e src_port;
+dwt_aes_dst_port_e dst_port;
+dwt_aes_mode_e mode;
+uint8_t mic_size;
+}dwt_aes_job_t;
+
+
+typedef struct {
+uint32_t key0;
+uint32_t key1;
+uint32_t key2;
+uint32_t key3;
+}dwt_sts_cp_key_t;
+
+
+typedef struct {
+uint32_t iv0;
+uint32_t iv1;
+uint32_t iv2;
+uint32_t iv3;
+}dwt_sts_cp_iv_t;
+
+# 634
+typedef enum
+{
+DBL_BUF_STATE_EN=0,
+DBL_BUF_STATE_DIS
+}dwt_dbl_buff_state_e;
+
+typedef enum
+{
+DBL_BUF_MODE_AUTO=0,
+DBL_BUF_MODE_MAN
+}dwt_dbl_buff_mode_e;
+
+# 649
+typedef enum
+{
+CH5_DGC_LUT_0 = 0x1c0fd,
+CH5_DGC_LUT_1 = 0x1c43e,
+CH5_DGC_LUT_2 = 0x1c6be,
+CH5_DGC_LUT_3 = 0x1c77e,
+CH5_DGC_LUT_4 = 0x1cf36,
+CH5_DGC_LUT_5 = 0x1cfb5,
+CH5_DGC_LUT_6 = 0x1cff5
+} dwt_configmrxlut_ch5_e;
+
+# 663
+typedef enum
+{
+CH9_DGC_LUT_0 = 0x2a8fe,
+CH9_DGC_LUT_1 = 0x2ac36,
+CH9_DGC_LUT_2 = 0x2a5fe,
+CH9_DGC_LUT_3 = 0x2af3e,
+CH9_DGC_LUT_4 = 0x2af7d,
+CH9_DGC_LUT_5 = 0x2afb5,
+CH9_DGC_LUT_6 = 0x2afb5
+} dwt_configmrxlut_ch9_e;
+
+# 691
+int32_t dwt_apiversion(void);
+
+# 703
+int dwt_setlocaldataptr(unsigned int index);
+
+# 714
+uint8_t dwt_readpgdelay(void);
+
+# 727
+uint8_t dwt_geticrefvolt(void);
+
+# 740
+uint8_t dwt_geticreftemp(void);
+
+# 753
+uint32_t dwt_getpartid(void);
+
+# 766
+uint32_t dwt_getlotid(void);
+
+# 777
+uint32_t dwt_readdevid(void);
+
+# 790
+uint8_t dwt_otprevision(void);
+
+# 802
+void dwt_setfinegraintxseq(int enable);
+
+# 819
+void dwt_setlnapamode(int lna_pa);
+
+# 840
+int dwt_initialise(int mode);
+
+# 853
+void dwt_setdwstate(int state);
+
+# 865
+void dwt_enablegpioclocks(void);
+
+# 876
+void dwt_restoreconfig(void);
+
+# 888
+void dwt_configurestsmode(uint8_t stsMode);
+
+# 903
+int dwt_configure(dwt_config_t *config);
+
+# 917
+void dwt_configuretxrf(dwt_txconfig_t *config);
+
+# 928
+void dwt_configurestsloadiv(void);
+
+# 938
+void dwt_configmrxlut(int channel);
+
+# 954
+void dwt_configurestskey(dwt_sts_cp_key_t* pStsKey);
+
+# 966
+void dwt_configurestsiv(dwt_sts_cp_iv_t* pStsIv);
+
+# 979
+void dwt_setrxantennadelay(uint16_t antennaDly);
+
+# 992
+void dwt_settxantennadelay(uint16_t antennaDly);
+
+# 1013
+int dwt_writetxdata(uint16_t txDataLength, uint8_t *txDataBytes, uint16_t txBufferOffset);
+
+# 1030
+void dwt_writetxfctrl(uint16_t txFrameLength, uint16_t txBufferOffset, uint8_t ranging);
+
+# 1044
+void dwt_setplenfine(uint8_t preambleLength);
+
+# 1063
+int dwt_starttx(uint8_t mode);
+
+# 1077
+void dwt_setreferencetrxtime(uint32_t reftime);
+
+# 1090
+void dwt_setdelayedtrxtime(uint32_t starttime);
+
+# 1102
+void dwt_readtxtimestamp(uint8_t * timestamp);
+
+
+void dwt_readsystime(uint8_t * timestamp);
+
+# 1115
+uint32_t dwt_readtxtimestamphi32(void);
+
+# 1126
+uint32_t dwt_readtxtimestamplo32(void);
+
+# 1140
+int16_t dwt_readpdoa(void);
+
+# 1155
+void dwt_readtdoa(uint8_t * tdoa);
+
+# 1167
+void dwt_readrxtimestamp(uint8_t * timestamp);
+void dwt_readrxtimestampunadj(uint8_t * timestamp);
+
+# 1180
+void dwt_readrxtimestamp_ipatov(uint8_t * timestamp);
+
+# 1192
+void dwt_readrxtimestamp_sts(uint8_t * timestamp);
+
+# 1203
+uint32_t dwt_readrxtimestamphi32(void);
+
+# 1214
+uint32_t dwt_readrxtimestamplo32(void);
+
+# 1225
+uint32_t dwt_readsystimestamphi32(void);
+
+# 1236
+void dwt_forcetrxoff(void);
+
+# 1260
+int dwt_rxenable(int mode);
+
+# 1279
+void dwt_setsniffmode(int enable, uint8_t timeOn, uint8_t timeOff);
+
+# 1292
+void dwt_setdblrxbuffmode(dwt_dbl_buff_state_e dbl_buff_state, dwt_dbl_buff_mode_e dbl_buff_mode);
+
+# 1304
+void dwt_signal_rx_buff_free(void);
+
+# 1318
+void dwt_setrxtimeout(uint32_t time);
+
+# 1331
+void dwt_setpreambledetecttimeout(uint16_t timeout);
+
+# 1344
+uint16_t dwt_calibratesleepcnt(void);
+
+# 1358
+void dwt_configuresleepcnt(uint16_t sleepcnt);
+
+# 1397
+void dwt_configuresleep(uint16_t mode, uint8_t wake);
+
+# 1409
+void dwt_clearaonconfig(void);
+
+# 1423
+void dwt_entersleep(int idle_rc);
+
+# 1439
+void dwt_entersleepaftertx(int enable);
+
+# 1459
+void dwt_setcallbacks(dwt_cb_t cbTxDone, dwt_cb_t cbRxOk, dwt_cb_t cbRxTo, dwt_cb_t cbRxErr, dwt_cb_t cbSPIErr, dwt_cb_t cbSPIRdy);
+
+# 1470
+uint8_t dwt_checkirq(void);
+
+# 1481
+uint8_t dwt_checkidlerc(void);
+
+# 1505
+void dwt_isr(void);
+
+# 1523
+void dwt_setinterrupt(uint32_t bitmask_lo, uint32_t bitmask_hi, dwt_INT_options_e INT_options);
+
+# 1535
+void dwt_setpanid(uint16_t panID);
+
+# 1547
+void dwt_setaddress16(uint16_t shortAddress);
+
+# 1559
+void dwt_seteui(uint8_t *eui64);
+
+# 1571
+void dwt_geteui(uint8_t *eui64);
+
+# 1583
+uint8_t dwt_aon_read(uint16_t aon_address);
+
+# 1596
+void dwt_aon_write(uint16_t aon_address, uint8_t aon_write_data);
+
+# 1610
+void dwt_otpread(uint16_t address, uint32_t *array, uint8_t length);
+
+# 1636
+void dwt_configureframefilter(uint16_t enabletype, uint16_t filtermode);
+
+# 1650
+uint8_t dwt_generatecrc8(const uint8_t* byteArray, int flen, uint8_t crcInit);
+
+# 1668
+void dwt_enablespicrccheck(dwt_spi_crc_mode_e crc_mode, dwt_spierrcb_t spireaderr_cb);
+
+# 1683
+void dwt_enableautoack(uint8_t responseDelayTime, int enable);
+
+# 1695
+void dwt_setrxaftertxdelay(uint32_t rxDelayTime);
+
+# 1708
+void dwt_softreset(void);
+
+# 1722
+void dwt_readrxdata(uint8_t *buffer, uint16_t length, uint16_t rxBufferOffset);
+
+# 1736
+void dwt_read_rx_scratch_data(uint8_t *buffer, uint16_t length, uint16_t rxBufferOffset);
+
+# 1757
+void dwt_readaccdata(uint8_t *buffer, uint16_t len, uint16_t accOffset);
+
+# 1768
+int16_t dwt_readclockoffset(void);
+
+# 1778
+int32_t dwt_readcarrierintegrator(void);
+
+# 1795
+void dwt_configciadiag(uint8_t enable_mask);
+
+# 1809
+int dwt_readstsquality(int16_t* rxStsQualityIndex);
+
+# 1821
+int dwt_readstsstatus(uint16_t* stsStatus, int sts_num);
+
+# 1833
+void dwt_readdiagnostics(dwt_rxdiag_t * diagnostics);
+
+# 1844
+void dwt_configeventcounters(int enable);
+
+# 1856
+void dwt_readeventcounters(dwt_deviceentcnts_t *counters);
+
+# 1869
+int dwt_otpwriteandverify(uint32_t value, uint16_t address);
+
+# 1886
+void dwt_setleds(uint8_t mode);
+
+# 1898
+void dwt_setxtaltrim(uint8_t value);
+
+# 1912
+uint8_t dwt_getxtaltrim(void);
+
+# 1927
+void dwt_repeated_frames(uint32_t framerepetitionrate);
+
+# 1939
+void dwt_repeated_cw(int cw_enable, int cw_mode_config);
+
+# 1950
+void dwt_configcwmode(uint8_t channel);
+
+# 1964
+void dwt_configcontinuousframemode(uint32_t framerepetitionrate, uint8_t channel);
+
+# 1977
+uint16_t dwt_readtempvbat(void);
+
+# 1991
+float dwt_convertrawtemperature(uint8_t raw_temp);
+
+# 2005
+float dwt_convertrawvoltage(uint8_t raw_voltage);
+
+# 2018
+uint8_t dwt_readwakeuptemp(void);
+
+# 2031
+uint8_t dwt_readwakeupvbat(void);
+
+# 2048
+uint8_t dwt_calcbandwidthadj(uint16_t target_count, int channel);
+
+# 2064
+uint16_t dwt_calcpgcount(uint8_t pgdly, int channel);
+
+# 2087
+void dwt_writetodevice
+(
+uint32_t regFileID,
+uint16_t index,
+uint32_t length,
+uint8_t *buffer
+);
+
+# 2116
+void dwt_readfromdevice
+(
+uint32_t regFileID,
+uint16_t index,
+uint32_t length,
+uint8_t *buffer
+);
+
+# 2135
+uint32_t dwt_read32bitoffsetreg( uint32_t regFileID, uint32_t regOffset);
+
+# 2149
+void dwt_write32bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint32_t regval);
+
+# 2162
+uint16_t dwt_read16bitoffsetreg( uint32_t regFileID, uint32_t regOffset);
+
+# 2176
+void dwt_write16bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint16_t regval);
+
+# 2189
+uint8_t dwt_read8bitoffsetreg( uint32_t regFileID, uint32_t regOffset);
+
+# 2203
+void dwt_write8bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint8_t regval);
+
+# 2220
+void dwt_modify32bitoffsetreg(const uint32_t regFileID, const uint32_t regOffset, const uint32_t _and, const uint32_t _or);
+
+# 2237
+void dwt_modify16bitoffsetreg(const uint32_t regFileID, const uint32_t regOffset, const uint16_t _and, const uint16_t _or);
+
+# 2254
+void dwt_modify8bitoffsetreg(const uint32_t regFileID, const uint32_t regOffset, const uint8_t _and, const uint8_t _or);
+
+# 2269
+void dwt_set_keyreg_128(const dwt_aes_key_t *key);
+
+# 2281
+void dwt_configure_aes(const dwt_aes_config_t *pCfg);
+
+# 2291
+dwt_mic_size_e dwt_mic_size_from_bytes(uint8_t mic_size_in_bytes);
+
+# 2310
+int8_t dwt_do_aes(dwt_aes_job_t *job, dwt_aes_core_type_e core_type);
+
+# 2318
+extern void wakeup_device_with_io(void);
+
+# 2329
+void dwt_wakeup_ic(void);
+
+# 2352
+int writetospiwithcrc(uint16_t headerLength, const uint8_t *headerBuffer, uint32_t bodylength, const uint8_t *bodyBuffer, uint8_t crc8);
+
+# 2374
+int writetospi(uint16_t headerLength, const uint8_t *headerBuffer, uint32_t bodylength, const uint8_t *bodyBuffer);
+
+# 2396
+int readfromspi(uint16_t headerLength, const uint8_t *headerBuffer, uint32_t readlength, uint8_t *readBuffer);
+
+# 2411
+typedef int decaIrqStatus_t ;
+
+# 2426
+decaIrqStatus_t decamutexon(void);
+
+# 2441
+void decamutexoff(decaIrqStatus_t s);
+
+# 2454
+void deca_sleep(unsigned int time_ms);
+
+# 2467
+void deca_usleep(unsigned long time_us);
+
+# 2479
+int dwt_check_dev_id(void);
+
+# 2492
+int dwt_run_pgfcal(void);
+
+# 2503
+int dwt_pgf_cal(int ldoen);
+
+# 2515
+void dwt_configure_le_address(uint16_t addr, int leIndex);
+
+# 2527
+void dwt_configuresfdtype(uint8_t sfdType);
+
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
+typedef unsigned size_t;
+
+# 14 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\string.h"
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+
+
+
+extern void * __builtin_memcpy(void *, const void *, size_t);
+#pragma intrinsic(__builtin_memcpy)
+
+# 36
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
+# 82 "port.h"
+typedef enum
+{
+LED_PC6,
+LED_PC7,
+LED_PC8,
+LED_PC9,
+LED_ALL,
+} led_t;
+
+# 154
+unsigned long portGetTickCnt(void);
+
+
+
+
+int port_is_boot1_on(uint16_t x);
+int port_is_switch_on(uint16_t GPIOpin);
+int port_is_boot1_low(void);
+
+void port_wakeup_dw_ic(void);
+
+void port_set_dw_ic_spi_slowrate(void);
+void port_set_dw_ic_spi_fastrate(void);
+
+void process_dwRSTn_irq(void);
+void process_deca_irq(void);
+
+int peripherals_init(void);
+void spi_peripheral_init(void);
+
+void setup_DWICRSTnIRQ(int enable);
+
+void reset_DWIC(void);
+
+
+void port_LCD_RS_set(void);
+void port_LCD_RS_clear(void);
+void port_LCD_RW_set(void);
+void port_LCD_RW_clear(void);
+
+
+uint32_t port_GetEXT_IRQStatus(void);
+uint32_t port_CheckEXT_IRQ(void);
+void port_DisableEXT_IRQ(void);
+void port_EnableEXT_IRQ(void);
+extern uint32_t HAL_GetTick(void);
+
+# 205
+struct circ_buf {
+char *buf;
+int head;
+int tail;
+};
+
+# 51 "deca_mutex.c"
+decaIrqStatus_t decamutexon(void)
+{
+
+# 58
+return 0 ;
+}
+
+# 76
+void decamutexoff(decaIrqStatus_t s)
+{
+if(s) {
+
+}
+}

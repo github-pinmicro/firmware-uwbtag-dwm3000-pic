@@ -1,0 +1,531 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;main.h: 48: extern bool TX_ANCHOR;
+[; ;main.h: 49: extern uint8_t ADDR[8];
+[; ;main.h: 50: typedef struct
+[; ;main.h: 51: {
+[; ;main.h: 52: uint32_t Lsb;
+[; ;main.h: 53: uint32_t Msb;
+[; ;main.h: 54: }uint64_t;
+[; ;main.h: 57: void print_uint8_t(uint8_t val);
+[; ;main.h: 58: void print_uint16_t(uint16_t val);
+[; ;main.h: 59: void print_uint32_t(uint32_t val);
+[; ;main.h: 60: void print_uint64_t(uint64_t num);
+[; ;main.h: 61: void Sleep(uint32_t time);
+[; ;deca_device_api.h: 67: typedef enum
+[; ;deca_device_api.h: 68: {
+[; ;deca_device_api.h: 69: AOA,
+[; ;deca_device_api.h: 70: NON_AOA
+[; ;deca_device_api.h: 71: }dw3000type_e;
+[; ;deca_device_api.h: 73: typedef enum {
+[; ;deca_device_api.h: 74: DW3000_SPI_RD_BIT = 0x0000U,
+[; ;deca_device_api.h: 75: DW3000_SPI_WR_BIT = 0x8000U,
+[; ;deca_device_api.h: 76: DW3000_SPI_AND_OR_8 = 0x8001U,
+[; ;deca_device_api.h: 77: DW3000_SPI_AND_OR_16 = 0x8002U,
+[; ;deca_device_api.h: 78: DW3000_SPI_AND_OR_32 = 0x8003U,
+[; ;deca_device_api.h: 79: }spi_modes_e;
+[; ;deca_device_api.h: 187: typedef enum
+[; ;deca_device_api.h: 188: {
+[; ;deca_device_api.h: 189: DWT_SPI_CRC_MODE_NO = 0,
+[; ;deca_device_api.h: 190: DWT_SPI_CRC_MODE_WR,
+[; ;deca_device_api.h: 191: DWT_SPI_CRC_MODE_WRRD
+[; ;deca_device_api.h: 192: }dwt_spi_crc_mode_e;
+[; ;deca_device_api.h: 346: typedef struct
+[; ;deca_device_api.h: 347: {
+[; ;deca_device_api.h: 348: uint32_t status;
+[; ;deca_device_api.h: 349: uint16_t status_hi;
+[; ;deca_device_api.h: 350: uint16_t datalength;
+[; ;deca_device_api.h: 351: uint8_t rx_flags;
+[; ;deca_device_api.h: 352: } dwt_cb_data_t;
+[; ;deca_device_api.h: 355: typedef void(*dwt_spierrcb_t)(void);
+[; ;deca_device_api.h: 358: typedef void (*dwt_cb_t)(const dwt_cb_data_t *);
+[; ;deca_device_api.h: 369: typedef enum
+[; ;deca_device_api.h: 370: {
+[; ;deca_device_api.h: 371: DWT_DISABLE_INT=0,
+[; ;deca_device_api.h: 372: DWT_ENABLE_INT,
+[; ;deca_device_api.h: 373: DWT_ENABLE_INT_ONLY
+[; ;deca_device_api.h: 374: } dwt_INT_options_e;
+[; ;deca_device_api.h: 378: typedef enum
+[; ;deca_device_api.h: 379: {
+[; ;deca_device_api.h: 380: DWT_STS_LEN_32 =0,
+[; ;deca_device_api.h: 381: DWT_STS_LEN_64 =1,
+[; ;deca_device_api.h: 382: DWT_STS_LEN_128 =2,
+[; ;deca_device_api.h: 383: DWT_STS_LEN_256 =3,
+[; ;deca_device_api.h: 384: DWT_STS_LEN_512 =4,
+[; ;deca_device_api.h: 385: DWT_STS_LEN_1024=5,
+[; ;deca_device_api.h: 386: DWT_STS_LEN_2048=6
+[; ;deca_device_api.h: 387: } dwt_sts_lengths_e;
+[; ;deca_device_api.h: 392: typedef enum
+[; ;deca_device_api.h: 393: {
+[; ;deca_device_api.h: 394: DWT_DGC_SEL_CH5=0,
+[; ;deca_device_api.h: 395: DWT_DGC_SEL_CH9
+[; ;deca_device_api.h: 396: } dwt_dgc_chan_sel;
+[; ;deca_device_api.h: 399: typedef enum
+[; ;deca_device_api.h: 400: {
+[; ;deca_device_api.h: 401: DWT_DGC_LOAD_FROM_SW=0,
+[; ;deca_device_api.h: 402: DWT_DGC_LOAD_FROM_OTP
+[; ;deca_device_api.h: 403: } dwt_dgc_load_location;
+[; ;deca_device_api.h: 411: typedef struct
+[; ;deca_device_api.h: 412: {
+[; ;deca_device_api.h: 413: uint8_t chan ;
+[; ;deca_device_api.h: 414: uint8_t txPreambLength ;
+[; ;deca_device_api.h: 415: uint8_t rxPAC ;
+[; ;deca_device_api.h: 416: uint8_t txCode ;
+[; ;deca_device_api.h: 417: uint8_t rxCode ;
+[; ;deca_device_api.h: 418: uint8_t sfdType;
+[; ;deca_device_api.h: 419: uint8_t dataRate ;
+[; ;deca_device_api.h: 420: uint8_t phrMode ;
+[; ;deca_device_api.h: 421: uint8_t phrRate;
+[; ;deca_device_api.h: 422: uint16_t sfdTO ;
+[; ;deca_device_api.h: 423: uint8_t stsMode;
+[; ;deca_device_api.h: 424: dwt_sts_lengths_e stsLength;
+[; ;deca_device_api.h: 425: uint8_t pdoaMode;
+[; ;deca_device_api.h: 426: } dwt_config_t ;
+[; ;deca_device_api.h: 429: typedef struct
+[; ;deca_device_api.h: 430: {
+[; ;deca_device_api.h: 431: uint8_t PGdly;
+[; ;deca_device_api.h: 437: uint32_t power;
+[; ;deca_device_api.h: 438: uint16_t PGcount;
+[; ;deca_device_api.h: 439: } dwt_txconfig_t ;
+[; ;deca_device_api.h: 442: typedef struct
+[; ;deca_device_api.h: 443: {
+[; ;deca_device_api.h: 444: uint8_t ipatovRxTime[5] ;
+[; ;deca_device_api.h: 445: uint8_t ipatovRxStatus ;
+[; ;deca_device_api.h: 446: uint16_t ipatovPOA ;
+[; ;deca_device_api.h: 448: uint8_t stsRxTime[5] ;
+[; ;deca_device_api.h: 449: uint16_t stsRxStatus ;
+[; ;deca_device_api.h: 450: uint16_t stsPOA;
+[; ;deca_device_api.h: 451: uint8_t sts2RxTime[5];
+[; ;deca_device_api.h: 452: uint16_t sts2RxStatus;
+[; ;deca_device_api.h: 453: uint16_t sts2POA;
+[; ;deca_device_api.h: 455: uint8_t tdoa[6];
+[; ;deca_device_api.h: 456: int16_t pdoa;
+[; ;deca_device_api.h: 458: int16_t xtalOffset ;
+[; ;deca_device_api.h: 459: uint32_t ciaDiag1 ;
+[; ;deca_device_api.h: 461: uint32_t ipatovPeak ;
+[; ;deca_device_api.h: 462: uint32_t ipatovPower ;
+[; ;deca_device_api.h: 463: uint32_t ipatovF1 ;
+[; ;deca_device_api.h: 464: uint32_t ipatovF2 ;
+[; ;deca_device_api.h: 465: uint32_t ipatovF3 ;
+[; ;deca_device_api.h: 466: uint16_t ipatovFpIndex ;
+[; ;deca_device_api.h: 467: uint16_t ipatovAccumCount ;
+[; ;deca_device_api.h: 469: uint32_t stsPeak ;
+[; ;deca_device_api.h: 470: uint16_t stsPower ;
+[; ;deca_device_api.h: 471: uint32_t stsF1 ;
+[; ;deca_device_api.h: 472: uint32_t stsF2 ;
+[; ;deca_device_api.h: 473: uint32_t stsF3 ;
+[; ;deca_device_api.h: 474: uint16_t stsFpIndex ;
+[; ;deca_device_api.h: 475: uint16_t stsAccumCount ;
+[; ;deca_device_api.h: 477: uint32_t sts2Peak;
+[; ;deca_device_api.h: 478: uint16_t sts2Power;
+[; ;deca_device_api.h: 479: uint32_t sts2F1;
+[; ;deca_device_api.h: 480: uint32_t sts2F2;
+[; ;deca_device_api.h: 481: uint32_t sts2F3;
+[; ;deca_device_api.h: 482: uint16_t sts2FpIndex;
+[; ;deca_device_api.h: 483: uint16_t sts2AccumCount;
+[; ;deca_device_api.h: 485: } dwt_rxdiag_t ;
+[; ;deca_device_api.h: 488: typedef struct
+[; ;deca_device_api.h: 489: {
+[; ;deca_device_api.h: 491: uint16_t PHE;
+[; ;deca_device_api.h: 492: uint16_t RSL;
+[; ;deca_device_api.h: 493: uint16_t CRCG;
+[; ;deca_device_api.h: 494: uint16_t CRCB;
+[; ;deca_device_api.h: 495: uint8_t ARFE;
+[; ;deca_device_api.h: 496: uint8_t OVER;
+[; ;deca_device_api.h: 497: uint16_t SFDTO;
+[; ;deca_device_api.h: 498: uint16_t PTO;
+[; ;deca_device_api.h: 499: uint8_t RTO;
+[; ;deca_device_api.h: 500: uint16_t TXF;
+[; ;deca_device_api.h: 501: uint8_t HPW;
+[; ;deca_device_api.h: 502: uint8_t CRCE;
+[; ;deca_device_api.h: 503: uint16_t PREJ;
+[; ;deca_device_api.h: 505: } dwt_deviceentcnts_t ;
+[; ;deca_device_api.h: 514: typedef enum {
+[; ;deca_device_api.h: 515: MIC_0 = 0,
+[; ;deca_device_api.h: 516: MIC_4, MIC_6, MIC_8, MIC_10, MIC_12, MIC_14, MIC_16
+[; ;deca_device_api.h: 517: }dwt_mic_size_e;
+[; ;deca_device_api.h: 520: typedef enum {
+[; ;deca_device_api.h: 521: AES_KEY_128bit = 0,
+[; ;deca_device_api.h: 522: AES_KEY_192bit = 1,
+[; ;deca_device_api.h: 523: AES_KEY_256bit = 2
+[; ;deca_device_api.h: 524: }dwt_aes_key_size_e;
+[; ;deca_device_api.h: 527: typedef enum {
+[; ;deca_device_api.h: 528: AES_KEY_No_Load = 0,
+[; ;deca_device_api.h: 529: AES_KEY_Load
+[; ;deca_device_api.h: 530: }dwt_aes_key_load_e;
+[; ;deca_device_api.h: 533: typedef enum {
+[; ;deca_device_api.h: 534: AES_KEY_Src_Register = 0,
+[; ;deca_device_api.h: 535: AES_KEY_Src_RAMorOTP
+[; ;deca_device_api.h: 537: }dwt_aes_key_src_e;
+[; ;deca_device_api.h: 540: typedef enum {
+[; ;deca_device_api.h: 541: AES_Encrypt = 0,
+[; ;deca_device_api.h: 542: AES_Decrypt
+[; ;deca_device_api.h: 543: }dwt_aes_mode_e;
+[; ;deca_device_api.h: 546: typedef enum {
+[; ;deca_device_api.h: 547: AES_Src_Scratch = 0,
+[; ;deca_device_api.h: 548: AES_Src_Rx_buf_0,
+[; ;deca_device_api.h: 549: AES_Src_Rx_buf_1,
+[; ;deca_device_api.h: 550: AES_Src_Tx_buf
+[; ;deca_device_api.h: 551: }dwt_aes_src_port_e;
+[; ;deca_device_api.h: 554: typedef enum {
+[; ;deca_device_api.h: 555: AES_Dst_Scratch = 0,
+[; ;deca_device_api.h: 556: AES_Dst_Rx_buf_0,
+[; ;deca_device_api.h: 557: AES_Dst_Rx_buf_1,
+[; ;deca_device_api.h: 558: AES_Dst_Tx_buf,
+[; ;deca_device_api.h: 559: AES_Dst_STS_key
+[; ;deca_device_api.h: 560: }dwt_aes_dst_port_e;
+[; ;deca_device_api.h: 563: typedef struct {
+[; ;deca_device_api.h: 564: uint32_t key0;
+[; ;deca_device_api.h: 565: uint32_t key1;
+[; ;deca_device_api.h: 566: uint32_t key2;
+[; ;deca_device_api.h: 567: uint32_t key3;
+[; ;deca_device_api.h: 568: uint32_t key4;
+[; ;deca_device_api.h: 569: uint32_t key5;
+[; ;deca_device_api.h: 570: uint32_t key6;
+[; ;deca_device_api.h: 571: uint32_t key7;
+[; ;deca_device_api.h: 572: }dwt_aes_key_t;
+[; ;deca_device_api.h: 574: typedef enum
+[; ;deca_device_api.h: 575: {
+[; ;deca_device_api.h: 576: AES_core_type_GCM=0,
+[; ;deca_device_api.h: 577: AES_core_type_CCM
+[; ;deca_device_api.h: 578: }dwt_aes_core_type_e;
+[; ;deca_device_api.h: 581: typedef enum
+[; ;deca_device_api.h: 582: {
+[; ;deca_device_api.h: 583: AES_key_RAM =0,
+[; ;deca_device_api.h: 584: AES_key_OTP
+[; ;deca_device_api.h: 585: }dwt_aes_key_otp_type_e;
+[; ;deca_device_api.h: 587: typedef struct {
+[; ;deca_device_api.h: 588: dwt_aes_key_otp_type_e aes_key_otp_type;
+[; ;deca_device_api.h: 589: dwt_aes_core_type_e aes_core_type;
+[; ;deca_device_api.h: 590: dwt_mic_size_e mic;
+[; ;deca_device_api.h: 591: dwt_aes_key_src_e key_src;
+[; ;deca_device_api.h: 592: dwt_aes_key_load_e key_load;
+[; ;deca_device_api.h: 593: uint8_t key_addr;
+[; ;deca_device_api.h: 594: dwt_aes_key_size_e key_size;
+[; ;deca_device_api.h: 595: dwt_aes_mode_e mode;
+[; ;deca_device_api.h: 596: } dwt_aes_config_t ;
+[; ;deca_device_api.h: 598: typedef struct {
+[; ;deca_device_api.h: 599: uint8_t *nonce;
+[; ;deca_device_api.h: 600: uint8_t *header;
+[; ;deca_device_api.h: 601: uint8_t *payload;
+[; ;deca_device_api.h: 602: uint8_t header_len;
+[; ;deca_device_api.h: 603: uint16_t payload_len;
+[; ;deca_device_api.h: 604: dwt_aes_src_port_e src_port;
+[; ;deca_device_api.h: 605: dwt_aes_dst_port_e dst_port;
+[; ;deca_device_api.h: 606: dwt_aes_mode_e mode;
+[; ;deca_device_api.h: 607: uint8_t mic_size;
+[; ;deca_device_api.h: 608: }dwt_aes_job_t;
+[; ;deca_device_api.h: 611: typedef struct {
+[; ;deca_device_api.h: 612: uint32_t key0;
+[; ;deca_device_api.h: 613: uint32_t key1;
+[; ;deca_device_api.h: 614: uint32_t key2;
+[; ;deca_device_api.h: 615: uint32_t key3;
+[; ;deca_device_api.h: 616: }dwt_sts_cp_key_t;
+[; ;deca_device_api.h: 619: typedef struct {
+[; ;deca_device_api.h: 620: uint32_t iv0;
+[; ;deca_device_api.h: 621: uint32_t iv1;
+[; ;deca_device_api.h: 622: uint32_t iv2;
+[; ;deca_device_api.h: 623: uint32_t iv3;
+[; ;deca_device_api.h: 624: }dwt_sts_cp_iv_t;
+[; ;deca_device_api.h: 634: typedef enum
+[; ;deca_device_api.h: 635: {
+[; ;deca_device_api.h: 636: DBL_BUF_STATE_EN=0,
+[; ;deca_device_api.h: 637: DBL_BUF_STATE_DIS
+[; ;deca_device_api.h: 638: }dwt_dbl_buff_state_e;
+[; ;deca_device_api.h: 640: typedef enum
+[; ;deca_device_api.h: 641: {
+[; ;deca_device_api.h: 642: DBL_BUF_MODE_AUTO=0,
+[; ;deca_device_api.h: 643: DBL_BUF_MODE_MAN
+[; ;deca_device_api.h: 644: }dwt_dbl_buff_mode_e;
+[; ;deca_device_api.h: 649: typedef enum
+[; ;deca_device_api.h: 650: {
+[; ;deca_device_api.h: 651: CH5_DGC_LUT_0 = 0x1c0fd,
+[; ;deca_device_api.h: 652: CH5_DGC_LUT_1 = 0x1c43e,
+[; ;deca_device_api.h: 653: CH5_DGC_LUT_2 = 0x1c6be,
+[; ;deca_device_api.h: 654: CH5_DGC_LUT_3 = 0x1c77e,
+[; ;deca_device_api.h: 655: CH5_DGC_LUT_4 = 0x1cf36,
+[; ;deca_device_api.h: 656: CH5_DGC_LUT_5 = 0x1cfb5,
+[; ;deca_device_api.h: 657: CH5_DGC_LUT_6 = 0x1cff5
+[; ;deca_device_api.h: 658: } dwt_configmrxlut_ch5_e;
+[; ;deca_device_api.h: 663: typedef enum
+[; ;deca_device_api.h: 664: {
+[; ;deca_device_api.h: 665: CH9_DGC_LUT_0 = 0x2a8fe,
+[; ;deca_device_api.h: 666: CH9_DGC_LUT_1 = 0x2ac36,
+[; ;deca_device_api.h: 667: CH9_DGC_LUT_2 = 0x2a5fe,
+[; ;deca_device_api.h: 668: CH9_DGC_LUT_3 = 0x2af3e,
+[; ;deca_device_api.h: 669: CH9_DGC_LUT_4 = 0x2af7d,
+[; ;deca_device_api.h: 670: CH9_DGC_LUT_5 = 0x2afb5,
+[; ;deca_device_api.h: 671: CH9_DGC_LUT_6 = 0x2afb5
+[; ;deca_device_api.h: 672: } dwt_configmrxlut_ch9_e;
+[; ;deca_device_api.h: 691: int32_t dwt_apiversion(void);
+[; ;deca_device_api.h: 703: int dwt_setlocaldataptr(unsigned int index);
+[; ;deca_device_api.h: 714: uint8_t dwt_readpgdelay(void);
+[; ;deca_device_api.h: 727: uint8_t dwt_geticrefvolt(void);
+[; ;deca_device_api.h: 740: uint8_t dwt_geticreftemp(void);
+[; ;deca_device_api.h: 753: uint32_t dwt_getpartid(void);
+[; ;deca_device_api.h: 766: uint32_t dwt_getlotid(void);
+[; ;deca_device_api.h: 777: uint32_t dwt_readdevid(void);
+[; ;deca_device_api.h: 790: uint8_t dwt_otprevision(void);
+[; ;deca_device_api.h: 802: void dwt_setfinegraintxseq(int enable);
+[; ;deca_device_api.h: 819: void dwt_setlnapamode(int lna_pa);
+[; ;deca_device_api.h: 840: int dwt_initialise(int mode);
+[; ;deca_device_api.h: 853: void dwt_setdwstate(int state);
+[; ;deca_device_api.h: 865: void dwt_enablegpioclocks(void);
+[; ;deca_device_api.h: 876: void dwt_restoreconfig(void);
+[; ;deca_device_api.h: 888: void dwt_configurestsmode(uint8_t stsMode);
+[; ;deca_device_api.h: 903: int dwt_configure(dwt_config_t *config);
+[; ;deca_device_api.h: 917: void dwt_configuretxrf(dwt_txconfig_t *config);
+[; ;deca_device_api.h: 928: void dwt_configurestsloadiv(void);
+[; ;deca_device_api.h: 938: void dwt_configmrxlut(int channel);
+[; ;deca_device_api.h: 954: void dwt_configurestskey(dwt_sts_cp_key_t* pStsKey);
+[; ;deca_device_api.h: 966: void dwt_configurestsiv(dwt_sts_cp_iv_t* pStsIv);
+[; ;deca_device_api.h: 979: void dwt_setrxantennadelay(uint16_t antennaDly);
+[; ;deca_device_api.h: 992: void dwt_settxantennadelay(uint16_t antennaDly);
+[; ;deca_device_api.h: 1013: int dwt_writetxdata(uint16_t txDataLength, uint8_t *txDataBytes, uint16_t txBufferOffset);
+[; ;deca_device_api.h: 1030: void dwt_writetxfctrl(uint16_t txFrameLength, uint16_t txBufferOffset, uint8_t ranging);
+[; ;deca_device_api.h: 1044: void dwt_setplenfine(uint8_t preambleLength);
+[; ;deca_device_api.h: 1063: int dwt_starttx(uint8_t mode);
+[; ;deca_device_api.h: 1077: void dwt_setreferencetrxtime(uint32_t reftime);
+[; ;deca_device_api.h: 1090: void dwt_setdelayedtrxtime(uint32_t starttime);
+[; ;deca_device_api.h: 1102: void dwt_readtxtimestamp(uint8_t * timestamp);
+[; ;deca_device_api.h: 1105: void dwt_readsystime(uint8_t * timestamp);
+[; ;deca_device_api.h: 1115: uint32_t dwt_readtxtimestamphi32(void);
+[; ;deca_device_api.h: 1126: uint32_t dwt_readtxtimestamplo32(void);
+[; ;deca_device_api.h: 1140: int16_t dwt_readpdoa(void);
+[; ;deca_device_api.h: 1155: void dwt_readtdoa(uint8_t * tdoa);
+[; ;deca_device_api.h: 1167: void dwt_readrxtimestamp(uint8_t * timestamp);
+[; ;deca_device_api.h: 1168: void dwt_readrxtimestampunadj(uint8_t * timestamp);
+[; ;deca_device_api.h: 1180: void dwt_readrxtimestamp_ipatov(uint8_t * timestamp);
+[; ;deca_device_api.h: 1192: void dwt_readrxtimestamp_sts(uint8_t * timestamp);
+[; ;deca_device_api.h: 1203: uint32_t dwt_readrxtimestamphi32(void);
+[; ;deca_device_api.h: 1214: uint32_t dwt_readrxtimestamplo32(void);
+[; ;deca_device_api.h: 1225: uint32_t dwt_readsystimestamphi32(void);
+[; ;deca_device_api.h: 1236: void dwt_forcetrxoff(void);
+[; ;deca_device_api.h: 1260: int dwt_rxenable(int mode);
+[; ;deca_device_api.h: 1279: void dwt_setsniffmode(int enable, uint8_t timeOn, uint8_t timeOff);
+[; ;deca_device_api.h: 1292: void dwt_setdblrxbuffmode(dwt_dbl_buff_state_e dbl_buff_state, dwt_dbl_buff_mode_e dbl_buff_mode);
+[; ;deca_device_api.h: 1304: void dwt_signal_rx_buff_free(void);
+[; ;deca_device_api.h: 1318: void dwt_setrxtimeout(uint32_t time);
+[; ;deca_device_api.h: 1331: void dwt_setpreambledetecttimeout(uint16_t timeout);
+[; ;deca_device_api.h: 1344: uint16_t dwt_calibratesleepcnt(void);
+[; ;deca_device_api.h: 1358: void dwt_configuresleepcnt(uint16_t sleepcnt);
+[; ;deca_device_api.h: 1397: void dwt_configuresleep(uint16_t mode, uint8_t wake);
+[; ;deca_device_api.h: 1409: void dwt_clearaonconfig(void);
+[; ;deca_device_api.h: 1423: void dwt_entersleep(int idle_rc);
+[; ;deca_device_api.h: 1439: void dwt_entersleepaftertx(int enable);
+[; ;deca_device_api.h: 1459: void dwt_setcallbacks(dwt_cb_t cbTxDone, dwt_cb_t cbRxOk, dwt_cb_t cbRxTo, dwt_cb_t cbRxErr, dwt_cb_t cbSPIErr, dwt_cb_t cbSPIRdy);
+[; ;deca_device_api.h: 1470: uint8_t dwt_checkirq(void);
+[; ;deca_device_api.h: 1481: uint8_t dwt_checkidlerc(void);
+[; ;deca_device_api.h: 1505: void dwt_isr(void);
+[; ;deca_device_api.h: 1523: void dwt_setinterrupt(uint32_t bitmask_lo, uint32_t bitmask_hi, dwt_INT_options_e INT_options);
+[; ;deca_device_api.h: 1535: void dwt_setpanid(uint16_t panID);
+[; ;deca_device_api.h: 1547: void dwt_setaddress16(uint16_t shortAddress);
+[; ;deca_device_api.h: 1559: void dwt_seteui(uint8_t *eui64);
+[; ;deca_device_api.h: 1571: void dwt_geteui(uint8_t *eui64);
+[; ;deca_device_api.h: 1583: uint8_t dwt_aon_read(uint16_t aon_address);
+[; ;deca_device_api.h: 1596: void dwt_aon_write(uint16_t aon_address, uint8_t aon_write_data);
+[; ;deca_device_api.h: 1610: void dwt_otpread(uint16_t address, uint32_t *array, uint8_t length);
+[; ;deca_device_api.h: 1636: void dwt_configureframefilter(uint16_t enabletype, uint16_t filtermode);
+[; ;deca_device_api.h: 1650: uint8_t dwt_generatecrc8(const uint8_t* byteArray, int flen, uint8_t crcInit);
+[; ;deca_device_api.h: 1668: void dwt_enablespicrccheck(dwt_spi_crc_mode_e crc_mode, dwt_spierrcb_t spireaderr_cb);
+[; ;deca_device_api.h: 1683: void dwt_enableautoack(uint8_t responseDelayTime, int enable);
+[; ;deca_device_api.h: 1695: void dwt_setrxaftertxdelay(uint32_t rxDelayTime);
+[; ;deca_device_api.h: 1708: void dwt_softreset(void);
+[; ;deca_device_api.h: 1722: void dwt_readrxdata(uint8_t *buffer, uint16_t length, uint16_t rxBufferOffset);
+[; ;deca_device_api.h: 1736: void dwt_read_rx_scratch_data(uint8_t *buffer, uint16_t length, uint16_t rxBufferOffset);
+[; ;deca_device_api.h: 1757: void dwt_readaccdata(uint8_t *buffer, uint16_t len, uint16_t accOffset);
+[; ;deca_device_api.h: 1768: int16_t dwt_readclockoffset(void);
+[; ;deca_device_api.h: 1778: int32_t dwt_readcarrierintegrator(void);
+[; ;deca_device_api.h: 1795: void dwt_configciadiag(uint8_t enable_mask);
+[; ;deca_device_api.h: 1809: int dwt_readstsquality(int16_t* rxStsQualityIndex);
+[; ;deca_device_api.h: 1821: int dwt_readstsstatus(uint16_t* stsStatus, int sts_num);
+[; ;deca_device_api.h: 1833: void dwt_readdiagnostics(dwt_rxdiag_t * diagnostics);
+[; ;deca_device_api.h: 1844: void dwt_configeventcounters(int enable);
+[; ;deca_device_api.h: 1856: void dwt_readeventcounters(dwt_deviceentcnts_t *counters);
+[; ;deca_device_api.h: 1869: int dwt_otpwriteandverify(uint32_t value, uint16_t address);
+[; ;deca_device_api.h: 1886: void dwt_setleds(uint8_t mode);
+[; ;deca_device_api.h: 1898: void dwt_setxtaltrim(uint8_t value);
+[; ;deca_device_api.h: 1912: uint8_t dwt_getxtaltrim(void);
+[; ;deca_device_api.h: 1927: void dwt_repeated_frames(uint32_t framerepetitionrate);
+[; ;deca_device_api.h: 1939: void dwt_repeated_cw(int cw_enable, int cw_mode_config);
+[; ;deca_device_api.h: 1950: void dwt_configcwmode(uint8_t channel);
+[; ;deca_device_api.h: 1964: void dwt_configcontinuousframemode(uint32_t framerepetitionrate, uint8_t channel);
+[; ;deca_device_api.h: 1977: uint16_t dwt_readtempvbat(void);
+[; ;deca_device_api.h: 1991: float dwt_convertrawtemperature(uint8_t raw_temp);
+[; ;deca_device_api.h: 2005: float dwt_convertrawvoltage(uint8_t raw_voltage);
+[; ;deca_device_api.h: 2018: uint8_t dwt_readwakeuptemp(void);
+[; ;deca_device_api.h: 2031: uint8_t dwt_readwakeupvbat(void);
+[; ;deca_device_api.h: 2048: uint8_t dwt_calcbandwidthadj(uint16_t target_count, int channel);
+[; ;deca_device_api.h: 2064: uint16_t dwt_calcpgcount(uint8_t pgdly, int channel);
+[; ;deca_device_api.h: 2087: void dwt_writetodevice
+[; ;deca_device_api.h: 2088: (
+[; ;deca_device_api.h: 2089: uint32_t regFileID,
+[; ;deca_device_api.h: 2090: uint16_t index,
+[; ;deca_device_api.h: 2091: uint32_t length,
+[; ;deca_device_api.h: 2092: uint8_t *buffer
+[; ;deca_device_api.h: 2093: );
+[; ;deca_device_api.h: 2116: void dwt_readfromdevice
+[; ;deca_device_api.h: 2117: (
+[; ;deca_device_api.h: 2118: uint32_t regFileID,
+[; ;deca_device_api.h: 2119: uint16_t index,
+[; ;deca_device_api.h: 2120: uint32_t length,
+[; ;deca_device_api.h: 2121: uint8_t *buffer
+[; ;deca_device_api.h: 2122: );
+[; ;deca_device_api.h: 2135: uint32_t dwt_read32bitoffsetreg( uint32_t regFileID, uint32_t regOffset);
+[; ;deca_device_api.h: 2149: void dwt_write32bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint32_t regval);
+[; ;deca_device_api.h: 2162: uint16_t dwt_read16bitoffsetreg( uint32_t regFileID, uint32_t regOffset);
+[; ;deca_device_api.h: 2176: void dwt_write16bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint16_t regval);
+[; ;deca_device_api.h: 2189: uint8_t dwt_read8bitoffsetreg( uint32_t regFileID, uint32_t regOffset);
+[; ;deca_device_api.h: 2203: void dwt_write8bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint8_t regval);
+[; ;deca_device_api.h: 2220: void dwt_modify32bitoffsetreg(const uint32_t regFileID, const uint32_t regOffset, const uint32_t _and, const uint32_t _or);
+[; ;deca_device_api.h: 2237: void dwt_modify16bitoffsetreg(const uint32_t regFileID, const uint32_t regOffset, const uint16_t _and, const uint16_t _or);
+[; ;deca_device_api.h: 2254: void dwt_modify8bitoffsetreg(const uint32_t regFileID, const uint32_t regOffset, const uint8_t _and, const uint8_t _or);
+[; ;deca_device_api.h: 2269: void dwt_set_keyreg_128(const dwt_aes_key_t *key);
+[; ;deca_device_api.h: 2281: void dwt_configure_aes(const dwt_aes_config_t *pCfg);
+[; ;deca_device_api.h: 2291: dwt_mic_size_e dwt_mic_size_from_bytes(uint8_t mic_size_in_bytes);
+[; ;deca_device_api.h: 2310: int8_t dwt_do_aes(dwt_aes_job_t *job, dwt_aes_core_type_e core_type);
+[; ;deca_device_api.h: 2318: extern void wakeup_device_with_io(void);
+[; ;deca_device_api.h: 2329: void dwt_wakeup_ic(void);
+[; ;deca_device_api.h: 2352: int writetospiwithcrc(uint16_t headerLength, const uint8_t *headerBuffer, uint32_t bodylength, const uint8_t *bodyBuffer, uint8_t crc8);
+[; ;deca_device_api.h: 2374: int writetospi(uint16_t headerLength, const uint8_t *headerBuffer, uint32_t bodylength, const uint8_t *bodyBuffer);
+[; ;deca_device_api.h: 2396: int readfromspi(uint16_t headerLength, const uint8_t *headerBuffer, uint32_t readlength, uint8_t *readBuffer);
+[; ;deca_device_api.h: 2411: typedef int decaIrqStatus_t ;
+[; ;deca_device_api.h: 2426: decaIrqStatus_t decamutexon(void);
+[; ;deca_device_api.h: 2441: void decamutexoff(decaIrqStatus_t s);
+[; ;deca_device_api.h: 2454: void deca_sleep(unsigned int time_ms);
+[; ;deca_device_api.h: 2467: void deca_usleep(unsigned long time_us);
+[; ;deca_device_api.h: 2479: int dwt_check_dev_id(void);
+[; ;deca_device_api.h: 2492: int dwt_run_pgfcal(void);
+[; ;deca_device_api.h: 2503: int dwt_pgf_cal(int ldoen);
+[; ;deca_device_api.h: 2515: void dwt_configure_le_address(uint16_t addr, int leIndex);
+[; ;deca_device_api.h: 2527: void dwt_configuresfdtype(uint8_t sfdType);
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 16: extern void * memset(void *, int, size_t);
+[; ;string.h: 21: extern void * __builtin_memcpy(void *, const void *, size_t);
+[; ;string.h: 36: extern char * strcat(char *, const char *);
+[; ;string.h: 37: extern char * strcpy(char *, const char *);
+[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 40: extern char * strdup(const char *);
+[; ;string.h: 41: extern char * strtok(char *, const char *);
+[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 45: extern int strcmp(const char *, const char *);
+[; ;string.h: 46: extern int stricmp(const char *, const char *);
+[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 52: extern size_t strspn(const char *, const char *);
+[; ;string.h: 53: extern char * strstr(const char *, const char *);
+[; ;string.h: 54: extern char * stristr(const char *, const char *);
+[; ;string.h: 55: extern char * strerror(int);
+[; ;string.h: 56: extern size_t strlen(const char *);
+[; ;string.h: 57: extern char * strchr(const char *, int);
+[; ;string.h: 58: extern char * strichr(const char *, int);
+[; ;string.h: 59: extern char * strrchr(const char *, int);
+[; ;string.h: 60: extern char * strrichr(const char *, int);
+[; ;port.h: 82: typedef enum
+[; ;port.h: 83: {
+[; ;port.h: 84: LED_PC6,
+[; ;port.h: 85: LED_PC7,
+[; ;port.h: 86: LED_PC8,
+[; ;port.h: 87: LED_PC9,
+[; ;port.h: 88: LED_ALL,
+[; ;port.h: 89: } led_t;
+[; ;port.h: 154: unsigned long portGetTickCnt(void);
+[; ;port.h: 159: int port_is_boot1_on(uint16_t x);
+[; ;port.h: 160: int port_is_switch_on(uint16_t GPIOpin);
+[; ;port.h: 161: int port_is_boot1_low(void);
+[; ;port.h: 163: void port_wakeup_dw_ic(void);
+[; ;port.h: 165: void port_set_dw_ic_spi_slowrate(void);
+[; ;port.h: 166: void port_set_dw_ic_spi_fastrate(void);
+[; ;port.h: 168: void process_dwRSTn_irq(void);
+[; ;port.h: 169: void process_deca_irq(void);
+[; ;port.h: 171: int peripherals_init(void);
+[; ;port.h: 172: void spi_peripheral_init(void);
+[; ;port.h: 174: void setup_DWICRSTnIRQ(int enable);
+[; ;port.h: 176: void reset_DWIC(void);
+[; ;port.h: 179: void port_LCD_RS_set(void);
+[; ;port.h: 180: void port_LCD_RS_clear(void);
+[; ;port.h: 181: void port_LCD_RW_set(void);
+[; ;port.h: 182: void port_LCD_RW_clear(void);
+[; ;port.h: 185: uint32_t port_GetEXT_IRQStatus(void);
+[; ;port.h: 186: uint32_t port_CheckEXT_IRQ(void);
+[; ;port.h: 187: void port_DisableEXT_IRQ(void);
+[; ;port.h: 188: void port_EnableEXT_IRQ(void);
+[; ;port.h: 189: extern uint32_t HAL_GetTick(void);
+[; ;port.h: 205: struct circ_buf {
+[; ;port.h: 206: char *buf;
+[; ;port.h: 207: int head;
+[; ;port.h: 208: int tail;
+[; ;port.h: 209: };
+"51 deca_mutex.c
+[v _decamutexon `(i ~T0 @X0 1 ef ]
+"52
+{
+[; ;deca_mutex.c: 51: decaIrqStatus_t decamutexon(void)
+[; ;deca_mutex.c: 52: {
+[e :U _decamutexon ]
+[f ]
+[; ;deca_mutex.c: 58: return 0 ;
+"58
+[e ) -> 0 `i ]
+[e $UE 13  ]
+[; ;deca_mutex.c: 59: }
+"59
+[e :UE 13 ]
+}
+"76
+[v _decamutexoff `(v ~T0 @X0 1 ef1`i ]
+"77
+{
+[; ;deca_mutex.c: 76: void decamutexoff(decaIrqStatus_t s)
+[; ;deca_mutex.c: 77: {
+[e :U _decamutexoff ]
+"76
+[v _s `i ~T0 @X0 1 r1 ]
+"77
+[f ]
+[; ;deca_mutex.c: 78: if(s) {
+"78
+[e $ ! != _s -> 0 `i 15  ]
+{
+"80
+}
+[e :U 15 ]
+[; ;deca_mutex.c: 80: }
+[; ;deca_mutex.c: 81: }
+"81
+[e :UE 14 ]
+}
