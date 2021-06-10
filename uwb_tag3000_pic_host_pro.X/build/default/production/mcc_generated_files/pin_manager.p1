@@ -73,6 +73,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RXPPS `Vuc ~T0 @X0 0 e@7883 ]
 "32902
 [v _RC5PPS `Vuc ~T0 @X0 0 e@7973 ]
+"1146
+[s S54 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S54 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"1145
+[u S53 `S54 1 ]
+[n S53 . . ]
+"1157
+[v _LATDbits `VS53 ~T0 @X0 0 e@25 ]
+"1084
+[s S52 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S52 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"1083
+[u S51 `S52 1 ]
+[n S51 . . ]
+"1095
+[v _LATCbits `VS51 ~T0 @X0 0 e@24 ]
+"960
+[s S48 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S48 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
+"959
+[u S47 `S48 1 ]
+[n S47 . . ]
+"971
+[v _LATAbits `VS47 ~T0 @X0 0 e@22 ]
+"64 mcc_generated_files/../main.h
+[v _Sleep `(v ~T0 @X0 0 ef1`ul ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -13690,9 +13716,50 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;pin_manager.h: 230: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 242: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 251: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 263: void PIN_MANAGER_IOC(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;main.h: 50: extern bool TX_ANCHOR;
+[; ;main.h: 51: extern uint8_t ADDR[8];
+[; ;main.h: 52: extern bool timer0_triggered;
+[; ;main.h: 53: typedef struct
+[; ;main.h: 54: {
+[; ;main.h: 55: uint32_t Lsb;
+[; ;main.h: 56: uint32_t Msb;
+[; ;main.h: 57: }uint64_t;
+[; ;main.h: 60: void print_uint8_t(uint8_t val);
+[; ;main.h: 61: void print_uint16_t(uint16_t val);
+[; ;main.h: 62: void print_uint32_t(uint32_t val);
+[; ;main.h: 63: void print_uint64_t(uint64_t num);
+[; ;main.h: 64: void Sleep(uint32_t time);
 "52 mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 1 ef ]
 "53
@@ -13704,9 +13771,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.c: 57: LATE = 0x00;
 "57
 [e = _LATE -> -> 0 `i `uc ]
-[; ;pin_manager.c: 58: LATD = 0x01;
+[; ;pin_manager.c: 58: LATD = 0x00;
 "58
-[e = _LATD -> -> 1 `i `uc ]
+[e = _LATD -> -> 0 `i `uc ]
 [; ;pin_manager.c: 59: LATA = 0x00;
 "59
 [e = _LATA -> -> 0 `i `uc ]
@@ -13719,33 +13786,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.c: 66: TRISE = 0x07;
 "66
 [e = _TRISE -> -> 7 `i `uc ]
-[; ;pin_manager.c: 67: TRISA = 0x3F;
+[; ;pin_manager.c: 67: TRISA = 0x07;
 "67
-[e = _TRISA -> -> 63 `i `uc ]
+[e = _TRISA -> -> 7 `i `uc ]
 [; ;pin_manager.c: 68: TRISB = 0xEF;
 "68
 [e = _TRISB -> -> 239 `i `uc ]
 [; ;pin_manager.c: 69: TRISC = 0x9F;
 "69
 [e = _TRISC -> -> 159 `i `uc ]
-[; ;pin_manager.c: 70: TRISD = 0xFE;
+[; ;pin_manager.c: 70: TRISD = 0xF0;
 "70
-[e = _TRISD -> -> 254 `i `uc ]
-[; ;pin_manager.c: 75: ANSELD = 0xFE;
+[e = _TRISD -> -> 240 `i `uc ]
+[; ;pin_manager.c: 75: ANSELD = 0xF0;
 "75
-[e = _ANSELD -> -> 254 `i `uc ]
+[e = _ANSELD -> -> 240 `i `uc ]
 [; ;pin_manager.c: 76: ANSELC = 0x00;
 "76
 [e = _ANSELC -> -> 0 `i `uc ]
-[; ;pin_manager.c: 77: ANSELB = 0xFF;
+[; ;pin_manager.c: 77: ANSELB = 0xFE;
 "77
-[e = _ANSELB -> -> 255 `i `uc ]
+[e = _ANSELB -> -> 254 `i `uc ]
 [; ;pin_manager.c: 78: ANSELE = 0x07;
 "78
 [e = _ANSELE -> -> 7 `i `uc ]
-[; ;pin_manager.c: 79: ANSELA = 0xFF;
+[; ;pin_manager.c: 79: ANSELA = 0x07;
 "79
-[e = _ANSELA -> -> 255 `i `uc ]
+[e = _ANSELA -> -> 7 `i `uc ]
 [; ;pin_manager.c: 84: WPUD = 0x00;
 "84
 [e = _WPUD -> -> 0 `i `uc ]
@@ -13778,7 +13845,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ODCOND -> -> 0 `i `uc ]
 "99
 [v _state `uc ~T0 @X0 1 a ]
-[; ;pin_manager.c: 99: bool state = GIE;
+[; ;pin_manager.c: 99: bool state = (bool) GIE;
 [e = _state -> -> _GIE `i `uc ]
 [; ;pin_manager.c: 100: GIE = 0;
 "100
@@ -13816,19 +13883,78 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.c: 124: GIE = state;
 "124
 [e = _GIE -> _state `b ]
-[; ;pin_manager.c: 126: }
-"126
-[e :UE 1613 ]
-}
+[; ;pin_manager.c: 127: do { LATDbits.LATD0 = 0; } while(0);
 "127
-[v _PIN_MANAGER_IOC `(v ~T0 @X0 1 ef ]
-"128
+[e :U 1617 ]
 {
-[; ;pin_manager.c: 127: void PIN_MANAGER_IOC(void)
-[; ;pin_manager.c: 128: {
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+}
+[e :U 1616 ]
+[; ;pin_manager.c: 128: do { LATCbits.LATC6 = 1; } while(0);
+"128
+[e :U 1620 ]
+{
+[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
+}
+[e :U 1619 ]
+[; ;pin_manager.c: 130: do { LATDbits.LATD1 = 0; } while(0);
+"130
+[e :U 1623 ]
+{
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+}
+[e :U 1622 ]
+[; ;pin_manager.c: 131: do { LATDbits.LATD3 = 0; } while(0);
+"131
+[e :U 1626 ]
+{
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+}
+[e :U 1625 ]
+[; ;pin_manager.c: 132: do { LATAbits.LATA3 = 0; } while(0);
+"132
+[e :U 1629 ]
+{
+[e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
+}
+[e :U 1628 ]
+[; ;pin_manager.c: 133: Sleep(500);
+"133
+[e ( _Sleep (1 -> -> -> 500 `i `l `ul ]
+[; ;pin_manager.c: 134: do { LATDbits.LATD1 = 1; } while(0);
+"134
+[e :U 1632 ]
+{
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+}
+[e :U 1631 ]
+[; ;pin_manager.c: 135: do { LATDbits.LATD3 = 1; } while(0);
+"135
+[e :U 1635 ]
+{
+[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
+}
+[e :U 1634 ]
+[; ;pin_manager.c: 136: do { LATAbits.LATA3 = 1; } while(0);
+"136
+[e :U 1638 ]
+{
+[e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
+}
+[e :U 1637 ]
+[; ;pin_manager.c: 137: }
+"137
+[e :UE 1614 ]
+}
+"138
+[v _PIN_MANAGER_IOC `(v ~T0 @X0 1 ef ]
+"139
+{
+[; ;pin_manager.c: 138: void PIN_MANAGER_IOC(void)
+[; ;pin_manager.c: 139: {
 [e :U _PIN_MANAGER_IOC ]
 [f ]
-[; ;pin_manager.c: 129: }
-"129
-[e :UE 1614 ]
+[; ;pin_manager.c: 140: }
+"140
+[e :UE 1639 ]
 }

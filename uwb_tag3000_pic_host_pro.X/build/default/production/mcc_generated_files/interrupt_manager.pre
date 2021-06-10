@@ -1,142 +1,5 @@
 
-# 1 "pic_control_fun.c"
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
-typedef unsigned size_t;
-
-# 14 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\string.h"
-extern void * memcpy(void *, const void *, size_t);
-extern void * memmove(void *, const void *, size_t);
-extern void * memset(void *, int, size_t);
-
-
-
-
-extern void * __builtin_memcpy(void *, const void *, size_t);
-#pragma intrinsic(__builtin_memcpy)
-
-# 36
-extern char * strcat(char *, const char *);
-extern char * strcpy(char *, const char *);
-extern char * strncat(char *, const char *, size_t);
-extern char * strncpy(char *, const char *, size_t);
-extern char * strdup(const char *);
-extern char * strtok(char *, const char *);
-
-
-extern int memcmp(const void *, const void *, size_t);
-extern int strcmp(const char *, const char *);
-extern int stricmp(const char *, const char *);
-extern int strncmp(const char *, const char *, size_t);
-extern int strnicmp(const char *, const char *, size_t);
-extern void * memchr(const void *, int, size_t);
-extern size_t strcspn(const char *, const char *);
-extern char * strpbrk(const char *, const char *);
-extern size_t strspn(const char *, const char *);
-extern char * strstr(const char *, const char *);
-extern char * stristr(const char *, const char *);
-extern char * strerror(int);
-extern size_t strlen(const char *);
-extern char * strchr(const char *, int);
-extern char * strichr(const char *, int);
-extern char * strrchr(const char *, int);
-extern char * strrichr(const char *, int);
-
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
-typedef signed char int8_t;
-
-# 20
-typedef signed int int16_t;
-
-# 28
-typedef signed short long int int24_t;
-
-# 36
-typedef signed long int int32_t;
-
-# 43
-typedef unsigned char uint8_t;
-
-# 49
-typedef unsigned int uint16_t;
-
-# 56
-typedef unsigned short long int uint24_t;
-
-# 63
-typedef unsigned long int uint32_t;
-
-# 71
-typedef signed char int_least8_t;
-
-# 78
-typedef signed int int_least16_t;
-
-# 90
-typedef signed short long int int_least24_t;
-
-# 98
-typedef signed long int int_least32_t;
-
-# 105
-typedef unsigned char uint_least8_t;
-
-# 111
-typedef unsigned int uint_least16_t;
-
-# 121
-typedef unsigned short long int uint_least24_t;
-
-# 128
-typedef unsigned long int uint_least32_t;
-
-# 137
-typedef signed char int_fast8_t;
-
-# 144
-typedef signed int int_fast16_t;
-
-# 156
-typedef signed short long int int_fast24_t;
-
-# 164
-typedef signed long int int_fast32_t;
-
-# 171
-typedef unsigned char uint_fast8_t;
-
-# 177
-typedef unsigned int uint_fast16_t;
-
-# 187
-typedef unsigned short long int uint_fast24_t;
-
-# 194
-typedef unsigned long int uint_fast32_t;
-
-# 200
-typedef int32_t intmax_t;
-
-
-
-
-typedef uint32_t uintmax_t;
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
-typedef unsigned char bool;
-
-# 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
-typedef int ptrdiff_t;
+# 1 "mcc_generated_files/interrupt_manager.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -18257,175 +18120,114 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 26 "pic_control_fun.h"
-extern uint8_t battery_level;
+# 112 "mcc_generated_files/interrupt_manager.h"
+void interrupt INTERRUPT_InterruptManager(void);
 
-void process_pmic_status(uint8_t * status, uint8_t length);
-void pmic_status_read(void);
-uint8_t lipo_battery_level(uint16_t battery_volt);
-void set_MSSSP1_mode(uint8_t mode);
-void set_led_status(void);
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
+typedef signed char int8_t;
 
-# 251 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
+# 20
+typedef signed int int16_t;
 
-# 263
-void PIN_MANAGER_IOC(void);
+# 28
+typedef signed short long int int24_t;
 
-# 29 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\errno.h"
-extern int errno;
+# 36
+typedef signed long int int32_t;
 
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\conio.h"
-extern void init_uart(void);
+# 43
+typedef unsigned char uint8_t;
 
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
+# 49
+typedef unsigned int uint16_t;
 
-extern __bit kbhit(void);
+# 56
+typedef unsigned short long int uint24_t;
 
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
+# 63
+typedef unsigned long int uint32_t;
 
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdarg.h"
-typedef void * va_list[1];
+# 71
+typedef signed char int_least8_t;
 
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
+# 78
+typedef signed int int_least16_t;
 
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
+# 90
+typedef signed short long int int_least24_t;
 
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
+# 98
+typedef signed long int int_least32_t;
 
-# 88
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
 
 
 
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+typedef uint32_t uintmax_t;
 
 
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
 
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
+typedef int16_t intptr_t;
 
-# 59 "mcc_generated_files/spi1.h"
-typedef enum {
-SPI1_DEFAULT
-} spi1_modes_t;
 
-void SPI1_Initialize(void);
-bool SPI1_Open(spi1_modes_t spi1UniqueConfiguration);
-void SPI1_Close(void);
-uint8_t SPI1_ExchangeByte(uint8_t data);
-void SPI1_ExchangeBlock(void *block, size_t blockSize);
-void SPI1_WriteBlock(void *block, size_t blockSize);
-void SPI1_ReadBlock(void *block, size_t blockSize);
-void SPI1_WriteByte(uint8_t byte);
-uint8_t SPI1_ReadByte(void);
 
-# 75 "mcc_generated_files/eusart.h"
-typedef union {
-struct {
-unsigned perr : 1;
-unsigned ferr : 1;
-unsigned oerr : 1;
-unsigned reserved : 5;
-};
-uint8_t status;
-}eusart_status_t;
 
-void printf_string(const char *data);
+typedef uint16_t uintptr_t;
 
-# 110
-void EUSART_Initialize(void);
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
+typedef unsigned char bool;
 
-# 158
-bool EUSART_is_tx_ready(void);
+# 56 "mcc_generated_files/tmr0.h"
+void TMR0_Reload(void);
 
-# 206
-bool EUSART_is_rx_ready(void);
+void TMR0_Initialize(void);
 
-# 253
-bool EUSART_is_tx_done(void);
+void TMR0_StartTimer(void);
 
-# 301
-eusart_status_t EUSART_get_last_status(void);
+void TMR0_StopTimer(void);
 
-# 321
-uint8_t EUSART_Read(void);
+void TMR0_ISR(void);
 
-# 341
-void EUSART_Write(uint8_t txData);
-
-# 361
-void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
-
-# 379
-void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
-
-# 397
-void EUSART_SetErrorHandler(void (* interruptHandler)(void));
-
-# 71 "mcc_generated_files/mcc.h"
-void SYSTEM_Initialize(void);
-
-# 84
-void OSCILLATOR_Initialize(void);
-
-# 97
-void PMD_Initialize(void);
-
-# 9 "pic_i2c.h"
-void i2c_init();
-void i2c_start();
-void i2c_restart();
-void i2c_stop();
-char i2c_read(char ack);
-char i2c_write(char data);
-void i2c_resync();
-
-# 10 "bq25895.h"
-uint8_t init_bq25895(void);
-uint8_t bq25895_WDT_reset(void);
-uint8_t i2c_multi_write(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length);
-uint8_t * i2c_multi_read(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length);
-uint8_t i2c_single_write(uint8_t device_addr, uint8_t reg_addr, uint8_t data);
-uint8_t i2c_single_read(uint8_t device_addr, uint8_t reg_addr);
-
-# 9 "pic_i2c.h"
-void i2c_init();
-void i2c_start();
-void i2c_restart();
-void i2c_stop();
-char i2c_read(char ack);
-char i2c_write(char data);
-void i2c_resync();
-
-# 50 "main.h"
+# 50 "mcc_generated_files/../main.h"
 extern bool TX_ANCHOR;
 extern uint8_t ADDR[8];
 extern bool timer0_triggered;
@@ -18442,244 +18244,16 @@ void print_uint32_t(uint32_t val);
 void print_uint64_t(uint64_t num);
 void Sleep(uint32_t time);
 
-# 8 "pic_control_fun.c"
-uint8_t pmic_stat_reg = 0x0b;
-uint8_t battery_level;
-uint8_t I2C_read_buff[10];
-uint8_t pic_active_mode = 1;
-uint8_t power_connected = 2;
+# 52 "mcc_generated_files/interrupt_manager.c"
+void interrupt INTERRUPT_InterruptManager (void)
+{
 
-void set_led_status(void)
+if(PIE0bits.TMR0IE == 1 && PIR0bits.TMR0IF == 1)
 {
-static uint16_t tx_led_toggle_count = 30;
-
-tx_led_toggle_count += (300 / 100);
-if(tx_led_toggle_count >= 30)
-{
-tx_led_toggle_count = 0;
-if( power_connected == 2)
-{
-do { LATAbits.LATA3 = 0; } while(0);
-_delay((unsigned long)((2)*(32000000/4000.0)));
-do { LATAbits.LATA3 = 1; } while(0);
+PIR0bits.TMR0IF = 0;
+TMR0_Reload();
+(INTCONbits.GIE = 0);
+timer0_triggered = 1;
 }
-else
-{
-if(!PORTAbits.RA3)
-{
-do { LATAbits.LATA3 = 1; } while(0);
-}
-}
-}
-}
-
-void set_MSSSP1_mode(uint8_t mode)
-{
-static uint8_t current_mode;
-
-if(current_mode != mode)
-{
-bool state = (bool)GIE;
-GIE = 0;
-PPSLOCK = 0x55;
-PPSLOCK = 0xAA;
-PPSLOCKbits.PPSLOCKED = 0x00;
-if(mode == 1)
-{
-
-printf_string("\n\rMSSSP set as SPI");
-
-current_mode = 1;
-
-RC3PPS = 0x0F;
-RC4PPS = 0x0F;
-SSP1STAT = 0x00;
-SSP1CON1 = 0x00;
-SSP1CON3 = 0x00;
-SSP1ADD = 0x00;
-PIR3bits.SSP1IF = 0;
-PIE3bits.SSP1IE = 0;
-SSP1BUF = 0x00;
-SSP1MSK = 0x00;
-
-
-SSP1CLKPPS = 0x12;
-RC1PPS = 0x15;
-RC2PPS = 0x14;
-SSP1DATPPS = 0x10;
-
-
-SSP1STAT = 0x80;
-SSP1CON1 = 0x00;
-SSP1ADD = 0x01;
-
-TRISCbits.TRISC2 = 0;
-TRISCbits.TRISC0 = 1;
-SSP1CON1bits.SSPEN = 0;
-_delay((unsigned long)((2)*(32000000/4000.0)));
-SPI1_Open(0);
-_delay((unsigned long)((2)*(32000000/4000.0)));
-}
-else if(mode == 2)
-{
-
-printf_string("\n\rMSSSP set as I2C");
-
-current_mode = 2;
-
-RC1PPS = 0x0F;
-RC2PPS = 0x0F;
-SSP1STAT = 0x00;
-SSP1CON1 = 0x00;
-SSP1CON3 = 0x00;
-SSP1ADD = 0x00;
-PIR3bits.SSP1IF = 0;
-PIE3bits.SSP1IE = 0;
-SSP1BUF = 0x00;
-SSP1MSK = 0x00;
-
-RC3PPS = 0x14;
-RC4PPS = 0x15;
-SSP1CLKPPS = 0x13;
-SSP1DATPPS = 0x14;
-
-i2c_init();
-_delay((unsigned long)((2)*(32000000/4000.0)));
-}
-PPSLOCK = 0x55;
-PPSLOCK = 0xAA;
-PPSLOCKbits.PPSLOCKED = 0x01;
-GIE = state;
-}
-
-}
-void pmic_status_read(void)
-{
-
-bool interrupt_state = (bool)GIE;
-static uint16_t pmic_stat_read_time_count = 50;
-static uint8_t pmic_wdt_clr_count = 30;
-pmic_stat_read_time_count += (300 / 100);
-
-if(pmic_stat_read_time_count >= 50)
-{
-pmic_stat_read_time_count = 0;
-pmic_wdt_clr_count++;
-set_MSSSP1_mode(2);
-interrupt_state = (bool)GIE;
-GIE = 0;
-
-if(pmic_wdt_clr_count > 5)
-{
-
-printf("\n\rpmic_wdt_clr");
-
-pmic_wdt_clr_count = 0;
-I2C_read_buff[0] = i2c_single_read(0xD4, 0x02);
-if((I2C_read_buff[0] & 0b00000001) == 0x01)
-{
-
-printf("\n\rBQ25895_re_init");
-
-init_bq25895();
-_delay((unsigned long)((5)*(32000000/4000.0)));
-}
-I2C_read_buff[0] = (uint8_t)((I2C_read_buff[0] & 0b00111111) | (uint8_t)0b10000000);
-i2c_single_write(0xD4, 0x02, I2C_read_buff[0]);
-bq25895_WDT_reset();
-}
-
-
-printf("\n\rpmic_batt_read");
-
-memset((void*)I2C_read_buff, 0, 10);
-i2c_multi_read(0xD4, pmic_stat_reg, I2C_read_buff, 10);
-GIE = interrupt_state;
-
-process_pmic_status(I2C_read_buff, 10);
-}
-
-}
-void process_pmic_status(uint8_t * status, uint8_t length)
-{
-uint8_t VBUS_STAT = 0;
-uint8_t CHRG_STAT = 0;
-uint8_t PG_STAT = 0;
-uint8_t SDP_STAT = 0;
-uint8_t VSYS_STAT = 0;
-uint16_t battery_volt;
-
-VBUS_STAT = (uint8_t)((status[0] & 0b11100000) >> 5);
-CHRG_STAT = (uint8_t)((status[0] & 0b00011000) >> 3);
-PG_STAT = (uint8_t)((status[0] & 0b00000100) >> 2);
-SDP_STAT = (uint8_t)((status[0] & 0b00000010) >> 1);
-VSYS_STAT = (uint8_t)((status[0] & 0b00000001));
-
-
-if(1 == PG_STAT)
-{
-
-
-
-power_connected = 1;
-if((0b00000001 == CHRG_STAT) || (0b00000010 == CHRG_STAT))
-{
-if(pic_active_mode == 1)
-{
-do { LATDbits.LATD1 = 0; } while(0);
-do { LATDbits.LATD3 = 0; } while(0);
-}
-}
-else if(0b00000011 == CHRG_STAT)
-{
-if(pic_active_mode == 1)
-{
-do { LATDbits.LATD1 = 1; } while(0);
-do { LATDbits.LATD3 = 0; } while(0);
-}
-}
-else
-{
-if(pic_active_mode == 1)
-{
-do { LATDbits.LATD1 = 0; } while(0);
-do { LATDbits.LATD3 = 1; } while(0);
-}
-}
-}
-else
-{
-
-
-
-power_connected = 2;
-if(pic_active_mode == 1)
-{
-do { LATDbits.LATD1 = 1; } while(0);
-do { LATDbits.LATD3 = 1; } while(0);
-}
-}
-
-battery_volt = (uint16_t)((( status[3] & 0b01111111) * 20) + 2304);
-battery_level = lipo_battery_level(battery_volt);
-}
-
-uint8_t lipo_battery_level(uint16_t battery_volt)
-{
-uint8_t battery_level_cal;
-
-if(3500 >= battery_volt)
-{
-battery_level_cal = 0;
-}
-else if(4200 < battery_volt)
-{
-battery_level_cal = 100;
-}
-else
-{
-battery_level_cal = (battery_volt - 3500)/7;
-}
-return battery_level_cal;
 }
 

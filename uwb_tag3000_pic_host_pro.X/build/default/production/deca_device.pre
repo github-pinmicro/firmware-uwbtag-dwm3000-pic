@@ -217,9 +217,10 @@ extern char * strrichr(const char *, int);
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
 typedef unsigned char bool;
 
-# 48 "main.h"
+# 50 "main.h"
 extern bool TX_ANCHOR;
 extern uint8_t ADDR[8];
+extern bool timer0_triggered;
 typedef struct
 {
 uint32_t Lsb;

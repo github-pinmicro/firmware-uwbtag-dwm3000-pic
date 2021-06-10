@@ -94,9 +94,10 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 48 "main.h"
+# 50 "main.h"
 extern bool TX_ANCHOR;
 extern uint8_t ADDR[8];
+extern bool timer0_triggered;
 typedef struct
 {
 uint32_t Lsb;

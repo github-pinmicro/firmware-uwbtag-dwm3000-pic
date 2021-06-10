@@ -18262,13 +18262,14 @@ typedef unsigned size_t;
 # 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
 typedef int ptrdiff_t;
 
-# 21 "mcc_generated_files/../pic_control_fun.h"
+# 26 "mcc_generated_files/../pic_control_fun.h"
 extern uint8_t battery_level;
 
 void process_pmic_status(uint8_t * status, uint8_t length);
 void pmic_status_read(void);
 uint8_t lipo_battery_level(uint16_t battery_volt);
 void set_MSSSP1_mode(uint8_t mode);
+void set_led_status(void);
 
 # 52 "mcc_generated_files/eusart.c"
 volatile eusart_status_t eusartRxLastError;

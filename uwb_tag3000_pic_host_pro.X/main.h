@@ -30,7 +30,9 @@
 // more than once.  
 #ifndef XC_HEADER_TEMPLATE_H
 #define	XC_HEADER_TEMPLATE_H
+
 #define _XTAL_FREQ 32000000
+
  // include processor files - each processor file is guarded.  
 #include <stdbool.h>
 #include <stdint.h>
@@ -47,6 +49,7 @@ extern "C" {
     // linkage so the functions can be used by the c code. 
     extern bool TX_ANCHOR;
     extern uint8_t ADDR[8];
+    extern bool timer0_triggered;
 typedef struct
 {
     uint32_t Lsb;

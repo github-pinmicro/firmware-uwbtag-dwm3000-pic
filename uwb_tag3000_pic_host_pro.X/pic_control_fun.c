@@ -8,8 +8,32 @@
 uint8_t pmic_stat_reg = 0x0b;
 uint8_t battery_level;
 uint8_t I2C_read_buff[10];
-uint16_t pmic_stat_read_time_count = PMIC_STATSU_READ_TIME;
-uint8_t pic_active_mode;
+uint8_t pic_active_mode = 1;
+uint8_t power_connected = PW_DISCONNECTED;
+
+void set_led_status(void)
+{
+    static uint16_t tx_led_toggle_count = TX_LED_TOGGLE_COUNT;
+    
+    tx_led_toggle_count += TX_LED_TOGGLE_INCREMENT_VAL;
+    if(tx_led_toggle_count >= TX_LED_TOGGLE_COUNT)
+    {
+        tx_led_toggle_count = 0;
+        if( power_connected == PW_DISCONNECTED)
+        {
+           LED_B1_SetLow();
+           __delay_ms(2);
+           LED_B1_SetHigh();
+        }
+        else
+        {
+            if(!LED_B1_GetValue())
+            {
+                LED_B1_SetHigh();
+            }
+        }
+    }
+}
 
 void set_MSSSP1_mode(uint8_t mode)
 {
@@ -95,32 +119,41 @@ void pmic_status_read(void)
 {
 #if (1)
     bool interrupt_state = (bool)GIE;
-    
+    static uint16_t pmic_stat_read_time_count = PMIC_STATSU_READ_TIME;
+    static uint8_t pmic_wdt_clr_count = 30;
     pmic_stat_read_time_count += PMIC_READ_INCREMENT_VAL;
     
     if(pmic_stat_read_time_count >= PMIC_STATSU_READ_TIME)//to read all registers in PMIC
     {
-        #if(PRINT_LOG)
-            printf("\n\rpmic_batt_read_and_wdt_clr");
-        #endif
         pmic_stat_read_time_count = 0;
+        pmic_wdt_clr_count++;
         set_MSSSP1_mode(MSSP1_I2C);
-        
         interrupt_state = (bool)GIE;
         GIE = 0;
-        I2C_read_buff[0] = i2c_single_read(I2C_SLAVE_ADDR_WR, 0x02);
-        if((I2C_read_buff[0] & 0b00000001) == 0x01)
-        {
-           #if(PRINT_LOG)
-                 printf("\n\rBQ25895_re_init");
-            #endif
-           init_bq25895();
-           __delay_ms(5);
-        }
-        I2C_read_buff[0] = (uint8_t)((I2C_read_buff[0] & 0b00111111) | (uint8_t)0b10000000);
-        i2c_single_write(I2C_SLAVE_ADDR_WR, 0x02, I2C_read_buff[0]);
-        bq25895_WDT_reset();//PMIC WDT clear
         
+        if(pmic_wdt_clr_count > 5)
+        {
+            #if(PRINT_LOG)
+            printf("\n\rpmic_wdt_clr");
+            #endif
+            pmic_wdt_clr_count = 0;
+            I2C_read_buff[0] = i2c_single_read(I2C_SLAVE_ADDR_WR, 0x02);
+            if((I2C_read_buff[0] & 0b00000001) == 0x01)
+            {
+               #if(PRINT_LOG)
+                     printf("\n\rBQ25895_re_init");
+                #endif
+               init_bq25895();
+               __delay_ms(5);
+            }
+            I2C_read_buff[0] = (uint8_t)((I2C_read_buff[0] & 0b00111111) | (uint8_t)0b10000000);
+            i2c_single_write(I2C_SLAVE_ADDR_WR, 0x02, I2C_read_buff[0]);
+            bq25895_WDT_reset();//PMIC WDT clear
+        }
+        
+        #if(PRINT_LOG)
+            printf("\n\rpmic_batt_read");
+        #endif
         memset((void*)I2C_read_buff, 0, 10);//Battery read
         i2c_multi_read(I2C_SLAVE_ADDR_WR, pmic_stat_reg, I2C_read_buff, 10);  
         GIE = interrupt_state;
@@ -147,51 +180,45 @@ void process_pmic_status(uint8_t * status, uint8_t length)
    
     if(1 == PG_STAT)//power connected
     {
+        #if (PRINT_LOG)
+        //printf_string("\n\rPower_connected");
+        #endif
+        power_connected = PW_CONNECTED;
         if((0b00000001 == CHRG_STAT) || (0b00000010 == CHRG_STAT))//Pre-charge or Fast Charging
         {
             if(pic_active_mode == 1)
             {
-                //LED_R1_SetLow();
-                //LED_G1_SetLow();
-                uint8_t led_off[5]= {0b01111111, 0, 0, 0, 0};
-                uint8_t led_data[5]={0b10000011, 0, 0, 0, 0};
-//                set_led_config(led_off);
-//                set_led_config(led_data);
+                LED_R1_SetLow();
+                LED_G1_SetLow();
             }
         }
         else if(0b00000011 == CHRG_STAT)//Charge Termination Done
         {
             if(pic_active_mode == 1)
             {
-                //LED_R1_SetHigh();
-                //LED_G1_SetLow();
-                uint8_t led_off[5]= {0b01111111, 0, 0, 0, 0};
-                uint8_t led_data[5]={0b10000010, 0, 0, 0, 0};
-//                set_led_config(led_off);
-//                set_led_config(led_data);
+                LED_R1_SetHigh();
+                LED_G1_SetLow();
             }
         }
         else//not charging 
         {
             if(pic_active_mode == 1)
             {
-                //LED_R1_SetLow();
-                //LED_G1_SetHigh();
-                uint8_t led_off[5]= {0b01111111, 0, 0, 0, 0};
-                uint8_t led_data[5]={0b10000001, 0, 0, 0, 0};
-//                set_led_config(led_off); 
-//                set_led_config(led_data);
+                LED_R1_SetLow();
+                LED_G1_SetHigh();  
             }
         }
     }
     else//no power connected
     {
+        #if (PRINT_LOG)
+        //printf_string("\n\rPower_Disconnected");
+        #endif
+        power_connected = PW_DISCONNECTED;
         if(pic_active_mode == 1)
         {
-            //LED_R1_SetHigh(); 
-            //LED_G1_SetHigh();
-            uint8_t led_off[5]={0b01111111, 0, 0, 0, 0};
-//            set_led_config(led_off); 
+            LED_R1_SetHigh(); 
+            LED_G1_SetHigh();
         }
     }
     

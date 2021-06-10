@@ -11,7 +11,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S61 . . ]
 "1033
 [v _LATBbits `VS61 ~T0 @X0 0 e@23 ]
-"61 main.h
+"64 main.h
 [v _Sleep `(v ~T0 @X0 0 ef1`ul ]
 "34352 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
 [s S1534 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -121,18 +121,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;port.h: 208: int tail;
 [; ;port.h: 209: };
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;main.h: 48: extern bool TX_ANCHOR;
-[; ;main.h: 49: extern uint8_t ADDR[8];
-[; ;main.h: 50: typedef struct
-[; ;main.h: 51: {
-[; ;main.h: 52: uint32_t Lsb;
-[; ;main.h: 53: uint32_t Msb;
-[; ;main.h: 54: }uint64_t;
-[; ;main.h: 57: void print_uint8_t(uint8_t val);
-[; ;main.h: 58: void print_uint16_t(uint16_t val);
-[; ;main.h: 59: void print_uint32_t(uint32_t val);
-[; ;main.h: 60: void print_uint64_t(uint64_t num);
-[; ;main.h: 61: void Sleep(uint32_t time);
+[; ;main.h: 50: extern bool TX_ANCHOR;
+[; ;main.h: 51: extern uint8_t ADDR[8];
+[; ;main.h: 52: extern bool timer0_triggered;
+[; ;main.h: 53: typedef struct
+[; ;main.h: 54: {
+[; ;main.h: 55: uint32_t Lsb;
+[; ;main.h: 56: uint32_t Msb;
+[; ;main.h: 57: }uint64_t;
+[; ;main.h: 60: void print_uint8_t(uint8_t val);
+[; ;main.h: 61: void print_uint16_t(uint16_t val);
+[; ;main.h: 62: void print_uint32_t(uint32_t val);
+[; ;main.h: 63: void print_uint64_t(uint64_t num);
+[; ;main.h: 64: void Sleep(uint32_t time);
 [; ;deca_device_api.h: 67: typedef enum
 [; ;deca_device_api.h: 68: {
 [; ;deca_device_api.h: 69: AOA,
@@ -14137,8 +14138,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;pin_manager.h: 230: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 242: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 251: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 263: void PIN_MANAGER_IOC(void);
 "89 port.c
 [v _peripherals_init `(i ~T0 @X0 1 ef ]
 "90

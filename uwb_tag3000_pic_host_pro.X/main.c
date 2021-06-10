@@ -57,16 +57,21 @@
 #include "pic_i2c.h"
 #include "pic_control_fun.h"
 #include "bq25895.h"
+#include "mcc_generated_files/tmr0.h"
+#include "mcc_generated_files/interrupt_manager.h"
 
+bool timer0_triggered;
 uint8_t ADDR[8] = {0x02, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
-
+uint8_t enable_sleep = 1;
 /*
                          Main application
  */
 void main(void)
 {
     SYSTEM_Initialize();// initialize the device
+    CLRWDT();
     #if (PRINT_LOG)
+    EUSART_Initialize();
     printf_string("\n\rUWB_TAG_DWM3000_PIC");
     #endif
     set_MSSSP1_mode(MSSP1_I2C);//PMIC init
@@ -81,15 +86,45 @@ void main(void)
     RST_SetHigh();
    
     set_MSSSP1_mode(MSSP1_SPI);//DWM3000 init
-    __delay_ms(2);   
+    __delay_ms(2);
+    INTERRUPT_GlobalInterruptEnable();
+    INTERRUPT_PeripheralInterruptEnable();
+    TMR0_Initialize();
+    CLRWDT();
     dw_main();
-    
     while(1)
-    {
+    { 
+        #if (PRINT_LOG)
+        P_WD_Toggle();
+        //printf_string("\n\rTMR_int");
+        #endif 
         pmic_status_read(); 
         set_MSSSP1_mode(MSSP1_SPI);
         transmitt_beacon_pkt();
-        __delay_ms(TX_INTERVAL_MS);
+        set_led_status();
+        while(!P_SW_GetValue());
+        INTERRUPT_GlobalInterruptEnable();
+        if(1 == enable_sleep)
+        {
+            NOP();
+            NOP();
+            NOP();
+            NOP();
+            NOP();
+            NOP();
+            NOP();
+            NOP();
+            NOP();
+            NOP(); 
+            SLEEP();// PIC enter to sleep mode
+            NOP();
+            NOP();
+            NOP();
+            NOP();
+            NOP();
+            NOP();
+        }       
+        //__delay_ms(TX_INTERVAL_MS);
             
     }
 }

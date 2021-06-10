@@ -13678,8 +13678,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;bq25895.h: 13: uint8_t * i2c_multi_read(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length);
 [; ;bq25895.h: 14: uint8_t i2c_single_write(uint8_t device_addr, uint8_t reg_addr, uint8_t data);
 [; ;bq25895.h: 15: uint8_t i2c_single_read(uint8_t device_addr, uint8_t reg_addr);
-[; ;pin_manager.h: 230: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 242: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 251: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 263: void PIN_MANAGER_IOC(void);
 [; ;errno.h: 29: extern int errno;
 [; ;conio.h: 12: extern void init_uart(void);
 [; ;conio.h: 14: extern char getch(void);

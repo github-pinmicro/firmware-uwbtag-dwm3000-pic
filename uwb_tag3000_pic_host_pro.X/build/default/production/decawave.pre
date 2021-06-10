@@ -94,9 +94,10 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 48 "main.h"
+# 50 "main.h"
 extern bool TX_ANCHOR;
 extern uint8_t ADDR[8];
+extern bool timer0_triggered;
 typedef struct
 {
 uint32_t Lsb;
@@ -19170,13 +19171,14 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 # 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
 typedef int ptrdiff_t;
 
-# 21 "pic_control_fun.h"
+# 26 "pic_control_fun.h"
 extern uint8_t battery_level;
 
 void process_pmic_status(uint8_t * status, uint8_t length);
 void pmic_status_read(void);
 uint8_t lipo_battery_level(uint16_t battery_volt);
 void set_MSSSP1_mode(uint8_t mode);
+void set_led_status(void);
 
 # 17 "decawave.c"
 static dwt_config_t config = {

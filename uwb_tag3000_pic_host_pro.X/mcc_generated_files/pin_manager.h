@@ -217,6 +217,27 @@
 #define LED_B2_SetLow()             do { LATAbits.LATA4 = 0; } while(0)
 #define LED_B2_Toggle()             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0)
 #define LED_B2_GetValue()           PORTAbits.RA4
+
+#define P_WD_SetHigh()            do { LATAbits.LATA5 = 1; } while(0)
+#define P_WD_SetLow()             do { LATAbits.LATA5 = 0; } while(0)
+#define P_WD_Toggle()             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0)
+#define P_WD_GetValue()           PORTAbits.RA5
+
+// get/set EV_3V3 aliases
+#define EV_3V3_SetHigh()            do { LATCbits.LATC6 = 1; } while(0)
+#define EV_3V3_SetLow()             do { LATCbits.LATC6 = 0; } while(0)
+#define EV_3V3_Toggle()             do { LATCbits.LATC6 = ~LATCbits.LATC6; } while(0)
+#define EV_3V3_GetValue()           PORTCbits.RC6
+
+#define EN_3V0_SetHigh()            do { LATDbits.LATD0 = 1; } while(0)
+#define EN_3V0_SetLow()             do { LATDbits.LATD0 = 0; } while(0)
+#define EN_3V0_Toggle()             do { LATDbits.LATD0 = ~LATDbits.LATD0; } while(0)
+#define EN_3V0_GetValue()           PORTBbits.RD0
+
+#define P_SW_SetHigh()            do { LATBbits.LATB0 = 1; } while(0)
+#define P_SW_SetLow()             do { LATBbits.LATB0 = 0; } while(0)
+#define P_SW_Toggle()             do { LATBbits.LATB0 = ~LATBbits.LATB0; } while(0)
+#define P_SW_GetValue()           PORTBbits.RB0
 /**
    @Param
     none

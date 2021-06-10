@@ -28,13 +28,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "65
 [p x DEBUG=OFF ]
 "68
-[p x WDTCPS=WDTCPS_31 ]
+[p x WDTCPS=WDTCPS_11 ]
 "69
-[p x WDTE=OFF ]
+[p x WDTE=ON ]
 "70
 [p x WDTCWS=WDTCWS_7 ]
 "71
-[p x WDTCCS=SC ]
+[p x WDTCCS=LFINTOSC ]
 "74
 [p x WRT=OFF ]
 "75

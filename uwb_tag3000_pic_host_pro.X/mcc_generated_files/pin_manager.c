@@ -48,14 +48,14 @@
 
 #include "pin_manager.h"
 #include "stdbool.h"
-
+#include "../main.h"
 void PIN_MANAGER_Initialize(void)
 {
     /**
     LATx registers
     */
     LATE = 0x00;
-    LATD = 0x01;
+    LATD = 0x00;
     LATA = 0x00;
     LATB = 0x00;
     LATC = 0x00;
@@ -64,19 +64,19 @@ void PIN_MANAGER_Initialize(void)
     TRISx registers
     */
     TRISE = 0x07;
-    TRISA = 0x3F;
+    TRISA = 0x07;
     TRISB = 0xEF;
     TRISC = 0x9F;
-    TRISD = 0xFE;
+    TRISD = 0xF0;
 
     /**
     ANSELx registers
     */
-    ANSELD = 0xFE;
+    ANSELD = 0xF0;
     ANSELC = 0x00;
-    ANSELB = 0xFF;
+    ANSELB = 0xFE;
     ANSELE = 0x07;
-    ANSELA = 0xFF;
+    ANSELA = 0x07;
 
     /**
     WPUx registers
@@ -96,7 +96,7 @@ void PIN_MANAGER_Initialize(void)
     ODCONC = 0x00;
     ODCOND = 0x00;
 #if (1)
-    bool state = GIE;
+    bool state = (bool) GIE;
     GIE = 0;
     PPSLOCK = 0x55;
     PPSLOCK = 0xAA;
@@ -123,6 +123,17 @@ void PIN_MANAGER_Initialize(void)
     PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS
     GIE = state;
 #endif
+    //TRISCbits.TRISC6 = 0;
+    EN_3V0_SetLow();
+    EV_3V3_SetHigh();
+    
+    LED_R1_SetLow();
+    LED_G1_SetLow();
+    LED_B1_SetLow();
+    Sleep(500);
+    LED_R1_SetHigh();
+    LED_G1_SetHigh();
+    LED_B1_SetHigh(); 
 }
 void PIN_MANAGER_IOC(void)
 {   

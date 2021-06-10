@@ -11,7 +11,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _SPI1_WriteBlock `(v ~T0 @X0 0 ef2`*v`ui ]
 "69
 [v _SPI1_ReadBlock `(v ~T0 @X0 0 ef2`*v`ui ]
-"61 main.h
+"64 main.h
 [v _Sleep `(v ~T0 @X0 0 ef1`ul ]
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;stdint.h: 13: typedef signed char int8_t;
@@ -42,18 +42,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;main.h: 48: extern bool TX_ANCHOR;
-[; ;main.h: 49: extern uint8_t ADDR[8];
-[; ;main.h: 50: typedef struct
-[; ;main.h: 51: {
-[; ;main.h: 52: uint32_t Lsb;
-[; ;main.h: 53: uint32_t Msb;
-[; ;main.h: 54: }uint64_t;
-[; ;main.h: 57: void print_uint8_t(uint8_t val);
-[; ;main.h: 58: void print_uint16_t(uint16_t val);
-[; ;main.h: 59: void print_uint32_t(uint32_t val);
-[; ;main.h: 60: void print_uint64_t(uint64_t num);
-[; ;main.h: 61: void Sleep(uint32_t time);
+[; ;main.h: 50: extern bool TX_ANCHOR;
+[; ;main.h: 51: extern uint8_t ADDR[8];
+[; ;main.h: 52: extern bool timer0_triggered;
+[; ;main.h: 53: typedef struct
+[; ;main.h: 54: {
+[; ;main.h: 55: uint32_t Lsb;
+[; ;main.h: 56: uint32_t Msb;
+[; ;main.h: 57: }uint64_t;
+[; ;main.h: 60: void print_uint8_t(uint8_t val);
+[; ;main.h: 61: void print_uint16_t(uint16_t val);
+[; ;main.h: 62: void print_uint32_t(uint32_t val);
+[; ;main.h: 63: void print_uint64_t(uint64_t num);
+[; ;main.h: 64: void Sleep(uint32_t time);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -14164,8 +14165,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;pin_manager.h: 230: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 242: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 251: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 263: void PIN_MANAGER_IOC(void);
 [; ;eusart.h: 75: typedef union {
 [; ;eusart.h: 76: struct {
 [; ;eusart.h: 77: unsigned perr : 1;

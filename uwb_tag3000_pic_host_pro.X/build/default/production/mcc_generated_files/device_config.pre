@@ -21,10 +21,10 @@
 #pragma config DEBUG = OFF
 
 
-#pragma config WDTCPS = WDTCPS_31
-#pragma config WDTE = OFF
+#pragma config WDTCPS = 0x0B
+#pragma config WDTE = 0x03
 #pragma config WDTCWS = WDTCWS_7
-#pragma config WDTCCS = SC
+#pragma config WDTCCS = 0x00
 
 
 #pragma config WRT = OFF

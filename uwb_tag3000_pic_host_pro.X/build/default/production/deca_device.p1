@@ -1,18 +1,18 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "154 deca_device.c
-[c E272 0 1 2 .. ]
-[n E272 . DWT_SPI_CRC_MODE_NO DWT_SPI_CRC_MODE_WR DWT_SPI_CRC_MODE_WRRD  ]
+[c E273 0 1 2 .. ]
+[n E273 . DWT_SPI_CRC_MODE_NO DWT_SPI_CRC_MODE_WR DWT_SPI_CRC_MODE_WRRD  ]
 "347 deca_device_api.h
 [s S6 `ul 1 `ui 1 `ui 1 `uc 1 ]
 [n S6 . status status_hi datalength rx_flags ]
-[v F284 `(v ~T0 @X0 0 tf ]
-[v F287 `(v ~T0 @X0 0 tf1`*CS6 ]
+[v F285 `(v ~T0 @X0 0 tf ]
+[v F288 `(v ~T0 @X0 0 tf1`*CS6 ]
 "124 deca_device.c
-[s S1631 `ul 1 `ul 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `i 1 `E272 1 `uc 1 `uc 1 `S6 1 `*F284 1 `*F287 1 `*F287 1 `*F287 1 `*F287 1 `*F287 1 `*F287 1 ]
+[s S1631 `ul 1 `ul 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `i 1 `E273 1 `uc 1 `uc 1 `S6 1 `*F285 1 `*F288 1 `*F288 1 `*F288 1 `*F288 1 `*F288 1 `*F288 1 ]
 [n S1631 . partID lotID bias_tune dgc_otp_set vBatP tempP longFrames otprev init_xtrim dblbuffon sleep_mode ststhreshold spicrc stsconfig cia_diagnostic cbData cbSPIRDErr cbTxDone cbRxOk cbRxTo cbRxErr cbSPIErr cbSPIRdy ]
 "215
-[c E265 0 32768 32769 32770 32771 .. ]
-[n E265 . DW3000_SPI_RD_BIT DW3000_SPI_WR_BIT DW3000_SPI_AND_OR_8 DW3000_SPI_AND_OR_16 DW3000_SPI_AND_OR_32  ]
+[c E266 0 32768 32769 32770 32771 .. ]
+[n E266 . DW3000_SPI_RD_BIT DW3000_SPI_WR_BIT DW3000_SPI_AND_OR_8 DW3000_SPI_AND_OR_16 DW3000_SPI_AND_OR_32  ]
 "18 C:\Program Files (x86)\Microchip\xc8\v1.45\include\assert.h
 [v __fassert `(v ~T0 @X0 0 ef3`i`*Cuc`*Cuc ]
 "1650 deca_device_api.h
@@ -28,9 +28,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "686 deca_device.c
 [v __dwt_crc8init `(i ~T0 @X0 0 ef ]
 "752
-[c E303 0 1 .. ]
-[n E303 . DWT_DGC_SEL_CH5 DWT_DGC_SEL_CH9  ]
-"61 main.h
+[c E304 0 1 .. ]
+[n E304 . DWT_DGC_SEL_CH5 DWT_DGC_SEL_CH9  ]
+"64 main.h
 [v _Sleep `(v ~T0 @X0 0 ef1`ul ]
 "2479 deca_device_api.h
 [v _dwt_check_dev_id `(i ~T0 @X0 0 ef ]
@@ -39,8 +39,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "108 deca_device.c
 [v __dwt_otpread `(ul ~T0 @X0 0 ef1`ui ]
 "823
-[c E307 0 1 .. ]
-[n E307 . DWT_DGC_LOAD_FROM_SW DWT_DGC_LOAD_FROM_OTP  ]
+[c E308 0 1 .. ]
+[n E308 . DWT_DGC_LOAD_FROM_SW DWT_DGC_LOAD_FROM_OTP  ]
 "107
 [v _dwt_force_clocks `(v ~T0 @X0 0 sf1`i ]
 "430 deca_device_api.h
@@ -55,16 +55,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S15 `ul 1 `ul 1 `ul 1 `ul 1 ]
 [n S15 . iv0 iv1 iv2 iv3 ]
 "1209 deca_device.c
-[c E481 114941 115774 116414 116606 118582 118709 118773 .. ]
-[n E481 . CH5_DGC_LUT_0 CH5_DGC_LUT_1 CH5_DGC_LUT_2 CH5_DGC_LUT_3 CH5_DGC_LUT_4 CH5_DGC_LUT_5 CH5_DGC_LUT_6  ]
+[c E482 114941 115774 116414 116606 118582 118709 118773 .. ]
+[n E482 . CH5_DGC_LUT_0 CH5_DGC_LUT_1 CH5_DGC_LUT_2 CH5_DGC_LUT_3 CH5_DGC_LUT_4 CH5_DGC_LUT_5 CH5_DGC_LUT_6  ]
 "1219
-[c E490 174334 175158 173566 175934 175997 176053 176053 .. ]
-[n E490 . CH9_DGC_LUT_0 CH9_DGC_LUT_1 CH9_DGC_LUT_2 CH9_DGC_LUT_3 CH9_DGC_LUT_4 CH9_DGC_LUT_5 CH9_DGC_LUT_6  ]
+[c E491 174334 175158 173566 175934 175997 176053 176053 .. ]
+[n E491 . CH9_DGC_LUT_0 CH9_DGC_LUT_1 CH9_DGC_LUT_2 CH9_DGC_LUT_3 CH9_DGC_LUT_4 CH9_DGC_LUT_5 CH9_DGC_LUT_6  ]
 "1336
-[c E294 0 1 2 3 4 5 6 .. ]
-[n E294 . DWT_STS_LEN_32 DWT_STS_LEN_64 DWT_STS_LEN_128 DWT_STS_LEN_256 DWT_STS_LEN_512 DWT_STS_LEN_1024 DWT_STS_LEN_2048  ]
+[c E295 0 1 2 3 4 5 6 .. ]
+[n E295 . DWT_STS_LEN_32 DWT_STS_LEN_64 DWT_STS_LEN_128 DWT_STS_LEN_256 DWT_STS_LEN_512 DWT_STS_LEN_1024 DWT_STS_LEN_2048  ]
 "412 deca_device_api.h
-[s S7 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `uc 1 `E294 1 `uc 1 ]
+[s S7 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `uc 1 `E295 1 `uc 1 ]
 [n S7 . chan txPreambLength rxPAC txCode rxCode sfdType dataRate phrMode phrRate sfdTO stsMode stsLength pdoaMode ]
 "1044
 [v _dwt_setplenfine `(v ~T0 @X0 0 ef1`uc ]
@@ -78,48 +78,48 @@ Version 3.2 HI-TECH Software Intermediate Code
 "2454
 [v _deca_sleep `(v ~T0 @X0 0 ef1`ui ]
 "3191 deca_device.c
-[c E473 0 1 .. ]
-[n E473 . DBL_BUF_STATE_EN DBL_BUF_STATE_DIS  ]
-[c E477 0 1 .. ]
-[n E477 . DBL_BUF_MODE_AUTO DBL_BUF_MODE_MAN  ]
+[c E474 0 1 .. ]
+[n E474 . DBL_BUF_STATE_EN DBL_BUF_STATE_DIS  ]
+[c E478 0 1 .. ]
+[n E478 . DBL_BUF_MODE_AUTO DBL_BUF_MODE_MAN  ]
 "2426 deca_device_api.h
 [v _decamutexon `(i ~T0 @X0 0 ef ]
 "2441
 [v _decamutexoff `(v ~T0 @X0 0 ef1`i ]
 "3973 deca_device.c
-[c E289 0 1 2 .. ]
-[n E289 . DWT_DISABLE_INT DWT_ENABLE_INT DWT_ENABLE_INT_ONLY  ]
+[c E290 0 1 2 .. ]
+[n E290 . DWT_DISABLE_INT DWT_ENABLE_INT DWT_ENABLE_INT_ONLY  ]
 "489 deca_device_api.h
 [s S10 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `uc 1 `uc 1 `ui 1 ]
 [n S10 . PHE RSL CRCG CRCB ARFE OVER SFDTO PTO RTO TXF HPW CRCE PREJ ]
 "4549 deca_device.c
-[c E436 0 1 .. ]
-[n E436 . AES_key_RAM AES_key_OTP  ]
-[c E432 0 1 .. ]
-[n E432 . AES_core_type_GCM AES_core_type_CCM  ]
-[c E382 0 1 2 3 4 5 6 7 .. ]
-[n E382 . MIC_0 MIC_4 MIC_6 MIC_8 MIC_10 MIC_12 MIC_14 MIC_16  ]
-[c E401 0 1 .. ]
-[n E401 . AES_KEY_Src_Register AES_KEY_Src_RAMorOTP  ]
-[c E397 0 1 .. ]
-[n E397 . AES_KEY_No_Load AES_KEY_Load  ]
-[c E392 0 1 2 .. ]
-[n E392 . AES_KEY_128bit AES_KEY_192bit AES_KEY_256bit  ]
-[c E405 0 1 .. ]
-[n E405 . AES_Encrypt AES_Decrypt  ]
+[c E437 0 1 .. ]
+[n E437 . AES_key_RAM AES_key_OTP  ]
+[c E433 0 1 .. ]
+[n E433 . AES_core_type_GCM AES_core_type_CCM  ]
+[c E383 0 1 2 3 4 5 6 7 .. ]
+[n E383 . MIC_0 MIC_4 MIC_6 MIC_8 MIC_10 MIC_12 MIC_14 MIC_16  ]
+[c E402 0 1 .. ]
+[n E402 . AES_KEY_Src_Register AES_KEY_Src_RAMorOTP  ]
+[c E398 0 1 .. ]
+[n E398 . AES_KEY_No_Load AES_KEY_Load  ]
+[c E393 0 1 2 .. ]
+[n E393 . AES_KEY_128bit AES_KEY_192bit AES_KEY_256bit  ]
+[c E406 0 1 .. ]
+[n E406 . AES_Encrypt AES_Decrypt  ]
 "587 deca_device_api.h
-[s S12 `E436 1 `E432 1 `E382 1 `E401 1 `E397 1 `uc 1 `E392 1 `E405 1 ]
+[s S12 `E437 1 `E433 1 `E383 1 `E402 1 `E398 1 `uc 1 `E393 1 `E406 1 ]
 [n S12 . aes_key_otp_type aes_core_type mic key_src key_load key_addr key_size mode ]
 "563
 [s S11 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 `ul 1 ]
 [n S11 . key0 key1 key2 key3 key4 key5 key6 key7 ]
 "4701 deca_device.c
-[c E409 0 1 2 3 .. ]
-[n E409 . AES_Src_Scratch AES_Src_Rx_buf_0 AES_Src_Rx_buf_1 AES_Src_Tx_buf  ]
-[c E415 0 1 2 3 4 .. ]
-[n E415 . AES_Dst_Scratch AES_Dst_Rx_buf_0 AES_Dst_Rx_buf_1 AES_Dst_Tx_buf AES_Dst_STS_key  ]
+[c E410 0 1 2 3 .. ]
+[n E410 . AES_Src_Scratch AES_Src_Rx_buf_0 AES_Src_Rx_buf_1 AES_Src_Tx_buf  ]
+[c E416 0 1 2 3 4 .. ]
+[n E416 . AES_Dst_Scratch AES_Dst_Rx_buf_0 AES_Dst_Rx_buf_1 AES_Dst_Tx_buf AES_Dst_STS_key  ]
 "598 deca_device_api.h
-[s S13 `*uc 1 `*uc 1 `*uc 1 `uc 1 `ui 1 `E409 1 `E415 1 `E405 1 `uc 1 ]
+[s S13 `*uc 1 `*uc 1 `*uc 1 `uc 1 `ui 1 `E410 1 `E416 1 `E406 1 `uc 1 ]
 [n S13 . nonce header payload header_len payload_len src_port dst_port mode mic_size ]
 [; ;assert.h: 18: extern void _fassert(int, const char *, const char *);
 [; ;assert.h: 25: extern void __builtin_software_breakpoint(void);
@@ -231,18 +231,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;string.h: 59: extern char * strrchr(const char *, int);
 [; ;string.h: 60: extern char * strrichr(const char *, int);
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;main.h: 48: extern bool TX_ANCHOR;
-[; ;main.h: 49: extern uint8_t ADDR[8];
-[; ;main.h: 50: typedef struct
-[; ;main.h: 51: {
-[; ;main.h: 52: uint32_t Lsb;
-[; ;main.h: 53: uint32_t Msb;
-[; ;main.h: 54: }uint64_t;
-[; ;main.h: 57: void print_uint8_t(uint8_t val);
-[; ;main.h: 58: void print_uint16_t(uint16_t val);
-[; ;main.h: 59: void print_uint32_t(uint32_t val);
-[; ;main.h: 60: void print_uint64_t(uint64_t num);
-[; ;main.h: 61: void Sleep(uint32_t time);
+[; ;main.h: 50: extern bool TX_ANCHOR;
+[; ;main.h: 51: extern uint8_t ADDR[8];
+[; ;main.h: 52: extern bool timer0_triggered;
+[; ;main.h: 53: typedef struct
+[; ;main.h: 54: {
+[; ;main.h: 55: uint32_t Lsb;
+[; ;main.h: 56: uint32_t Msb;
+[; ;main.h: 57: }uint64_t;
+[; ;main.h: 60: void print_uint8_t(uint8_t val);
+[; ;main.h: 61: void print_uint16_t(uint16_t val);
+[; ;main.h: 62: void print_uint32_t(uint32_t val);
+[; ;main.h: 63: void print_uint64_t(uint64_t num);
+[; ;main.h: 64: void Sleep(uint32_t time);
 [; ;deca_device_api.h: 67: typedef enum
 [; ;deca_device_api.h: 68: {
 [; ;deca_device_api.h: 69: AOA,
@@ -14426,7 +14427,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 1633 ]
 }
 "207
-[v _dwt_xfer3000 `(v ~T0 @X0 1 ef5`Cul`Cui`Cul`*uc`CE265 ]
+[v _dwt_xfer3000 `(v ~T0 @X0 1 ef5`Cul`Cui`Cul`*uc`CE266 ]
 "215
 {
 [; ;deca_device.c: 207: void dwt_xfer3000
@@ -14448,7 +14449,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "212
 [v _buffer `*uc ~T0 @X0 1 r4 ]
 "213
-[v _mode `CE265 ~T0 @X0 1 r5 ]
+[v _mode `CE266 ~T0 @X0 1 r5 ]
 "215
 [f ]
 "216
@@ -14489,7 +14490,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 1638 ]
 [; ;deca_device.c: 225: if(!(mode == DW3000_SPI_WR_BIT || mode == DW3000_SPI_RD_BIT || mode == DW3000_SPI_AND_OR_8 || mode == DW3000_SPI_AND_OR_16 || mode == DW3000_SPI_AND_OR_32)) {_fassert(229, "deca_device.c", "mode == DW3000_SPI_WR_BIT || mode == DW3000_SPI_RD_BIT || mo
 "225
-[e $ ! ! || || || || == -> _mode `i -> . `E265 1 `i == -> _mode `i -> . `E265 0 `i == -> _mode `i -> . `E265 2 `i == -> _mode `i -> . `E265 3 `i == -> _mode `i -> . `E265 4 `i 1639  ]
+[e $ ! ! || || || || == -> _mode `i -> . `E266 1 `i == -> _mode `i -> . `E266 0 `i == -> _mode `i -> . `E266 2 `i == -> _mode `i -> . `E266 3 `i == -> _mode `i -> . `E266 4 `i 1639  ]
 {
 [e ( __fassert (3 , , -> 229 `i :s 7C :s 8C ]
 }
@@ -14514,14 +14515,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 241: if(!(mode == DW3000_SPI_WR_BIT)) {_fassert(241, "deca_device.c", "mode == DW3000_SPI_WR_BIT");};
 "241
-[e $ ! ! == -> _mode `i -> . `E265 1 `i 1641  ]
+[e $ ! ! == -> _mode `i -> . `E266 1 `i 1641  ]
 {
 [e ( __fassert (3 , , -> 241 `i :s 9C :s 10C ]
 }
 [e :U 1641 ]
 [; ;deca_device.c: 243: header[0] = (uint8_t)((DW3000_SPI_WR_BIT>>8) | (regFileID<<1) | (0<<6 | 1<<0));
 "243
-[e = *U + &U _header * -> -> -> 0 `i `ui `ux -> -> # *U &U _header `ui `ux -> | | -> -> >> -> . `E265 1 `i -> 8 `i `l `ul << _regFileID -> 1 `i -> -> | << -> 0 `i -> 6 `i << -> 1 `i -> 0 `i `l `ul `uc ]
+[e = *U + &U _header * -> -> -> 0 `i `ui `ux -> -> # *U &U _header `ui `ux -> | | -> -> >> -> . `E266 1 `i -> 8 `i `l `ul << _regFileID -> 1 `i -> -> | << -> 0 `i -> 6 `i << -> 1 `i -> 0 `i `l `ul `uc ]
 [; ;deca_device.c: 244: cnt = 1;
 "244
 [e = _cnt -> -> 1 `i `ui ]
@@ -14532,7 +14533,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "246
 [e :U 1640 ]
 [; ;deca_device.c: 246: else if (reg_offset == 0 && (mode == DW3000_SPI_WR_BIT || mode == DW3000_SPI_RD_BIT))
-[e $ ! && == _reg_offset -> -> 0 `i `ui || == -> _mode `i -> . `E265 1 `i == -> _mode `i -> . `E265 0 `i 1643  ]
+[e $ ! && == _reg_offset -> -> 0 `i `ui || == -> _mode `i -> . `E266 1 `i == -> _mode `i -> . `E266 0 `i 1643  ]
 [; ;deca_device.c: 247: {
 "247
 {
@@ -14590,7 +14591,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _crc8 -> -> 0 `i `uc ]
 [; ;deca_device.c: 269: if (pdw3000local->spicrc != DWT_SPI_CRC_MODE_NO)
 "269
-[e $ ! != -> . *U _pdw3000local 12 `i -> . `E272 0 `i 1651  ]
+[e $ ! != -> . *U _pdw3000local 12 `i -> . `E273 0 `i 1651  ]
 [; ;deca_device.c: 270: {
 "270
 {
@@ -14659,11 +14660,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1645  ]
 "261
 [e :U 1646 ]
-[e [\ _mode , $ . `E265 2 1647
- , $ . `E265 3 1648
- , $ . `E265 4 1649
- , $ . `E265 1 1650
- , $ . `E265 0 1653
+[e [\ _mode , $ . `E266 2 1647
+ , $ . `E266 3 1648
+ , $ . `E266 4 1649
+ , $ . `E266 1 1650
+ , $ . `E266 0 1653
  1654 ]
 "314
 [e :U 1645 ]
@@ -14696,7 +14697,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;deca_device.c: 340: dwt_xfer3000(regFileID, index, length, buffer, DW3000_SPI_WR_BIT);
 "340
-[e ( _dwt_xfer3000 (4 , , , , _regFileID _index _length _buffer . `E265 1 ]
+[e ( _dwt_xfer3000 (4 , , , , _regFileID _index _length _buffer . `E266 1 ]
 [; ;deca_device.c: 341: }
 "341
 [e :UE 1658 ]
@@ -14741,7 +14742,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;deca_device.c: 380: dwt_xfer3000(regFileID, index, length, buffer, DW3000_SPI_RD_BIT);
 "380
-[e ( _dwt_xfer3000 (4 , , , , _regFileID _index _length _buffer . `E265 0 ]
+[e ( _dwt_xfer3000 (4 , , , , _regFileID _index _length _buffer . `E266 0 ]
 [; ;deca_device.c: 381: }
 "381
 [e :UE 1660 ]
@@ -14851,7 +14852,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 448: uint8_t regval;
 [; ;deca_device.c: 449: dwt_xfer3000(regFileID, regOffset, 1, &regval, DW3000_SPI_RD_BIT);
 "449
-[e ( _dwt_xfer3000 (4 , , , , _regFileID -> _regOffset `ui -> -> -> 1 `i `l `ul &U _regval . `E265 0 ]
+[e ( _dwt_xfer3000 (4 , , , , _regFileID -> _regOffset `ui -> -> -> 1 `i `l `ul &U _regval . `E266 0 ]
 [; ;deca_device.c: 452: return regval ;
 "452
 [e ) _regval ]
@@ -15003,7 +15004,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _buf * -> -> -> 7 `i `ui `ux -> -> # *U &U _buf `ui `ux -> >> __or -> 24 `i `uc ]
 [; ;deca_device.c: 543: dwt_xfer3000(regFileID, regOffset, sizeof(buf), buf, DW3000_SPI_AND_OR_32);
 "543
-[e ( _dwt_xfer3000 (4 , , , , _regFileID -> _regOffset `ui -> -> # _buf `ui `ul &U _buf . `E265 4 ]
+[e ( _dwt_xfer3000 (4 , , , , _regFileID -> _regOffset `ui -> -> # _buf `ui `ul &U _buf . `E266 4 ]
 [; ;deca_device.c: 544: }
 "544
 [e :UE 1673 ]
@@ -15039,7 +15040,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _buf * -> -> -> 3 `i `ui `ux -> -> # *U &U _buf `ui `ux -> >> __or -> 8 `i `uc ]
 [; ;deca_device.c: 563: dwt_xfer3000(regFileID, regOffset, sizeof(buf), buf, DW3000_SPI_AND_OR_16);
 "563
-[e ( _dwt_xfer3000 (4 , , , , _regFileID -> _regOffset `ui -> -> # _buf `ui `ul &U _buf . `E265 3 ]
+[e ( _dwt_xfer3000 (4 , , , , _regFileID -> _regOffset `ui -> -> # _buf `ui `ul &U _buf . `E266 3 ]
 [; ;deca_device.c: 564: }
 "564
 [e :UE 1674 ]
@@ -15069,7 +15070,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux __or ]
 [; ;deca_device.c: 581: dwt_xfer3000(regFileID, regOffset, sizeof(buf),buf, DW3000_SPI_AND_OR_8);
 "581
-[e ( _dwt_xfer3000 (4 , , , , _regFileID -> _regOffset `ui -> -> # _buf `ui `ul &U _buf . `E265 2 ]
+[e ( _dwt_xfer3000 (4 , , , , _regFileID -> _regOffset `ui -> -> # _buf `ui `ul &U _buf . `E266 2 ]
 [; ;deca_device.c: 582: }
 "582
 [e :UE 1675 ]
@@ -15127,20 +15128,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 1676 ]
 }
 "675
-[v _dwt_enablespicrccheck `(v ~T0 @X0 1 ef2`E272`*F284 ]
+[v _dwt_enablespicrccheck `(v ~T0 @X0 1 ef2`E273`*F285 ]
 "676
 {
 [; ;deca_device.c: 675: void dwt_enablespicrccheck(dwt_spi_crc_mode_e crc_mode, dwt_spierrcb_t spireaderr_cb)
 [; ;deca_device.c: 676: {
 [e :U _dwt_enablespicrccheck ]
 "675
-[v _crc_mode `E272 ~T0 @X0 1 r1 ]
-[v _spireaderr_cb `*F284 ~T0 @X0 1 r2 ]
+[v _crc_mode `E273 ~T0 @X0 1 r1 ]
+[v _spireaderr_cb `*F285 ~T0 @X0 1 r2 ]
 "676
 [f ]
 [; ;deca_device.c: 677: if (crc_mode != DWT_SPI_CRC_MODE_NO)
 "677
-[e $ ! != -> _crc_mode `i -> . `E272 0 `i 1682  ]
+[e $ ! != -> _crc_mode `i -> . `E273 0 `i 1682  ]
 [; ;deca_device.c: 678: {
 "678
 {
@@ -15149,7 +15150,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _dwt_modify8bitoffsetreg (4 , , , -> -> -> 16 `i `l `ul -> -> -> 0 `i `l `ul -> -U -> 1 `i `uc -> -> 64 `ui `uc ]
 [; ;deca_device.c: 681: if (crc_mode == DWT_SPI_CRC_MODE_WRRD)
 "681
-[e $ ! == -> _crc_mode `i -> . `E272 2 `i 1683  ]
+[e $ ! == -> _crc_mode `i -> . `E273 2 `i 1683  ]
 [; ;deca_device.c: 682: {
 "682
 {
@@ -15281,7 +15282,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 751: dwt_modify32bitoffsetreg(0xb0008, 0, ~(0x2000U),
 [; ;deca_device.c: 752: (DWT_DGC_SEL_CH5 << (13U)) | 0x40U);
 "752
-[e ( _dwt_modify32bitoffsetreg (4 , , , -> -> 720904 `l `ul -> -> -> 0 `i `l `ul -> ~ -> 8192 `ui `ul -> | -> << -> . `E303 0 `i -> 13 `ui `ui -> 64 `ui `ul ]
+[e ( _dwt_modify32bitoffsetreg (4 , , , -> -> 720904 `l `ul -> -> -> 0 `i `l `ul -> ~ -> 8192 `ui `ul -> | -> << -> . `E304 0 `i -> 13 `ui `ui -> 64 `ui `ul ]
 "753
 }
 [; ;deca_device.c: 753: }
@@ -15296,7 +15297,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 756: dwt_modify32bitoffsetreg(0xb0008, 0, ~(0x2000U),
 [; ;deca_device.c: 757: (DWT_DGC_SEL_CH9 << (13U)) | 0x40U);
 "757
-[e ( _dwt_modify32bitoffsetreg (4 , , , -> -> 720904 `l `ul -> -> -> 0 `i `l `ul -> ~ -> 8192 `ui `ul -> | -> << -> . `E303 1 `i -> 13 `ui `ui -> 64 `ui `ul ]
+[e ( _dwt_modify32bitoffsetreg (4 , , , -> -> 720904 `l `ul -> -> -> 0 `i `l `ul -> ~ -> 8192 `ui `ul -> | -> << -> . `E304 1 `i -> 13 `ui `ui -> 64 `ui `ul ]
 "758
 }
 [e :U 1695 ]
@@ -15331,7 +15332,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _pdw3000local 10 -> -> 2 `i `ui ]
 [; ;deca_device.c: 786: pdw3000local->spicrc = 0;
 "786
-[e = . *U _pdw3000local 12 -> -> 0 `i `E272 ]
+[e = . *U _pdw3000local 12 -> -> 0 `i `E273 ]
 [; ;deca_device.c: 787: pdw3000local->stsconfig = 0;
 "787
 [e = . *U _pdw3000local 13 -> -> 0 `i `uc ]
@@ -15343,22 +15344,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _pdw3000local 5 -> -> 0 `i `uc ]
 [; ;deca_device.c: 791: pdw3000local->cbTxDone = (0);
 "791
-[e = . *U _pdw3000local 17 -> -> 0 `i `*F287 ]
+[e = . *U _pdw3000local 17 -> -> 0 `i `*F288 ]
 [; ;deca_device.c: 792: pdw3000local->cbRxOk = (0);
 "792
-[e = . *U _pdw3000local 18 -> -> 0 `i `*F287 ]
+[e = . *U _pdw3000local 18 -> -> 0 `i `*F288 ]
 [; ;deca_device.c: 793: pdw3000local->cbRxTo = (0);
 "793
-[e = . *U _pdw3000local 19 -> -> 0 `i `*F287 ]
+[e = . *U _pdw3000local 19 -> -> 0 `i `*F288 ]
 [; ;deca_device.c: 794: pdw3000local->cbRxErr = (0);
 "794
-[e = . *U _pdw3000local 20 -> -> 0 `i `*F287 ]
+[e = . *U _pdw3000local 20 -> -> 0 `i `*F288 ]
 [; ;deca_device.c: 795: pdw3000local->cbSPIRdy = (0);
 "795
-[e = . *U _pdw3000local 22 -> -> 0 `i `*F287 ]
+[e = . *U _pdw3000local 22 -> -> 0 `i `*F288 ]
 [; ;deca_device.c: 796: pdw3000local->cbSPIErr = (0);
 "796
-[e = . *U _pdw3000local 21 -> -> 0 `i `*F287 ]
+[e = . *U _pdw3000local 21 -> -> 0 `i `*F288 ]
 [; ;deca_device.c: 797: Sleep(2);
 "797
 [e ( _Sleep (1 -> -> -> 2 `i `l `ul ]
@@ -15418,7 +15419,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 823: pdw3000local->dgc_otp_set = DWT_DGC_LOAD_FROM_OTP;
 "823
-[e = . *U _pdw3000local 3 -> . `E307 1 `uc ]
+[e = . *U _pdw3000local 3 -> . `E308 1 `uc ]
 "824
 }
 [; ;deca_device.c: 824: }
@@ -15431,7 +15432,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 827: pdw3000local->dgc_otp_set = DWT_DGC_LOAD_FROM_SW;
 "827
-[e = . *U _pdw3000local 3 -> . `E307 0 `uc ]
+[e = . *U _pdw3000local 3 -> . `E308 0 `uc ]
 "828
 }
 [e :U 1703 ]
@@ -16044,25 +16045,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 1209: lut0 = (uint32_t)CH5_DGC_LUT_0;
 "1209
-[e = _lut0 -> . `E481 0 `ul ]
+[e = _lut0 -> . `E482 0 `ul ]
 [; ;deca_device.c: 1210: lut1 = (uint32_t)CH5_DGC_LUT_1;
 "1210
-[e = _lut1 -> . `E481 1 `ul ]
+[e = _lut1 -> . `E482 1 `ul ]
 [; ;deca_device.c: 1211: lut2 = (uint32_t)CH5_DGC_LUT_2;
 "1211
-[e = _lut2 -> . `E481 2 `ul ]
+[e = _lut2 -> . `E482 2 `ul ]
 [; ;deca_device.c: 1212: lut3 = (uint32_t)CH5_DGC_LUT_3;
 "1212
-[e = _lut3 -> . `E481 3 `ul ]
+[e = _lut3 -> . `E482 3 `ul ]
 [; ;deca_device.c: 1213: lut4 = (uint32_t)CH5_DGC_LUT_4;
 "1213
-[e = _lut4 -> . `E481 4 `ul ]
+[e = _lut4 -> . `E482 4 `ul ]
 [; ;deca_device.c: 1214: lut5 = (uint32_t)CH5_DGC_LUT_5;
 "1214
-[e = _lut5 -> . `E481 5 `ul ]
+[e = _lut5 -> . `E482 5 `ul ]
 [; ;deca_device.c: 1215: lut6 = (uint32_t)CH5_DGC_LUT_6;
 "1215
-[e = _lut6 -> . `E481 6 `ul ]
+[e = _lut6 -> . `E482 6 `ul ]
 "1216
 }
 [; ;deca_device.c: 1216: }
@@ -16075,25 +16076,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 1219: lut0 = (uint32_t)CH9_DGC_LUT_0;
 "1219
-[e = _lut0 -> . `E490 0 `ul ]
+[e = _lut0 -> . `E491 0 `ul ]
 [; ;deca_device.c: 1220: lut1 = (uint32_t)CH9_DGC_LUT_1;
 "1220
-[e = _lut1 -> . `E490 1 `ul ]
+[e = _lut1 -> . `E491 1 `ul ]
 [; ;deca_device.c: 1221: lut2 = (uint32_t)CH9_DGC_LUT_2;
 "1221
-[e = _lut2 -> . `E490 2 `ul ]
+[e = _lut2 -> . `E491 2 `ul ]
 [; ;deca_device.c: 1222: lut3 = (uint32_t)CH9_DGC_LUT_3;
 "1222
-[e = _lut3 -> . `E490 3 `ul ]
+[e = _lut3 -> . `E491 3 `ul ]
 [; ;deca_device.c: 1223: lut4 = (uint32_t)CH9_DGC_LUT_4;
 "1223
-[e = _lut4 -> . `E490 4 `ul ]
+[e = _lut4 -> . `E491 4 `ul ]
 [; ;deca_device.c: 1224: lut5 = (uint32_t)CH9_DGC_LUT_5;
 "1224
-[e = _lut5 -> . `E490 5 `ul ]
+[e = _lut5 -> . `E491 5 `ul ]
 [; ;deca_device.c: 1225: lut6 = (uint32_t)CH9_DGC_LUT_6;
 "1225
-[e = _lut6 -> . `E490 6 `ul ]
+[e = _lut6 -> . `E491 6 `ul ]
 "1226
 }
 [e :U 1743 ]
@@ -16193,7 +16194,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 1273: }
 [; ;deca_device.c: 1276: if (pdw3000local->dgc_otp_set == DWT_DGC_LOAD_FROM_OTP)
 "1276
-[e $ ! == -> . *U _pdw3000local 3 `i -> . `E307 1 `i 1748  ]
+[e $ ! == -> . *U _pdw3000local 3 `i -> . `E308 1 `i 1748  ]
 [; ;deca_device.c: 1277: {
 "1277
 {
@@ -16771,7 +16772,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 1557: if (pdw3000local->dgc_otp_set == DWT_DGC_LOAD_FROM_OTP)
 "1557
-[e $ ! == -> . *U _pdw3000local 3 `i -> . `E307 1 `i 1787  ]
+[e $ ! == -> . *U _pdw3000local 3 `i -> . `E308 1 `i 1787  ]
 [; ;deca_device.c: 1558: {
 "1558
 {
@@ -18879,15 +18880,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 1919 ]
 }
 "3190
-[v _dwt_setdblrxbuffmode `(v ~T0 @X0 1 ef2`E473`E477 ]
+[v _dwt_setdblrxbuffmode `(v ~T0 @X0 1 ef2`E474`E478 ]
 "3191
 {
 [; ;deca_device.c: 3190: void dwt_setdblrxbuffmode(dwt_dbl_buff_state_e dbl_buff_state, dwt_dbl_buff_mode_e dbl_buff_mode)
 [; ;deca_device.c: 3191: {
 [e :U _dwt_setdblrxbuffmode ]
 "3190
-[v _dbl_buff_state `E473 ~T0 @X0 1 r1 ]
-[v _dbl_buff_mode `E477 ~T0 @X0 1 r2 ]
+[v _dbl_buff_state `E474 ~T0 @X0 1 r1 ]
+[v _dbl_buff_mode `E478 ~T0 @X0 1 r2 ]
 "3191
 [f ]
 "3192
@@ -18898,7 +18899,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _and_val -> -> -U -> 1 `i `l `ul ]
 [; ;deca_device.c: 3194: if (dbl_buff_state==DBL_BUF_STATE_EN)
 "3194
-[e $ ! == -> _dbl_buff_state `i -> . `E473 0 `i 1923  ]
+[e $ ! == -> _dbl_buff_state `i -> . `E474 0 `i 1923  ]
 [; ;deca_device.c: 3195: {
 "3195
 {
@@ -18936,7 +18937,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 3207: }
 [; ;deca_device.c: 3209: if (dbl_buff_mode == DBL_BUF_MODE_AUTO)
 "3209
-[e $ ! == -> _dbl_buff_mode `i -> . `E477 0 `i 1925  ]
+[e $ ! == -> _dbl_buff_mode `i -> . `E478 0 `i 1925  ]
 [; ;deca_device.c: 3210: {
 "3210
 {
@@ -18996,19 +18997,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 1927 ]
 }
 "3260
-[v _dwt_setcallbacks `(v ~T0 @X0 1 ef6`*F287`*F287`*F287`*F287`*F287`*F287 ]
+[v _dwt_setcallbacks `(v ~T0 @X0 1 ef6`*F288`*F288`*F288`*F288`*F288`*F288 ]
 "3261
 {
 [; ;deca_device.c: 3260: void dwt_setcallbacks(dwt_cb_t cbTxDone, dwt_cb_t cbRxOk, dwt_cb_t cbRxTo, dwt_cb_t cbRxErr, dwt_cb_t cbSPIErr, dwt_cb_t cbSPIRdy)
 [; ;deca_device.c: 3261: {
 [e :U _dwt_setcallbacks ]
 "3260
-[v _cbTxDone `*F287 ~T0 @X0 1 r1 ]
-[v _cbRxOk `*F287 ~T0 @X0 1 r2 ]
-[v _cbRxTo `*F287 ~T0 @X0 1 r3 ]
-[v _cbRxErr `*F287 ~T0 @X0 1 r4 ]
-[v _cbSPIErr `*F287 ~T0 @X0 1 r5 ]
-[v _cbSPIRdy `*F287 ~T0 @X0 1 r6 ]
+[v _cbTxDone `*F288 ~T0 @X0 1 r1 ]
+[v _cbRxOk `*F288 ~T0 @X0 1 r2 ]
+[v _cbRxTo `*F288 ~T0 @X0 1 r3 ]
+[v _cbRxErr `*F288 ~T0 @X0 1 r4 ]
+[v _cbSPIErr `*F288 ~T0 @X0 1 r5 ]
+[v _cbSPIRdy `*F288 ~T0 @X0 1 r6 ]
 "3261
 [f ]
 [; ;deca_device.c: 3262: pdw3000local->cbTxDone = cbTxDone;
@@ -19123,7 +19124,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 3351: if((pdw3000local->spicrc && (pdw3000local->cbData.status & 0x4U)) ||
 [; ;deca_device.c: 3352: (pdw3000local->cbData.status_hi & (0x800U | 0x400U | 0x200U)))
 "3352
-[e $ ! || && != -> . *U _pdw3000local 12 `i -> -> -> 0 `i `E272 `i != & . . *U _pdw3000local 15 0 -> -> 4 `ui `ul -> -> 0 `i `ul != & . . *U _pdw3000local 15 1 | | -> 2048 `ui -> 1024 `ui -> 512 `ui -> -> 0 `i `ui 1935  ]
+[e $ ! || && != -> . *U _pdw3000local 12 `i -> -> -> 0 `i `E273 `i != & . . *U _pdw3000local 15 0 -> -> 4 `ui `ul -> -> 0 `i `ul != & . . *U _pdw3000local 15 1 | | -> 2048 `ui -> 1024 `ui -> 512 `ui -> -> 0 `i `ui 1935  ]
 [; ;deca_device.c: 3353: {
 "3353
 {
@@ -19135,7 +19136,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _dwt_write16bitoffsetreg (3 , , -> -> -> 72 `i `l `ul -> -> -> 0 `i `l `ul | | -> 2048 `ui -> 1024 `ui -> 512 `ui ]
 [; ;deca_device.c: 3357: if(pdw3000local->cbSPIErr != (0))
 "3357
-[e $ ! != . *U _pdw3000local 21 -> -> 0 `i `*F287 1936  ]
+[e $ ! != . *U _pdw3000local 21 -> -> 0 `i `*F288 1936  ]
 [; ;deca_device.c: 3358: {
 "3358
 {
@@ -19178,7 +19179,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _dwt_write8bitoffsetreg (3 , , -> -> -> 68 `i `l `ul -> -> -> 0 `i `l `ul -> | | | | -> 8 `ui -> 16 `ui -> 32 `ui -> 64 `ui -> 128 `ui `uc ]
 [; ;deca_device.c: 3384: if(pdw3000local->cbTxDone != (0))
 "3384
-[e $ ! != . *U _pdw3000local 17 -> -> 0 `i `*F287 1939  ]
+[e $ ! != . *U _pdw3000local 17 -> -> 0 `i `*F288 1939  ]
 [; ;deca_device.c: 3385: {
 "3385
 {
@@ -19201,7 +19202,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 3399: if(pdw3000local->cbSPIRdy != (0))
 "3399
-[e $ ! != . *U _pdw3000local 22 -> -> 0 `i `*F287 1941  ]
+[e $ ! != . *U _pdw3000local 22 -> -> 0 `i `*F288 1941  ]
 [; ;deca_device.c: 3400: {
 "3400
 {
@@ -19468,7 +19469,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _dwt_write32bitoffsetreg (3 , , -> -> -> 68 `i `l `ul -> -> -> 0 `i `l `ul | _cia_err -> | | | | | -> 8192 `ui -> 16384 `ui -> 256 `ui -> 512 `ui -> 2048 `ui -> 1024 `ui `ul ]
 [; ;deca_device.c: 3506: if(pdw3000local->cbRxOk != (0))
 "3506
-[e $ ! != . *U _pdw3000local 18 -> -> 0 `i `*F287 1963  ]
+[e $ ! != . *U _pdw3000local 18 -> -> 0 `i `*F288 1963  ]
 [; ;deca_device.c: 3507: {
 "3507
 {
@@ -19507,7 +19508,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _dwt_write32bitoffsetreg (3 , , -> -> -> 68 `i `l `ul -> -> -> 0 `i `l `ul | | | | -> | -> 4096 `ui -> 32768 `ui `ul -> 65536 `ul -> 67108864 `ul -> 536870912 `ul -> 262144 `ul ]
 [; ;deca_device.c: 3527: if(pdw3000local->cbRxErr != (0))
 "3527
-[e $ ! != . *U _pdw3000local 20 -> -> 0 `i `*F287 1966  ]
+[e $ ! != . *U _pdw3000local 20 -> -> 0 `i `*F288 1966  ]
 [; ;deca_device.c: 3528: {
 "3528
 {
@@ -19533,7 +19534,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _dwt_write8bitoffsetreg (3 , , -> -> -> 68 `i `l `ul -> -> -> 2 `i `l `ul -> >> | -> 131072 `ul -> 2097152 `ul -> 16 `i `uc ]
 [; ;deca_device.c: 3541: if(pdw3000local->cbRxTo != (0))
 "3541
-[e $ ! != . *U _pdw3000local 19 -> -> 0 `i `*F287 1968  ]
+[e $ ! != . *U _pdw3000local 19 -> -> 0 `i `*F288 1968  ]
 [; ;deca_device.c: 3542: {
 "3542
 {
@@ -20323,7 +20324,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 2025 ]
 }
 "3972
-[v _dwt_setinterrupt `(v ~T0 @X0 1 ef3`ul`ul`E289 ]
+[v _dwt_setinterrupt `(v ~T0 @X0 1 ef3`ul`ul`E290 ]
 "3973
 {
 [; ;deca_device.c: 3972: void dwt_setinterrupt(uint32_t bitmask_lo, uint32_t bitmask_hi, dwt_INT_options_e INT_options)
@@ -20332,7 +20333,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "3972
 [v _bitmask_lo `ul ~T0 @X0 1 r1 ]
 [v _bitmask_hi `ul ~T0 @X0 1 r2 ]
-[v _INT_options `E289 ~T0 @X0 1 r3 ]
+[v _INT_options `E290 ~T0 @X0 1 r3 ]
 "3973
 [f ]
 "3974
@@ -20343,7 +20344,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _stat ( _decamutexon ..  ]
 [; ;deca_device.c: 3979: if(INT_options == DWT_ENABLE_INT_ONLY)
 "3979
-[e $ ! == -> _INT_options `i -> . `E289 2 `i 2027  ]
+[e $ ! == -> _INT_options `i -> . `E290 2 `i 2027  ]
 [; ;deca_device.c: 3980: {
 "3980
 {
@@ -20365,7 +20366,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 3986: if(INT_options == DWT_ENABLE_INT)
 "3986
-[e $ ! == -> _INT_options `i -> . `E289 1 `i 2029  ]
+[e $ ! == -> _INT_options `i -> . `E290 1 `i 2029  ]
 [; ;deca_device.c: 3987: {
 "3987
 {
@@ -21174,7 +21175,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 2071 ]
 }
 "4570
-[v _dwt_mic_size_from_bytes `(E382 ~T0 @X0 1 ef1`uc ]
+[v _dwt_mic_size_from_bytes `(E383 ~T0 @X0 1 ef1`uc ]
 "4571
 {
 [; ;deca_device.c: 4570: dwt_mic_size_e dwt_mic_size_from_bytes(uint8_t mic_size_in_bytes)
@@ -21185,9 +21186,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "4571
 [f ]
 "4572
-[v _mic_size `E382 ~T0 @X0 1 a ]
+[v _mic_size `E383 ~T0 @X0 1 a ]
 [; ;deca_device.c: 4572: dwt_mic_size_e mic_size=MIC_0;
-[e = _mic_size . `E382 0 ]
+[e = _mic_size . `E383 0 ]
 [; ;deca_device.c: 4574: if (mic_size_in_bytes!=0)
 "4574
 [e $ ! != -> _mic_size_in_bytes `i -> 0 `i 2073  ]
@@ -21196,7 +21197,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 4576: mic_size=(dwt_mic_size_e)((mic_size_in_bytes>>1)-1);
 "4576
-[e = _mic_size -> - >> -> _mic_size_in_bytes `i -> 1 `i -> 1 `i `E382 ]
+[e = _mic_size -> - >> -> _mic_size_in_bytes `i -> 1 `i -> 1 `i `E383 ]
 "4577
 }
 [e :U 2073 ]
@@ -21362,7 +21363,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 2080 ]
 }
 "4700
-[v _dwt_do_aes `(c ~T0 @X0 1 ef2`*S13`E432 ]
+[v _dwt_do_aes `(c ~T0 @X0 1 ef2`*S13`E433 ]
 "4701
 {
 [; ;deca_device.c: 4700: int8_t dwt_do_aes(dwt_aes_job_t *job, dwt_aes_core_type_e core_type)
@@ -21370,7 +21371,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _dwt_do_aes ]
 "4700
 [v _job `*S13 ~T0 @X0 1 r1 ]
-[v _core_type `E432 ~T0 @X0 1 r2 ]
+[v _core_type `E433 ~T0 @X0 1 r2 ]
 "4701
 [f ]
 "4702
@@ -21381,9 +21382,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "4704
 [v _ret `uc ~T0 @X0 1 a ]
 "4705
-[v _src_port `E409 ~T0 @X0 1 a ]
+[v _src_port `E410 ~T0 @X0 1 a ]
 "4706
-[v _dst_port `E415 ~T0 @X0 1 a ]
+[v _dst_port `E416 ~T0 @X0 1 a ]
 [; ;deca_device.c: 4702: uint32_t tmp,dest_reg;
 [; ;deca_device.c: 4703: uint16_t allow_size;
 [; ;deca_device.c: 4704: uint8_t ret;
@@ -21405,7 +21406,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 4711: }
 [; ;deca_device.c: 4715: if(core_type==AES_core_type_GCM)
 "4715
-[e $ ! == -> _core_type `i -> . `E432 0 `i 2083  ]
+[e $ ! == -> _core_type `i -> . `E433 0 `i 2083  ]
 [; ;deca_device.c: 4716: {
 "4716
 {
@@ -21434,13 +21435,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _tmp -> + -> . *U _job 3 `ui . *U _job 4 `ul ]
 [; ;deca_device.c: 4729: if (job->mode == AES_Encrypt)
 "4729
-[e $ ! == -> . *U _job 7 `i -> . `E405 0 `i 2085  ]
+[e $ ! == -> . *U _job 7 `i -> . `E406 0 `i 2085  ]
 [; ;deca_device.c: 4730: {
 "4730
 {
 [; ;deca_device.c: 4731: if (job->src_port==AES_Src_Scratch)
 "4731
-[e $ ! == -> . *U _job 5 `i -> . `E409 0 `i 2086  ]
+[e $ ! == -> . *U _job 5 `i -> . `E410 0 `i 2086  ]
 [; ;deca_device.c: 4732: {
 "4732
 {
@@ -21477,13 +21478,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "4742
 [e :U 2085 ]
 [; ;deca_device.c: 4742: else if (job->mode == AES_Decrypt)
-[e $ ! == -> . *U _job 7 `i -> . `E405 1 `i 2089  ]
+[e $ ! == -> . *U _job 7 `i -> . `E406 1 `i 2089  ]
 [; ;deca_device.c: 4743: {
 "4743
 {
 [; ;deca_device.c: 4744: if (job->dst_port==AES_Dst_Scratch)
 "4744
-[e $ ! == -> . *U _job 6 `i -> . `E415 0 `i 2090  ]
+[e $ ! == -> . *U _job 6 `i -> . `E416 0 `i 2090  ]
 [; ;deca_device.c: 4745: {
 "4745
 {
@@ -21542,7 +21543,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 4761: }
 [; ;deca_device.c: 4763: if (job->mode == AES_Encrypt)
 "4763
-[e $ ! == -> . *U _job 7 `i -> . `E405 0 `i 2094  ]
+[e $ ! == -> . *U _job 7 `i -> . `E406 0 `i 2094  ]
 [; ;deca_device.c: 4764: {
 "4764
 {
@@ -21561,7 +21562,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _src_port . *U _job 5 ]
 [; ;deca_device.c: 4773: if ((job->src_port == AES_Src_Rx_buf_0) || (job->src_port == AES_Src_Rx_buf_1))
 "4773
-[e $ ! || == -> . *U _job 5 `i -> . `E409 1 `i == -> . *U _job 5 `i -> . `E409 2 `i 2095  ]
+[e $ ! || == -> . *U _job 5 `i -> . `E410 1 `i == -> . *U _job 5 `i -> . `E410 2 `i 2095  ]
 [; ;deca_device.c: 4774: {
 "4774
 {
@@ -21573,7 +21574,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 4777: src_port = AES_Src_Rx_buf_1;
 "4777
-[e = _src_port . `E409 2 ]
+[e = _src_port . `E410 2 ]
 "4778
 }
 [; ;deca_device.c: 4778: }
@@ -21586,7 +21587,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 4781: src_port = AES_Src_Rx_buf_0;
 "4781
-[e = _src_port . `E409 1 ]
+[e = _src_port . `E410 1 ]
 "4782
 }
 [e :U 2097 ]
@@ -21600,7 +21601,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _dst_port . *U _job 6 ]
 [; ;deca_device.c: 4786: if ((job->dst_port == AES_Dst_Rx_buf_0) || (job->dst_port == AES_Dst_Rx_buf_1))
 "4786
-[e $ ! || == -> . *U _job 6 `i -> . `E415 1 `i == -> . *U _job 6 `i -> . `E415 2 `i 2098  ]
+[e $ ! || == -> . *U _job 6 `i -> . `E416 1 `i == -> . *U _job 6 `i -> . `E416 2 `i 2098  ]
 [; ;deca_device.c: 4787: {
 "4787
 {
@@ -21612,7 +21613,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 4790: dst_port = AES_Dst_Rx_buf_1;
 "4790
-[e = _dst_port . `E415 2 ]
+[e = _dst_port . `E416 2 ]
 "4791
 }
 [; ;deca_device.c: 4791: }
@@ -21625,7 +21626,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;deca_device.c: 4794: dst_port = AES_Dst_Rx_buf_0;
 "4794
-[e = _dst_port . `E415 1 ]
+[e = _dst_port . `E416 1 ]
 "4795
 }
 [e :U 2100 ]
@@ -21637,7 +21638,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "4797
 [e :U 2098 ]
 [; ;deca_device.c: 4797: else if(job->dst_port == AES_Dst_STS_key)
-[e $ ! == -> . *U _job 6 `i -> . `E415 4 `i 2102  ]
+[e $ ! == -> . *U _job 6 `i -> . `E416 4 `i 2102  ]
 [; ;deca_device.c: 4798: {
 "4798
 {
@@ -21681,7 +21682,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 4829: if(((ret & ~(0x10U|0x20U)) == 0x1U)
 [; ;deca_device.c: 4830: && (job->mode == AES_Decrypt))
 "4830
-[e $ ! && == & -> _ret `ui ~ | -> 16 `ui -> 32 `ui -> 1 `ui == -> . *U _job 7 `i -> . `E405 1 `i 2104  ]
+[e $ ! && == & -> _ret `ui ~ | -> 16 `ui -> 32 `ui -> 1 `ui == -> . *U _job 7 `i -> . `E406 1 `i 2104  ]
 [; ;deca_device.c: 4831: {
 "4831
 {
@@ -21690,7 +21691,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device.c: 4832: uint32_t read_addr;
 [; ;deca_device.c: 4834: if ((job->dst_port == AES_Dst_Rx_buf_0) || (job->dst_port == AES_Dst_Rx_buf_1))
 "4834
-[e $ ! || == -> . *U _job 6 `i -> . `E415 1 `i == -> . *U _job 6 `i -> . `E415 2 `i 2105  ]
+[e $ ! || == -> . *U _job 6 `i -> . `E416 1 `i == -> . *U _job 6 `i -> . `E416 2 `i 2105  ]
 [; ;deca_device.c: 4835: {
 "4835
 {
@@ -21727,7 +21728,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "4845
 [e :U 2105 ]
 [; ;deca_device.c: 4845: else if (job->dst_port == AES_Dst_Tx_buf)
-[e $ ! == -> . *U _job 6 `i -> . `E415 3 `i 2109  ]
+[e $ ! == -> . *U _job 6 `i -> . `E416 3 `i 2109  ]
 [; ;deca_device.c: 4846: {
 "4846
 {

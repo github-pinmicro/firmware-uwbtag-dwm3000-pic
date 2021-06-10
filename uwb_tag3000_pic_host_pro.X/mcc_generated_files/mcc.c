@@ -49,14 +49,10 @@
 
 void SYSTEM_Initialize(void)
 {
+    WDTCON0 = 0x01;
     OSCILLATOR_Initialize();
     PMD_Initialize();
-    
     PIN_MANAGER_Initialize();
-    
-    EUSART_Initialize();
-   // SPI1_Initialize();
-    
 }
 
 void OSCILLATOR_Initialize(void)
