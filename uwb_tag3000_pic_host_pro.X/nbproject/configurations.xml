@@ -23,6 +23,9 @@
       <itemPath>decawave.h</itemPath>
       <itemPath>port.h</itemPath>
       <itemPath>sleep.h</itemPath>
+      <itemPath>bq25895.h</itemPath>
+      <itemPath>pic_control_fun.h</itemPath>
+      <itemPath>pic_i2c.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -47,6 +50,9 @@
       <itemPath>deca_spi.c</itemPath>
       <itemPath>port.c</itemPath>
       <itemPath>decawave.c</itemPath>
+      <itemPath>bq25895.c</itemPath>
+      <itemPath>pic_control_fun.c</itemPath>
+      <itemPath>pic_i2c.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

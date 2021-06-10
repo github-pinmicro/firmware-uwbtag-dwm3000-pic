@@ -19317,10 +19317,9 @@ break;
 }
 case DW3000_SPI_RD_BIT:
 {
-
 readfromspi(cnt, header, length, buffer);
 
-# 310
+# 309
 break;
 }
 default:
@@ -19330,7 +19329,7 @@ break;
 
 }
 
-# 333
+# 332
 void dwt_writetodevice
 (
 uint32_t regFileID,
@@ -19342,13 +19341,13 @@ uint8_t *buffer
 dwt_xfer3000(regFileID, index, length, buffer, DW3000_SPI_WR_BIT);
 }
 
-# 355
+# 354
 void dwt_wakeup_ic(void)
 {
 wakeup_device_with_io();
 }
 
-# 373
+# 372
 void dwt_readfromdevice
 (
 uint32_t regFileID,
@@ -19360,14 +19359,12 @@ uint8_t *buffer
 dwt_xfer3000(regFileID, index, length, buffer, DW3000_SPI_RD_BIT);
 }
 
-# 395
+# 394
 uint32_t dwt_read32bitoffsetreg( uint32_t regFileID, uint32_t regOffset)
 {
 int j ;
 uint32_t regval = 0 ;
 uint8_t buffer[4] ;
-
-
 
 dwt_readfromdevice(regFileID,regOffset,4,buffer);
 
@@ -19381,7 +19378,7 @@ return (regval);
 
 }
 
-# 426
+# 423
 uint16_t dwt_read16bitoffsetreg( uint32_t regFileID, uint32_t regOffset)
 {
 uint16_t regval = 0 ;
@@ -19394,7 +19391,7 @@ return regval ;
 
 }
 
-# 449
+# 446
 uint8_t dwt_read8bitoffsetreg( uint32_t regFileID, uint32_t regOffset)
 {
 uint8_t regval;
@@ -19404,7 +19401,7 @@ dwt_xfer3000(regFileID, regOffset, 1, &regval, DW3000_SPI_RD_BIT);
 return regval ;
 }
 
-# 470
+# 467
 void dwt_write32bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint32_t regval)
 {
 int j ;
@@ -19419,7 +19416,7 @@ regval >>= 8 ;
 dwt_writetodevice(regFileID,regOffset,4,buffer);
 }
 
-# 496
+# 493
 void dwt_write16bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint16_t regval)
 {
 uint8_t buffer[2] ;
@@ -19430,7 +19427,7 @@ buffer[1] = regval >> 8 ;
 dwt_writetodevice(regFileID,regOffset,2,buffer);
 }
 
-# 518
+# 515
 void dwt_write8bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint8_t regval)
 {
 
@@ -19438,7 +19435,7 @@ void dwt_write8bitoffsetreg( uint32_t regFileID, uint32_t regOffset, uint8_t reg
 dwt_writetodevice(regFileID, regOffset, 1, &regval);
 }
 
-# 535
+# 532
 void dwt_modify32bitoffsetreg(const uint32_t regFileID, const uint32_t regOffset, const uint32_t _and, const uint32_t _or)
 {
 uint8_t buf[8];
@@ -19453,7 +19450,7 @@ buf[7] = (uint8_t)(_or>>24);
 dwt_xfer3000(regFileID, regOffset, sizeof(buf), buf, DW3000_SPI_AND_OR_32);
 }
 
-# 559
+# 556
 void dwt_modify16bitoffsetreg(const uint32_t regFileID, const uint32_t regOffset, const uint16_t _and, const uint16_t _or)
 {
 uint8_t buf[4];
@@ -19464,7 +19461,7 @@ buf[3] = (uint8_t)(_or>>8);
 dwt_xfer3000(regFileID, regOffset, sizeof(buf), buf, DW3000_SPI_AND_OR_16);
 }
 
-# 579
+# 576
 void dwt_modify8bitoffsetreg(const uint32_t regFileID, const uint32_t regOffset, const uint8_t _and, const uint8_t _or)
 {
 uint8_t buf[2];
@@ -19473,24 +19470,24 @@ buf[1] = _or;
 dwt_xfer3000(regFileID, regOffset, sizeof(buf),buf, DW3000_SPI_AND_OR_8);
 }
 
-# 642
+# 639
 uint8_t dwt_generatecrc8(const uint8_t* byteArray, int len, uint8_t crcRemainderInit)
 {
 uint8_t data;
 int byte;
 
-# 650
+# 647
 for (byte = 0; byte < len; ++byte)
 {
 data = byteArray[byte] ^ crcRemainderInit;
 crcRemainderInit = crcTable[data];
 }
 
-# 659
+# 656
 return(crcRemainderInit);
 }
 
-# 678
+# 675
 void dwt_enablespicrccheck(dwt_spi_crc_mode_e crc_mode, dwt_spierrcb_t spireaderr_cb)
 {
 if (crc_mode != DWT_SPI_CRC_MODE_NO)
@@ -19518,7 +19515,7 @@ dwt_modify16bitoffsetreg(0xb0008, 0, -1, (0x180u));
 dwt_modify16bitoffsetreg(0x11001f,0,(uint16_t)~0x1fU,pdw3000local->bias_tune);
 }
 
-# 715
+# 712
 static
 void _dwt_kick_ops_table_on_wakeup(void)
 {
@@ -19541,7 +19538,7 @@ break;
 }
 }
 
-# 748
+# 745
 static
 void _dwt_kick_dgc_on_wakeup(int8_t channel)
 {
@@ -19558,10 +19555,9 @@ dwt_modify32bitoffsetreg(0xb0008, 0, ~(0x2000U),
 }
 }
 
-# 782
+# 779
 int dwt_initialise(int mode)
 {
-
 
 uint32_t ldo_tune_lo;
 uint32_t ldo_tune_hi;
@@ -19583,7 +19579,8 @@ Sleep(2);
 
 if (dwt_check_dev_id()!=(0))
 {
-printf_string("\n\rreturn_Error");
+
+# 805
 return (-1);
 }
 
@@ -19644,7 +19641,7 @@ return (0) ;
 
 }
 
-# 878
+# 876
 void dwt_setdwstate(int state)
 {
 if (state == 0x1)
@@ -19675,19 +19672,19 @@ dwt_modify8bitoffsetreg(0x110008, 0x2, (uint8_t) ~(0x800000UL>>16), 0);
 }
 }
 
-# 917
+# 915
 void dwt_enablegpioclocks(void)
 {
 dwt_modify32bitoffsetreg(0x110004, 0, -1, 0x10000UL);
 }
 
-# 933
+# 931
 uint8_t dwt_otprevision(void)
 {
 return pdw3000local->otprev ;
 }
 
-# 948
+# 946
 void dwt_setfinegraintxseq(int enable)
 {
 if (enable)
@@ -19700,7 +19697,7 @@ dwt_write32bitoffsetreg(0x110010, 2, 0x0d20874);
 }
 }
 
-# 975
+# 973
 void dwt_setlnapamode(int lna_pa)
 {
 uint32_t gpio_mode = dwt_read32bitoffsetreg(0x50000,0);
@@ -19722,43 +19719,43 @@ gpio_mode |= ((((uint32_t)0x2)<<0) | (((uint32_t)0x2)<<3));
 dwt_write32bitoffsetreg(0x50000,0,gpio_mode);
 }
 
-# 1005
+# 1003
 uint8_t dwt_readpgdelay(void)
 {
 return dwt_read8bitoffsetreg(0x7001c, 0);
 }
 
-# 1021
+# 1019
 uint8_t dwt_geticrefvolt(void)
 {
 return pdw3000local->vBatP;
 }
 
-# 1037
+# 1035
 uint8_t dwt_geticreftemp(void)
 {
 return pdw3000local->tempP;
 }
 
-# 1053
+# 1051
 uint32_t dwt_getpartid(void)
 {
 return pdw3000local->partID;
 }
 
-# 1069
+# 1067
 uint32_t dwt_getlotid(void)
 {
 return pdw3000local->lotID;
 }
 
-# 1083
+# 1081
 uint32_t dwt_readdevid(void)
 {
 return dwt_read32bitoffsetreg(0x0, 0);
 }
 
-# 1101
+# 1099
 void dwt_configuretxrf(dwt_txconfig_t *config)
 {
 if (config->PGcount == 0) {
@@ -19779,7 +19776,7 @@ dwt_calcbandwidthadj(config->PGcount, channel);
 dwt_write32bitoffsetreg(0x1000c,0,config->power);
 }
 
-# 1135
+# 1133
 void dwt_configurestskey(dwt_sts_cp_key_t* pStsKey)
 {
 dwt_write32bitoffsetreg(0x2000c,0,pStsKey->key0);
@@ -19788,7 +19785,7 @@ dwt_write32bitoffsetreg(0x20014,0,pStsKey->key2);
 dwt_write32bitoffsetreg(0x20018,0,pStsKey->key3);
 }
 
-# 1153
+# 1151
 void dwt_configurestsiv(dwt_sts_cp_iv_t* pStsIv)
 {
 dwt_write32bitoffsetreg(0x2001c,0,pStsIv->iv0);
@@ -19797,7 +19794,7 @@ dwt_write32bitoffsetreg(0x20024,0,pStsIv->iv2);
 dwt_write32bitoffsetreg(0x20028,0,pStsIv->iv3);
 }
 
-# 1170
+# 1168
 void dwt_configurestsloadiv(void)
 {
 dwt_modify8bitoffsetreg(0x20004, 0, -1, 0x1U);
@@ -19825,7 +19822,7 @@ value += 1;
 return (uint16_t)value;
 }
 
-# 1205
+# 1203
 void dwt_configmrxlut(int channel)
 {
 uint32_t lut0, lut1, lut2, lut3, lut4, lut5, lut6 = 0;
@@ -19861,7 +19858,7 @@ dwt_write32bitoffsetreg(0x3001c, 0x0, 0x10000240);
 dwt_write32bitoffsetreg(0x30020, 0x0, 0x1b6da489);
 }
 
-# 1249
+# 1247
 void dwt_restoreconfig(void)
 {
 uint8_t channel = 5;
@@ -19873,7 +19870,7 @@ _dwt_prog_ldo_and_bias_tune();
 }
 dwt_write8bitoffsetreg(0x70050, 1, 0x14);
 
-# 1261
+# 1259
 dwt_write32bitoffsetreg(0x1f000c,0,(0x1800E8 >> 16));
 dwt_write32bitoffsetreg(0x1f0010,0,0x1800E8 & 0xffff);
 
@@ -19903,13 +19900,13 @@ dwt_configmrxlut(channel);
 }
 }
 
-# 1300
+# 1298
 void dwt_configurestsmode(uint8_t stsMode)
 {
 
 pdw3000local->stsconfig = stsMode;
 
-# 1309
+# 1307
 dwt_modify32bitoffsetreg(0x10, 0, ~(0x3000U | 0x8000U),
 ((uint16_t)stsMode & 0xB) << (12U));
 
@@ -19924,7 +19921,7 @@ dwt_write32bitoffsetreg(0x6000c, 0, 0xAF5F584C);
 }
 }
 
-# 1337
+# 1335
 int dwt_configure(dwt_config_t *config)
 {
 uint8_t chan = config->chan,cnt,flag;
@@ -19934,7 +19931,7 @@ uint8_t mode = (config->phrMode == 0x1) ? 0x10U : 0;
 uint16_t sts_len;
 int error = (0);
 
-# 1367
+# 1365
 int preamble_len;
 
 switch (config->txPreambLength)
@@ -19977,7 +19974,7 @@ sts_len=((uint16_t)1<<(((uint16_t)(config->stsLength))+2));
 pdw3000local->ststhreshold = (int16_t)((((uint32_t)sts_len) * 8) * (0.90f));
 pdw3000local->stsconfig = config->stsMode;
 
-# 1413
+# 1411
 dwt_modify32bitoffsetreg(0x10, 0, ~(0x10U | 0x20U | 0x3000U | 0x30000UL | 0x8000U),
 ((uint32_t)config->pdoaMode) << (16U)
 | ((uint16_t)config->stsMode & 0xB) << (12U)
@@ -20148,7 +20145,7 @@ error = dwt_pgf_cal(1);
 return error;
 }
 
-# 1594
+# 1592
 int dwt_pgf_cal(int ldoen)
 {
 int temp;
@@ -20161,7 +20158,7 @@ val = dwt_read16bitoffsetreg(0x70048, 0);
 
 dwt_modify16bitoffsetreg(0x70048, 0, -1, ( 0x100U | 0x4U | 0x1U));
 
-# 1608
+# 1606
 }
 
 
@@ -20175,7 +20172,7 @@ dwt_modify16bitoffsetreg(0x70048, 0, val, 0);
 return temp;
 }
 
-# 1630
+# 1628
 int dwt_run_pgfcal(void)
 {
 int result = (0);
@@ -20223,25 +20220,25 @@ result = (-1);
 return result;
 }
 
-# 1688
+# 1686
 void dwt_setrxantennadelay(uint16_t rxDelay)
 {
 
 dwt_write16bitoffsetreg(0xe0000, 0, rxDelay);
 }
 
-# 1705
+# 1703
 void dwt_settxantennadelay(uint16_t txDelay)
 {
 
 dwt_write16bitoffsetreg(0x10004, 0, txDelay);
 }
 
-# 1730
+# 1728
 int dwt_writetxdata(uint16_t txDataLength, uint8_t *txDataBytes, uint16_t txBufferOffset)
 {
 
-# 1738
+# 1736
 if ((txBufferOffset + txDataLength) < (1024))
 {
 if(txBufferOffset <= (127))
@@ -20264,12 +20261,12 @@ else
 return (-1);
 }
 
-# 1775
+# 1773
 void dwt_writetxfctrl(uint16_t txFrameLength, uint16_t txBufferOffset, uint8_t ranging)
 {
 uint32_t reg32;
 
-# 1785
+# 1783
 if(txBufferOffset <= 127)
 {
 
@@ -20286,13 +20283,13 @@ reg32 = dwt_read8bitoffsetreg(0x80000, 0);
 
 }
 
-# 1813
+# 1811
 void dwt_setplenfine(uint8_t preambleLength)
 {
 dwt_write8bitoffsetreg(0x28, 1, preambleLength);
 }
 
-# 1830
+# 1828
 void dwt_read_rx_scratch_data(uint8_t *buffer, uint16_t length, uint16_t rxBufferOffset)
 {
 
@@ -20301,7 +20298,7 @@ void dwt_read_rx_scratch_data(uint8_t *buffer, uint16_t length, uint16_t rxBuffe
 dwt_readfromdevice(0x160000,rxBufferOffset,length,buffer);
 }
 
-# 1850
+# 1848
 void dwt_readrxdata(uint8_t *buffer, uint16_t length, uint16_t rxBufferOffset)
 {
 uint32_t rx_buff_addr;
@@ -20334,7 +20331,7 @@ dwt_readfromdevice(0x1D0000, 0, length, buffer);
 }
 }
 
-# 1901
+# 1899
 void dwt_readaccdata(uint8_t *buffer, uint16_t length, uint16_t accOffset)
 {
 
@@ -20359,14 +20356,14 @@ dwt_readfromdevice(0x1D0000, 0, length, buffer);
 }
 else
 {
-if(!(0)) {_fassert(1925, "deca_device.c", "0");};
+if(!(0)) {_fassert(1923, "deca_device.c", "0");};
 }
 
 
 dwt_modify16bitoffsetreg(0x110004, 0x0, (uint16_t)~(0x8000U | 0x40U), 0);
 }
 
-# 1941
+# 1939
 int16_t dwt_readclockoffset(void)
 {
 uint16_t regval = 0 ;
@@ -20393,7 +20390,7 @@ regval |= (0xE000UL);
 return (int16_t) regval ;
 }
 
-# 1978
+# 1976
 int32_t dwt_readcarrierintegrator(void)
 {
 uint32_t regval = 0 ;
@@ -20417,7 +20414,7 @@ regval |= (0xFFF00000UL);
 return (int32_t) regval ;
 }
 
-# 2013
+# 2011
 int dwt_readstsquality(int16_t* rxStsQualityIndex)
 {
 uint16_t preambleCount;
@@ -20434,7 +20431,7 @@ preambleCount |= 0xF000;
 return (int)((int16_t)preambleCount - pdw3000local->ststhreshold);
 }
 
-# 2040
+# 2038
 int dwt_readstsstatus(uint16_t* stsStatus, int sts_num)
 {
 int ret = (0);
@@ -20462,32 +20459,32 @@ ret = (-1);
 return ret;
 }
 
-# 2077
+# 2075
 void dwt_readdiagnostics(dwt_rxdiag_t *diagnostics)
 {
 
-# 2292
+# 2290
 }
 
-# 2304
+# 2302
 void dwt_readtxtimestamp(uint8_t * timestamp)
 {
 dwt_readfromdevice(0x74, 0, (5), timestamp);
 }
 
-# 2318
+# 2316
 uint32_t dwt_readtxtimestamphi32(void)
 {
 return dwt_read32bitoffsetreg(0x74, 1);
 }
 
-# 2332
+# 2330
 uint32_t dwt_readtxtimestamplo32(void)
 {
 return dwt_read32bitoffsetreg(0x74,0);
 }
 
-# 2349
+# 2347
 int16_t dwt_readpdoa(void)
 {
 int16_t pdoa;
@@ -20510,7 +20507,7 @@ if (pdoa & (0x2000UL)) pdoa |= (0xC000UL);
 return pdoa;
 }
 
-# 2384
+# 2382
 void dwt_readtdoa(uint8_t * tdoa)
 {
 
@@ -20518,7 +20515,7 @@ dwt_readfromdevice(0xc0018, 0, 6, tdoa);
 tdoa[5] &= 0x01;
 }
 
-# 2401
+# 2399
 void dwt_readrxtimestamp(uint8_t * timestamp)
 {
 switch (pdw3000local->dblbuffon)
@@ -20536,14 +20533,14 @@ break;
 }
 }
 
-# 2428
+# 2426
 void dwt_readrxtimestampunadj(uint8_t * timestamp)
 {
 timestamp[0] = 0;
 dwt_readfromdevice(0x70, 0, (5)-1, &timestamp[1]);
 }
 
-# 2444
+# 2442
 void dwt_readrxtimestamp_ipatov(uint8_t * timestamp)
 {
 switch (pdw3000local->dblbuffon)
@@ -20561,7 +20558,7 @@ break;
 }
 }
 
-# 2471
+# 2469
 void dwt_readrxtimestamp_sts(uint8_t * timestamp)
 {
 switch (pdw3000local->dblbuffon)
@@ -20579,31 +20576,31 @@ break;
 }
 }
 
-# 2497
+# 2495
 uint32_t dwt_readrxtimestamphi32(void)
 {
 return dwt_read32bitoffsetreg(0x64, 1);
 }
 
-# 2511
+# 2509
 uint32_t dwt_readrxtimestamplo32(void)
 {
 return dwt_read32bitoffsetreg(0x64,0);
 }
 
-# 2525
+# 2523
 uint32_t dwt_readsystimestamphi32(void)
 {
 return dwt_read32bitoffsetreg(0x1c,0);
 }
 
-# 2541
+# 2539
 void dwt_readsystime(uint8_t * timestamp)
 {
 dwt_readfromdevice(0x1c, 0, (4U), timestamp);
 }
 
-# 2575
+# 2573
 void dwt_configureframefilter(uint16_t enabletype, uint16_t filtermode)
 {
 if(enabletype == 0x2)
@@ -20620,33 +20617,33 @@ dwt_write16bitoffsetreg(0x14, 0, 0x0);
 }
 }
 
-# 2601
+# 2599
 void dwt_setpanid(uint16_t panID)
 {
 
 dwt_write16bitoffsetreg(0xc, 2, panID);
 }
 
-# 2617
+# 2615
 void dwt_setaddress16(uint16_t shortAddress)
 {
 
 dwt_write16bitoffsetreg(0xc, (0U), shortAddress);
 }
 
-# 2633
+# 2631
 void dwt_seteui(uint8_t *eui64)
 {
 dwt_writetodevice(0x4, 0, 0x8, eui64);
 }
 
-# 2648
+# 2646
 void dwt_geteui(uint8_t *eui64)
 {
 dwt_readfromdevice(0x4, 0, 0x8, eui64);
 }
 
-# 2663
+# 2661
 uint8_t dwt_aon_read(uint16_t aon_address)
 {
 dwt_write16bitoffsetreg(0xa000c, 0x0, aon_address);
@@ -20655,7 +20652,7 @@ dwt_write8bitoffsetreg(0xa0004, 0x0, 0x0);
 return dwt_read8bitoffsetreg(0xa0008, 0x0);
 }
 
-# 2682
+# 2680
 void dwt_aon_write(uint16_t aon_address, uint8_t aon_write_data)
 {
 uint8_t temp = 0;
@@ -20666,7 +20663,7 @@ dwt_write8bitoffsetreg(0xa0004,0x0,(temp | 0x80U | 0x10U ));
 dwt_write8bitoffsetreg(0xa0004, 0x0, 0x0);
 }
 
-# 2704
+# 2702
 void dwt_otpread(uint16_t address, uint32_t *array, uint8_t length)
 {
 int i;
@@ -20679,7 +20676,7 @@ array[i] = _dwt_otpread(address + i);
 return ;
 }
 
-# 2726
+# 2724
 uint32_t _dwt_otpread(uint16_t address)
 {
 uint32_t ret_data = 0;
@@ -20697,7 +20694,7 @@ ret_data = dwt_read32bitoffsetreg(0xb0010, 0);
 return ret_data;
 }
 
-# 2748
+# 2746
 void __dwt_otp_write_wdata_id_reg(int16_t val)
 {
 
@@ -20707,7 +20704,7 @@ dwt_write16bitoffsetreg(0xb0000, 0, 0x0200 | val);
 dwt_write16bitoffsetreg(0xb0000, 0, 0x0000 | val);
 }
 
-# 2769
+# 2767
 void _dwt_otpprogword32(uint32_t data, uint16_t address)
 {
 
@@ -20764,13 +20761,13 @@ __dwt_otp_write_wdata_id_reg(0x010a);
 
 __dwt_otp_write_wdata_id_reg(0x0000);
 
-# 2833
+# 2831
 __dwt_otp_write_wdata_id_reg(0x003a);
 __dwt_otp_write_wdata_id_reg(0x0101);
 dwt_write16bitoffsetreg(0xb0000, 0, 0x0002);
 dwt_write16bitoffsetreg(0xb0000, 0, 0x0000);
 
-# 2859
+# 2857
 deca_sleep(2);
 
 
@@ -20786,7 +20783,7 @@ dwt_write16bitoffsetreg(0xb0008, 0, 0x0000);
 dwt_write32bitoffsetreg(0x70044, 0, ldo_tune);
 }
 
-# 2885
+# 2883
 int dwt_otpwriteandverify(uint32_t value, uint16_t address)
 {
 
@@ -20803,7 +20800,7 @@ return (-1);
 }
 }
 
-# 2913
+# 2911
 void dwt_entersleep(int idle_rc)
 {
 
@@ -20817,7 +20814,7 @@ dwt_write8bitoffsetreg(0xa0004, 0, 0);
 dwt_write8bitoffsetreg(0xa0004, 0, 0x2U);
 }
 
-# 2938
+# 2936
 void dwt_configuresleepcnt(uint16_t sleepcnt)
 {
 
@@ -20826,7 +20823,7 @@ dwt_aon_write((0x103), (uint8_t)(sleepcnt>>8));
 
 }
 
-# 2957
+# 2955
 uint16_t dwt_calibratesleepcnt(void)
 {
 uint16_t temp = 0;
@@ -20848,7 +20845,7 @@ dwt_modify8bitoffsetreg(0x70048, 0, (uint8_t)~0x10U, 0);
 return (temp);
 }
 
-# 3015
+# 3013
 void dwt_configuresleep(uint16_t mode, uint8_t wake)
 {
 
@@ -20858,7 +20855,7 @@ dwt_write16bitoffsetreg(0xa0000, 0, pdw3000local->sleep_mode);
 dwt_write8bitoffsetreg(0xa0014, 0, wake);
 }
 
-# 3033
+# 3031
 void dwt_clearaonconfig(void)
 {
 
@@ -20871,7 +20868,7 @@ dwt_write8bitoffsetreg(0xa0004, 0, 0);
 dwt_write8bitoffsetreg(0xa0004, 0, 0x2U);
 }
 
-# 3059
+# 3057
 void dwt_entersleepaftertx(int enable)
 {
 
@@ -20885,13 +20882,12 @@ dwt_modify16bitoffsetreg(0x110008, 0, (uint16_t)~0x800U, 0);
 }
 }
 
-# 3082
+# 3080
 int dwt_check_dev_id(void)
 {
 
 
 dev_id = dwt_readdevid();
-
 
 if (!(((0xDECA0312) == dev_id) || ((0xDECA0302) == dev_id)))
 {
@@ -20900,7 +20896,7 @@ return (-1);
 return (0);
 }
 
-# 3111
+# 3108
 void dwt_configciadiag(uint8_t enable_mask)
 {
 if(enable_mask & (0x1))
@@ -20917,7 +20913,7 @@ dwt_write8bitoffsetreg(0x10028, 0, enable_mask >> 1);
 pdw3000local->cia_diagnostic = enable_mask;
 }
 
-# 3140
+# 3137
 void dwt_enableautoack(uint8_t responseDelayTime, int enable)
 {
 
@@ -20934,7 +20930,7 @@ dwt_modify16bitoffsetreg(0x10, 0, (uint16_t)(~0x800U), 0);
 }
 }
 
-# 3167
+# 3164
 void dwt_signal_rx_buff_free(void)
 {
 dwt_writetodevice(0x13,0,0,0);
@@ -20950,7 +20946,7 @@ pdw3000local->dblbuffon = 0x3;
 }
 }
 
-# 3193
+# 3190
 void dwt_setdblrxbuffmode(dwt_dbl_buff_state_e dbl_buff_state, dwt_dbl_buff_mode_e dbl_buff_mode)
 {
 uint32_t or_val=0,and_val=-1;
@@ -20982,7 +20978,7 @@ and_val &= (~0x400U);
 dwt_modify32bitoffsetreg(0x10,0,and_val,or_val);
 }
 
-# 3234
+# 3231
 void dwt_setrxaftertxdelay(uint32_t rxDelayTime)
 {
 uint32_t val = dwt_read32bitoffsetreg(0x10008,0);
@@ -20994,7 +20990,7 @@ val |= (rxDelayTime & 0xfffffUL);
 dwt_write32bitoffsetreg(0x10008, 0, val);
 }
 
-# 3263
+# 3260
 void dwt_setcallbacks(dwt_cb_t cbTxDone, dwt_cb_t cbRxOk, dwt_cb_t cbRxTo, dwt_cb_t cbRxErr, dwt_cb_t cbSPIErr, dwt_cb_t cbSPIRdy)
 {
 pdw3000local->cbTxDone = cbTxDone;
@@ -21005,14 +21001,14 @@ pdw3000local->cbSPIErr = cbSPIErr;
 pdw3000local->cbSPIRdy = cbSPIRdy;
 }
 
-# 3282
+# 3279
 uint8_t dwt_checkirq(void)
 {
 
 return (dwt_read8bitoffsetreg(0x44, 0) & 0x1U);
 }
 
-# 3297
+# 3294
 uint8_t dwt_checkidlerc(void)
 {
 
@@ -21021,7 +21017,7 @@ uint32_t reg = ((uint32_t)dwt_read16bitoffsetreg(0x44, 2) << 16);
 return ( (reg & (0x1000000UL)) == (0x1000000UL));
 }
 
-# 3331
+# 3328
 void dwt_isr(void)
 {
 
@@ -21062,7 +21058,7 @@ if(pdw3000local->cbData.status_hi & 0x100U)
 {
 dwt_write16bitoffsetreg(0x48, 0, 0x100U);
 
-# 3375
+# 3372
 }
 
 
@@ -21242,7 +21238,7 @@ pdw3000local->cbRxTo(&pdw3000local->cbData);
 
 }
 
-# 3569
+# 3566
 void dwt_setleds(uint8_t mode)
 {
 uint32_t reg;
@@ -21278,7 +21274,7 @@ dwt_modify16bitoffsetreg(0x110016, 0, (uint16_t) ~0x100U, 0);
 
 }
 
-# 3614
+# 3611
 static
 void dwt_force_clocks(int clocks)
 {
@@ -21305,19 +21301,19 @@ dwt_write16bitoffsetreg(0x110004, 0x0, (uint16_t) (0x200 | 0x200000 | 0x100000))
 
 }
 
-# 3652
+# 3649
 void dwt_setreferencetrxtime(uint32_t reftime)
 {
 dwt_write32bitoffsetreg(0x30, 0, reftime);
 }
 
-# 3669
+# 3666
 void dwt_setdelayedtrxtime(uint32_t starttime)
 {
 dwt_write32bitoffsetreg(0x2c, 0, starttime);
 }
 
-# 3691
+# 3688
 int dwt_starttx(uint8_t mode)
 {
 int retval = (0) ;
@@ -21422,7 +21418,7 @@ return retval;
 
 }
 
-# 3804
+# 3801
 void dwt_forcetrxoff(void)
 {
 decaIrqStatus_t stat ;
@@ -21438,7 +21434,7 @@ dwt_writetodevice(0x0,0,0,0);
 decamutexoff(stat);
 }
 
-# 3836
+# 3833
 void dwt_setsniffmode(int enable, uint8_t timeOn, uint8_t timeOff)
 {
 if (enable)
@@ -21454,7 +21450,7 @@ dwt_write16bitoffsetreg(0x11001a, 0, 0x0000);
 }
 }
 
-# 3873
+# 3870
 int dwt_rxenable(int mode)
 {
 uint8_t temp1 ;
@@ -21499,7 +21495,7 @@ return (-1);
 return (0);
 }
 
-# 3929
+# 3926
 void dwt_setrxtimeout(uint32_t time)
 {
 if(time > 0)
@@ -21514,13 +21510,13 @@ dwt_modify16bitoffsetreg(0x10, 0, (uint16_t)(~0x200U), 0);
 }
 }
 
-# 3954
+# 3951
 void dwt_setpreambledetecttimeout(uint16_t timeout)
 {
 dwt_write16bitoffsetreg(0x60004, 0, timeout);
 }
 
-# 3975
+# 3972
 void dwt_setinterrupt(uint32_t bitmask_lo, uint32_t bitmask_hi, dwt_INT_options_e INT_options)
 {
 decaIrqStatus_t stat ;
@@ -21550,7 +21546,7 @@ dwt_modify32bitoffsetreg(0x40, 0, (uint32_t)(~bitmask_hi), 0);
 decamutexoff(stat);
 }
 
-# 4013
+# 4010
 void dwt_configeventcounters(int enable)
 {
 
@@ -21562,7 +21558,7 @@ dwt_write8bitoffsetreg(0xf0000, 0x0, (uint8_t)(0x1U));
 }
 }
 
-# 4034
+# 4031
 void dwt_readeventcounters(dwt_deviceentcnts_t *counters)
 {
 uint32_t temp;
@@ -21597,7 +21593,7 @@ counters->PREJ = temp & 0xFFF;
 
 }
 
-# 4079
+# 4076
 void dwt_softreset(void)
 {
 
@@ -21621,7 +21617,7 @@ pdw3000local->dblbuffon = 0x1;
 pdw3000local->sleep_mode = 0;
 }
 
-# 4112
+# 4109
 void dwt_setxtaltrim(uint8_t value)
 {
 uint8_t reg_val = ((value & 0x3F) >> (0U));
@@ -21629,13 +21625,13 @@ pdw3000local->init_xtrim = reg_val;
 dwt_write8bitoffsetreg(0x90014, 0, reg_val);
 }
 
-# 4130
+# 4127
 uint8_t dwt_getxtaltrim(void)
 {
 return pdw3000local->init_xtrim;
 }
 
-# 4145
+# 4142
 static
 void dwt_disable_rf_tx(uint8_t switch_config)
 {
@@ -21652,28 +21648,28 @@ dwt_write32bitoffsetreg(0x70014, 0x0, 0x1C000000);
 }
 }
 
-# 4171
+# 4168
 static
 void dwt_enable_rf_tx(uint32_t channel, uint8_t switch_control)
 {
 
 dwt_modify32bitoffsetreg(0x70048, 0, -1, (0x8000000UL | 0x800U));
 
-# 4177
+# 4174
 dwt_modify32bitoffsetreg(0x70048, 0, -1, (0x400000UL | 0x200000UL | 0x40U | 0x20U));
 
-# 4183
+# 4180
 if (channel == (5))
 {
 dwt_modify32bitoffsetreg(0x70000, 0, -1, (0x2000000UL | 0x2000U | 0x1000U | 0x800U | 0x400U));
 
-# 4188
+# 4185
 }
 else
 {
 dwt_modify32bitoffsetreg(0x70000, 0, -1, (0x2000000UL | 0x1000U | 0x800U | 0x400U));
 
-# 4194
+# 4191
 }
 
 if (switch_control)
@@ -21684,7 +21680,7 @@ dwt_write32bitoffsetreg(0x70014, 0x0, 0x01011100);
 
 }
 
-# 4214
+# 4211
 void dwt_repeated_cw(int cw_enable, int cw_mode_config)
 {
 
@@ -21699,7 +21695,7 @@ dwt_write32bitoffsetreg(0x70028, 0x0, 0x10 >> cw_enable);
 dwt_write32bitoffsetreg(0x80018, 0x0, cw_mode_config << ((cw_enable - 1) * 4));
 }
 
-# 4241
+# 4238
 void dwt_repeated_frames(uint32_t framerepetitionrate)
 {
 
@@ -21712,7 +21708,7 @@ framerepetitionrate = 4;
 dwt_write32bitoffsetreg(0x2c,0,framerepetitionrate);
 }
 
-# 4264
+# 4261
 static
 void dwt_enable_rftx_blocks(uint32_t channel)
 {
@@ -21720,24 +21716,24 @@ if (channel == (5))
 {
 dwt_modify32bitoffsetreg(0x70004, 0, -1, (0x2000000UL | 0x2000U | 0x1000U | 0x800U | 0x400U));
 
-# 4272
+# 4269
 }
 else if (channel == (9))
 {
 dwt_modify32bitoffsetreg(0x70004, 0, -1, (0x2000000UL | 0x1000U | 0x800U | 0x400U));
 
-# 4278
+# 4275
 }
 }
 
-# 4292
+# 4289
 static
 void dwt_disable_rftx_blocks(void)
 {
 dwt_write32bitoffsetreg(0x70004, 0, 0x00000000);
 }
 
-# 4308
+# 4305
 void dwt_configcwmode(uint8_t channel)
 {
 dwt_enable_rf_tx(channel, 1);
@@ -21746,7 +21742,7 @@ dwt_force_clocks((1));
 dwt_repeated_cw(1, 0xF);
 }
 
-# 4328
+# 4325
 void dwt_configcontinuousframemode(uint32_t framerepetitionrate, uint8_t channel)
 {
 
@@ -21756,7 +21752,7 @@ dwt_force_clocks((1));
 dwt_repeated_frames(framerepetitionrate);
 }
 
-# 4348
+# 4345
 uint16_t dwt_readtempvbat(void)
 {
 uint8_t vbat_raw = 0;
@@ -21768,7 +21764,7 @@ uint16_t wr_buf;
 ldo_ctrl = dwt_read8bitoffsetreg(0x70048, 0);
 dwt_modify8bitoffsetreg(0x70048, 0, -1, 0x2U);
 
-# 4365
+# 4362
 dwt_write8bitoffsetreg(0x70034, 0, 0x4U);
 
 
@@ -21795,7 +21791,7 @@ dwt_write8bitoffsetreg(0x70048, 0, ldo_ctrl);
 return (uint16_t)((temp_raw << 8) | (vbat_raw));
 }
 
-# 4403
+# 4400
 float dwt_convertrawtemperature(uint8_t raw_temp)
 {
 float realtemp;
@@ -21805,7 +21801,7 @@ realtemp = (float)((raw_temp - pdw3000local->tempP) * 1.05f) + 20.0f;
 return realtemp;
 }
 
-# 4424
+# 4421
 float dwt_convertrawvoltage(uint8_t raw_voltage)
 {
 float realvolt;
@@ -21816,19 +21812,19 @@ realvolt = (float)((float)(raw_voltage - pdw3000local->vBatP) * 0.4f * 16 / 255)
 return realvolt;
 }
 
-# 4445
+# 4442
 uint8_t dwt_readwakeuptemp(void)
 {
 return dwt_read8bitoffsetreg(0x80008, 1);
 }
 
-# 4461
+# 4458
 uint8_t dwt_readwakeupvbat(void)
 {
 return dwt_read8bitoffsetreg(0x80008, 0);
 }
 
-# 4481
+# 4478
 uint8_t dwt_calcbandwidthadj(uint16_t target_count, int channel)
 {
 
@@ -21851,7 +21847,7 @@ dwt_force_clocks((5));
 return (dwt_read8bitoffsetreg(0x7001c, 0) & 0x3fU);
 }
 
-# 4517
+# 4514
 uint16_t dwt_calcpgcount(uint8_t pgdly, int channel)
 {
 uint16_t count = 0;
@@ -21876,7 +21872,7 @@ dwt_force_clocks((5));
 return count;
 }
 
-# 4551
+# 4548
 void dwt_configure_aes(const dwt_aes_config_t *pCfg)
 {
 uint16_t tmp;
@@ -21893,7 +21889,7 @@ tmp |= ((uint32_t)pCfg->aes_key_otp_type) << (12U);
 dwt_write16bitoffsetreg(0x10030,0,tmp);
 }
 
-# 4573
+# 4570
 dwt_mic_size_e dwt_mic_size_from_bytes(uint8_t mic_size_in_bytes)
 {
 dwt_mic_size_e mic_size=MIC_0;
@@ -21905,7 +21901,7 @@ mic_size=(dwt_mic_size_e)((mic_size_in_bytes>>1)-1);
 return mic_size;
 }
 
-# 4593
+# 4590
 void dwt_set_keyreg_128(const dwt_aes_key_t *key)
 {
 
@@ -21915,7 +21911,7 @@ dwt_write32bitoffsetreg(0x1005c,0,(uint32_t)key->key2);
 dwt_write32bitoffsetreg(0x10060,0,(uint32_t)key->key3);
 }
 
-# 4609
+# 4606
 static
 uint8_t dwt_wait_aes_poll(void)
 {
@@ -21929,7 +21925,7 @@ dwt_write8bitoffsetreg(0x10050, 0, tmp);
 return (tmp&0x3F);
 }
 
-# 4648
+# 4645
 static
 void dwt_update_nonce_CCM(uint8_t *nonce, uint16_t payload)
 {
@@ -21954,14 +21950,14 @@ iv[15] = nonce[11];
 dwt_writetodevice(0x10034, 0, 16, iv);
 }
 
-# 4681
+# 4678
 static
 void dwt_update_nonce_GCM(uint8_t *nonce)
 {
 dwt_writetodevice(0x10034, 0, 12, nonce);
 }
 
-# 4703
+# 4700
 int8_t dwt_do_aes(dwt_aes_job_t *job, dwt_aes_core_type_e core_type)
 {
 uint32_t tmp,dest_reg;
@@ -21975,7 +21971,7 @@ if(job->mic_size == (0xff))
 return (-3);
 }
 
-# 4718
+# 4715
 if(core_type==AES_core_type_GCM)
 {
 dwt_update_nonce_GCM(job->nonce);
@@ -21985,7 +21981,7 @@ else
 dwt_update_nonce_CCM(job->nonce, job->payload_len);
 }
 
-# 4730
+# 4727
 tmp=job->header_len + job->payload_len;
 
 if (job->mode == AES_Encrypt)
@@ -22028,7 +22024,7 @@ dwt_writetodevice(dest_reg, 0, job->header_len, job->header);
 dwt_writetodevice(dest_reg, job->header_len, job->payload_len, job->payload);
 }
 
-# 4775
+# 4772
 src_port = job->src_port ;
 if ((job->src_port == AES_Src_Rx_buf_0) || (job->src_port == AES_Src_Rx_buf_1))
 {
@@ -22064,20 +22060,20 @@ return (-4);
 
 tmp = (((uint32_t)src_port) << (0U)) | (((uint32_t)dst_port) << (13U));
 
-# 4811
+# 4808
 dwt_write32bitoffsetreg(0x10044,0,tmp);
 
-# 4818
+# 4815
 tmp = (0x7fU & (((uint32_t)job->header_len) << (0U) )) | (0x1ff80UL & (((uint32_t)job->payload_len) << (7U)));
 
-# 4821
+# 4818
 dwt_write32bitoffsetreg(0x10048,0,tmp);
 
 
 dwt_write8bitoffsetreg(0x1004c, 0, 0x1U);
 ret = dwt_wait_aes_poll();
 
-# 4832
+# 4829
 if(((ret & ~(0x10U|0x20U)) == 0x1U)
 && (job->mode == AES_Decrypt))
 {
@@ -22122,7 +22118,7 @@ dwt_readfromdevice(read_addr, job->header_len, job->payload_len, job->payload);
 return (ret);
 }
 
-# 4887
+# 4884
 void dwt_configure_le_address(uint16_t addr, int leIndex)
 {
 switch (leIndex)
@@ -22142,7 +22138,7 @@ break;
 }
 }
 
-# 4916
+# 4913
 void dwt_configuresfdtype(uint8_t sfdType)
 {
 dwt_modify32bitoffsetreg(0x10014, 0, (uint32_t)(~0x6U), (0x6U & ((uint32_t)sfdType << (1U))));

@@ -1,78 +1,53 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"1202 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
-[v _LATE `Vuc ~T0 @X0 0 e@26 ]
-"1140
-[v _LATD `Vuc ~T0 @X0 0 e@25 ]
-"954
-[v _LATA `Vuc ~T0 @X0 0 e@22 ]
-"1016
-[v _LATB `Vuc ~T0 @X0 0 e@23 ]
-"1078
-[v _LATC `Vuc ~T0 @X0 0 e@24 ]
-"922
-[v _TRISE `Vuc ~T0 @X0 0 e@21 ]
-"674
-[v _TRISA `Vuc ~T0 @X0 0 e@17 ]
-"736
-[v _TRISB `Vuc ~T0 @X0 0 e@18 ]
-"798
-[v _TRISC `Vuc ~T0 @X0 0 e@19 ]
-"860
-[v _TRISD `Vuc ~T0 @X0 0 e@20 ]
-"35462
-[v _ANSELD `Vuc ~T0 @X0 0 e@8025 ]
-"34842
-[v _ANSELC `Vuc ~T0 @X0 0 e@8014 ]
-"34222
-[v _ANSELB `Vuc ~T0 @X0 0 e@8003 ]
-"35896
-[v _ANSELE `Vuc ~T0 @X0 0 e@8036 ]
-"33602
-[v _ANSELA `Vuc ~T0 @X0 0 e@7992 ]
-"35524
-[v _WPUD `Vuc ~T0 @X0 0 e@8026 ]
-"35928
-[v _WPUE `Vuc ~T0 @X0 0 e@8037 ]
-"34284
-[v _WPUB `Vuc ~T0 @X0 0 e@8004 ]
-"33664
-[v _WPUA `Vuc ~T0 @X0 0 e@7993 ]
-"34904
-[v _WPUC `Vuc ~T0 @X0 0 e@8015 ]
-"35966
-[v _ODCONE `Vuc ~T0 @X0 0 e@8038 ]
-"33726
-[v _ODCONA `Vuc ~T0 @X0 0 e@7994 ]
-"34346
-[v _ODCONB `Vuc ~T0 @X0 0 e@8005 ]
-"34966
-[v _ODCONC `Vuc ~T0 @X0 0 e@8016 ]
-"35586
-[v _ODCOND `Vuc ~T0 @X0 0 e@8027 ]
-"38062
-[v _GIE `Vb ~T0 @X0 0 e@95 ]
-"29810
-[v _PPSLOCK `Vuc ~T0 @X0 0 e@7823 ]
-"29816
-[s S1309 :1 `uc 1 ]
-[n S1309 . PPSLOCKED ]
-"29815
-[u S1308 `S1309 1 ]
-[n S1308 . . ]
-"29820
-[v _PPSLOCKbits `VS1308 ~T0 @X0 0 e@7823 ]
-"804
-[s S42 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S42 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"803
-[u S41 `S42 1 ]
-[n S41 . . ]
-"815
-[v _TRISCbits `VS41 ~T0 @X0 0 e@19 ]
-"31748
-[v _RXPPS `Vuc ~T0 @X0 0 e@7883 ]
-"32902
-[v _RC5PPS `Vuc ~T0 @X0 0 e@7973 ]
+"13 bq25895.h
+[v _i2c_multi_read `(*uc ~T0 @X0 0 ef4`uc`uc`*uc`uc ]
+"12
+[v _i2c_multi_write `(uc ~T0 @X0 0 ef4`uc`uc`*uc`uc ]
+"15
+[v _i2c_single_read `(uc ~T0 @X0 0 ef2`uc`uc ]
+"14
+[v _i2c_single_write `(uc ~T0 @X0 0 ef3`uc`uc`uc ]
+"10 pic_i2c.h
+[v _i2c_start `(v ~T0 @X0 0 ef ]
+"14
+[v _i2c_write `(uc ~T0 @X0 0 ef1`uc ]
+"12
+[v _i2c_stop `(v ~T0 @X0 0 ef ]
+"11
+[v _i2c_restart `(v ~T0 @X0 0 ef ]
+"13
+[v _i2c_read `(uc ~T0 @X0 0 ef1`uc ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -13690,145 +13665,424 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
+[; ;pic_i2c.h: 9: void i2c_init();
+[; ;pic_i2c.h: 10: void i2c_start();
+[; ;pic_i2c.h: 11: void i2c_restart();
+[; ;pic_i2c.h: 12: void i2c_stop();
+[; ;pic_i2c.h: 13: char i2c_read(char ack);
+[; ;pic_i2c.h: 14: char i2c_write(char data);
+[; ;pic_i2c.h: 15: void i2c_resync();
+[; ;bq25895.h: 10: uint8_t init_bq25895(void);
+[; ;bq25895.h: 11: uint8_t bq25895_WDT_reset(void);
+[; ;bq25895.h: 12: uint8_t i2c_multi_write(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length);
+[; ;bq25895.h: 13: uint8_t * i2c_multi_read(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length);
+[; ;bq25895.h: 14: uint8_t i2c_single_write(uint8_t device_addr, uint8_t reg_addr, uint8_t data);
+[; ;bq25895.h: 15: uint8_t i2c_single_read(uint8_t device_addr, uint8_t reg_addr);
 [; ;pin_manager.h: 230: void PIN_MANAGER_Initialize (void);
 [; ;pin_manager.h: 242: void PIN_MANAGER_IOC(void);
-[; ;stdbool.h: 12: typedef unsigned char bool;
-"52 mcc_generated_files/pin_manager.c
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 1 ef ]
-"53
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;spi1.h: 59: typedef enum {
+[; ;spi1.h: 60: SPI1_DEFAULT
+[; ;spi1.h: 61: } spi1_modes_t;
+[; ;spi1.h: 63: void SPI1_Initialize(void);
+[; ;spi1.h: 64: bool SPI1_Open(spi1_modes_t spi1UniqueConfiguration);
+[; ;spi1.h: 65: void SPI1_Close(void);
+[; ;spi1.h: 66: uint8_t SPI1_ExchangeByte(uint8_t data);
+[; ;spi1.h: 67: void SPI1_ExchangeBlock(void *block, size_t blockSize);
+[; ;spi1.h: 68: void SPI1_WriteBlock(void *block, size_t blockSize);
+[; ;spi1.h: 69: void SPI1_ReadBlock(void *block, size_t blockSize);
+[; ;spi1.h: 70: void SPI1_WriteByte(uint8_t byte);
+[; ;spi1.h: 71: uint8_t SPI1_ReadByte(void);
+[; ;eusart.h: 75: typedef union {
+[; ;eusart.h: 76: struct {
+[; ;eusart.h: 77: unsigned perr : 1;
+[; ;eusart.h: 78: unsigned ferr : 1;
+[; ;eusart.h: 79: unsigned oerr : 1;
+[; ;eusart.h: 80: unsigned reserved : 5;
+[; ;eusart.h: 81: };
+[; ;eusart.h: 82: uint8_t status;
+[; ;eusart.h: 83: }eusart_status_t;
+[; ;eusart.h: 85: void printf_string(const char *data);
+[; ;eusart.h: 110: void EUSART_Initialize(void);
+[; ;eusart.h: 158: bool EUSART_is_tx_ready(void);
+[; ;eusart.h: 206: bool EUSART_is_rx_ready(void);
+[; ;eusart.h: 253: bool EUSART_is_tx_done(void);
+[; ;eusart.h: 301: eusart_status_t EUSART_get_last_status(void);
+[; ;eusart.h: 321: uint8_t EUSART_Read(void);
+[; ;eusart.h: 341: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 361: void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
+[; ;eusart.h: 379: void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
+[; ;eusart.h: 397: void EUSART_SetErrorHandler(void (* interruptHandler)(void));
+[; ;mcc.h: 71: void SYSTEM_Initialize(void);
+[; ;mcc.h: 84: void OSCILLATOR_Initialize(void);
+[; ;mcc.h: 97: void PMD_Initialize(void);
+[; ;pic_i2c.h: 9: void i2c_init();
+[; ;pic_i2c.h: 10: void i2c_start();
+[; ;pic_i2c.h: 11: void i2c_restart();
+[; ;pic_i2c.h: 12: void i2c_stop();
+[; ;pic_i2c.h: 13: char i2c_read(char ack);
+[; ;pic_i2c.h: 14: char i2c_write(char data);
+[; ;pic_i2c.h: 15: void i2c_resync();
+"8 bq25895.c
+[v _copybits8 `(uc ~T0 @X0 1 sf3`uc`uc`uc ]
 {
-[; ;pin_manager.c: 52: void PIN_MANAGER_Initialize(void)
-[; ;pin_manager.c: 53: {
-[e :U _PIN_MANAGER_Initialize ]
+[; ;bq25895.c: 8: static uint8_t copybits8(uint8_t value, uint8_t mask, uint8_t new_value) {return ((uint8_t)(value & (~mask)) | new_value);}
+[e :U _copybits8 ]
+[v _value `uc ~T0 @X0 1 r1 ]
+[v _mask `uc ~T0 @X0 1 r2 ]
+[v _new_value `uc ~T0 @X0 1 r3 ]
 [f ]
-[; ;pin_manager.c: 57: LATE = 0x00;
-"57
-[e = _LATE -> -> 0 `i `uc ]
-[; ;pin_manager.c: 58: LATD = 0x01;
-"58
-[e = _LATD -> -> 1 `i `uc ]
-[; ;pin_manager.c: 59: LATA = 0x00;
-"59
-[e = _LATA -> -> 0 `i `uc ]
-[; ;pin_manager.c: 60: LATB = 0x00;
-"60
-[e = _LATB -> -> 0 `i `uc ]
-[; ;pin_manager.c: 61: LATC = 0x00;
-"61
-[e = _LATC -> -> 0 `i `uc ]
-[; ;pin_manager.c: 66: TRISE = 0x07;
-"66
-[e = _TRISE -> -> 7 `i `uc ]
-[; ;pin_manager.c: 67: TRISA = 0x3F;
-"67
-[e = _TRISA -> -> 63 `i `uc ]
-[; ;pin_manager.c: 68: TRISB = 0xEF;
-"68
-[e = _TRISB -> -> 239 `i `uc ]
-[; ;pin_manager.c: 69: TRISC = 0x9F;
-"69
-[e = _TRISC -> -> 159 `i `uc ]
-[; ;pin_manager.c: 70: TRISD = 0xFE;
-"70
-[e = _TRISD -> -> 254 `i `uc ]
-[; ;pin_manager.c: 75: ANSELD = 0xFE;
-"75
-[e = _ANSELD -> -> 254 `i `uc ]
-[; ;pin_manager.c: 76: ANSELC = 0x00;
-"76
-[e = _ANSELC -> -> 0 `i `uc ]
-[; ;pin_manager.c: 77: ANSELB = 0xFF;
-"77
-[e = _ANSELB -> -> 255 `i `uc ]
-[; ;pin_manager.c: 78: ANSELE = 0x07;
-"78
-[e = _ANSELE -> -> 7 `i `uc ]
-[; ;pin_manager.c: 79: ANSELA = 0xFF;
-"79
-[e = _ANSELA -> -> 255 `i `uc ]
-[; ;pin_manager.c: 84: WPUD = 0x00;
-"84
-[e = _WPUD -> -> 0 `i `uc ]
-[; ;pin_manager.c: 85: WPUE = 0x00;
-"85
-[e = _WPUE -> -> 0 `i `uc ]
-[; ;pin_manager.c: 86: WPUB = 0x00;
-"86
-[e = _WPUB -> -> 0 `i `uc ]
-[; ;pin_manager.c: 87: WPUA = 0x00;
-"87
-[e = _WPUA -> -> 0 `i `uc ]
-[; ;pin_manager.c: 88: WPUC = 0x18;
-"88
-[e = _WPUC -> -> 24 `i `uc ]
-[; ;pin_manager.c: 93: ODCONE = 0x00;
-"93
-[e = _ODCONE -> -> 0 `i `uc ]
-[; ;pin_manager.c: 94: ODCONA = 0x00;
-"94
-[e = _ODCONA -> -> 0 `i `uc ]
-[; ;pin_manager.c: 95: ODCONB = 0x00;
-"95
-[e = _ODCONB -> -> 0 `i `uc ]
-[; ;pin_manager.c: 96: ODCONC = 0x00;
-"96
-[e = _ODCONC -> -> 0 `i `uc ]
-[; ;pin_manager.c: 97: ODCOND = 0x00;
-"97
-[e = _ODCOND -> -> 0 `i `uc ]
-"99
-[v _state `uc ~T0 @X0 1 a ]
-[; ;pin_manager.c: 99: bool state = GIE;
-[e = _state -> -> _GIE `i `uc ]
-[; ;pin_manager.c: 100: GIE = 0;
-"100
-[e = _GIE -> -> 0 `i `b ]
-[; ;pin_manager.c: 101: PPSLOCK = 0x55;
-"101
-[e = _PPSLOCK -> -> 85 `i `uc ]
-[; ;pin_manager.c: 102: PPSLOCK = 0xAA;
-"102
-[e = _PPSLOCK -> -> 170 `i `uc ]
-[; ;pin_manager.c: 103: PPSLOCKbits.PPSLOCKED = 0x00;
-"103
-[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
-[; ;pin_manager.c: 105: TRISCbits.TRISC5 = 0;
-"105
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
-[; ;pin_manager.c: 106: TRISCbits.TRISC7 = 1;
-"106
-[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
-[; ;pin_manager.c: 107: RXPPS = 0x17;
-"107
-[e = _RXPPS -> -> 23 `i `uc ]
-[; ;pin_manager.c: 108: RC5PPS = 0x10;
-"108
-[e = _RC5PPS -> -> 16 `i `uc ]
-[; ;pin_manager.c: 121: PPSLOCK = 0x55;
-"121
-[e = _PPSLOCK -> -> 85 `i `uc ]
-[; ;pin_manager.c: 122: PPSLOCK = 0xAA;
-"122
-[e = _PPSLOCK -> -> 170 `i `uc ]
-[; ;pin_manager.c: 123: PPSLOCKbits.PPSLOCKED = 0x01;
-"123
-[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
-[; ;pin_manager.c: 124: GIE = state;
-"124
-[e = _GIE -> _state `b ]
-[; ;pin_manager.c: 126: }
-"126
-[e :UE 1613 ]
+[e ) -> | -> -> & -> _value `i ~ -> _mask `i `uc `i -> _new_value `i `uc ]
+[e $UE 1616  ]
+[e :UE 1616 ]
 }
-"127
-[v _PIN_MANAGER_IOC `(v ~T0 @X0 1 ef ]
-"128
+"11
+[v _init_bq25895 `(uc ~T0 @X0 1 ef ]
+"12
 {
-[; ;pin_manager.c: 127: void PIN_MANAGER_IOC(void)
-[; ;pin_manager.c: 128: {
-[e :U _PIN_MANAGER_IOC ]
+[; ;bq25895.c: 11: uint8_t init_bq25895(void)
+[; ;bq25895.c: 12: {
+[e :U _init_bq25895 ]
 [f ]
-[; ;pin_manager.c: 129: }
-"129
-[e :UE 1614 ]
+"13
+[v _I2C_rsp `uc ~T0 @X0 1 a ]
+"14
+[v _I2c_buff `uc ~T0 @X0 -> 9 `i a ]
+[; ;bq25895.c: 13: uint8_t I2C_rsp;
+[; ;bq25895.c: 14: uint8_t I2c_buff[9];
+[; ;bq25895.c: 16: i2c_multi_read(0xD4, 0x00, I2c_buff, 9);
+"16
+[e ( _i2c_multi_read (4 , , , -> -> 212 `i `uc -> -> 0 `i `uc &U _I2c_buff -> -> 9 `i `uc ]
+[; ;bq25895.c: 17: I2c_buff[0] = copybits8(I2c_buff[0], 0b01111111, 0b00010100);
+"17
+[e = *U + &U _I2c_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux ( _copybits8 (3 , , *U + &U _I2c_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux -> -> 127 `i `uc -> -> 20 `i `uc ]
+[; ;bq25895.c: 18: I2c_buff[1] = copybits8(I2c_buff[1], 0b00000000, 0b00000000);
+"18
+[e = *U + &U _I2c_buff * -> -> -> 1 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux ( _copybits8 (3 , , *U + &U _I2c_buff * -> -> -> 1 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;bq25895.c: 19: I2c_buff[2] = copybits8(I2c_buff[2], 0b00001101, 0b00000000);
+"19
+[e = *U + &U _I2c_buff * -> -> -> 2 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux ( _copybits8 (3 , , *U + &U _I2c_buff * -> -> -> 2 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux -> -> 13 `i `uc -> -> 0 `i `uc ]
+[; ;bq25895.c: 20: I2c_buff[3] = copybits8(I2c_buff[3], 0b01100000, 0b01000000);
+"20
+[e = *U + &U _I2c_buff * -> -> -> 3 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux ( _copybits8 (3 , , *U + &U _I2c_buff * -> -> -> 3 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux -> -> 96 `i `uc -> -> 64 `i `uc ]
+[; ;bq25895.c: 21: I2c_buff[4] = copybits8(I2c_buff[4], 0b01111111, 0b00010000);
+"21
+[e = *U + &U _I2c_buff * -> -> -> 4 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux ( _copybits8 (3 , , *U + &U _I2c_buff * -> -> -> 4 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux -> -> 127 `i `uc -> -> 16 `i `uc ]
+[; ;bq25895.c: 22: I2c_buff[5] = copybits8(I2c_buff[5], 0b00001111, 0b00000011);
+"22
+[e = *U + &U _I2c_buff * -> -> -> 5 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux ( _copybits8 (3 , , *U + &U _I2c_buff * -> -> -> 5 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux -> -> 15 `i `uc -> -> 3 `i `uc ]
+[; ;bq25895.c: 23: I2c_buff[6] = copybits8(I2c_buff[6], 0b00000000, 0b00000000);
+"23
+[e = *U + &U _I2c_buff * -> -> -> 6 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux ( _copybits8 (3 , , *U + &U _I2c_buff * -> -> -> 6 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;bq25895.c: 24: I2c_buff[7] = copybits8(I2c_buff[7], 0b01000110, 0b00000100);
+"24
+[e = *U + &U _I2c_buff * -> -> -> 7 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux ( _copybits8 (3 , , *U + &U _I2c_buff * -> -> -> 7 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux -> -> 70 `i `uc -> -> 4 `i `uc ]
+[; ;bq25895.c: 25: I2c_buff[8] = copybits8(I2c_buff[8], 0b00000011, 0b00000000);
+"25
+[e = *U + &U _I2c_buff * -> -> -> 8 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux ( _copybits8 (3 , , *U + &U _I2c_buff * -> -> -> 8 `i `ui `ux -> -> # *U &U _I2c_buff `ui `ux -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;bq25895.c: 26: I2C_rsp = i2c_multi_write(0xD4, 0x00, I2c_buff, 9);
+"26
+[e = _I2C_rsp ( _i2c_multi_write (4 , , , -> -> 212 `i `uc -> -> 0 `i `uc &U _I2c_buff -> -> 9 `i `uc ]
+[; ;bq25895.c: 28: return I2C_rsp;
+"28
+[e ) _I2C_rsp ]
+[e $UE 1617  ]
+[; ;bq25895.c: 29: }
+"29
+[e :UE 1617 ]
+}
+"30
+[v _bq25895_WDT_reset `(uc ~T0 @X0 1 ef ]
+"31
+{
+[; ;bq25895.c: 30: uint8_t bq25895_WDT_reset(void)
+[; ;bq25895.c: 31: {
+[e :U _bq25895_WDT_reset ]
+[f ]
+"33
+[v _Reg_03_value `uc ~T0 @X0 1 a ]
+[; ;bq25895.c: 33: uint8_t Reg_03_value;
+[; ;bq25895.c: 34: Reg_03_value = i2c_single_read(0xD4, 0x03);
+"34
+[e = _Reg_03_value ( _i2c_single_read (2 , -> -> 212 `i `uc -> -> 3 `i `uc ]
+[; ;bq25895.c: 36: Reg_03_value = copybits8(Reg_03_value, 0b01100000, 0b01000000);
+"36
+[e = _Reg_03_value ( _copybits8 (3 , , _Reg_03_value -> -> 96 `i `uc -> -> 64 `i `uc ]
+[; ;bq25895.c: 38: i2c_single_write(0xD4, 0x03, Reg_03_value);
+"38
+[e ( _i2c_single_write (3 , , -> -> 212 `i `uc -> -> 3 `i `uc _Reg_03_value ]
+[; ;bq25895.c: 39: return 0;
+"39
+[e ) -> -> 0 `i `uc ]
+[e $UE 1618  ]
+[; ;bq25895.c: 40: }
+"40
+[e :UE 1618 ]
+}
+"42
+[v _i2c_multi_write `(uc ~T0 @X0 1 ef4`uc`uc`*uc`uc ]
+"43
+{
+[; ;bq25895.c: 42: uint8_t i2c_multi_write(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length)
+[; ;bq25895.c: 43: {
+[e :U _i2c_multi_write ]
+"42
+[v _device_addr `uc ~T0 @X0 1 r1 ]
+[v _reg_addr `uc ~T0 @X0 1 r2 ]
+[v _data `*uc ~T0 @X0 1 r3 ]
+[v _length `uc ~T0 @X0 1 r4 ]
+"43
+[f ]
+"44
+[v _I2C_rsp `uc ~T0 @X0 1 a ]
+"45
+[v _j `uc ~T0 @X0 1 a ]
+[; ;bq25895.c: 44: uint8_t I2C_rsp;
+[; ;bq25895.c: 45: uint8_t j;
+[; ;bq25895.c: 46: i2c_start();
+"46
+[e ( _i2c_start ..  ]
+[; ;bq25895.c: 47: I2C_rsp = i2c_write(device_addr);
+"47
+[e = _I2C_rsp ( _i2c_write (1 _device_addr ]
+[; ;bq25895.c: 48: I2C_rsp = i2c_write(reg_addr);
+"48
+[e = _I2C_rsp ( _i2c_write (1 _reg_addr ]
+[; ;bq25895.c: 49: for(j=0; j<length; j++)
+"49
+{
+[e = _j -> -> 0 `i `uc ]
+[e $U 1623  ]
+"50
+[e :U 1620 ]
+[; ;bq25895.c: 50: {
+{
+[; ;bq25895.c: 51: I2C_rsp = i2c_write(data[j]);
+"51
+[e = _I2C_rsp ( _i2c_write (1 *U + _data * -> _j `ux -> -> # *U _data `ui `ux ]
+"52
+}
+"49
+[e ++ _j -> -> 1 `i `uc ]
+[e :U 1623 ]
+[e $ < -> _j `i -> _length `i 1620  ]
+[e :U 1621 ]
+"52
+}
+[; ;bq25895.c: 52: }
+[; ;bq25895.c: 53: i2c_stop();
+"53
+[e ( _i2c_stop ..  ]
+[; ;bq25895.c: 54: return I2C_rsp;
+"54
+[e ) _I2C_rsp ]
+[e $UE 1619  ]
+[; ;bq25895.c: 55: }
+"55
+[e :UE 1619 ]
+}
+"57
+[v _i2c_multi_read `(*uc ~T0 @X0 1 ef4`uc`uc`*uc`uc ]
+"58
+{
+[; ;bq25895.c: 57: uint8_t * i2c_multi_read(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length)
+[; ;bq25895.c: 58: {
+[e :U _i2c_multi_read ]
+"57
+[v _device_addr `uc ~T0 @X0 1 r1 ]
+[v _reg_addr `uc ~T0 @X0 1 r2 ]
+[v _data `*uc ~T0 @X0 1 r3 ]
+[v _length `uc ~T0 @X0 1 r4 ]
+"58
+[f ]
+"59
+[v _I2C_rsp `uc ~T0 @X0 1 a ]
+"60
+[v _j `uc ~T0 @X0 1 a ]
+[; ;bq25895.c: 59: uint8_t I2C_rsp;
+[; ;bq25895.c: 60: uint8_t j;
+[; ;bq25895.c: 61: i2c_start();
+"61
+[e ( _i2c_start ..  ]
+[; ;bq25895.c: 62: I2C_rsp = i2c_write(device_addr);
+"62
+[e = _I2C_rsp ( _i2c_write (1 _device_addr ]
+[; ;bq25895.c: 63: I2C_rsp = i2c_write(reg_addr);
+"63
+[e = _I2C_rsp ( _i2c_write (1 _reg_addr ]
+[; ;bq25895.c: 64: i2c_restart();
+"64
+[e ( _i2c_restart ..  ]
+[; ;bq25895.c: 65: I2C_rsp = (uint8_t)i2c_write(device_addr + 1);
+"65
+[e = _I2C_rsp ( _i2c_write (1 -> + -> _device_addr `i -> 1 `i `uc ]
+[; ;bq25895.c: 67: for(j=0; j<length; j++)
+"67
+{
+[e = _j -> -> 0 `i `uc ]
+[e $U 1628  ]
+"68
+[e :U 1625 ]
+[; ;bq25895.c: 68: {
+{
+[; ;bq25895.c: 69: if(j == (length - 1))
+"69
+[e $ ! == -> _j `i - -> _length `i -> 1 `i 1629  ]
+[; ;bq25895.c: 70: {
+"70
+{
+[; ;bq25895.c: 71: data[j] = i2c_read(1);
+"71
+[e = *U + _data * -> _j `ux -> -> # *U _data `ui `ux ( _i2c_read (1 -> -> 1 `i `uc ]
+"72
+}
+[; ;bq25895.c: 72: }
+[e $U 1630  ]
+"73
+[e :U 1629 ]
+[; ;bq25895.c: 73: else
+[; ;bq25895.c: 74: {
+"74
+{
+[; ;bq25895.c: 75: data[j] = i2c_read(0);
+"75
+[e = *U + _data * -> _j `ux -> -> # *U _data `ui `ux ( _i2c_read (1 -> -> 0 `i `uc ]
+"76
+}
+[e :U 1630 ]
+"77
+}
+"67
+[e ++ _j -> -> 1 `i `uc ]
+[e :U 1628 ]
+[e $ < -> _j `i -> _length `i 1625  ]
+[e :U 1626 ]
+"77
+}
+[; ;bq25895.c: 76: }
+[; ;bq25895.c: 77: }
+[; ;bq25895.c: 79: i2c_stop();
+"79
+[e ( _i2c_stop ..  ]
+[; ;bq25895.c: 81: return data;
+"81
+[e ) _data ]
+[e $UE 1624  ]
+[; ;bq25895.c: 82: }
+"82
+[e :UE 1624 ]
+}
+"84
+[v _i2c_single_write `(uc ~T0 @X0 1 ef3`uc`uc`uc ]
+"85
+{
+[; ;bq25895.c: 84: uint8_t i2c_single_write(uint8_t device_addr, uint8_t reg_addr, uint8_t data)
+[; ;bq25895.c: 85: {
+[e :U _i2c_single_write ]
+"84
+[v _device_addr `uc ~T0 @X0 1 r1 ]
+[v _reg_addr `uc ~T0 @X0 1 r2 ]
+[v _data `uc ~T0 @X0 1 r3 ]
+"85
+[f ]
+"86
+[v _I2C_rsp `uc ~T0 @X0 1 a ]
+[; ;bq25895.c: 86: uint8_t I2C_rsp;
+[; ;bq25895.c: 87: i2c_start();
+"87
+[e ( _i2c_start ..  ]
+[; ;bq25895.c: 88: I2C_rsp = i2c_write(device_addr);
+"88
+[e = _I2C_rsp ( _i2c_write (1 _device_addr ]
+[; ;bq25895.c: 89: I2C_rsp = i2c_write(reg_addr);
+"89
+[e = _I2C_rsp ( _i2c_write (1 _reg_addr ]
+[; ;bq25895.c: 90: I2C_rsp = i2c_write(data);
+"90
+[e = _I2C_rsp ( _i2c_write (1 _data ]
+[; ;bq25895.c: 91: i2c_stop();
+"91
+[e ( _i2c_stop ..  ]
+[; ;bq25895.c: 92: return I2C_rsp;
+"92
+[e ) _I2C_rsp ]
+[e $UE 1631  ]
+[; ;bq25895.c: 93: }
+"93
+[e :UE 1631 ]
+}
+"95
+[v _i2c_single_read `(uc ~T0 @X0 1 ef2`uc`uc ]
+"96
+{
+[; ;bq25895.c: 95: uint8_t i2c_single_read(uint8_t device_addr, uint8_t reg_addr)
+[; ;bq25895.c: 96: {
+[e :U _i2c_single_read ]
+"95
+[v _device_addr `uc ~T0 @X0 1 r1 ]
+[v _reg_addr `uc ~T0 @X0 1 r2 ]
+"96
+[f ]
+"97
+[v _I2C_rsp `uc ~T0 @X0 1 a ]
+"98
+[v _I2C_data `uc ~T0 @X0 1 a ]
+[; ;bq25895.c: 97: uint8_t I2C_rsp;
+[; ;bq25895.c: 98: uint8_t I2C_data;
+[; ;bq25895.c: 99: i2c_start();
+"99
+[e ( _i2c_start ..  ]
+[; ;bq25895.c: 100: I2C_rsp = i2c_write(device_addr);
+"100
+[e = _I2C_rsp ( _i2c_write (1 _device_addr ]
+[; ;bq25895.c: 101: I2C_rsp = i2c_write(reg_addr);
+"101
+[e = _I2C_rsp ( _i2c_write (1 _reg_addr ]
+[; ;bq25895.c: 102: i2c_restart();
+"102
+[e ( _i2c_restart ..  ]
+[; ;bq25895.c: 103: I2C_rsp = (uint8_t)i2c_write(device_addr + 1);
+"103
+[e = _I2C_rsp ( _i2c_write (1 -> + -> _device_addr `i -> 1 `i `uc ]
+[; ;bq25895.c: 104: I2C_data = i2c_read(1);
+"104
+[e = _I2C_data ( _i2c_read (1 -> -> 1 `i `uc ]
+[; ;bq25895.c: 105: i2c_stop();
+"105
+[e ( _i2c_stop ..  ]
+[; ;bq25895.c: 106: return I2C_data;
+"106
+[e ) _I2C_data ]
+[e $UE 1632  ]
+[; ;bq25895.c: 107: }
+"107
+[e :UE 1632 ]
 }

@@ -7,7 +7,7 @@
 #include "port.h"
 #include "decawave.h"
 #include "mcc_generated_files/eusart.h"
-
+#include "pic_control_fun.h"
 
 /* Inter-ranging delay period, in milliseconds. */
 #define RNG_DELAY_MS 1000
@@ -86,7 +86,9 @@ uint16_t RNG_ADDR;
 void dw_main(void)
 {
 	char data[50];
+    #if (PRINT_LOG)
     printf_string("\n\rdw_main");
+    #endif
 	/* Reset and initialise DW1000.
 	 * For initialisation, DW1000 clocks must be temporarily set to crystal speed. After initialisation SPI rate can be increased for optimum
 	 * performance. */
@@ -95,14 +97,24 @@ void dw_main(void)
 	//port_set_dw_ic_spi_fastrate();
 	if (dwt_initialise(DWT_DW_INIT) == DWT_ERROR)
 	{
+        #if (PRINT_LOG)
 		printf_string("\n\rDWM_ERROR");
+        #endif
 		while (1)
 		{ };
 	}
 	if(dwt_configure(&config) < 0)
+    {
+        #if (PRINT_LOG)
 		printf_string("\n\rCONFIG_ERROR");
+        #endif
+    }
 	else
+    {
+        #if (PRINT_LOG)
 		printf_string("\n\rCONFIG_SUCCESS");
+        #endif
+    }
 	/* Configure the TX spectrum parameters (power, PG delay and PG count) */
 	dwt_configuretxrf(&txconfig_options_ch9);
     //read_uwb_reg();
@@ -119,17 +131,21 @@ void dw_main(void)
 	dwt_settxantennadelay(TX_ANT_DLY);
 	memcpy(&tx_blink_msg[DW_ADDR_IDX], &ADDR, 8);
 	/* Loop forever initiating ranging exchanges. */
+    #if (PRINT_LOG)
 	printf_string("\n\rDWM_OK");
-	while (1)
+    #endif
+	while (0)
 	{	
         //dwt_wakeup_ic();
        // __delay_ms(1000);
-        Sleep(100); // Time needed for DW3000 to start up (transition from INIT_RC to IDLE_RC, or could wait for SPIRDY event)
+        Sleep(1000); // Time needed for DW3000 to start up (transition from INIT_RC to IDLE_RC, or could wait for SPIRDY event)
 //        while (!dwt_checkidlerc()) /* Need to make sure DW IC is in IDLE_RC before proceeding */
 //        { };
         /* Restore the required configurations on wake */
        // dwt_restoreconfig();
-         
+        #if (PRINT_LOG)
+        printf_string("\n\rDataSend");
+        #endif
         tx_blink_msg[DW_SN_IDX]++;
         dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0); /* Zero offset in TX buffer. */
         dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0); /* Zero offset in TX buffer, ranging. */
@@ -158,6 +174,17 @@ void dw_main(void)
         
 				//				start_dw_transmit();
 	}
+}
+
+void transmitt_beacon_pkt(void)
+{	
+    #if (PRINT_LOG)
+    printf_string("\n\rDataSend"); 
+    #endif
+    tx_blink_msg[DW_SN_IDX]++;
+    dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0); /* Zero offset in TX buffer. */
+    dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0); /* Zero offset in TX buffer, ranging. */
+    dwt_starttx(DWT_START_TX_IMMEDIATE);       
 }
 
 uint64_t get_sys_timestamp_u64(void)

@@ -284,7 +284,6 @@ void dwt_xfer3000
 	}
 	case DW3000_SPI_RD_BIT:
 	{
-        // printf_string("\n\rDW3000_SPI_RD_BIT");
 		readfromspi(cnt, header, length, buffer);
 		//check that the SPI read has correct CRC-8 byte
 		//also don't do for SPICRC_CFG_ID register itself to prevent infinite recursion
@@ -397,8 +396,6 @@ uint32_t dwt_read32bitoffsetreg( uint32_t regFileID,  uint32_t regOffset)
 	int     j ;
 	uint32_t  regval = 0 ;
 	uint8_t   buffer[4] ;
-    
-   //  printf_string("\n\rbefore_Read");
 
 	dwt_readfromdevice(regFileID,regOffset,4,buffer); // Read 4 bytes (32-bits) register into buffer
     
@@ -781,7 +778,6 @@ void _dwt_kick_dgc_on_wakeup(int8_t channel)
  */
 int dwt_initialise(int mode)
 {
-   // printf_string("\n\rdwt_initialise");
 //	uint16_t otp_addr;
 	uint32_t ldo_tune_lo;
 	uint32_t ldo_tune_hi;
@@ -803,7 +799,9 @@ int dwt_initialise(int mode)
     
 	if (dwt_check_dev_id()!=DWT_SUCCESS)
 	{
+        #if (PRINT_LOG)
         printf_string("\n\rreturn_Error");
+        #endif
 		return DWT_ERROR;
 	}
     
@@ -3084,7 +3082,6 @@ int dwt_check_dev_id(void)
 	
 
 	dev_id = dwt_readdevid();
-    // printf_string("\n\rdwt_after_Readdevid");
 
 	if (!((DWT_C0_PDOA_DEV_ID == dev_id) || (DWT_C0_DEV_ID == dev_id)))
 	{

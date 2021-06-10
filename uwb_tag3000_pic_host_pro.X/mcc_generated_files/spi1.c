@@ -63,7 +63,7 @@ static const spi1_configuration_t spi1_configuration[] = {
 
 void SPI1_Initialize(void)
 {
-    bool state = GIE;
+   bool state = GIE;
    GIE = 0;
    PPSLOCK = 0x55;
    PPSLOCK = 0xAA;
@@ -97,8 +97,6 @@ bool SPI1_Open(spi1_modes_t spi1UniqueConfiguration)
         char print_data[20];
         SSP1STAT = spi1_configuration[spi1UniqueConfiguration].stat;
         SSP1CON1 = spi1_configuration[spi1UniqueConfiguration].con1;
-        //sprintf(print_data,"\n\rSPI: %02X,%02X", SSP1STAT,SSP1CON1 );
-        //printf_string(print_data);
         SSP1CON2 = 0x00;
         SSP1ADD  = spi1_configuration[spi1UniqueConfiguration].add;
         TRISCbits.TRISC2 = spi1_configuration[spi1UniqueConfiguration].operation;

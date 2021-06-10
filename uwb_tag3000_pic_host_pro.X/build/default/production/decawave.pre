@@ -1003,6 +1003,7 @@ uint64_t get_sys_timestamp_u64(void);
 uint64_t get_tx_timestamp_u64(void);
 uint64_t get_rx_timestamp_u64(void);
 void dw_main(void);
+void transmitt_beacon_pkt(void);
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -19166,6 +19167,17 @@ void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
 # 397
 void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 
+# 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
+typedef int ptrdiff_t;
+
+# 21 "pic_control_fun.h"
+extern uint8_t battery_level;
+
+void process_pmic_status(uint8_t * status, uint8_t length);
+void pmic_status_read(void);
+uint8_t lipo_battery_level(uint16_t battery_volt);
+void set_MSSSP1_mode(uint8_t mode);
+
 # 17 "decawave.c"
 static dwt_config_t config = {
 9,
@@ -19214,45 +19226,71 @@ uint16_t RNG_ADDR;
 void dw_main(void)
 {
 char data[50];
+
 printf_string("\n\rdw_main");
 
-# 93
+# 95
 reset_DWIC();
 
 
 if (dwt_initialise(0x0) == (-1))
 {
+
 printf_string("\n\rDWM_ERROR");
+
 while (1)
 { };
 }
 if(dwt_configure(&config) < 0)
+{
+
 printf_string("\n\rCONFIG_ERROR");
+
+}
 else
+{
+
 printf_string("\n\rCONFIG_SUCCESS");
+
+}
 
 dwt_configuretxrf(&txconfig_options_ch9);
 
-# 118
+# 130
 dwt_setrxantennadelay(16385);
 dwt_settxantennadelay(16385);
 __builtin_memcpy(&tx_blink_msg[5],&ADDR,8);
 
+
 printf_string("\n\rDWM_OK");
-while (1)
+
+while (0)
 {
 
 
-Sleep(100);
+Sleep(1000);
 
-# 133
+# 147
+printf_string("\n\rDataSend");
+
 tx_blink_msg[2]++;
 dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
 dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
 dwt_starttx(0x00);
 
-# 160
+# 176
 }
+}
+
+void transmitt_beacon_pkt(void)
+{
+
+printf_string("\n\rDataSend");
+
+tx_blink_msg[2]++;
+dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
+dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
+dwt_starttx(0x00);
 }
 
 uint64_t get_sys_timestamp_u64(void)
@@ -19277,7 +19315,7 @@ uint64_t get_rx_timestamp_u64(void)
 {
 uint64_t ts = {0, 0};
 
-# 189
+# 216
 return ts;
 }
 

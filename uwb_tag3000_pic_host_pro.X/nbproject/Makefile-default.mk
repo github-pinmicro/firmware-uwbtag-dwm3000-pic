@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/pin_manager.c mcc_generated_files/mcc.c mcc_generated_files/device_config.c mcc_generated_files/eusart.c mcc_generated_files/spi1.c main.c deca_device.c deca_mutex.c deca_sleep.c deca_spi.c port.c decawave.c
+SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/pin_manager.c mcc_generated_files/mcc.c mcc_generated_files/device_config.c mcc_generated_files/eusart.c mcc_generated_files/spi1.c main.c deca_device.c deca_mutex.c deca_sleep.c deca_spi.c port.c decawave.c bq25895.c pic_control_fun.c pic_i2c.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/device_config.p1 ${OBJECTDIR}/mcc_generated_files/eusart.p1 ${OBJECTDIR}/mcc_generated_files/spi1.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/deca_device.p1 ${OBJECTDIR}/deca_mutex.p1 ${OBJECTDIR}/deca_sleep.p1 ${OBJECTDIR}/deca_spi.p1 ${OBJECTDIR}/port.p1 ${OBJECTDIR}/decawave.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/pin_manager.p1.d ${OBJECTDIR}/mcc_generated_files/mcc.p1.d ${OBJECTDIR}/mcc_generated_files/device_config.p1.d ${OBJECTDIR}/mcc_generated_files/eusart.p1.d ${OBJECTDIR}/mcc_generated_files/spi1.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/deca_device.p1.d ${OBJECTDIR}/deca_mutex.p1.d ${OBJECTDIR}/deca_sleep.p1.d ${OBJECTDIR}/deca_spi.p1.d ${OBJECTDIR}/port.p1.d ${OBJECTDIR}/decawave.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/device_config.p1 ${OBJECTDIR}/mcc_generated_files/eusart.p1 ${OBJECTDIR}/mcc_generated_files/spi1.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/deca_device.p1 ${OBJECTDIR}/deca_mutex.p1 ${OBJECTDIR}/deca_sleep.p1 ${OBJECTDIR}/deca_spi.p1 ${OBJECTDIR}/port.p1 ${OBJECTDIR}/decawave.p1 ${OBJECTDIR}/bq25895.p1 ${OBJECTDIR}/pic_control_fun.p1 ${OBJECTDIR}/pic_i2c.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/pin_manager.p1.d ${OBJECTDIR}/mcc_generated_files/mcc.p1.d ${OBJECTDIR}/mcc_generated_files/device_config.p1.d ${OBJECTDIR}/mcc_generated_files/eusart.p1.d ${OBJECTDIR}/mcc_generated_files/spi1.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/deca_device.p1.d ${OBJECTDIR}/deca_mutex.p1.d ${OBJECTDIR}/deca_sleep.p1.d ${OBJECTDIR}/deca_spi.p1.d ${OBJECTDIR}/port.p1.d ${OBJECTDIR}/decawave.p1.d ${OBJECTDIR}/bq25895.p1.d ${OBJECTDIR}/pic_control_fun.p1.d ${OBJECTDIR}/pic_i2c.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/device_config.p1 ${OBJECTDIR}/mcc_generated_files/eusart.p1 ${OBJECTDIR}/mcc_generated_files/spi1.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/deca_device.p1 ${OBJECTDIR}/deca_mutex.p1 ${OBJECTDIR}/deca_sleep.p1 ${OBJECTDIR}/deca_spi.p1 ${OBJECTDIR}/port.p1 ${OBJECTDIR}/decawave.p1
+OBJECTFILES=${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/device_config.p1 ${OBJECTDIR}/mcc_generated_files/eusart.p1 ${OBJECTDIR}/mcc_generated_files/spi1.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/deca_device.p1 ${OBJECTDIR}/deca_mutex.p1 ${OBJECTDIR}/deca_sleep.p1 ${OBJECTDIR}/deca_spi.p1 ${OBJECTDIR}/port.p1 ${OBJECTDIR}/decawave.p1 ${OBJECTDIR}/bq25895.p1 ${OBJECTDIR}/pic_control_fun.p1 ${OBJECTDIR}/pic_i2c.p1
 
 # Source Files
-SOURCEFILES=mcc_generated_files/pin_manager.c mcc_generated_files/mcc.c mcc_generated_files/device_config.c mcc_generated_files/eusart.c mcc_generated_files/spi1.c main.c deca_device.c deca_mutex.c deca_sleep.c deca_spi.c port.c decawave.c
+SOURCEFILES=mcc_generated_files/pin_manager.c mcc_generated_files/mcc.c mcc_generated_files/device_config.c mcc_generated_files/eusart.c mcc_generated_files/spi1.c main.c deca_device.c deca_mutex.c deca_sleep.c deca_spi.c port.c decawave.c bq25895.c pic_control_fun.c pic_i2c.c
 
 
 
@@ -190,6 +190,30 @@ ${OBJECTDIR}/decawave.p1: decawave.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/decawave.d ${OBJECTDIR}/decawave.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/decawave.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/bq25895.p1: bq25895.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/bq25895.p1.d 
+	@${RM} ${OBJECTDIR}/bq25895.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=pickit3    --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/bq25895.p1 bq25895.c 
+	@-${MV} ${OBJECTDIR}/bq25895.d ${OBJECTDIR}/bq25895.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/bq25895.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/pic_control_fun.p1: pic_control_fun.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pic_control_fun.p1.d 
+	@${RM} ${OBJECTDIR}/pic_control_fun.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=pickit3    --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/pic_control_fun.p1 pic_control_fun.c 
+	@-${MV} ${OBJECTDIR}/pic_control_fun.d ${OBJECTDIR}/pic_control_fun.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/pic_control_fun.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/pic_i2c.p1: pic_i2c.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pic_i2c.p1.d 
+	@${RM} ${OBJECTDIR}/pic_i2c.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=pickit3    --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/pic_i2c.p1 pic_i2c.c 
+	@-${MV} ${OBJECTDIR}/pic_i2c.d ${OBJECTDIR}/pic_i2c.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/pic_i2c.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/mcc_generated_files/pin_manager.p1: mcc_generated_files/pin_manager.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
@@ -286,6 +310,30 @@ ${OBJECTDIR}/decawave.p1: decawave.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/decawave.p1 decawave.c 
 	@-${MV} ${OBJECTDIR}/decawave.d ${OBJECTDIR}/decawave.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/decawave.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/bq25895.p1: bq25895.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/bq25895.p1.d 
+	@${RM} ${OBJECTDIR}/bq25895.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/bq25895.p1 bq25895.c 
+	@-${MV} ${OBJECTDIR}/bq25895.d ${OBJECTDIR}/bq25895.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/bq25895.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/pic_control_fun.p1: pic_control_fun.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pic_control_fun.p1.d 
+	@${RM} ${OBJECTDIR}/pic_control_fun.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/pic_control_fun.p1 pic_control_fun.c 
+	@-${MV} ${OBJECTDIR}/pic_control_fun.d ${OBJECTDIR}/pic_control_fun.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/pic_control_fun.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/pic_i2c.p1: pic_i2c.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pic_i2c.p1.d 
+	@${RM} ${OBJECTDIR}/pic_i2c.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/pic_i2c.p1 pic_i2c.c 
+	@-${MV} ${OBJECTDIR}/pic_i2c.d ${OBJECTDIR}/pic_i2c.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/pic_i2c.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

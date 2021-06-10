@@ -17,5 +17,5 @@ uint64_t get_sys_timestamp_u64(void);
 uint64_t get_tx_timestamp_u64(void);
 uint64_t get_rx_timestamp_u64(void);
 void dw_main(void);
-
+void transmitt_beacon_pkt(void);
 #endif /* APPLICATION_USER_DECAWAVE_H_ */

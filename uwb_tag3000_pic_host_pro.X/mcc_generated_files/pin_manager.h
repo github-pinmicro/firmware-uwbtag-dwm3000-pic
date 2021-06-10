@@ -185,6 +185,38 @@
 #define RC7_SetAnalogMode()         do { ANSELCbits.ANSC7 = 1; } while(0)
 #define RC7_SetDigitalMode()        do { ANSELCbits.ANSC7 = 0; } while(0)
 
+// get/set LED_R1 aliases
+#define LED_R1_SetHigh()            do { LATDbits.LATD1 = 1; } while(0)
+#define LED_R1_SetLow()             do { LATDbits.LATD1 = 0; } while(0)
+#define LED_R1_Toggle()             do { LATDbits.LATD1 = ~LATDbits.LATD1; } while(0)
+#define LED_R1_GetValue()           PORTDbits.RD1
+// get/set LED_B1 aliases
+#define LED_B1_SetHigh()            do { LATAbits.LATA3 = 1; } while(0)
+#define LED_B1_SetLow()             do { LATAbits.LATA3 = 0; } while(0)
+#define LED_B1_Toggle()             do { LATAbits.LATA3 = ~LATAbits.LATA3; } while(0)
+#define LED_B1_GetValue()           PORTAbits.RA3
+// get/set LED_G1 aliases
+#define LED_G1_SetHigh()            do { LATDbits.LATD3 = 1; } while(0)
+#define LED_G1_SetLow()             do { LATDbits.LATD3 = 0; } while(0)
+#define LED_G1_Toggle()             do { LATDbits.LATD3 = ~LATDbits.LATD3; } while(0)
+#define LED_G1_GetValue()           PORTDbits.RD3
+
+
+// get/set LED_R2 aliases
+#define LED_R2_SetHigh()            do { LATDbits.LATD2 = 1; } while(0)
+#define LED_R2_SetLow()             do { LATDbits.LATD2 = 0; } while(0)
+#define LED_R2_Toggle()             do { LATDbits.LATD2 = ~LATDbits.LATD2; } while(0)
+#define LED_R2_GetValue()           PORTDbits.RD2
+// get/set LED_G2 aliases
+#define LED_G2_SetHigh()            do { LATDbits.LATD4 = 1; } while(0)
+#define LED_G2_SetLow()             do { LATDbits.LATD4 = 0; } while(0)
+#define LED_G2_Toggle()             do { LATDbits.LATD4 = ~LATDbits.LATD4; } while(0)
+#define LED_G2_GetValue()           PORTDbits.RD4
+// get/set LED_B2 aliases
+#define LED_B2_SetHigh()            do { LATAbits.LATA4 = 1; } while(0)
+#define LED_B2_SetLow()             do { LATAbits.LATA4 = 0; } while(0)
+#define LED_B2_Toggle()             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0)
+#define LED_B2_GetValue()           PORTAbits.RA4
 /**
    @Param
     none

@@ -13891,242 +13891,242 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi1.c: 99: SSP1CON1 = spi1_configuration[spi1UniqueConfiguration].con1;
 "99
 [e = _SSP1CON1 . *U + &U _spi1_configuration * -> _spi1UniqueConfiguration `ux -> -> # *U &U _spi1_configuration `ui `ux 0 ]
-[; ;spi1.c: 102: SSP1CON2 = 0x00;
-"102
+[; ;spi1.c: 100: SSP1CON2 = 0x00;
+"100
 [e = _SSP1CON2 -> -> 0 `i `uc ]
-[; ;spi1.c: 103: SSP1ADD = spi1_configuration[spi1UniqueConfiguration].add;
-"103
+[; ;spi1.c: 101: SSP1ADD = spi1_configuration[spi1UniqueConfiguration].add;
+"101
 [e = _SSP1ADD . *U + &U _spi1_configuration * -> _spi1UniqueConfiguration `ux -> -> # *U &U _spi1_configuration `ui `ux 2 ]
-[; ;spi1.c: 104: TRISCbits.TRISC2 = spi1_configuration[spi1UniqueConfiguration].operation;
-"104
+[; ;spi1.c: 102: TRISCbits.TRISC2 = spi1_configuration[spi1UniqueConfiguration].operation;
+"102
 [e = . . _TRISCbits 0 2 . *U + &U _spi1_configuration * -> _spi1UniqueConfiguration `ux -> -> # *U &U _spi1_configuration `ui `ux 3 ]
-[; ;spi1.c: 105: TRISCbits.TRISC0 = 1;
-"105
+[; ;spi1.c: 103: TRISCbits.TRISC0 = 1;
+"103
 [e = . . _TRISCbits 0 0 -> -> 1 `i `uc ]
-[; ;spi1.c: 106: TRISCbits.TRISC1 = 0;
-"106
+[; ;spi1.c: 104: TRISCbits.TRISC1 = 0;
+"104
 [e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
-[; ;spi1.c: 107: SSP1CON1bits.SSPEN = 1;
-"107
+[; ;spi1.c: 105: SSP1CON1bits.SSPEN = 1;
+"105
 [e = . . _SSP1CON1bits 0 2 -> -> 1 `i `uc ]
-[; ;spi1.c: 108: return 1;
-"108
+[; ;spi1.c: 106: return 1;
+"106
 [e ) -> -> 1 `i `uc ]
 [e $UE 1618  ]
-"109
+"107
 }
 [e :U 1619 ]
-[; ;spi1.c: 109: }
-[; ;spi1.c: 110: return 0;
-"110
+[; ;spi1.c: 107: }
+[; ;spi1.c: 108: return 0;
+"108
 [e ) -> -> 0 `i `uc ]
 [e $UE 1618  ]
-[; ;spi1.c: 111: }
-"111
+[; ;spi1.c: 109: }
+"109
 [e :UE 1618 ]
 }
-"113
+"111
 [v _SPI1_Close `(v ~T0 @X0 1 ef ]
-"114
+"112
 {
-[; ;spi1.c: 113: void SPI1_Close(void)
-[; ;spi1.c: 114: {
+[; ;spi1.c: 111: void SPI1_Close(void)
+[; ;spi1.c: 112: {
 [e :U _SPI1_Close ]
 [f ]
-[; ;spi1.c: 115: SSP1CON1bits.SSPEN = 0;
-"115
+[; ;spi1.c: 113: SSP1CON1bits.SSPEN = 0;
+"113
 [e = . . _SSP1CON1bits 0 2 -> -> 0 `i `uc ]
-[; ;spi1.c: 116: }
-"116
+[; ;spi1.c: 114: }
+"114
 [e :UE 1620 ]
 }
-"118
+"116
 [v _SPI1_ExchangeByte `(uc ~T0 @X0 1 ef1`uc ]
-"119
+"117
 {
-[; ;spi1.c: 118: uint8_t SPI1_ExchangeByte(uint8_t data)
-[; ;spi1.c: 119: {
+[; ;spi1.c: 116: uint8_t SPI1_ExchangeByte(uint8_t data)
+[; ;spi1.c: 117: {
 [e :U _SPI1_ExchangeByte ]
-"118
+"116
 [v _data `uc ~T0 @X0 1 r1 ]
-"119
+"117
 [f ]
-[; ;spi1.c: 120: SSP1BUF = data;
-"120
+[; ;spi1.c: 118: SSP1BUF = data;
+"118
 [e = _SSP1BUF _data ]
-[; ;spi1.c: 121: while(!PIR3bits.SSP1IF);
-"121
+[; ;spi1.c: 119: while(!PIR3bits.SSP1IF);
+"119
 [e $U 1622  ]
 [e :U 1623 ]
 [e :U 1622 ]
 [e $ ! != -> . . _PIR3bits 0 0 `i -> -> -> 0 `i `Vuc `i 1623  ]
 [e :U 1624 ]
-[; ;spi1.c: 122: PIR3bits.SSP1IF = 0;
-"122
+[; ;spi1.c: 120: PIR3bits.SSP1IF = 0;
+"120
 [e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
-[; ;spi1.c: 123: return SSP1BUF;
-"123
+[; ;spi1.c: 121: return SSP1BUF;
+"121
 [e ) _SSP1BUF ]
 [e $UE 1621  ]
-[; ;spi1.c: 124: }
-"124
+[; ;spi1.c: 122: }
+"122
 [e :UE 1621 ]
 }
-"126
+"124
 [v _SPI1_ExchangeBlock `(v ~T0 @X0 1 ef2`*v`ui ]
-"127
+"125
 {
-[; ;spi1.c: 126: void SPI1_ExchangeBlock(void *block, size_t blockSize)
-[; ;spi1.c: 127: {
+[; ;spi1.c: 124: void SPI1_ExchangeBlock(void *block, size_t blockSize)
+[; ;spi1.c: 125: {
 [e :U _SPI1_ExchangeBlock ]
-"126
+"124
 [v _block `*v ~T0 @X0 1 r1 ]
 [v _blockSize `ui ~T0 @X0 1 r2 ]
-"127
+"125
 [f ]
-"128
+"126
 [v _data `*uc ~T0 @X0 1 a ]
-[; ;spi1.c: 128: uint8_t *data = block;
+[; ;spi1.c: 126: uint8_t *data = block;
 [e = _data -> _block `*uc ]
-[; ;spi1.c: 129: while(blockSize--)
-"129
+[; ;spi1.c: 127: while(blockSize--)
+"127
 [e $U 1626  ]
 [e :U 1627 ]
-[; ;spi1.c: 130: {
-"130
+[; ;spi1.c: 128: {
+"128
 {
-[; ;spi1.c: 131: SSP1BUF = *data;
-"131
+[; ;spi1.c: 129: SSP1BUF = *data;
+"129
 [e = _SSP1BUF *U _data ]
-[; ;spi1.c: 132: while(!PIR3bits.SSP1IF);
-"132
+[; ;spi1.c: 130: while(!PIR3bits.SSP1IF);
+"130
 [e $U 1629  ]
 [e :U 1630 ]
 [e :U 1629 ]
 [e $ ! != -> . . _PIR3bits 0 0 `i -> -> -> 0 `i `Vuc `i 1630  ]
 [e :U 1631 ]
-[; ;spi1.c: 133: PIR3bits.SSP1IF = 0;
-"133
+[; ;spi1.c: 131: PIR3bits.SSP1IF = 0;
+"131
 [e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
-[; ;spi1.c: 134: *data++ = SSP1BUF;
-"134
+[; ;spi1.c: 132: *data++ = SSP1BUF;
+"132
 [e = *U ++ _data * -> -> 1 `i `x -> -> # *U _data `i `x _SSP1BUF ]
-"135
+"133
 }
 [e :U 1626 ]
-"129
+"127
 [e $ != -- _blockSize -> -> 1 `i `ui -> -> 0 `i `ui 1627  ]
 [e :U 1628 ]
-[; ;spi1.c: 135: }
-[; ;spi1.c: 136: }
-"136
+[; ;spi1.c: 133: }
+[; ;spi1.c: 134: }
+"134
 [e :UE 1625 ]
 }
-"139
+"137
 [v _SPI1_WriteBlock `(v ~T0 @X0 1 ef2`*v`ui ]
-"140
+"138
 {
-[; ;spi1.c: 139: void SPI1_WriteBlock(void *block, size_t blockSize)
-[; ;spi1.c: 140: {
+[; ;spi1.c: 137: void SPI1_WriteBlock(void *block, size_t blockSize)
+[; ;spi1.c: 138: {
 [e :U _SPI1_WriteBlock ]
-"139
+"137
 [v _block `*v ~T0 @X0 1 r1 ]
 [v _blockSize `ui ~T0 @X0 1 r2 ]
-"140
+"138
 [f ]
-"141
+"139
 [v _data `*uc ~T0 @X0 1 a ]
-[; ;spi1.c: 141: uint8_t *data = block;
+[; ;spi1.c: 139: uint8_t *data = block;
 [e = _data -> _block `*uc ]
-[; ;spi1.c: 142: while(blockSize--)
-"142
+[; ;spi1.c: 140: while(blockSize--)
+"140
 [e $U 1633  ]
 [e :U 1634 ]
-[; ;spi1.c: 143: {
-"143
+[; ;spi1.c: 141: {
+"141
 {
-[; ;spi1.c: 144: SPI1_ExchangeByte(*data++);
-"144
+[; ;spi1.c: 142: SPI1_ExchangeByte(*data++);
+"142
 [e ( _SPI1_ExchangeByte (1 *U ++ _data * -> -> 1 `i `x -> -> # *U _data `i `x ]
-"145
+"143
 }
 [e :U 1633 ]
-"142
+"140
 [e $ != -- _blockSize -> -> 1 `i `ui -> -> 0 `i `ui 1634  ]
 [e :U 1635 ]
-[; ;spi1.c: 145: }
-[; ;spi1.c: 146: }
-"146
+[; ;spi1.c: 143: }
+[; ;spi1.c: 144: }
+"144
 [e :UE 1632 ]
 }
-"148
+"146
 [v _SPI1_ReadBlock `(v ~T0 @X0 1 ef2`*v`ui ]
-"149
+"147
 {
-[; ;spi1.c: 148: void SPI1_ReadBlock(void *block, size_t blockSize)
-[; ;spi1.c: 149: {
+[; ;spi1.c: 146: void SPI1_ReadBlock(void *block, size_t blockSize)
+[; ;spi1.c: 147: {
 [e :U _SPI1_ReadBlock ]
-"148
+"146
 [v _block `*v ~T0 @X0 1 r1 ]
 [v _blockSize `ui ~T0 @X0 1 r2 ]
-"149
+"147
 [f ]
-"150
+"148
 [v _data `*uc ~T0 @X0 1 a ]
-[; ;spi1.c: 150: uint8_t *data = block;
+[; ;spi1.c: 148: uint8_t *data = block;
 [e = _data -> _block `*uc ]
-[; ;spi1.c: 151: while(blockSize--)
-"151
+[; ;spi1.c: 149: while(blockSize--)
+"149
 [e $U 1637  ]
 [e :U 1638 ]
-[; ;spi1.c: 152: {
-"152
+[; ;spi1.c: 150: {
+"150
 {
-[; ;spi1.c: 153: *data++ = SPI1_ExchangeByte(0);
-"153
+[; ;spi1.c: 151: *data++ = SPI1_ExchangeByte(0);
+"151
 [e = *U ++ _data * -> -> 1 `i `x -> -> # *U _data `i `x ( _SPI1_ExchangeByte (1 -> -> 0 `i `uc ]
-"154
+"152
 }
 [e :U 1637 ]
-"151
+"149
 [e $ != -- _blockSize -> -> 1 `i `ui -> -> 0 `i `ui 1638  ]
 [e :U 1639 ]
-[; ;spi1.c: 154: }
-[; ;spi1.c: 155: }
-"155
+[; ;spi1.c: 152: }
+[; ;spi1.c: 153: }
+"153
 [e :UE 1636 ]
 }
-"157
+"155
 [v _SPI1_WriteByte `(v ~T0 @X0 1 ef1`uc ]
-"158
+"156
 {
-[; ;spi1.c: 157: void SPI1_WriteByte(uint8_t byte)
-[; ;spi1.c: 158: {
+[; ;spi1.c: 155: void SPI1_WriteByte(uint8_t byte)
+[; ;spi1.c: 156: {
 [e :U _SPI1_WriteByte ]
-"157
+"155
 [v _byte `uc ~T0 @X0 1 r1 ]
-"158
+"156
 [f ]
-[; ;spi1.c: 159: SSP1BUF = byte;
-"159
+[; ;spi1.c: 157: SSP1BUF = byte;
+"157
 [e = _SSP1BUF _byte ]
-[; ;spi1.c: 160: }
-"160
+[; ;spi1.c: 158: }
+"158
 [e :UE 1640 ]
 }
-"162
+"160
 [v _SPI1_ReadByte `(uc ~T0 @X0 1 ef ]
-"163
+"161
 {
-[; ;spi1.c: 162: uint8_t SPI1_ReadByte(void)
-[; ;spi1.c: 163: {
+[; ;spi1.c: 160: uint8_t SPI1_ReadByte(void)
+[; ;spi1.c: 161: {
 [e :U _SPI1_ReadByte ]
 [f ]
-[; ;spi1.c: 164: return SSP1BUF;
-"164
+[; ;spi1.c: 162: return SSP1BUF;
+"162
 [e ) _SSP1BUF ]
 [e $UE 1641  ]
-[; ;spi1.c: 165: }
-"165
+[; ;spi1.c: 163: }
+"163
 [e :UE 1641 ]
 }

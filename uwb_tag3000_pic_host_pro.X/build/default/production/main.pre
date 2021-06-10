@@ -18120,10 +18120,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 198 "mcc_generated_files/pin_manager.h"
+# 230 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 210
+# 242
 void PIN_MANAGER_IOC(void);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
@@ -18522,6 +18522,7 @@ uint64_t get_sys_timestamp_u64(void);
 uint64_t get_tx_timestamp_u64(void);
 uint64_t get_rx_timestamp_u64(void);
 void dw_main(void);
+void transmitt_beacon_pkt(void);
 
 # 48 "main.h"
 extern bool TX_ANCHOR;
@@ -19265,52 +19266,79 @@ int openspi(void) ;
 # 37
 int closespi(void) ;
 
-# 57 "main.c"
-uint8_t ADDR[8] = {0x01, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
+# 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
+typedef int ptrdiff_t;
 
-# 61
+# 9 "pic_i2c.h"
+void i2c_init();
+void i2c_start();
+void i2c_restart();
+void i2c_stop();
+char i2c_read(char ack);
+char i2c_write(char data);
+void i2c_resync();
+
+# 21 "pic_control_fun.h"
+extern uint8_t battery_level;
+
+void process_pmic_status(uint8_t * status, uint8_t length);
+void pmic_status_read(void);
+uint8_t lipo_battery_level(uint16_t battery_volt);
+void set_MSSSP1_mode(uint8_t mode);
+
+# 9 "pic_i2c.h"
+void i2c_init();
+void i2c_start();
+void i2c_restart();
+void i2c_stop();
+char i2c_read(char ack);
+char i2c_write(char data);
+void i2c_resync();
+
+# 10 "bq25895.h"
+uint8_t init_bq25895(void);
+uint8_t bq25895_WDT_reset(void);
+uint8_t i2c_multi_write(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length);
+uint8_t * i2c_multi_read(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length);
+uint8_t i2c_single_write(uint8_t device_addr, uint8_t reg_addr, uint8_t data);
+uint8_t i2c_single_read(uint8_t device_addr, uint8_t reg_addr);
+
+# 61 "main.c"
+uint8_t ADDR[8] = {0x02, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
+
+# 66
 void main(void)
 {
-
-
 SYSTEM_Initialize();
 
-# 75
+printf_string("\n\rUWB_TAG_DWM3000_PIC");
+
+set_MSSSP1_mode(2);
+init_bq25895();
+_delay((unsigned long)((50)*(32000000/4000.0)));
+
 do { ODCONAbits.ODCA6 = 0; } while(0);
 do { LATAbits.LATA6 = 0; } while(0);
 do { ODCONAbits.ODCA7 = 0; } while(0);
 do { LATAbits.LATA7 = 1; } while(0);
 do { ODCONBbits.ODCB4 = 1; } while(0);
 do { LATBbits.LATB4 = 1; } while(0);
-SPI1_Open(0);
-_delay((unsigned long)((200)*(32000000/4000.0)));
 
-# 104
+set_MSSSP1_mode(1);
+_delay((unsigned long)((2)*(32000000/4000.0)));
 dw_main();
-while(1);
 
-# 133
-SPI1_Open(0);
-_delay((unsigned long)((200)*(32000000/4000.0)));
-while (1)
+while(1)
 {
-
-# 142
-_delay((unsigned long)((1000)*(32000000/4000.0)));
-
-
-SPI1_WriteByte(0xAA);
-
-
-
-printf_string("\n\rProgram running...");
-
-
+pmic_status_read();
+set_MSSSP1_mode(1);
+transmitt_beacon_pkt();
+_delay((unsigned long)((300)*(32000000/4000.0)));
 
 }
 }
 
-# 257
+# 199
 void print_uint8_t(uint8_t val)
 {
 char print_data[20];

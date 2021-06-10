@@ -49,101 +49,6 @@
 #include "pin_manager.h"
 #include "stdbool.h"
 
-
-void PIN_MANAGER_Initialize_2(void)
-{
-  #if(0)
-   //LATx registers 
-    LATA = 0x08;    
-    LATB = 0x00;    
-    LATC = 0x00; 
-    LATD = 0x0A;    
-    LATE = 0x00; 
-    //TRISx registers
-    TRISA = 0xE7;
-    TRISB = 0xFE;
-    TRISC = 0xBF;
-    TRISD = 0xE1;
-    TRISE = 0xF8;
-    //WPUx registers
-	WPUA = 0x00;
-	WPUB = 0x00;
-	WPUC = 0x18;
-    WPUD = 0x01;
-    WPUE = 0x00;
-    //ODx registers
-    ODCONA = 0x00;
-    ODCONB = 0x00;
-    ODCONC = 0x00;
-    ODCOND = 0x00;
-	ODCONE = 0x00;
-    //ANSELx registers
-	ANSELA = 0xE4;
-    ANSELB = 0xF0;
-	ANSELC = 0xA0;
-    ANSELD = 0xE0;
-    ANSELE = 0xF8;
-#else
-    //LATx registers 
-    LATA = 0x08;    
-    LATB = 0x00;    
-    LATC = 0x00; 
-    LATD = 0x0A;    
-    LATE = 0x07; 
-    //TRISx registers
-    TRISA = 0xE7;
-    TRISB = 0xEF;
-    TRISC = 0xBF;
-    TRISD = 0xE0;
-    TRISE = 0x00;
-    //WPUx registers
-	WPUA = 0x00;
-	WPUB = 0x07;
-	WPUC = 0x18;
-    WPUD = 0x00;
-    WPUE = 0x00;
-    //ODx registers
-    ODCONA = 0x00;
-    ODCONB = 0x10;
-    ODCONC = 0x00;
-    ODCOND = 0x00;
-	ODCONE = 0x00;
-    //ANSELx registers
-	ANSELA = 0xE4;
-    ANSELB = 0xF0;
-	ANSELC = 0x00;
-    ANSELD = 0xE0;
-    ANSELE = 0x00;
-   #endif
-    
-    
-    bool state = GIE;
-    GIE = 0;
-    PPSLOCK = 0x55;
-    PPSLOCK = 0xAA;
-    PPSLOCKbits.PPSLOCKED = 0x00; // unlock PPS
-    TRISCbits.TRISC5 = 0; 
-    TRISCbits.TRISC7 = 1; 
-    RXPPS = 0x17;   //RC7->EUSART:RX;
-    RC5PPS = 0x10;   //RC5->EUSART:TX;
-    
-    SSP1CLKPPSbits.SSP1CLKPPS = 0x13;   //RC3->MSSP1:SCL1;
-    SSP1DATPPSbits.SSP1DATPPS = 0x14;   //RC4->MSSP1:SDA1;
-    RB1PPS = 0x16;   //RB1->MSSP2:SCL2;
-    RC3PPS = 0x14;   //RC3->MSSP1:SCL1;
-    RB2PPS = 0x17;   //RB2->MSSP2:SDA2;
-    RC4PPS = 0x15;   //RC4->MSSP1:SDA1;
- 
-    SSP2CLKPPSbits.SSP2CLKPPS = 0x09;   //RB1->MSSP2:SCL2;
-    SSP2DATPPSbits.SSP2DATPPS = 0x0A;   //RB2->MSSP2:SDA2;
-
-    /*PPSLOCK = 0x55;
-    PPSLOCK = 0xAA;
-    PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS*/
-
-    GIE = state;
-}       
-
 void PIN_MANAGER_Initialize(void)
 {
     /**
@@ -161,14 +66,14 @@ void PIN_MANAGER_Initialize(void)
     TRISE = 0x07;
     TRISA = 0x3F;
     TRISB = 0xEF;
-    TRISC = 0xF9;
+    TRISC = 0x9F;
     TRISD = 0xFE;
 
     /**
     ANSELx registers
     */
     ANSELD = 0xFE;
-    ANSELC = 0x7A;
+    ANSELC = 0x00;
     ANSELB = 0xFF;
     ANSELE = 0x07;
     ANSELA = 0xFF;
@@ -180,7 +85,7 @@ void PIN_MANAGER_Initialize(void)
     WPUE = 0x00;
     WPUB = 0x00;
     WPUA = 0x00;
-    WPUC = 0x00;
+    WPUC = 0x18;
 
     /**
     ODx registers
@@ -190,36 +95,35 @@ void PIN_MANAGER_Initialize(void)
     ODCONB = 0x00;
     ODCONC = 0x00;
     ODCOND = 0x00;
-
+#if (1)
+    bool state = GIE;
+    GIE = 0;
+    PPSLOCK = 0x55;
+    PPSLOCK = 0xAA;
+    PPSLOCKbits.PPSLOCKED = 0x00; // unlock PPS
     
-
-
-
-
-  
-bool state = GIE;
-   GIE = 0;
-   PPSLOCK = 0x55;
-   PPSLOCK = 0xAA;
-   PPSLOCKbits.PPSLOCKED = 0x00; // unlock PPS
-TRISCbits.TRISC5 = 0;
-TRISCbits.TRISC7 = 1; 
-
+    TRISCbits.TRISC5 = 0;
+    TRISCbits.TRISC7 = 1; 
+    RXPPS = 0x17;   //RC7->EUSART:RX; 
+    RC5PPS = 0x10;   //RC5->EUSART:TX;
     
-	
-    RXPPS = 0x17;   //RC7->EUSART:RX;    
-    SSP1CLKPPS = 0x12;   //RC2->MSSP1:SCK1;    
+    /*SSP1CLKPPS = 0x12;   //RC2->MSSP1:SCK1;    
     RC1PPS = 0x15;   //RC1->MSSP1:SDO1;    
     RC2PPS = 0x14;   //RC2->MSSP1:SCK1;    
-    RC5PPS = 0x10;   //RC5->EUSART:TX;    
-    SSP1DATPPS = 0x10;   //RC0->MSSP1:SDI1;   
+    SSP1DATPPS = 0x10;   //RC0->MSSP1:SDI1;*/   
+
+    /*RC3PPS = 0x14;   //RC3->MSSP1:SCL1;
+    RC4PPS = 0x15;   //RC4->MSSP1:SDA1;
+    SSP1CLKPPS = 0x13;   //RC3->MSSP1:SCL1;
+    SSP1DATPPS = 0x14;   //RC4->MSSP1:SDA1;*/
     
+
     PPSLOCK = 0x55;
-   PPSLOCK = 0xAA;
-   PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS
-   GIE = state; 
+    PPSLOCK = 0xAA;
+    PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS
+    GIE = state;
+#endif
 }
-  
 void PIN_MANAGER_IOC(void)
 {   
 }

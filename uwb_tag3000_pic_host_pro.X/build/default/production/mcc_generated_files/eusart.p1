@@ -5,9 +5,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "75
 [u S1613 `S1614 1 `uc 1 ]
 [n S1613 . . status ]
-[v F14919 `(v ~T0 @X0 0 tf ]
-[v F14922 `(v ~T0 @X0 0 tf ]
-[v F14925 `(v ~T0 @X0 0 tf ]
+[v F14931 `(v ~T0 @X0 0 tf ]
+[v F14934 `(v ~T0 @X0 0 tf ]
+[v F14937 `(v ~T0 @X0 0 tf ]
 "4361 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
 [v _BAUD1CON `Vuc ~T0 @X0 0 e@287 ]
 "4001
@@ -13715,17 +13715,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart.h: 361: void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
 [; ;eusart.h: 379: void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
 [; ;eusart.h: 397: void EUSART_SetErrorHandler(void (* interruptHandler)(void));
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stddef.h: 6: typedef int ptrdiff_t;
+[; ;pic_control_fun.h: 21: extern uint8_t battery_level;
+[; ;pic_control_fun.h: 23: void process_pmic_status(uint8_t * status, uint8_t length);
+[; ;pic_control_fun.h: 24: void pmic_status_read(void);
+[; ;pic_control_fun.h: 25: uint8_t lipo_battery_level(uint16_t battery_volt);
+[; ;pic_control_fun.h: 26: void set_MSSSP1_mode(uint8_t mode);
 "52 mcc_generated_files/eusart.c
 [v _eusartRxLastError `VS1613 ~T0 @X0 1 e ]
 [; ;eusart.c: 52: volatile eusart_status_t eusartRxLastError;
 "58
-[v _EUSART_FramingErrorHandler `*F14919 ~T0 @X0 1 e ]
+[v _EUSART_FramingErrorHandler `*F14931 ~T0 @X0 1 e ]
 [; ;eusart.c: 58: void (*EUSART_FramingErrorHandler)(void);
 "59
-[v _EUSART_OverrunErrorHandler `*F14922 ~T0 @X0 1 e ]
+[v _EUSART_OverrunErrorHandler `*F14934 ~T0 @X0 1 e ]
 [; ;eusart.c: 59: void (*EUSART_OverrunErrorHandler)(void);
 "60
-[v _EUSART_ErrorHandler `*F14925 ~T0 @X0 1 e ]
+[v _EUSART_ErrorHandler `*F14937 ~T0 @X0 1 e ]
 [; ;eusart.c: 60: void (*EUSART_ErrorHandler)(void);
 [; ;eusart.c: 62: void EUSART_DefaultFramingErrorHandler(void);
 [; ;eusart.c: 63: void EUSART_DefaultOverrunErrorHandler(void);
@@ -13939,8 +13946,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;eusart.c: 157: void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void)){
 [e :U _EUSART_SetFramingErrorHandler ]
-[v F14946 `(v ~T0 @X0 0 tf ]
-[v _interruptHandler `*F14946 ~T0 @X0 1 r1 ]
+[v F14958 `(v ~T0 @X0 0 tf ]
+[v _interruptHandler `*F14958 ~T0 @X0 1 r1 ]
 [f ]
 [; ;eusart.c: 158: EUSART_FramingErrorHandler = interruptHandler;
 "158
@@ -13954,8 +13961,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;eusart.c: 161: void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void)){
 [e :U _EUSART_SetOverrunErrorHandler ]
-[v F14949 `(v ~T0 @X0 0 tf ]
-[v _interruptHandler `*F14949 ~T0 @X0 1 r1 ]
+[v F14961 `(v ~T0 @X0 0 tf ]
+[v _interruptHandler `*F14961 ~T0 @X0 1 r1 ]
 [f ]
 [; ;eusart.c: 162: EUSART_OverrunErrorHandler = interruptHandler;
 "162
@@ -13969,8 +13976,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;eusart.c: 165: void EUSART_SetErrorHandler(void (* interruptHandler)(void)){
 [e :U _EUSART_SetErrorHandler ]
-[v F14952 `(v ~T0 @X0 0 tf ]
-[v _interruptHandler `*F14952 ~T0 @X0 1 r1 ]
+[v F14964 `(v ~T0 @X0 0 tf ]
+[v _interruptHandler `*F14964 ~T0 @X0 1 r1 ]
 [f ]
 [; ;eusart.c: 166: EUSART_ErrorHandler = interruptHandler;
 "166
@@ -14011,21 +14018,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 "175
 [e :UE 1635 ]
 }
-"182
+"183
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
-"183
-{
-[; ;eusart.c: 182: void putch(char txData)
-[; ;eusart.c: 183: {
-[e :U _putch ]
-"182
-[v _txData `uc ~T0 @X0 1 r1 ]
-"183
-[f ]
-[; ;eusart.c: 184: EUSART_Write(txData);
 "184
-[e ( _EUSART_Write (1 _txData ]
-[; ;eusart.c: 185: }
+{
+[; ;eusart.c: 183: void putch(char txData)
+[; ;eusart.c: 184: {
+[e :U _putch ]
+"183
+[v _txData `uc ~T0 @X0 1 r1 ]
+"184
+[f ]
+[; ;eusart.c: 185: EUSART_Write(txData);
 "185
+[e ( _EUSART_Write (1 _txData ]
+[; ;eusart.c: 186: }
+"186
 [e :UE 1639 ]
 }

@@ -54,8 +54,11 @@
 #include "deca_regs.h"
 #include "deca_spi.h"
 #include "port.h"
+#include "pic_i2c.h"
+#include "pic_control_fun.h"
+#include "bq25895.h"
 
-uint8_t ADDR[8] = {0x01, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
+uint8_t ADDR[8] = {0x02, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
 
 /*
                          Main application
@@ -63,18 +66,32 @@ uint8_t ADDR[8] = {0x01, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
 void main(void)
 {
     SYSTEM_Initialize();// initialize the device
-    
+    #if (PRINT_LOG)
+    printf_string("\n\rUWB_TAG_DWM3000_PIC");
+    #endif
+    set_MSSSP1_mode(MSSP1_I2C);//PMIC init
+    init_bq25895();
+    __delay_ms(50);
+ 
     WUP_SetPushPull();
     WUP_SetLow();
     CS_SetPushPull();
     CS_SetHigh();
     RST_SetOpenDrain(); 
     RST_SetHigh();
-    SPI1_Open(0);
-    __delay_ms(200);
-       
+   
+    set_MSSSP1_mode(MSSP1_SPI);//DWM3000 init
+    __delay_ms(2);   
     dw_main();
-    while(1);
+    
+    while(1)
+    {
+        pmic_status_read(); 
+        set_MSSSP1_mode(MSSP1_SPI);
+        transmitt_beacon_pkt();
+        __delay_ms(TX_INTERVAL_MS);
+            
+    }
 }
 //void read_uwb_reg(void)
 //{
@@ -178,6 +195,7 @@ void main(void)
 //   print_uint8_t(read_data2);
 //   read_data2 = 0;
 //}
+#if (PRINT_LOG)
 void print_uint8_t(uint8_t val)
 {
    char print_data[20];
@@ -213,7 +231,7 @@ void print_uint64_t(uint64_t num)
     sprintf(print_data,"\n\ruint64_num: %04X%04X%04X%04X", numary[0],numary[1],numary[2],numary[3]);
     printf_string(print_data);
 }
-
+#endif
 void Sleep(uint32_t time)
 {
     for(volatile uint32_t i=0; i<time; i++)
@@ -221,7 +239,6 @@ void Sleep(uint32_t time)
         __delay_ms(1);
     }
 }
-
 /**
  End of File
 */

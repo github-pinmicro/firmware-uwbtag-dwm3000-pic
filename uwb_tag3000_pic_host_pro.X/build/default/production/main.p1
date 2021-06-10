@@ -2,6 +2,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "71 mcc_generated_files/mcc.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
+"85 mcc_generated_files/eusart.h
+[v _printf_string `(v ~T0 @X0 0 ef1`*Cuc ]
+"26 pic_control_fun.h
+[v _set_MSSSP1_mode `(v ~T0 @X0 0 ef1`uc ]
+"10 bq25895.h
+[v _init_bq25895 `(uc ~T0 @X0 0 ef ]
+[v F14844 `(v ~T0 @X0 1 tf1`ul ]
+"153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
+[v __delay `JF14844 ~T0 @X0 0 e ]
+[p i __delay ]
 "33732 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
 [s S1502 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1502 . ODCA0 ODCA1 ODCA2 ODCA3 ODCA4 ODCA5 ODCA6 ODCA7 ]
@@ -34,21 +44,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S49 . . ]
 "1033
 [v _LATBbits `VS49 ~T0 @X0 0 e@23 ]
-"81 main.c
-[c E14946 0 .. ]
-[n E14946 . SPI1_DEFAULT  ]
-"64 mcc_generated_files/spi1.h
-[v _SPI1_Open `(uc ~T0 @X0 0 ef1`E14946 ]
-[v F14844 `(v ~T0 @X0 1 tf1`ul ]
-"153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
-[v __delay `JF14844 ~T0 @X0 0 e ]
-[p i __delay ]
 "19 decawave.h
 [v _dw_main `(v ~T0 @X0 0 ef ]
-"70 mcc_generated_files/spi1.h
-[v _SPI1_WriteByte `(v ~T0 @X0 0 ef1`uc ]
-"85 mcc_generated_files/eusart.h
-[v _printf_string `(v ~T0 @X0 0 ef1`*Cuc ]
+"24 pic_control_fun.h
+[v _pmic_status_read `(v ~T0 @X0 0 ef ]
+"20 decawave.h
+[v _transmitt_beacon_pkt `(v ~T0 @X0 0 ef ]
 "194 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "11 decawave.h
@@ -13671,8 +13672,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;pin_manager.h: 198: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 210: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 230: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 242: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -13888,6 +13889,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;decawave.h: 17: uint64_t get_tx_timestamp_u64(void);
 [; ;decawave.h: 18: uint64_t get_rx_timestamp_u64(void);
 [; ;decawave.h: 19: void dw_main(void);
+[; ;decawave.h: 20: void transmitt_beacon_pkt(void);
 [; ;main.h: 48: extern bool TX_ANCHOR;
 [; ;main.h: 49: extern uint8_t ADDR[8];
 [; ;main.h: 50: typedef struct
@@ -14289,11 +14291,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;deca_device_api.h: 2527: void dwt_configuresfdtype(uint8_t sfdType);
 [; ;deca_spi.h: 29: int openspi(void) ;
 [; ;deca_spi.h: 37: int closespi(void) ;
-"57 main.c
+[; ;stddef.h: 6: typedef int ptrdiff_t;
+[; ;pic_i2c.h: 9: void i2c_init();
+[; ;pic_i2c.h: 10: void i2c_start();
+[; ;pic_i2c.h: 11: void i2c_restart();
+[; ;pic_i2c.h: 12: void i2c_stop();
+[; ;pic_i2c.h: 13: char i2c_read(char ack);
+[; ;pic_i2c.h: 14: char i2c_write(char data);
+[; ;pic_i2c.h: 15: void i2c_resync();
+[; ;pic_control_fun.h: 21: extern uint8_t battery_level;
+[; ;pic_control_fun.h: 23: void process_pmic_status(uint8_t * status, uint8_t length);
+[; ;pic_control_fun.h: 24: void pmic_status_read(void);
+[; ;pic_control_fun.h: 25: uint8_t lipo_battery_level(uint16_t battery_volt);
+[; ;pic_control_fun.h: 26: void set_MSSSP1_mode(uint8_t mode);
+[; ;pic_i2c.h: 9: void i2c_init();
+[; ;pic_i2c.h: 10: void i2c_start();
+[; ;pic_i2c.h: 11: void i2c_restart();
+[; ;pic_i2c.h: 12: void i2c_stop();
+[; ;pic_i2c.h: 13: char i2c_read(char ack);
+[; ;pic_i2c.h: 14: char i2c_write(char data);
+[; ;pic_i2c.h: 15: void i2c_resync();
+[; ;bq25895.h: 10: uint8_t init_bq25895(void);
+[; ;bq25895.h: 11: uint8_t bq25895_WDT_reset(void);
+[; ;bq25895.h: 12: uint8_t i2c_multi_write(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length);
+[; ;bq25895.h: 13: uint8_t * i2c_multi_read(uint8_t device_addr, uint8_t reg_addr, uint8_t * data, uint8_t length);
+[; ;bq25895.h: 14: uint8_t i2c_single_write(uint8_t device_addr, uint8_t reg_addr, uint8_t data);
+[; ;bq25895.h: 15: uint8_t i2c_single_read(uint8_t device_addr, uint8_t reg_addr);
+"61 main.c
 [v _ADDR `uc ~T0 @X0 -> 8 `i e ]
 [i _ADDR
 :U ..
--> -> 1 `i `uc
+-> -> 2 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -14303,269 +14331,272 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 200 `i `uc
 ..
 ]
-[; ;main.c: 57: uint8_t ADDR[8] = {0x01, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
+[; ;main.c: 61: uint8_t ADDR[8] = {0x02, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
 [v $root$_main `(v ~T0 @X0 0 e ]
-"61
+"66
 [v _main `(v ~T0 @X0 1 ef ]
-"62
+"67
 {
-[; ;main.c: 61: void main(void)
-[; ;main.c: 62: {
+[; ;main.c: 66: void main(void)
+[; ;main.c: 67: {
 [e :U _main ]
 [f ]
-[; ;main.c: 65: SYSTEM_Initialize();
-"65
+[; ;main.c: 68: SYSTEM_Initialize();
+"68
 [e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 75: do { ODCONAbits.ODCA6 = 0; } while(0);
-"75
+[; ;main.c: 70: printf_string("\n\rUWB_TAG_DWM3000_PIC");
+"70
+[e ( _printf_string (1 :s 1C ]
+[; ;main.c: 72: set_MSSSP1_mode(2);
+"72
+[e ( _set_MSSSP1_mode (1 -> -> 2 `i `uc ]
+[; ;main.c: 73: init_bq25895();
+"73
+[e ( _init_bq25895 ..  ]
+[; ;main.c: 74: _delay((unsigned long)((50)*(32000000/4000.0)));
+"74
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[; ;main.c: 76: do { ODCONAbits.ODCA6 = 0; } while(0);
+"76
 [e :U 1636 ]
 {
 [e = . . _ODCONAbits 0 6 -> -> 0 `i `uc ]
 }
 [e :U 1635 ]
-[; ;main.c: 76: do { LATAbits.LATA6 = 0; } while(0);
-"76
+[; ;main.c: 77: do { LATAbits.LATA6 = 0; } while(0);
+"77
 [e :U 1639 ]
 {
 [e = . . _LATAbits 0 6 -> -> 0 `i `uc ]
 }
 [e :U 1638 ]
-[; ;main.c: 77: do { ODCONAbits.ODCA7 = 0; } while(0);
-"77
+[; ;main.c: 78: do { ODCONAbits.ODCA7 = 0; } while(0);
+"78
 [e :U 1642 ]
 {
 [e = . . _ODCONAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 1641 ]
-[; ;main.c: 78: do { LATAbits.LATA7 = 1; } while(0);
-"78
+[; ;main.c: 79: do { LATAbits.LATA7 = 1; } while(0);
+"79
 [e :U 1645 ]
 {
 [e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
 }
 [e :U 1644 ]
-[; ;main.c: 79: do { ODCONBbits.ODCB4 = 1; } while(0);
-"79
+[; ;main.c: 80: do { ODCONBbits.ODCB4 = 1; } while(0);
+"80
 [e :U 1648 ]
 {
 [e = . . _ODCONBbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 1647 ]
-[; ;main.c: 80: do { LATBbits.LATB4 = 1; } while(0);
-"80
+[; ;main.c: 81: do { LATBbits.LATB4 = 1; } while(0);
+"81
 [e :U 1651 ]
 {
 [e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 1650 ]
-[; ;main.c: 81: SPI1_Open(0);
-"81
-[e ( _SPI1_Open (1 -> -> 0 `i `E14946 ]
-[; ;main.c: 82: _delay((unsigned long)((200)*(32000000/4000.0)));
-"82
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-[; ;main.c: 104: dw_main();
-"104
+[; ;main.c: 83: set_MSSSP1_mode(1);
+"83
+[e ( _set_MSSSP1_mode (1 -> -> 1 `i `uc ]
+[; ;main.c: 84: _delay((unsigned long)((2)*(32000000/4000.0)));
+"84
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[; ;main.c: 85: dw_main();
+"85
 [e ( _dw_main ..  ]
-[; ;main.c: 105: while(1);
-"105
+[; ;main.c: 87: while(1)
+"87
 [e :U 1653 ]
+[; ;main.c: 88: {
+"88
+{
+[; ;main.c: 89: pmic_status_read();
+"89
+[e ( _pmic_status_read ..  ]
+[; ;main.c: 90: set_MSSSP1_mode(1);
+"90
+[e ( _set_MSSSP1_mode (1 -> -> 1 `i `uc ]
+[; ;main.c: 91: transmitt_beacon_pkt();
+"91
+[e ( _transmitt_beacon_pkt ..  ]
+[; ;main.c: 92: _delay((unsigned long)((300)*(32000000/4000.0)));
+"92
+[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"94
+}
 [e :U 1652 ]
+"87
 [e $U 1653  ]
 [e :U 1654 ]
-[; ;main.c: 133: SPI1_Open(0);
-"133
-[e ( _SPI1_Open (1 -> -> 0 `i `E14946 ]
-[; ;main.c: 134: _delay((unsigned long)((200)*(32000000/4000.0)));
-"134
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-[; ;main.c: 135: while (1)
-"135
-[e :U 1656 ]
-[; ;main.c: 136: {
-"136
-{
-[; ;main.c: 142: _delay((unsigned long)((1000)*(32000000/4000.0)));
-"142
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-[; ;main.c: 145: SPI1_WriteByte(0xAA);
-"145
-[e ( _SPI1_WriteByte (1 -> -> 170 `i `uc ]
-[; ;main.c: 149: printf_string("\n\rProgram running...");
-"149
-[e ( _printf_string (1 :s 1C ]
-"153
-}
-[e :U 1655 ]
-"135
-[e $U 1656  ]
-[e :U 1657 ]
-[; ;main.c: 153: }
-[; ;main.c: 154: }
-"154
+[; ;main.c: 94: }
+[; ;main.c: 95: }
+"95
 [e :UE 1633 ]
 }
-"257
+"199
 [v _print_uint8_t `(v ~T0 @X0 1 ef1`uc ]
-"258
+"200
 {
-[; ;main.c: 257: void print_uint8_t(uint8_t val)
-[; ;main.c: 258: {
+[; ;main.c: 199: void print_uint8_t(uint8_t val)
+[; ;main.c: 200: {
 [e :U _print_uint8_t ]
-"257
+"199
 [v _val `uc ~T0 @X0 1 r1 ]
-"258
+"200
 [f ]
-"259
+"201
 [v _print_data `uc ~T0 @X0 -> 20 `i a ]
-[; ;main.c: 259: char print_data[20];
-[; ;main.c: 260: sprintf(print_data,"val: %02X",val);
-"260
+[; ;main.c: 201: char print_data[20];
+[; ;main.c: 202: sprintf(print_data,"val: %02X",val);
+"202
 [e ( _sprintf (1 , (. , &U _print_data :s 2C -> _val `i ]
-[; ;main.c: 261: printf_string(print_data);
-"261
+[; ;main.c: 203: printf_string(print_data);
+"203
 [e ( _printf_string (1 -> &U _print_data `*Cuc ]
-[; ;main.c: 262: }
-"262
+[; ;main.c: 204: }
+"204
+[e :UE 1655 ]
+}
+"205
+[v _print_uint16_t `(v ~T0 @X0 1 ef1`ui ]
+"206
+{
+[; ;main.c: 205: void print_uint16_t(uint16_t val)
+[; ;main.c: 206: {
+[e :U _print_uint16_t ]
+"205
+[v _val `ui ~T0 @X0 1 r1 ]
+"206
+[f ]
+"208
+[v _print_data `uc ~T0 @X0 -> 20 `i a ]
+[; ;main.c: 208: char print_data[20];
+[; ;main.c: 209: sprintf(print_data,"val: %04X",val);
+"209
+[e ( _sprintf (1 , (. , &U _print_data :s 3C _val ]
+[; ;main.c: 210: printf_string(print_data);
+"210
+[e ( _printf_string (1 -> &U _print_data `*Cuc ]
+[; ;main.c: 211: }
+"211
+[e :UE 1656 ]
+}
+"213
+[v _print_uint32_t `(v ~T0 @X0 1 ef1`ul ]
+"214
+{
+[; ;main.c: 213: void print_uint32_t(uint32_t val)
+[; ;main.c: 214: {
+[e :U _print_uint32_t ]
+"213
+[v _val `ul ~T0 @X0 1 r1 ]
+"214
+[f ]
+"215
+[v _values `ui ~T0 @X0 -> 2 `i a ]
+"216
+[v _print_data `uc ~T0 @X0 -> 20 `i a ]
+[; ;main.c: 215: uint16_t values[2];
+[; ;main.c: 216: char print_data[20];
+[; ;main.c: 217: values[0] = (val >> 16) & 0xFFFF;
+"217
+[e = *U + &U _values * -> -> -> 0 `i `ui `ux -> -> # *U &U _values `ui `ux -> & >> _val -> 16 `i -> -> 65535 `ui `ul `ui ]
+[; ;main.c: 218: values[1] = val & 0xFFFF;
+"218
+[e = *U + &U _values * -> -> -> 1 `i `ui `ux -> -> # *U &U _values `ui `ux -> & _val -> -> 65535 `ui `ul `ui ]
+[; ;main.c: 219: sprintf(print_data,"val: %04X%04X",values[0],values[1]);
+"219
+[e ( _sprintf (1 , , (. , &U _print_data :s 4C *U + &U _values * -> -> -> 0 `i `ui `ux -> -> # *U &U _values `ui `ux *U + &U _values * -> -> -> 1 `i `ui `ux -> -> # *U &U _values `ui `ux ]
+[; ;main.c: 220: printf_string(print_data);
+"220
+[e ( _printf_string (1 -> &U _print_data `*Cuc ]
+[; ;main.c: 221: }
+"221
+[e :UE 1657 ]
+}
+"222
+[v _print_uint64_t `(v ~T0 @X0 1 ef1`S1621 ]
+"223
+{
+[; ;main.c: 222: void print_uint64_t(uint64_t num)
+[; ;main.c: 223: {
+[e :U _print_uint64_t ]
+"222
+[v _num `S1621 ~T0 @X0 1 r1 ]
+"223
+[f ]
+"224
+[v _numary `ui ~T0 @X0 -> 4 `i a ]
+"225
+[v _print_data `uc ~T0 @X0 -> 50 `i a ]
+[; ;main.c: 224: uint16_t numary[4];
+[; ;main.c: 225: char print_data[50];
+[; ;main.c: 226: numary[0] = (num.Msb >> 16) & 0xFFFF;
+"226
+[e = *U + &U _numary * -> -> -> 0 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & >> . _num 1 -> 16 `i -> -> 65535 `ui `ul `ui ]
+[; ;main.c: 227: numary[1] = num.Msb & 0xFFFF;
+"227
+[e = *U + &U _numary * -> -> -> 1 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & . _num 1 -> -> 65535 `ui `ul `ui ]
+[; ;main.c: 228: numary[2] = (num.Lsb >> 16) & 0xFFFF;
+"228
+[e = *U + &U _numary * -> -> -> 2 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & >> . _num 0 -> 16 `i -> -> 65535 `ui `ul `ui ]
+[; ;main.c: 229: numary[3] = num.Lsb & 0xFFFF;
+"229
+[e = *U + &U _numary * -> -> -> 3 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & . _num 0 -> -> 65535 `ui `ul `ui ]
+[; ;main.c: 231: sprintf(print_data,"\n\ruint64_num: %04X%04X%04X%04X", numary[0],numary[1],numary[2],numary[3]);
+"231
+[e ( _sprintf (1 , , , , (. , &U _print_data :s 5C *U + &U _numary * -> -> -> 0 `i `ui `ux -> -> # *U &U _numary `ui `ux *U + &U _numary * -> -> -> 1 `i `ui `ux -> -> # *U &U _numary `ui `ux *U + &U _numary * -> -> -> 2 `i `ui `ux -> -> # *U &U _numary `ui `ux *U + &U _numary * -> -> -> 3 `i `ui `ux -> -> # *U &U _numary `ui `ux ]
+[; ;main.c: 232: printf_string(print_data);
+"232
+[e ( _printf_string (1 -> &U _print_data `*Cuc ]
+[; ;main.c: 233: }
+"233
 [e :UE 1658 ]
 }
-"263
-[v _print_uint16_t `(v ~T0 @X0 1 ef1`ui ]
-"264
-{
-[; ;main.c: 263: void print_uint16_t(uint16_t val)
-[; ;main.c: 264: {
-[e :U _print_uint16_t ]
-"263
-[v _val `ui ~T0 @X0 1 r1 ]
-"264
-[f ]
-"266
-[v _print_data `uc ~T0 @X0 -> 20 `i a ]
-[; ;main.c: 266: char print_data[20];
-[; ;main.c: 267: sprintf(print_data,"val: %04X",val);
-"267
-[e ( _sprintf (1 , (. , &U _print_data :s 3C _val ]
-[; ;main.c: 268: printf_string(print_data);
-"268
-[e ( _printf_string (1 -> &U _print_data `*Cuc ]
-[; ;main.c: 269: }
-"269
-[e :UE 1659 ]
-}
-"271
-[v _print_uint32_t `(v ~T0 @X0 1 ef1`ul ]
-"272
-{
-[; ;main.c: 271: void print_uint32_t(uint32_t val)
-[; ;main.c: 272: {
-[e :U _print_uint32_t ]
-"271
-[v _val `ul ~T0 @X0 1 r1 ]
-"272
-[f ]
-"273
-[v _values `ui ~T0 @X0 -> 2 `i a ]
-"274
-[v _print_data `uc ~T0 @X0 -> 20 `i a ]
-[; ;main.c: 273: uint16_t values[2];
-[; ;main.c: 274: char print_data[20];
-[; ;main.c: 275: values[0] = (val >> 16) & 0xFFFF;
-"275
-[e = *U + &U _values * -> -> -> 0 `i `ui `ux -> -> # *U &U _values `ui `ux -> & >> _val -> 16 `i -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 276: values[1] = val & 0xFFFF;
-"276
-[e = *U + &U _values * -> -> -> 1 `i `ui `ux -> -> # *U &U _values `ui `ux -> & _val -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 277: sprintf(print_data,"val: %04X%04X",values[0],values[1]);
-"277
-[e ( _sprintf (1 , , (. , &U _print_data :s 4C *U + &U _values * -> -> -> 0 `i `ui `ux -> -> # *U &U _values `ui `ux *U + &U _values * -> -> -> 1 `i `ui `ux -> -> # *U &U _values `ui `ux ]
-[; ;main.c: 278: printf_string(print_data);
-"278
-[e ( _printf_string (1 -> &U _print_data `*Cuc ]
-[; ;main.c: 279: }
-"279
-[e :UE 1660 ]
-}
-"280
-[v _print_uint64_t `(v ~T0 @X0 1 ef1`S1621 ]
-"281
-{
-[; ;main.c: 280: void print_uint64_t(uint64_t num)
-[; ;main.c: 281: {
-[e :U _print_uint64_t ]
-"280
-[v _num `S1621 ~T0 @X0 1 r1 ]
-"281
-[f ]
-"282
-[v _numary `ui ~T0 @X0 -> 4 `i a ]
-"283
-[v _print_data `uc ~T0 @X0 -> 50 `i a ]
-[; ;main.c: 282: uint16_t numary[4];
-[; ;main.c: 283: char print_data[50];
-[; ;main.c: 284: numary[0] = (num.Msb >> 16) & 0xFFFF;
-"284
-[e = *U + &U _numary * -> -> -> 0 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & >> . _num 1 -> 16 `i -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 285: numary[1] = num.Msb & 0xFFFF;
-"285
-[e = *U + &U _numary * -> -> -> 1 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & . _num 1 -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 286: numary[2] = (num.Lsb >> 16) & 0xFFFF;
-"286
-[e = *U + &U _numary * -> -> -> 2 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & >> . _num 0 -> 16 `i -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 287: numary[3] = num.Lsb & 0xFFFF;
-"287
-[e = *U + &U _numary * -> -> -> 3 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & . _num 0 -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 289: sprintf(print_data,"\n\ruint64_num: %04X%04X%04X%04X", numary[0],numary[1],numary[2],numary[3]);
-"289
-[e ( _sprintf (1 , , , , (. , &U _print_data :s 5C *U + &U _numary * -> -> -> 0 `i `ui `ux -> -> # *U &U _numary `ui `ux *U + &U _numary * -> -> -> 1 `i `ui `ux -> -> # *U &U _numary `ui `ux *U + &U _numary * -> -> -> 2 `i `ui `ux -> -> # *U &U _numary `ui `ux *U + &U _numary * -> -> -> 3 `i `ui `ux -> -> # *U &U _numary `ui `ux ]
-[; ;main.c: 290: printf_string(print_data);
-"290
-[e ( _printf_string (1 -> &U _print_data `*Cuc ]
-[; ;main.c: 291: }
-"291
-[e :UE 1661 ]
-}
-"293
+"235
 [v _Sleep `(v ~T0 @X0 1 ef1`ul ]
-"294
+"236
 {
-[; ;main.c: 293: void Sleep(uint32_t time)
-[; ;main.c: 294: {
+[; ;main.c: 235: void Sleep(uint32_t time)
+[; ;main.c: 236: {
 [e :U _Sleep ]
-"293
+"235
 [v _time `ul ~T0 @X0 1 r1 ]
-"294
+"236
 [f ]
-[; ;main.c: 295: for(volatile uint32_t i=0; i<time; i++)
-"295
+[; ;main.c: 237: for(volatile uint32_t i=0; i<time; i++)
+"237
 {
 [v _i `Vul ~T0 @X0 1 a ]
 [e = _i -> -> -> 0 `i `l `ul ]
-[e $U 1666  ]
-"296
-[e :U 1663 ]
-[; ;main.c: 296: {
+[e $U 1663  ]
+"238
+[e :U 1660 ]
+[; ;main.c: 238: {
 {
-[; ;main.c: 297: _delay((unsigned long)((1)*(32000000/4000.0)));
-"297
+[; ;main.c: 239: _delay((unsigned long)((1)*(32000000/4000.0)));
+"239
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"298
+"240
 }
-"295
+"237
 [e ++ _i -> -> -> 1 `i `l `ul ]
-[e :U 1666 ]
-[e $ < _i _time 1663  ]
-[e :U 1664 ]
-"298
+[e :U 1663 ]
+[e $ < _i _time 1660  ]
+[e :U 1661 ]
+"240
 }
-[; ;main.c: 298: }
-[; ;main.c: 299: }
-"299
-[e :UE 1662 ]
+[; ;main.c: 240: }
+[; ;main.c: 241: }
+"241
+[e :UE 1659 ]
 }
 [p f _sprintf 10518532 ]
 [a 5C 10 13 117 105 110 116 54 52 95 110 117 109 58 32 37 48 52 88 37 48 52 88 37 48 52 88 37 48 52 88 0 ]
 [a 4C 118 97 108 58 32 37 48 52 88 37 48 52 88 0 ]
 [a 3C 118 97 108 58 32 37 48 52 88 0 ]
 [a 2C 118 97 108 58 32 37 48 50 88 0 ]
-[a 1C 10 13 80 114 111 103 114 97 109 32 114 117 110 110 105 110 103 46 46 46 0 ]
+[a 1C 10 13 85 87 66 95 84 65 71 95 68 87 77 51 48 48 48 95 80 73 67 0 ]

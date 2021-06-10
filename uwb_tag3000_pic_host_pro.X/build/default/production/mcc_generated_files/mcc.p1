@@ -1,14 +1,12 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"97 mcc_generated_files/mcc.h
-[v _PMD_Initialize `(v ~T0 @X0 0 ef ]
-"198 mcc_generated_files/pin_manager.h
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
 "84 mcc_generated_files/mcc.h
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
+"97
+[v _PMD_Initialize `(v ~T0 @X0 0 ef ]
+"230 mcc_generated_files/pin_manager.h
+[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
 "110 mcc_generated_files/eusart.h
 [v _EUSART_Initialize `(v ~T0 @X0 0 ef ]
-"63 mcc_generated_files/spi1.h
-[v _SPI1_Initialize `(v ~T0 @X0 0 ef ]
 "23551 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
 [v _OSCCON1 `Vuc ~T0 @X0 0 e@2189 ]
 "23691
@@ -13648,8 +13646,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;pin_manager.h: 198: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 210: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 230: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 242: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -13752,79 +13750,76 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mcc.c: 51: {
 [e :U _SYSTEM_Initialize ]
 [f ]
-[; ;mcc.c: 52: PMD_Initialize();
+[; ;mcc.c: 52: OSCILLATOR_Initialize();
 "52
-[e ( _PMD_Initialize ..  ]
-[; ;mcc.c: 54: PIN_MANAGER_Initialize();
-"54
-[e ( _PIN_MANAGER_Initialize ..  ]
-[; ;mcc.c: 55: OSCILLATOR_Initialize();
-"55
 [e ( _OSCILLATOR_Initialize ..  ]
+[; ;mcc.c: 53: PMD_Initialize();
+"53
+[e ( _PMD_Initialize ..  ]
+[; ;mcc.c: 55: PIN_MANAGER_Initialize();
+"55
+[e ( _PIN_MANAGER_Initialize ..  ]
 [; ;mcc.c: 57: EUSART_Initialize();
 "57
 [e ( _EUSART_Initialize ..  ]
-[; ;mcc.c: 58: SPI1_Initialize();
-"58
-[e ( _SPI1_Initialize ..  ]
-[; ;mcc.c: 59: }
-"59
+[; ;mcc.c: 60: }
+"60
 [e :UE 1616 ]
 }
-"61
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
 "62
+[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
+"63
 {
-[; ;mcc.c: 61: void OSCILLATOR_Initialize(void)
-[; ;mcc.c: 62: {
+[; ;mcc.c: 62: void OSCILLATOR_Initialize(void)
+[; ;mcc.c: 63: {
 [e :U _OSCILLATOR_Initialize ]
 [f ]
-[; ;mcc.c: 64: OSCCON1 = 0x60;
-"64
+[; ;mcc.c: 65: OSCCON1 = 0x60;
+"65
 [e = _OSCCON1 -> -> 96 `i `uc ]
-[; ;mcc.c: 66: OSCCON3 = 0x00;
-"66
+[; ;mcc.c: 67: OSCCON3 = 0x00;
+"67
 [e = _OSCCON3 -> -> 0 `i `uc ]
-[; ;mcc.c: 68: OSCEN = 0x00;
-"68
+[; ;mcc.c: 69: OSCEN = 0x00;
+"69
 [e = _OSCEN -> -> 0 `i `uc ]
-[; ;mcc.c: 70: OSCFRQ = 0x06;
-"70
+[; ;mcc.c: 71: OSCFRQ = 0x06;
+"71
 [e = _OSCFRQ -> -> 6 `i `uc ]
-[; ;mcc.c: 72: OSCTUNE = 0x00;
-"72
-[e = _OSCTUNE -> -> 0 `i `uc ]
-[; ;mcc.c: 73: }
+[; ;mcc.c: 73: OSCTUNE = 0x00;
 "73
+[e = _OSCTUNE -> -> 0 `i `uc ]
+[; ;mcc.c: 74: }
+"74
 [e :UE 1617 ]
 }
-"75
-[v _PMD_Initialize `(v ~T0 @X0 1 ef ]
 "76
+[v _PMD_Initialize `(v ~T0 @X0 1 ef ]
+"77
 {
-[; ;mcc.c: 75: void PMD_Initialize(void)
-[; ;mcc.c: 76: {
+[; ;mcc.c: 76: void PMD_Initialize(void)
+[; ;mcc.c: 77: {
 [e :U _PMD_Initialize ]
 [f ]
-[; ;mcc.c: 78: PMD0 = 0x00;
-"78
+[; ;mcc.c: 79: PMD0 = 0x00;
+"79
 [e = _PMD0 -> -> 0 `i `uc ]
-[; ;mcc.c: 80: PMD1 = 0x00;
-"80
+[; ;mcc.c: 81: PMD1 = 0x00;
+"81
 [e = _PMD1 -> -> 0 `i `uc ]
-[; ;mcc.c: 82: PMD2 = 0x00;
-"82
+[; ;mcc.c: 83: PMD2 = 0x00;
+"83
 [e = _PMD2 -> -> 0 `i `uc ]
-[; ;mcc.c: 84: PMD3 = 0x00;
-"84
+[; ;mcc.c: 85: PMD3 = 0x00;
+"85
 [e = _PMD3 -> -> 0 `i `uc ]
-[; ;mcc.c: 86: PMD4 = 0x00;
-"86
+[; ;mcc.c: 87: PMD4 = 0x00;
+"87
 [e = _PMD4 -> -> 0 `i `uc ]
-[; ;mcc.c: 88: PMD5 = 0x00;
-"88
-[e = _PMD5 -> -> 0 `i `uc ]
-[; ;mcc.c: 89: }
+[; ;mcc.c: 89: PMD5 = 0x00;
 "89
+[e = _PMD5 -> -> 0 `i `uc ]
+[; ;mcc.c: 90: }
+"90
 [e :UE 1618 ]
 }

@@ -48,7 +48,7 @@
   Section: Included Files
 */
 #include "eusart.h"
-
+#include "../pic_control_fun.h"
 volatile eusart_status_t eusartRxLastError;
 
 /**
@@ -77,8 +77,8 @@ void EUSART_Initialize(void)
     TX1STA = 0x24;
 
     // SP1BRGL 1; 
-    SP1BRGL = 0x44;
-
+   SP1BRGL = 0x44;
+    //SP1BRGL = 0x08;
     // SP1BRGH 0; 
     SP1BRGH = 0x00;
 
@@ -165,7 +165,7 @@ void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void)){
 void EUSART_SetErrorHandler(void (* interruptHandler)(void)){
     EUSART_ErrorHandler = interruptHandler;
 }
-
+#if (PRINT_LOG)
 void printf_string(const char  *data)
 {
     while(*data)
@@ -173,6 +173,7 @@ void printf_string(const char  *data)
         EUSART_Write(*data++);
     }
 }
+#endif
 
 /*char getch(void)
 {

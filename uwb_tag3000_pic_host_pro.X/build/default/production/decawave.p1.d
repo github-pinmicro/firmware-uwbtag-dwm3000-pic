@@ -8,4 +8,5 @@ decawave.h  \
 deca_device_api.h  \
 mcc_generated_files/eusart.h  \
 deca_spi.h  \
+pic_control_fun.h  \
 deca_vals.h 

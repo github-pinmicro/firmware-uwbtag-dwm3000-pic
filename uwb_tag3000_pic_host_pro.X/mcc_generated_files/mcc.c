@@ -49,13 +49,14 @@
 
 void SYSTEM_Initialize(void)
 {
+    OSCILLATOR_Initialize();
     PMD_Initialize();
     
     PIN_MANAGER_Initialize();
-    OSCILLATOR_Initialize();
     
     EUSART_Initialize();
-    SPI1_Initialize();
+   // SPI1_Initialize();
+    
 }
 
 void OSCILLATOR_Initialize(void)
