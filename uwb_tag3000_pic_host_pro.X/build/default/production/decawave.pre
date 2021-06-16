@@ -1004,7 +1004,7 @@ uint64_t get_sys_timestamp_u64(void);
 uint64_t get_tx_timestamp_u64(void);
 uint64_t get_rx_timestamp_u64(void);
 void dw_main(void);
-void transmitt_beacon_pkt(void);
+void transmit_beacon_pkt(void);
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -19211,12 +19211,12 @@ static uint8_t tx_blink_msg[] = { 0x00, 0x38, 0, 0xCA, 0xDE,
 0, 0, 0, 0, 0, 0, 0, 0, 0,
 0, 0, 0, 0, 0, 0 };
 
-# 66
+# 67
 static uint8_t rx_buffer[21];
 
 static uint32_t status_reg = 0;
 
-# 71
+# 72
 static uint64_t poll_tx_ts;
 static uint64_t resp_rx_ts;
 static uint64_t prev_ts;
@@ -19224,75 +19224,79 @@ static uint64_t add_time;
 uint16_t TAG_ADDR;
 uint16_t RNG_ADDR;
 
-# 86
+# 87
 void dw_main(void)
 {
 char data[50];
 
-printf_string("\n\rdw_main");
-
-# 95
+# 96
 reset_DWIC();
 
 
 if (dwt_initialise(0x0) == (-1))
 {
 
-printf_string("\n\rDWM_ERROR");
-
+# 104
 while (1)
 { };
 }
 if(dwt_configure(&config) < 0)
 {
 
-printf_string("\n\rCONFIG_ERROR");
-
+# 112
 }
 else
 {
 
-printf_string("\n\rCONFIG_SUCCESS");
-
+# 118
 }
 
 dwt_configuretxrf(&txconfig_options_ch9);
 
-# 130
+
+
+dwt_configuresleep(0x0001, 0x20 | 0x10 | 0x1);
+
+
+dwt_entersleepaftertx(1);
+
+dwt_setinterrupt(0x800000UL, 0, DWT_DISABLE_INT);
+
 dwt_setrxantennadelay(16385);
 dwt_settxantennadelay(16385);
 __builtin_memcpy(&tx_blink_msg[5],&ADDR,8);
 
-
-printf_string("\n\rDWM_OK");
-
+# 138
 while (0)
 {
 
 
 Sleep(1000);
 
-# 147
-printf_string("\n\rDataSend");
-
+# 150
 tx_blink_msg[2]++;
 dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
 dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
 dwt_starttx(0x00);
 
-# 176
+# 177
 }
 }
 
-void transmitt_beacon_pkt(void)
+void transmit_beacon_pkt(void)
 {
+dwt_wakeup_ic();
+while (!dwt_checkidlerc())
+{ };
 
-printf_string("\n\rDataSend");
-
+dwt_restoreconfig();
 tx_blink_msg[2]++;
+tx_blink_msg[21] = battery_level;
 dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
 dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
 dwt_starttx(0x00);
+
+# 214
 }
 
 uint64_t get_sys_timestamp_u64(void)
@@ -19317,7 +19321,7 @@ uint64_t get_rx_timestamp_u64(void)
 {
 uint64_t ts = {0, 0};
 
-# 216
+# 242
 return ts;
 }
 

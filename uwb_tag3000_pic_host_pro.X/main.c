@@ -100,7 +100,7 @@ void main(void)
         #endif 
         pmic_status_read(); 
         set_MSSSP1_mode(MSSP1_SPI);
-        transmitt_beacon_pkt();
+        transmit_beacon_pkt();
         set_led_status();
         while(!P_SW_GetValue());
         INTERRUPT_GlobalInterruptEnable();

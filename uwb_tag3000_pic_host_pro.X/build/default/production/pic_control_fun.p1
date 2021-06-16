@@ -31,9 +31,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1308 . . ]
 "29820
 [v _PPSLOCKbits `VS1308 ~T0 @X0 0 e@7823 ]
-"85 mcc_generated_files/eusart.h
-[v _printf_string `(v ~T0 @X0 0 ef1`*Cuc ]
-"32802 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
+"32802
 [v _RC3PPS `Vuc ~T0 @X0 0 e@7971 ]
 "32852
 [v _RC4PPS `Vuc ~T0 @X0 0 e@7972 ]
@@ -102,8 +100,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _SPI1_Open `(uc ~T0 @X0 0 ef1`E15047 ]
 "9 pic_i2c.h
 [v _i2c_init `(v ~T0 @X0 0 ef ]
-"195 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "15 bq25895.h
 [v _i2c_single_read `(uc ~T0 @X0 0 ef2`uc`uc ]
 "10
@@ -13971,9 +13967,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
 }
 [e :U 1621 ]
-[; ;pic_control_fun.c: 25: _delay((unsigned long)((2)*(32000000/4000.0)));
+[; ;pic_control_fun.c: 25: _delay((unsigned long)((3)*(32000000/4000.0)));
 "25
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 [; ;pic_control_fun.c: 26: do { LATAbits.LATA3 = 1; } while(0);
 "26
 [e :U 1625 ]
@@ -14062,9 +14058,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic_control_fun.c: 50: {
 "50
 {
-[; ;pic_control_fun.c: 52: printf_string("\n\rMSSSP set as SPI");
-"52
-[e ( _printf_string (1 :s 1C ]
 [; ;pic_control_fun.c: 54: current_mode = 1;
 "54
 [e = F15171 -> -> 1 `i `uc ]
@@ -14148,9 +14141,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic_control_fun.c: 86: {
 "86
 {
-[; ;pic_control_fun.c: 88: printf_string("\n\rMSSSP set as I2C");
-"88
-[e ( _printf_string (1 :s 2C ]
 [; ;pic_control_fun.c: 90: current_mode = 2;
 "90
 [e = F15171 -> -> 2 `i `uc ]
@@ -14281,9 +14271,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic_control_fun.c: 135: {
 "135
 {
-[; ;pic_control_fun.c: 137: printf("\n\rpmic_wdt_clr");
-"137
-[e ( _printf :s 3C ]
 [; ;pic_control_fun.c: 139: pmic_wdt_clr_count = 0;
 "139
 [e = F15181 -> -> 0 `i `uc ]
@@ -14296,9 +14283,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic_control_fun.c: 142: {
 "142
 {
-[; ;pic_control_fun.c: 144: printf("\n\rBQ25895_re_init");
-"144
-[e ( _printf :s 4C ]
 [; ;pic_control_fun.c: 146: init_bq25895();
 "146
 [e ( _init_bq25895 ..  ]
@@ -14322,309 +14306,300 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 1638 ]
 [; ;pic_control_fun.c: 152: }
-[; ;pic_control_fun.c: 155: printf("\n\rpmic_batt_read");
-"155
-[e ( _printf :s 5C ]
-[; ;pic_control_fun.c: 157: memset((void*)I2C_read_buff, 0, 10);
-"157
+[; ;pic_control_fun.c: 154: memset((void*)I2C_read_buff, 0, 10);
+"154
 [e ( _memset (3 , , -> &U _I2C_read_buff `*v -> 0 `i -> -> 10 `i `ui ]
-[; ;pic_control_fun.c: 158: i2c_multi_read(0xD4, pmic_stat_reg, I2C_read_buff, 10);
-"158
+[; ;pic_control_fun.c: 155: i2c_multi_read(0xD4, pmic_stat_reg, I2C_read_buff, 10);
+"155
 [e ( _i2c_multi_read (4 , , , -> -> 212 `i `uc _pmic_stat_reg &U _I2C_read_buff -> -> 10 `i `uc ]
-[; ;pic_control_fun.c: 159: GIE = interrupt_state;
-"159
+[; ;pic_control_fun.c: 156: GIE = interrupt_state;
+"156
 [e = _GIE -> _interrupt_state `b ]
-[; ;pic_control_fun.c: 161: process_pmic_status(I2C_read_buff, 10);
-"161
+[; ;pic_control_fun.c: 158: process_pmic_status(I2C_read_buff, 10);
+"158
 [e ( _process_pmic_status (2 , &U _I2C_read_buff -> -> 10 `i `uc ]
-"162
+"159
 }
 [e :U 1637 ]
-[; ;pic_control_fun.c: 162: }
-[; ;pic_control_fun.c: 164: }
-"164
+[; ;pic_control_fun.c: 159: }
+[; ;pic_control_fun.c: 161: }
+"161
 [e :UE 1636 ]
 }
-"165
+"162
 [v _process_pmic_status `(v ~T0 @X0 1 ef2`*uc`uc ]
-"166
+"163
 {
-[; ;pic_control_fun.c: 165: void process_pmic_status(uint8_t * status, uint8_t length)
-[; ;pic_control_fun.c: 166: {
+[; ;pic_control_fun.c: 162: void process_pmic_status(uint8_t * status, uint8_t length)
+[; ;pic_control_fun.c: 163: {
 [e :U _process_pmic_status ]
-"165
+"162
 [v _status `*uc ~T0 @X0 1 r1 ]
 [v _length `uc ~T0 @X0 1 r2 ]
-"166
+"163
 [f ]
-"167
+"164
 [v _VBUS_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 167: uint8_t VBUS_STAT = 0;
+[; ;pic_control_fun.c: 164: uint8_t VBUS_STAT = 0;
 [e = _VBUS_STAT -> -> 0 `i `uc ]
-"168
+"165
 [v _CHRG_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 168: uint8_t CHRG_STAT = 0;
+[; ;pic_control_fun.c: 165: uint8_t CHRG_STAT = 0;
 [e = _CHRG_STAT -> -> 0 `i `uc ]
-"169
+"166
 [v _PG_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 169: uint8_t PG_STAT = 0;
+[; ;pic_control_fun.c: 166: uint8_t PG_STAT = 0;
 [e = _PG_STAT -> -> 0 `i `uc ]
-"170
+"167
 [v _SDP_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 170: uint8_t SDP_STAT = 0;
+[; ;pic_control_fun.c: 167: uint8_t SDP_STAT = 0;
 [e = _SDP_STAT -> -> 0 `i `uc ]
-"171
+"168
 [v _VSYS_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 171: uint8_t VSYS_STAT = 0;
+[; ;pic_control_fun.c: 168: uint8_t VSYS_STAT = 0;
 [e = _VSYS_STAT -> -> 0 `i `uc ]
-"172
+"169
 [v _battery_volt `ui ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 172: uint16_t battery_volt;
-[; ;pic_control_fun.c: 174: VBUS_STAT = (uint8_t)((status[0] & 0b11100000) >> 5);
-"174
+[; ;pic_control_fun.c: 169: uint16_t battery_volt;
+[; ;pic_control_fun.c: 171: VBUS_STAT = (uint8_t)((status[0] & 0b11100000) >> 5);
+"171
 [e = _VBUS_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 224 `i -> 5 `i `uc ]
-[; ;pic_control_fun.c: 175: CHRG_STAT = (uint8_t)((status[0] & 0b00011000) >> 3);
-"175
+[; ;pic_control_fun.c: 172: CHRG_STAT = (uint8_t)((status[0] & 0b00011000) >> 3);
+"172
 [e = _CHRG_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 24 `i -> 3 `i `uc ]
-[; ;pic_control_fun.c: 176: PG_STAT = (uint8_t)((status[0] & 0b00000100) >> 2);
-"176
+[; ;pic_control_fun.c: 173: PG_STAT = (uint8_t)((status[0] & 0b00000100) >> 2);
+"173
 [e = _PG_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 4 `i -> 2 `i `uc ]
-[; ;pic_control_fun.c: 177: SDP_STAT = (uint8_t)((status[0] & 0b00000010) >> 1);
-"177
+[; ;pic_control_fun.c: 174: SDP_STAT = (uint8_t)((status[0] & 0b00000010) >> 1);
+"174
 [e = _SDP_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 2 `i -> 1 `i `uc ]
-[; ;pic_control_fun.c: 178: VSYS_STAT = (uint8_t)((status[0] & 0b00000001));
-"178
+[; ;pic_control_fun.c: 175: VSYS_STAT = (uint8_t)((status[0] & 0b00000001));
+"175
 [e = _VSYS_STAT -> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 1 `i `uc ]
-[; ;pic_control_fun.c: 181: if(1 == PG_STAT)
-"181
+[; ;pic_control_fun.c: 178: if(1 == PG_STAT)
+"178
 [e $ ! == -> 1 `i -> _PG_STAT `i 1641  ]
-[; ;pic_control_fun.c: 182: {
-"182
+[; ;pic_control_fun.c: 179: {
+"179
 {
-[; ;pic_control_fun.c: 186: power_connected = 1;
-"186
+[; ;pic_control_fun.c: 183: power_connected = 1;
+"183
 [e = _power_connected -> -> 1 `i `uc ]
-[; ;pic_control_fun.c: 187: if((0b00000001 == CHRG_STAT) || (0b00000010 == CHRG_STAT))
-"187
+[; ;pic_control_fun.c: 184: if((0b00000001 == CHRG_STAT) || (0b00000010 == CHRG_STAT))
+"184
 [e $ ! || == -> 1 `i -> _CHRG_STAT `i == -> 2 `i -> _CHRG_STAT `i 1642  ]
-[; ;pic_control_fun.c: 188: {
-"188
+[; ;pic_control_fun.c: 185: {
+"185
 {
-[; ;pic_control_fun.c: 189: if(pic_active_mode == 1)
-"189
+[; ;pic_control_fun.c: 186: if(pic_active_mode == 1)
+"186
 [e $ ! == -> _pic_active_mode `i -> 1 `i 1643  ]
-[; ;pic_control_fun.c: 190: {
-"190
+[; ;pic_control_fun.c: 187: {
+"187
 {
-[; ;pic_control_fun.c: 191: do { LATDbits.LATD1 = 0; } while(0);
-"191
+[; ;pic_control_fun.c: 188: do { LATDbits.LATD1 = 0; } while(0);
+"188
 [e :U 1646 ]
 {
 [e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
 }
 [e :U 1645 ]
-[; ;pic_control_fun.c: 192: do { LATDbits.LATD3 = 0; } while(0);
-"192
+[; ;pic_control_fun.c: 189: do { LATDbits.LATD3 = 0; } while(0);
+"189
 [e :U 1649 ]
 {
 [e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
 }
 [e :U 1648 ]
-"193
+"190
 }
 [e :U 1643 ]
-"194
+"191
 }
-[; ;pic_control_fun.c: 193: }
-[; ;pic_control_fun.c: 194: }
+[; ;pic_control_fun.c: 190: }
+[; ;pic_control_fun.c: 191: }
 [e $U 1650  ]
-"195
+"192
 [e :U 1642 ]
-[; ;pic_control_fun.c: 195: else if(0b00000011 == CHRG_STAT)
+[; ;pic_control_fun.c: 192: else if(0b00000011 == CHRG_STAT)
 [e $ ! == -> 3 `i -> _CHRG_STAT `i 1651  ]
-[; ;pic_control_fun.c: 196: {
-"196
+[; ;pic_control_fun.c: 193: {
+"193
 {
-[; ;pic_control_fun.c: 197: if(pic_active_mode == 1)
-"197
+[; ;pic_control_fun.c: 194: if(pic_active_mode == 1)
+"194
 [e $ ! == -> _pic_active_mode `i -> 1 `i 1652  ]
-[; ;pic_control_fun.c: 198: {
-"198
+[; ;pic_control_fun.c: 195: {
+"195
 {
-[; ;pic_control_fun.c: 199: do { LATDbits.LATD1 = 1; } while(0);
-"199
+[; ;pic_control_fun.c: 196: do { LATDbits.LATD1 = 1; } while(0);
+"196
 [e :U 1655 ]
 {
 [e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
 }
 [e :U 1654 ]
-[; ;pic_control_fun.c: 200: do { LATDbits.LATD3 = 0; } while(0);
-"200
+[; ;pic_control_fun.c: 197: do { LATDbits.LATD3 = 0; } while(0);
+"197
 [e :U 1658 ]
 {
 [e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
 }
 [e :U 1657 ]
-"201
+"198
 }
 [e :U 1652 ]
-"202
+"199
 }
-[; ;pic_control_fun.c: 201: }
-[; ;pic_control_fun.c: 202: }
+[; ;pic_control_fun.c: 198: }
+[; ;pic_control_fun.c: 199: }
 [e $U 1659  ]
-"203
+"200
 [e :U 1651 ]
-[; ;pic_control_fun.c: 203: else
-[; ;pic_control_fun.c: 204: {
-"204
+[; ;pic_control_fun.c: 200: else
+[; ;pic_control_fun.c: 201: {
+"201
 {
-[; ;pic_control_fun.c: 205: if(pic_active_mode == 1)
-"205
+[; ;pic_control_fun.c: 202: if(pic_active_mode == 1)
+"202
 [e $ ! == -> _pic_active_mode `i -> 1 `i 1660  ]
-[; ;pic_control_fun.c: 206: {
-"206
+[; ;pic_control_fun.c: 203: {
+"203
 {
-[; ;pic_control_fun.c: 207: do { LATDbits.LATD1 = 0; } while(0);
-"207
+[; ;pic_control_fun.c: 204: do { LATDbits.LATD1 = 0; } while(0);
+"204
 [e :U 1663 ]
 {
 [e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
 }
 [e :U 1662 ]
-[; ;pic_control_fun.c: 208: do { LATDbits.LATD3 = 1; } while(0);
-"208
+[; ;pic_control_fun.c: 205: do { LATDbits.LATD3 = 1; } while(0);
+"205
 [e :U 1666 ]
 {
 [e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
 }
 [e :U 1665 ]
-"209
+"206
 }
 [e :U 1660 ]
-"210
+"207
 }
 [e :U 1659 ]
 [e :U 1650 ]
-"211
+"208
 }
-[; ;pic_control_fun.c: 209: }
-[; ;pic_control_fun.c: 210: }
-[; ;pic_control_fun.c: 211: }
+[; ;pic_control_fun.c: 206: }
+[; ;pic_control_fun.c: 207: }
+[; ;pic_control_fun.c: 208: }
 [e $U 1667  ]
-"212
+"209
 [e :U 1641 ]
-[; ;pic_control_fun.c: 212: else
-[; ;pic_control_fun.c: 213: {
-"213
+[; ;pic_control_fun.c: 209: else
+[; ;pic_control_fun.c: 210: {
+"210
 {
-[; ;pic_control_fun.c: 217: power_connected = 2;
-"217
+[; ;pic_control_fun.c: 214: power_connected = 2;
+"214
 [e = _power_connected -> -> 2 `i `uc ]
-[; ;pic_control_fun.c: 218: if(pic_active_mode == 1)
-"218
+[; ;pic_control_fun.c: 215: if(pic_active_mode == 1)
+"215
 [e $ ! == -> _pic_active_mode `i -> 1 `i 1668  ]
-[; ;pic_control_fun.c: 219: {
-"219
+[; ;pic_control_fun.c: 216: {
+"216
 {
-[; ;pic_control_fun.c: 220: do { LATDbits.LATD1 = 1; } while(0);
-"220
+[; ;pic_control_fun.c: 217: do { LATDbits.LATD1 = 1; } while(0);
+"217
 [e :U 1671 ]
 {
 [e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
 }
 [e :U 1670 ]
-[; ;pic_control_fun.c: 221: do { LATDbits.LATD3 = 1; } while(0);
-"221
+[; ;pic_control_fun.c: 218: do { LATDbits.LATD3 = 1; } while(0);
+"218
 [e :U 1674 ]
 {
 [e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
 }
 [e :U 1673 ]
-"222
+"219
 }
 [e :U 1668 ]
-"223
+"220
 }
 [e :U 1667 ]
-[; ;pic_control_fun.c: 222: }
-[; ;pic_control_fun.c: 223: }
-[; ;pic_control_fun.c: 225: battery_volt = (uint16_t)((( status[3] & 0b01111111) * 20) + 2304);
-"225
+[; ;pic_control_fun.c: 219: }
+[; ;pic_control_fun.c: 220: }
+[; ;pic_control_fun.c: 222: battery_volt = (uint16_t)((( status[3] & 0b01111111) * 20) + 2304);
+"222
 [e = _battery_volt -> + * & -> *U + _status * -> -> 3 `i `x -> -> # *U _status `i `x `i -> 127 `i -> 20 `i -> 2304 `i `ui ]
-[; ;pic_control_fun.c: 226: battery_level = lipo_battery_level(battery_volt);
-"226
+[; ;pic_control_fun.c: 223: battery_level = lipo_battery_level(battery_volt);
+"223
 [e = _battery_level ( _lipo_battery_level (1 _battery_volt ]
-[; ;pic_control_fun.c: 227: }
-"227
+[; ;pic_control_fun.c: 229: }
+"229
 [e :UE 1640 ]
 }
-"229
-[v _lipo_battery_level `(uc ~T0 @X0 1 ef1`ui ]
-"230
-{
-[; ;pic_control_fun.c: 229: uint8_t lipo_battery_level(uint16_t battery_volt)
-[; ;pic_control_fun.c: 230: {
-[e :U _lipo_battery_level ]
-"229
-[v _battery_volt `ui ~T0 @X0 1 r1 ]
-"230
-[f ]
 "231
-[v _battery_level_cal `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 231: uint8_t battery_level_cal;
-[; ;pic_control_fun.c: 233: if(3500 >= battery_volt)
+[v _lipo_battery_level `(uc ~T0 @X0 1 ef1`ui ]
+"232
+{
+[; ;pic_control_fun.c: 231: uint8_t lipo_battery_level(uint16_t battery_volt)
+[; ;pic_control_fun.c: 232: {
+[e :U _lipo_battery_level ]
+"231
+[v _battery_volt `ui ~T0 @X0 1 r1 ]
+"232
+[f ]
 "233
-[e $ ! >= -> -> 3500 `i `ui _battery_volt 1676  ]
-[; ;pic_control_fun.c: 234: {
-"234
-{
-[; ;pic_control_fun.c: 235: battery_level_cal = 0;
+[v _battery_level_cal `uc ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 233: uint8_t battery_level_cal;
+[; ;pic_control_fun.c: 235: if(3500 >= battery_volt)
 "235
-[e = _battery_level_cal -> -> 0 `i `uc ]
+[e $ ! >= -> -> 3500 `i `ui _battery_volt 1676  ]
+[; ;pic_control_fun.c: 236: {
 "236
-}
-[; ;pic_control_fun.c: 236: }
-[e $U 1677  ]
+{
+[; ;pic_control_fun.c: 237: battery_level_cal = 0;
 "237
-[e :U 1676 ]
-[; ;pic_control_fun.c: 237: else if(4200 < battery_volt)
-[e $ ! < -> -> 4200 `i `ui _battery_volt 1678  ]
-[; ;pic_control_fun.c: 238: {
+[e = _battery_level_cal -> -> 0 `i `uc ]
 "238
-{
-[; ;pic_control_fun.c: 239: battery_level_cal = 100;
-"239
-[e = _battery_level_cal -> -> 100 `i `uc ]
-"240
 }
-[; ;pic_control_fun.c: 240: }
-[e $U 1679  ]
-"241
-[e :U 1678 ]
-[; ;pic_control_fun.c: 241: else
-[; ;pic_control_fun.c: 242: {
-"242
+[; ;pic_control_fun.c: 238: }
+[e $U 1677  ]
+"239
+[e :U 1676 ]
+[; ;pic_control_fun.c: 239: else if(4200 < battery_volt)
+[e $ ! < -> -> 4200 `i `ui _battery_volt 1678  ]
+[; ;pic_control_fun.c: 240: {
+"240
 {
-[; ;pic_control_fun.c: 243: battery_level_cal = (battery_volt - 3500)/7;
+[; ;pic_control_fun.c: 241: battery_level_cal = 100;
+"241
+[e = _battery_level_cal -> -> 100 `i `uc ]
+"242
+}
+[; ;pic_control_fun.c: 242: }
+[e $U 1679  ]
 "243
-[e = _battery_level_cal -> / - _battery_volt -> -> 3500 `i `ui -> -> 7 `i `ui `uc ]
+[e :U 1678 ]
+[; ;pic_control_fun.c: 243: else
+[; ;pic_control_fun.c: 244: {
 "244
+{
+[; ;pic_control_fun.c: 245: battery_level_cal = (battery_volt - 3500)/7;
+"245
+[e = _battery_level_cal -> / - _battery_volt -> -> 3500 `i `ui -> -> 7 `i `ui `uc ]
+"246
 }
 [e :U 1679 ]
 [e :U 1677 ]
-[; ;pic_control_fun.c: 244: }
-[; ;pic_control_fun.c: 245: return battery_level_cal;
-"245
+[; ;pic_control_fun.c: 246: }
+[; ;pic_control_fun.c: 247: return battery_level_cal;
+"247
 [e ) _battery_level_cal ]
 [e $UE 1675  ]
-[; ;pic_control_fun.c: 246: }
-"246
+[; ;pic_control_fun.c: 248: }
+"248
 [e :UE 1675 ]
 }
-[p f _printf 8388608 ]
-[a 4C 10 13 66 81 50 53 56 57 53 95 114 101 95 105 110 105 116 0 ]
-[a 3C 10 13 112 109 105 99 95 119 100 116 95 99 108 114 0 ]
-[a 5C 10 13 112 109 105 99 95 98 97 116 116 95 114 101 97 100 0 ]
-[a 1C 10 13 77 83 83 83 80 32 115 101 116 32 97 115 32 83 80 73 0 ]
-[a 2C 10 13 77 83 83 83 80 32 115 101 116 32 97 115 32 73 50 67 0 ]

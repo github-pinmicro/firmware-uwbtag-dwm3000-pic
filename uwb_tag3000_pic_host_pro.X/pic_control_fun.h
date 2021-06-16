@@ -9,7 +9,7 @@
 #define PMIC_STATSU_READ_TIME 50//300 // 30sec
 
 #define HW_VERSION    5
-#define PRINT_LOG     1
+#define PRINT_LOG     0
 #define DEV_MODE      0
 
 #define PW_CONNECTED    1

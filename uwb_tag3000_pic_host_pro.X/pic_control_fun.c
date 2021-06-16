@@ -22,7 +22,7 @@ void set_led_status(void)
         if( power_connected == PW_DISCONNECTED)
         {
            LED_B1_SetLow();
-           __delay_ms(2);
+           __delay_ms(3);
            LED_B1_SetHigh();
         }
         else
@@ -151,9 +151,6 @@ void pmic_status_read(void)
             bq25895_WDT_reset();//PMIC WDT clear
         }
         
-        #if(PRINT_LOG)
-            printf("\n\rpmic_batt_read");
-        #endif
         memset((void*)I2C_read_buff, 0, 10);//Battery read
         i2c_multi_read(I2C_SLAVE_ADDR_WR, pmic_stat_reg, I2C_read_buff, 10);  
         GIE = interrupt_state;
@@ -224,6 +221,11 @@ void process_pmic_status(uint8_t * status, uint8_t length)
     
     battery_volt = (uint16_t)((( status[3] & 0b01111111) * 20) + 2304); //Battery voltage is only in 7 bits of 0x0E reg. So &7F
     battery_level = lipo_battery_level(battery_volt);
+    #if(PRINT_LOG)
+    char data_print[30];
+    sprintf(data_print, "\n\rBatt_lvl: %d", battery_level);
+    printf(data_print);
+    #endif
 }  
 
 uint8_t lipo_battery_level(uint16_t battery_volt)

@@ -13987,38 +13987,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "167
 [e :UE 1634 ]
 }
-"169
-[v _printf_string `(v ~T0 @X0 1 ef1`*Cuc ]
-"170
-{
-[; ;eusart.c: 169: void printf_string(const char *data)
-[; ;eusart.c: 170: {
-[e :U _printf_string ]
-"169
-[v _data `*Cuc ~T0 @X0 1 r1 ]
-"170
-[f ]
-[; ;eusart.c: 171: while(*data)
-"171
-[e $U 1636  ]
-[e :U 1637 ]
-[; ;eusart.c: 172: {
-"172
-{
-[; ;eusart.c: 173: EUSART_Write(*data++);
-"173
-[e ( _EUSART_Write (1 *U ++ _data * -> -> 1 `i `x -> -> # *U _data `i `x ]
-"174
-}
-[e :U 1636 ]
-"171
-[e $ != -> *U _data `i -> -> -> 0 `i `Cuc `i 1637  ]
-[e :U 1638 ]
-[; ;eusart.c: 174: }
-[; ;eusart.c: 175: }
-"175
-[e :UE 1635 ]
-}
 "183
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
 "184
@@ -14035,5 +14003,5 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _EUSART_Write (1 _txData ]
 [; ;eusart.c: 186: }
 "186
-[e :UE 1639 ]
+[e :UE 1635 ]
 }

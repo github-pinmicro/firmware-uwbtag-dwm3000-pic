@@ -18460,7 +18460,7 @@ tx_led_toggle_count = 0;
 if( power_connected == 2)
 {
 do { LATAbits.LATA3 = 0; } while(0);
-_delay((unsigned long)((2)*(32000000/4000.0)));
+_delay((unsigned long)((3)*(32000000/4000.0)));
 do { LATAbits.LATA3 = 1; } while(0);
 }
 else
@@ -18487,8 +18487,7 @@ PPSLOCKbits.PPSLOCKED = 0x00;
 if(mode == 1)
 {
 
-printf_string("\n\rMSSSP set as SPI");
-
+# 54
 current_mode = 1;
 
 RC3PPS = 0x0F;
@@ -18523,8 +18522,7 @@ _delay((unsigned long)((2)*(32000000/4000.0)));
 else if(mode == 2)
 {
 
-printf_string("\n\rMSSSP set as I2C");
-
+# 90
 current_mode = 2;
 
 RC1PPS = 0x0F;
@@ -18572,15 +18570,13 @@ GIE = 0;
 if(pmic_wdt_clr_count > 5)
 {
 
-printf("\n\rpmic_wdt_clr");
-
+# 139
 pmic_wdt_clr_count = 0;
 I2C_read_buff[0] = i2c_single_read(0xD4, 0x02);
 if((I2C_read_buff[0] & 0b00000001) == 0x01)
 {
 
-printf("\n\rBQ25895_re_init");
-
+# 146
 init_bq25895();
 _delay((unsigned long)((5)*(32000000/4000.0)));
 }
@@ -18588,9 +18584,6 @@ I2C_read_buff[0] = (uint8_t)((I2C_read_buff[0] & 0b00111111) | (uint8_t)0b100000
 i2c_single_write(0xD4, 0x02, I2C_read_buff[0]);
 bq25895_WDT_reset();
 }
-
-
-printf("\n\rpmic_batt_read");
 
 memset((void*)I2C_read_buff, 0, 10);
 i2c_multi_read(0xD4, pmic_stat_reg, I2C_read_buff, 10);
@@ -18619,8 +18612,7 @@ VSYS_STAT = (uint8_t)((status[0] & 0b00000001));
 if(1 == PG_STAT)
 {
 
-
-
+# 183
 power_connected = 1;
 if((0b00000001 == CHRG_STAT) || (0b00000010 == CHRG_STAT))
 {
@@ -18650,8 +18642,7 @@ do { LATDbits.LATD3 = 1; } while(0);
 else
 {
 
-
-
+# 214
 power_connected = 2;
 if(pic_active_mode == 1)
 {
@@ -18662,6 +18653,8 @@ do { LATDbits.LATD3 = 1; } while(0);
 
 battery_volt = (uint16_t)((( status[3] & 0b01111111) * 20) + 2304);
 battery_level = lipo_battery_level(battery_volt);
+
+# 229
 }
 
 uint8_t lipo_battery_level(uint16_t battery_volt)

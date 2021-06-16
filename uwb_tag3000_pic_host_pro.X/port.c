@@ -160,6 +160,7 @@ void wakeup_device_with_io(void)
 	WUP_SetHigh();
 	Sleep(1);
     WUP_SetLow();
+    Sleep(2);
 }   
 /* @fn      port_is_boot1_low
  * @brief   check the BOOT1 pin status.

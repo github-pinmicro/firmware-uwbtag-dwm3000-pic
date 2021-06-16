@@ -18522,7 +18522,7 @@ uint64_t get_sys_timestamp_u64(void);
 uint64_t get_tx_timestamp_u64(void);
 uint64_t get_rx_timestamp_u64(void);
 void dw_main(void);
-void transmitt_beacon_pkt(void);
+void transmit_beacon_pkt(void);
 
 # 50 "main.h"
 extern bool TX_ANCHOR;
@@ -19330,9 +19330,7 @@ void main(void)
 SYSTEM_Initialize();
 asm("clrwdt");
 
-EUSART_Initialize();
-printf_string("\n\rUWB_TAG_DWM3000_PIC");
-
+# 77
 set_MSSSP1_mode(2);
 init_bq25895();
 _delay((unsigned long)((50)*(32000000/4000.0)));
@@ -19354,12 +19352,10 @@ dw_main();
 while(1)
 {
 
-do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0);
-
-
+# 101
 pmic_status_read();
 set_MSSSP1_mode(1);
-transmitt_beacon_pkt();
+transmit_beacon_pkt();
 set_led_status();
 while(!PORTBbits.RB0);
 (INTCONbits.GIE = 1);
@@ -19388,43 +19384,7 @@ __nop();
 }
 }
 
-# 234
-void print_uint8_t(uint8_t val)
-{
-char print_data[20];
-sprintf(print_data,"val: %02X",val);
-printf_string(print_data);
-}
-void print_uint16_t(uint16_t val)
-{
-
-char print_data[20];
-sprintf(print_data,"val: %04X",val);
-printf_string(print_data);
-}
-
-void print_uint32_t(uint32_t val)
-{
-uint16_t values[2];
-char print_data[20];
-values[0] = (val >> 16) & 0xFFFF;
-values[1] = val & 0xFFFF;
-sprintf(print_data,"val: %04X%04X",values[0],values[1]);
-printf_string(print_data);
-}
-void print_uint64_t(uint64_t num)
-{
-uint16_t numary[4];
-char print_data[50];
-numary[0] = (num.Msb >> 16) & 0xFFFF;
-numary[1] = num.Msb & 0xFFFF;
-numary[2] = (num.Lsb >> 16) & 0xFFFF;
-numary[3] = num.Lsb & 0xFFFF;
-
-sprintf(print_data,"\n\ruint64_num: %04X%04X%04X%04X", numary[0],numary[1],numary[2],numary[3]);
-printf_string(print_data);
-}
-
+# 270
 void Sleep(uint32_t time)
 {
 for(volatile uint32_t i=0; i<time; i++)

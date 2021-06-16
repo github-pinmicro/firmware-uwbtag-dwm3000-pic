@@ -2,10 +2,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "71 mcc_generated_files/mcc.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"110 mcc_generated_files/eusart.h
-[v _EUSART_Initialize `(v ~T0 @X0 0 ef ]
-"85
-[v _printf_string `(v ~T0 @X0 0 ef1`*Cuc ]
 "31 pic_control_fun.h
 [v _set_MSSSP1_mode `(v ~T0 @X0 0 ef1`uc ]
 "10 bq25895.h
@@ -61,7 +57,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "29 pic_control_fun.h
 [v _pmic_status_read `(v ~T0 @X0 0 ef ]
 "20 decawave.h
-[v _transmitt_beacon_pkt `(v ~T0 @X0 0 ef ]
+[v _transmit_beacon_pkt `(v ~T0 @X0 0 ef ]
 "32 pic_control_fun.h
 [v _set_led_status `(v ~T0 @X0 0 ef ]
 "456 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
@@ -75,11 +71,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "29 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
-"194 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
-[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"11 decawave.h
-[s S1621 `ul 1 `ul 1 ]
-[n S1621 . Lsb Msb ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -13914,7 +13905,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;decawave.h: 17: uint64_t get_tx_timestamp_u64(void);
 [; ;decawave.h: 18: uint64_t get_rx_timestamp_u64(void);
 [; ;decawave.h: 19: void dw_main(void);
-[; ;decawave.h: 20: void transmitt_beacon_pkt(void);
+[; ;decawave.h: 20: void transmit_beacon_pkt(void);
 [; ;main.h: 50: extern bool TX_ANCHOR;
 [; ;main.h: 51: extern uint8_t ADDR[8];
 [; ;main.h: 52: extern bool timer0_triggered;
@@ -14389,12 +14380,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 72: asm("clrwdt");
 "72
 [; <" clrwdt ;# ">
-[; ;main.c: 74: EUSART_Initialize();
-"74
-[e ( _EUSART_Initialize ..  ]
-[; ;main.c: 75: printf_string("\n\rUWB_TAG_DWM3000_PIC");
-"75
-[e ( _printf_string (1 :s 1C ]
 [; ;main.c: 77: set_MSSSP1_mode(2);
 "77
 [e ( _set_MSSSP1_mode (1 -> -> 2 `i `uc ]
@@ -14473,38 +14458,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 96: {
 "96
 {
-[; ;main.c: 98: do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0);
-"98
-[e :U 1657 ]
-{
-[e = . . _LATAbits 0 5 -> ~ -> . . _LATAbits 0 5 `i `uc ]
-}
-[e :U 1656 ]
 [; ;main.c: 101: pmic_status_read();
 "101
 [e ( _pmic_status_read ..  ]
 [; ;main.c: 102: set_MSSSP1_mode(1);
 "102
 [e ( _set_MSSSP1_mode (1 -> -> 1 `i `uc ]
-[; ;main.c: 103: transmitt_beacon_pkt();
+[; ;main.c: 103: transmit_beacon_pkt();
 "103
-[e ( _transmitt_beacon_pkt ..  ]
+[e ( _transmit_beacon_pkt ..  ]
 [; ;main.c: 104: set_led_status();
 "104
 [e ( _set_led_status ..  ]
 [; ;main.c: 105: while(!PORTBbits.RB0);
 "105
-[e $U 1658  ]
-[e :U 1659 ]
-[e :U 1658 ]
-[e $ ! != -> . . _PORTBbits 0 0 `i -> -> -> 0 `i `Vuc `i 1659  ]
-[e :U 1660 ]
+[e $U 1655  ]
+[e :U 1656 ]
+[e :U 1655 ]
+[e $ ! != -> . . _PORTBbits 0 0 `i -> -> -> 0 `i `Vuc `i 1656  ]
+[e :U 1657 ]
 [; ;main.c: 106: (INTCONbits.GIE = 1);
 "106
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
 [; ;main.c: 107: if(1 == enable_sleep)
 "107
-[e $ ! == -> 1 `i -> _enable_sleep `i 1661  ]
+[e $ ! == -> 1 `i -> _enable_sleep `i 1658  ]
 [; ;main.c: 108: {
 "108
 {
@@ -14561,7 +14539,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( ___nop ..  ]
 "126
 }
-[e :U 1661 ]
+[e :U 1658 ]
 "129
 }
 [e :U 1652 ]
@@ -14573,126 +14551,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 130: }
 "130
 [e :UE 1633 ]
-}
-"234
-[v _print_uint8_t `(v ~T0 @X0 1 ef1`uc ]
-"235
-{
-[; ;main.c: 234: void print_uint8_t(uint8_t val)
-[; ;main.c: 235: {
-[e :U _print_uint8_t ]
-"234
-[v _val `uc ~T0 @X0 1 r1 ]
-"235
-[f ]
-"236
-[v _print_data `uc ~T0 @X0 -> 20 `i a ]
-[; ;main.c: 236: char print_data[20];
-[; ;main.c: 237: sprintf(print_data,"val: %02X",val);
-"237
-[e ( _sprintf (1 , (. , &U _print_data :s 2C -> _val `i ]
-[; ;main.c: 238: printf_string(print_data);
-"238
-[e ( _printf_string (1 -> &U _print_data `*Cuc ]
-[; ;main.c: 239: }
-"239
-[e :UE 1662 ]
-}
-"240
-[v _print_uint16_t `(v ~T0 @X0 1 ef1`ui ]
-"241
-{
-[; ;main.c: 240: void print_uint16_t(uint16_t val)
-[; ;main.c: 241: {
-[e :U _print_uint16_t ]
-"240
-[v _val `ui ~T0 @X0 1 r1 ]
-"241
-[f ]
-"243
-[v _print_data `uc ~T0 @X0 -> 20 `i a ]
-[; ;main.c: 243: char print_data[20];
-[; ;main.c: 244: sprintf(print_data,"val: %04X",val);
-"244
-[e ( _sprintf (1 , (. , &U _print_data :s 3C _val ]
-[; ;main.c: 245: printf_string(print_data);
-"245
-[e ( _printf_string (1 -> &U _print_data `*Cuc ]
-[; ;main.c: 246: }
-"246
-[e :UE 1663 ]
-}
-"248
-[v _print_uint32_t `(v ~T0 @X0 1 ef1`ul ]
-"249
-{
-[; ;main.c: 248: void print_uint32_t(uint32_t val)
-[; ;main.c: 249: {
-[e :U _print_uint32_t ]
-"248
-[v _val `ul ~T0 @X0 1 r1 ]
-"249
-[f ]
-"250
-[v _values `ui ~T0 @X0 -> 2 `i a ]
-"251
-[v _print_data `uc ~T0 @X0 -> 20 `i a ]
-[; ;main.c: 250: uint16_t values[2];
-[; ;main.c: 251: char print_data[20];
-[; ;main.c: 252: values[0] = (val >> 16) & 0xFFFF;
-"252
-[e = *U + &U _values * -> -> -> 0 `i `ui `ux -> -> # *U &U _values `ui `ux -> & >> _val -> 16 `i -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 253: values[1] = val & 0xFFFF;
-"253
-[e = *U + &U _values * -> -> -> 1 `i `ui `ux -> -> # *U &U _values `ui `ux -> & _val -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 254: sprintf(print_data,"val: %04X%04X",values[0],values[1]);
-"254
-[e ( _sprintf (1 , , (. , &U _print_data :s 4C *U + &U _values * -> -> -> 0 `i `ui `ux -> -> # *U &U _values `ui `ux *U + &U _values * -> -> -> 1 `i `ui `ux -> -> # *U &U _values `ui `ux ]
-[; ;main.c: 255: printf_string(print_data);
-"255
-[e ( _printf_string (1 -> &U _print_data `*Cuc ]
-[; ;main.c: 256: }
-"256
-[e :UE 1664 ]
-}
-"257
-[v _print_uint64_t `(v ~T0 @X0 1 ef1`S1621 ]
-"258
-{
-[; ;main.c: 257: void print_uint64_t(uint64_t num)
-[; ;main.c: 258: {
-[e :U _print_uint64_t ]
-"257
-[v _num `S1621 ~T0 @X0 1 r1 ]
-"258
-[f ]
-"259
-[v _numary `ui ~T0 @X0 -> 4 `i a ]
-"260
-[v _print_data `uc ~T0 @X0 -> 50 `i a ]
-[; ;main.c: 259: uint16_t numary[4];
-[; ;main.c: 260: char print_data[50];
-[; ;main.c: 261: numary[0] = (num.Msb >> 16) & 0xFFFF;
-"261
-[e = *U + &U _numary * -> -> -> 0 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & >> . _num 1 -> 16 `i -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 262: numary[1] = num.Msb & 0xFFFF;
-"262
-[e = *U + &U _numary * -> -> -> 1 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & . _num 1 -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 263: numary[2] = (num.Lsb >> 16) & 0xFFFF;
-"263
-[e = *U + &U _numary * -> -> -> 2 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & >> . _num 0 -> 16 `i -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 264: numary[3] = num.Lsb & 0xFFFF;
-"264
-[e = *U + &U _numary * -> -> -> 3 `i `ui `ux -> -> # *U &U _numary `ui `ux -> & . _num 0 -> -> 65535 `ui `ul `ui ]
-[; ;main.c: 266: sprintf(print_data,"\n\ruint64_num: %04X%04X%04X%04X", numary[0],numary[1],numary[2],numary[3]);
-"266
-[e ( _sprintf (1 , , , , (. , &U _print_data :s 5C *U + &U _numary * -> -> -> 0 `i `ui `ux -> -> # *U &U _numary `ui `ux *U + &U _numary * -> -> -> 1 `i `ui `ux -> -> # *U &U _numary `ui `ux *U + &U _numary * -> -> -> 2 `i `ui `ux -> -> # *U &U _numary `ui `ux *U + &U _numary * -> -> -> 3 `i `ui `ux -> -> # *U &U _numary `ui `ux ]
-[; ;main.c: 267: printf_string(print_data);
-"267
-[e ( _printf_string (1 -> &U _print_data `*Cuc ]
-[; ;main.c: 268: }
-"268
-[e :UE 1665 ]
 }
 "270
 [v _Sleep `(v ~T0 @X0 1 ef1`ul ]
@@ -14710,9 +14568,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `Vul ~T0 @X0 1 a ]
 [e = _i -> -> -> 0 `i `l `ul ]
-[e $U 1670  ]
+[e $U 1663  ]
 "273
-[e :U 1667 ]
+[e :U 1660 ]
 [; ;main.c: 273: {
 {
 [; ;main.c: 274: _delay((unsigned long)((1)*(32000000/4000.0)));
@@ -14722,19 +14580,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "272
 [e ++ _i -> -> -> 1 `i `l `ul ]
-[e :U 1670 ]
-[e $ < _i _time 1667  ]
-[e :U 1668 ]
+[e :U 1663 ]
+[e $ < _i _time 1660  ]
+[e :U 1661 ]
 "275
 }
 [; ;main.c: 275: }
 [; ;main.c: 276: }
 "276
-[e :UE 1666 ]
+[e :UE 1659 ]
 }
-[p f _sprintf 10518532 ]
-[a 5C 10 13 117 105 110 116 54 52 95 110 117 109 58 32 37 48 52 88 37 48 52 88 37 48 52 88 37 48 52 88 0 ]
-[a 4C 118 97 108 58 32 37 48 52 88 37 48 52 88 0 ]
-[a 3C 118 97 108 58 32 37 48 52 88 0 ]
-[a 2C 118 97 108 58 32 37 48 50 88 0 ]
-[a 1C 10 13 85 87 66 95 84 65 71 95 68 87 77 51 48 48 48 95 80 73 67 0 ]

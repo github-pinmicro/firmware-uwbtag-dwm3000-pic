@@ -14260,105 +14260,108 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _LATAbits 0 6 -> -> 0 `i `uc ]
 }
 [e :U 1646 ]
-[; ;port.c: 163: }
+[; ;port.c: 163: Sleep(2);
 "163
+[e ( _Sleep (1 -> -> -> 2 `i `l `ul ]
+[; ;port.c: 164: }
+"164
 [e :UE 1641 ]
 }
-"168
-[v _port_is_boot1_low `(i ~T0 @X0 1 ef ]
 "169
+[v _port_is_boot1_low `(i ~T0 @X0 1 ef ]
+"170
 {
-[; ;port.c: 168: int port_is_boot1_low(void)
-[; ;port.c: 169: {
+[; ;port.c: 169: int port_is_boot1_low(void)
+[; ;port.c: 170: {
 [e :U _port_is_boot1_low ]
 [f ]
-[; ;port.c: 171: }
-"171
+[; ;port.c: 172: }
+"172
 [e :UE 1648 ]
 }
-"177
+"178
 [v _port_is_boot1_on `(i ~T0 @X0 1 ef1`ui ]
-"178
+"179
 {
-[; ;port.c: 177: int port_is_boot1_on(uint16_t x)
-[; ;port.c: 178: {
+[; ;port.c: 178: int port_is_boot1_on(uint16_t x)
+[; ;port.c: 179: {
 [e :U _port_is_boot1_on ]
-"177
-[v _x `ui ~T0 @X0 1 r1 ]
 "178
+[v _x `ui ~T0 @X0 1 r1 ]
+"179
 [f ]
-[; ;port.c: 180: }
-"180
+[; ;port.c: 181: }
+"181
 [e :UE 1649 ]
 }
-"187
+"188
 [v _port_is_switch_on `(i ~T0 @X0 1 ef1`ui ]
-"188
+"189
 {
-[; ;port.c: 187: int port_is_switch_on(uint16_t GPIOpin)
-[; ;port.c: 188: {
+[; ;port.c: 188: int port_is_switch_on(uint16_t GPIOpin)
+[; ;port.c: 189: {
 [e :U _port_is_switch_on ]
-"187
-[v _GPIOpin `ui ~T0 @X0 1 r1 ]
 "188
+[v _GPIOpin `ui ~T0 @X0 1 r1 ]
+"189
 [f ]
-[; ;port.c: 190: }
-"190
+[; ;port.c: 191: }
+"191
 [e :UE 1650 ]
 }
-"195
-[v _port_wakeup_dw_ic `(v ~T0 @X0 1 ef ]
 "196
+[v _port_wakeup_dw_ic `(v ~T0 @X0 1 ef ]
+"197
 {
-[; ;port.c: 195: void port_wakeup_dw_ic(void)
-[; ;port.c: 196: {
+[; ;port.c: 196: void port_wakeup_dw_ic(void)
+[; ;port.c: 197: {
 [e :U _port_wakeup_dw_ic ]
 [f ]
-[; ;port.c: 197: do { LATAbits.LATA7 = 0; } while(0);
-"197
+[; ;port.c: 198: do { LATAbits.LATA7 = 0; } while(0);
+"198
 [e :U 1654 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 1653 ]
-[; ;port.c: 198: Sleep(1);
-"198
-[e ( _Sleep (1 -> -> -> 1 `i `l `ul ]
-[; ;port.c: 199: do { LATAbits.LATA7 = 1; } while(0);
+[; ;port.c: 199: Sleep(1);
 "199
+[e ( _Sleep (1 -> -> -> 1 `i `l `ul ]
+[; ;port.c: 200: do { LATAbits.LATA7 = 1; } while(0);
+"200
 [e :U 1657 ]
 {
 [e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
 }
 [e :U 1656 ]
-[; ;port.c: 200: Sleep(7);
-"200
-[e ( _Sleep (1 -> -> -> 7 `i `l `ul ]
-[; ;port.c: 201: }
+[; ;port.c: 201: Sleep(7);
 "201
+[e ( _Sleep (1 -> -> -> 7 `i `l `ul ]
+[; ;port.c: 202: }
+"202
 [e :UE 1651 ]
 }
-"206
-[v _port_set_dw_ic_spi_slowrate `(v ~T0 @X0 1 ef ]
 "207
+[v _port_set_dw_ic_spi_slowrate `(v ~T0 @X0 1 ef ]
+"208
 {
-[; ;port.c: 206: void port_set_dw_ic_spi_slowrate(void)
-[; ;port.c: 207: {
+[; ;port.c: 207: void port_set_dw_ic_spi_slowrate(void)
+[; ;port.c: 208: {
 [e :U _port_set_dw_ic_spi_slowrate ]
 [f ]
-[; ;port.c: 210: }
-"210
+[; ;port.c: 211: }
+"211
 [e :UE 1658 ]
 }
-"216
-[v _port_set_dw_ic_spi_fastrate `(v ~T0 @X0 1 ef ]
 "217
+[v _port_set_dw_ic_spi_fastrate `(v ~T0 @X0 1 ef ]
+"218
 {
-[; ;port.c: 216: void port_set_dw_ic_spi_fastrate(void)
-[; ;port.c: 217: {
+[; ;port.c: 217: void port_set_dw_ic_spi_fastrate(void)
+[; ;port.c: 218: {
 [e :U _port_set_dw_ic_spi_fastrate ]
 [f ]
-[; ;port.c: 220: }
-"220
+[; ;port.c: 221: }
+"221
 [e :UE 1659 ]
 }

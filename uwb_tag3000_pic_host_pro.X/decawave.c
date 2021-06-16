@@ -50,13 +50,14 @@ static uint8_t tx_blink_msg[] = { 0x00, 0x38, 0, 0xCA, 0xDE, //frame control 2, 
 		0, 0, 0, 0, 0, 0, 0, 0, 0, //battery level 1, secure key 8
 		0, 0, 0, 0, 0, 0 }; //additional data 4, checksum 2
 /* Indexes to access some of the fields in the frames defined above. */
-#define DW_ADDR_RNG 9
+
 #define DW_SN_IDX 2
 #define DW_PAN 3
 #define DW_ADDR_IDX 5
 #define DW_TX_TS_IDX 9
 #define DW_MSG_TS_LEN 8
 #define DW_ID_LEN 4
+#define BATT_LVL_IDX 21
 #define DEVICE_IDX 26
 #define ERROR_FACTOR 1000
 #define TS_OFFSET 40
@@ -120,12 +121,12 @@ void dw_main(void)
     //read_uwb_reg();
     //while(1);
 	/* Configure sleep and wake-up parameters. */
-	//dwt_configuresleep(DWT_CONFIG, DWT_PRES_SLEEP | DWT_WAKE_WUP | DWT_SLP_EN);
+	dwt_configuresleep(DWT_CONFIG, DWT_PRES_SLEEP | DWT_WAKE_WUP | DWT_SLP_EN);
     //while(1);
 	/* Configure DW IC to automatically enter sleep mode after transmission of a frame. */
-	//dwt_entersleepaftertx(1);
+	dwt_entersleepaftertx(1);
 	/* need to disable default interrupts, device will not go to sleep if interrupt line is high */
-	//dwt_setinterrupt(SYS_ENABLE_LO_SPIRDY_ENABLE_BIT_MASK, 0, DWT_DISABLE_INT);
+	dwt_setinterrupt(SYS_ENABLE_LO_SPIRDY_ENABLE_BIT_MASK, 0, DWT_DISABLE_INT);
 	/* Apply default antenna delay value. */
 	dwt_setrxantennadelay(RX_ANT_DLY);
 	dwt_settxantennadelay(TX_ANT_DLY);
@@ -176,15 +177,40 @@ void dw_main(void)
 	}
 }
 
-void transmitt_beacon_pkt(void)
+void transmit_beacon_pkt(void)
 {	
-    #if (PRINT_LOG)
-    printf_string("\n\rDataSend"); 
-    #endif
+    dwt_wakeup_ic();
+    while (!dwt_checkidlerc()) /* Need to make sure DW IC is in IDLE_RC before proceeding */
+    { };
+        /* Restore the required configurations on wake */
+    dwt_restoreconfig();
     tx_blink_msg[DW_SN_IDX]++;
+    tx_blink_msg[BATT_LVL_IDX] = battery_level;
     dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0); /* Zero offset in TX buffer. */
     dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0); /* Zero offset in TX buffer, ranging. */
-    dwt_starttx(DWT_START_TX_IMMEDIATE);       
+    dwt_starttx(DWT_START_TX_IMMEDIATE); 
+    
+//    Sleep(2);
+//    uint32_t status_reg = dwt_read32bitreg(SYS_STATUS_ID);
+//    static uint8_t tx_err_cnt;
+//    if(status_reg & SYS_STATUS_TXFRS_BIT_MASK)
+//    {
+//      #if (PRINT_LOG)
+//      printf_string("\n\rTX_SUCC"); 
+//      #endif  
+//      tx_err_cnt = 0;  
+//    }
+//    else
+//    {
+//      tx_err_cnt++;
+//      if(tx_err_cnt >= 3)
+//      {
+//        #if (PRINT_LOG)
+//        printf_string("\n\rHW Reset due to TX Error");
+//        #endif
+//        RESET();
+//      }
+//    }
 }
 
 uint64_t get_sys_timestamp_u64(void)

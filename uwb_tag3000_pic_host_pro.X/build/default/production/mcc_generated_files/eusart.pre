@@ -18380,14 +18380,6 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void)){
 EUSART_ErrorHandler = interruptHandler;
 }
 
-void printf_string(const char *data)
-{
-while(*data)
-{
-EUSART_Write(*data++);
-}
-}
-
 # 183
 void putch(char txData)
 {

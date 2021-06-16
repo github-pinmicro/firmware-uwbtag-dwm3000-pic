@@ -19092,27 +19092,28 @@ void wakeup_device_with_io(void)
 do { LATAbits.LATA6 = 1; } while(0);
 Sleep(1);
 do { LATAbits.LATA6 = 0; } while(0);
+Sleep(2);
 }
 
-# 168
+# 169
 int port_is_boot1_low(void)
 {
 
 }
 
-# 177
+# 178
 int port_is_boot1_on(uint16_t x)
 {
 
 }
 
-# 187
+# 188
 int port_is_switch_on(uint16_t GPIOpin)
 {
 
 }
 
-# 195
+# 196
 void port_wakeup_dw_ic(void)
 {
 do { LATAbits.LATA7 = 0; } while(0);
@@ -19121,14 +19122,14 @@ do { LATAbits.LATA7 = 1; } while(0);
 Sleep(7);
 }
 
-# 206
+# 207
 void port_set_dw_ic_spi_slowrate(void)
 {
 
 
 }
 
-# 216
+# 217
 void port_set_dw_ic_spi_fastrate(void)
 {
 
