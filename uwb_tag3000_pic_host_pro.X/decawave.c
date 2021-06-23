@@ -57,6 +57,7 @@ static uint8_t tx_blink_msg[] = { 0x00, 0x38, 0, 0xCA, 0xDE, //frame control 2, 
 #define DW_TX_TS_IDX 9
 #define DW_MSG_TS_LEN 8
 #define DW_ID_LEN 4
+#define TX_TS_IDX 13 + 4 //use only 4 bytes
 #define BATT_LVL_IDX 21
 #define DEVICE_IDX 26
 #define ERROR_FACTOR 1000
@@ -185,6 +186,7 @@ void transmit_beacon_pkt(void)
         /* Restore the required configurations on wake */
     dwt_restoreconfig();
     tx_blink_msg[DW_SN_IDX]++;
+    memcpy(&tx_blink_msg[TX_TS_IDX], &pic_time_counter_ms, 4);
     tx_blink_msg[BATT_LVL_IDX] = battery_level;
     dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0); /* Zero offset in TX buffer. */
     dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0); /* Zero offset in TX buffer, ranging. */

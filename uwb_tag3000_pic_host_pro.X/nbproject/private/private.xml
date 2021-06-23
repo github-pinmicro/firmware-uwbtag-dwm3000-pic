@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/PINMICRO/PIC/uwb_tag3000_pic_host_pro.X/main.c</file>
-            <file>file:/E:/PINMICRO/PIC/uwb_tag3000_pic_host_pro.X/port.c</file>
-            <file>file:/E:/PINMICRO/PIC/uwb_tag3000_pic_host_pro.X/decawave.c</file>
-            <file>file:/E:/PINMICRO/PIC/uwb_tag3000_pic_host_pro.X/pic_control_fun.h</file>
-            <file>file:/E:/PINMICRO/PIC/uwb_tag3000_pic_host_pro.X/deca_device.c</file>
-            <file>file:/E:/PINMICRO/PIC/uwb_tag3000_pic_host_pro.X/pic_control_fun.c</file>
-            <file>file:/E:/PINMICRO/PIC/uwb_tag3000_pic_host_pro.X/decawave.h</file>
+            <file>file:/D:/Embedded_programs/PIC_programs/PIC%20Production%20Firmware/uwb_tag3000_pic_host_production/git_clone/uwb_tag3000_pic_host_pro.X/mcc_generated_files/pin_manager.c</file>
+            <file>file:/D:/Embedded_programs/PIC_programs/PIC%20Production%20Firmware/uwb_tag3000_pic_host_production/git_clone/uwb_tag3000_pic_host_pro.X/main.c</file>
+            <file>file:/D:/Embedded_programs/PIC_programs/PIC%20Production%20Firmware/uwb_tag3000_pic_host_production/git_clone/uwb_tag3000_pic_host_pro.X/mcc_generated_files/device_config.c</file>
+            <file>file:/D:/Embedded_programs/PIC_programs/PIC%20Production%20Firmware/uwb_tag3000_pic_host_production/git_clone/uwb_tag3000_pic_host_pro.X/mcc_generated_files/pin_manager.h</file>
         </group>
     </open-files>
 </project-private>

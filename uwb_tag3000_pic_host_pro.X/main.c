@@ -61,8 +61,10 @@
 #include "mcc_generated_files/interrupt_manager.h"
 
 bool timer0_triggered;
-uint8_t ADDR[8] = {0x02, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
+uint8_t ADDR[8] = {0x01, 0x00, 0x53, 0xFE, 0xFF, 0xD6, 0xF5, 0xC8};
 uint8_t enable_sleep = 1;
+
+uint16_t firmware_version[3] = {0x01, 0x01, 0x01};
 /*
                          Main application
  */
@@ -74,6 +76,13 @@ void main(void)
     EUSART_Initialize();
     printf_string("\n\rUWB_TAG_DWM3000_PIC");
     #endif
+
+ 
+    /*while(1)
+    { 
+        CLRWDT();
+        __delay_ms(500);
+    }*/
     set_MSSSP1_mode(MSSP1_I2C);//PMIC init
     init_bq25895();
     __delay_ms(50);
@@ -103,6 +112,7 @@ void main(void)
         transmit_beacon_pkt();
         set_led_status();
         while(!P_SW_GetValue());
+        pic_time_counter_ms += TX_INTERVAL_MS;
         INTERRUPT_GlobalInterruptEnable();
         if(1 == enable_sleep)
         {

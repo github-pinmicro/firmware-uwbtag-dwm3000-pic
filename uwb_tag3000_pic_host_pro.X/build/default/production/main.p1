@@ -2,7 +2,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "71 mcc_generated_files/mcc.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-"31 pic_control_fun.h
+"35 pic_control_fun.h
 [v _set_MSSSP1_mode `(v ~T0 @X0 0 ef1`uc ]
 "10 bq25895.h
 [v _init_bq25895 `(uc ~T0 @X0 0 ef ]
@@ -54,11 +54,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TMR0_Initialize `(v ~T0 @X0 0 ef ]
 "19 decawave.h
 [v _dw_main `(v ~T0 @X0 0 ef ]
-"29 pic_control_fun.h
+"33 pic_control_fun.h
 [v _pmic_status_read `(v ~T0 @X0 0 ef ]
 "20 decawave.h
 [v _transmit_beacon_pkt `(v ~T0 @X0 0 ef ]
-"32 pic_control_fun.h
+"36 pic_control_fun.h
 [v _set_led_status `(v ~T0 @X0 0 ef ]
 "456 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
 [s S30 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -68,6 +68,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S29 . . ]
 "467
 [v _PORTBbits `VS29 ~T0 @X0 0 e@13 ]
+"30 pic_control_fun.h
+[v _pic_time_counter_ms `ul ~T0 @X0 0 e ]
 "29 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
@@ -13688,8 +13690,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;pin_manager.h: 251: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 263: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 252: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 264: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -14316,12 +14318,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic_i2c.h: 13: char i2c_read(char ack);
 [; ;pic_i2c.h: 14: char i2c_write(char data);
 [; ;pic_i2c.h: 15: void i2c_resync();
-[; ;pic_control_fun.h: 26: extern uint8_t battery_level;
-[; ;pic_control_fun.h: 28: void process_pmic_status(uint8_t * status, uint8_t length);
-[; ;pic_control_fun.h: 29: void pmic_status_read(void);
-[; ;pic_control_fun.h: 30: uint8_t lipo_battery_level(uint16_t battery_volt);
-[; ;pic_control_fun.h: 31: void set_MSSSP1_mode(uint8_t mode);
-[; ;pic_control_fun.h: 32: void set_led_status(void);
+[; ;pic_control_fun.h: 29: extern uint8_t battery_level;
+[; ;pic_control_fun.h: 30: extern uint32_t pic_time_counter_ms;
+[; ;pic_control_fun.h: 32: void process_pmic_status(uint8_t * status, uint8_t length);
+[; ;pic_control_fun.h: 33: void pmic_status_read(void);
+[; ;pic_control_fun.h: 34: uint8_t lipo_battery_level(uint16_t battery_volt);
+[; ;pic_control_fun.h: 35: void set_MSSSP1_mode(uint8_t mode);
+[; ;pic_control_fun.h: 36: void set_led_status(void);
 [; ;pic_i2c.h: 9: void i2c_init();
 [; ;pic_i2c.h: 10: void i2c_start();
 [; ;pic_i2c.h: 11: void i2c_restart();
@@ -14348,177 +14351,160 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADDR `uc ~T0 @X0 -> 8 `i e ]
 [i _ADDR
 :U ..
--> -> 2 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
+-> -> 1 `i `uc
 -> -> 0 `i `uc
 -> -> 83 `i `uc
+-> -> 254 `i `uc
+-> -> 255 `i `uc
 -> -> 214 `i `uc
 -> -> 245 `i `uc
 -> -> 200 `i `uc
 ..
 ]
-[; ;main.c: 64: uint8_t ADDR[8] = {0x02, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
+[; ;main.c: 64: uint8_t ADDR[8] = {0x01, 0x00, 0x53, 0xFE, 0xFF, 0xD6, 0xF5, 0xC8};
 "65
 [v _enable_sleep `uc ~T0 @X0 1 e ]
 [i _enable_sleep
 -> -> 1 `i `uc
 ]
 [; ;main.c: 65: uint8_t enable_sleep = 1;
+"67
+[v _firmware_version `ui ~T0 @X0 -> 3 `i e ]
+[i _firmware_version
+:U ..
+-> -> 1 `i `ui
+-> -> 1 `i `ui
+-> -> 1 `i `ui
+..
+]
+[; ;main.c: 67: uint16_t firmware_version[3] = {0x01, 0x01, 0x01};
 [v $root$_main `(v ~T0 @X0 0 e ]
-"69
+"71
 [v _main `(v ~T0 @X0 1 ef ]
-"70
+"72
 {
-[; ;main.c: 69: void main(void)
-[; ;main.c: 70: {
+[; ;main.c: 71: void main(void)
+[; ;main.c: 72: {
 [e :U _main ]
 [f ]
-[; ;main.c: 71: SYSTEM_Initialize();
-"71
+[; ;main.c: 73: SYSTEM_Initialize();
+"73
 [e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 72: asm("clrwdt");
-"72
+[; ;main.c: 74: asm("clrwdt");
+"74
 [; <" clrwdt ;# ">
-[; ;main.c: 77: set_MSSSP1_mode(2);
-"77
+[; ;main.c: 86: set_MSSSP1_mode(2);
+"86
 [e ( _set_MSSSP1_mode (1 -> -> 2 `i `uc ]
-[; ;main.c: 78: init_bq25895();
-"78
+[; ;main.c: 87: init_bq25895();
+"87
 [e ( _init_bq25895 ..  ]
-[; ;main.c: 79: _delay((unsigned long)((50)*(32000000/4000.0)));
-"79
+[; ;main.c: 88: _delay((unsigned long)((50)*(32000000/4000.0)));
+"88
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-[; ;main.c: 81: do { ODCONAbits.ODCA6 = 0; } while(0);
-"81
+[; ;main.c: 90: do { ODCONAbits.ODCA6 = 0; } while(0);
+"90
 [e :U 1636 ]
 {
 [e = . . _ODCONAbits 0 6 -> -> 0 `i `uc ]
 }
 [e :U 1635 ]
-[; ;main.c: 82: do { LATAbits.LATA6 = 0; } while(0);
-"82
+[; ;main.c: 91: do { LATAbits.LATA6 = 0; } while(0);
+"91
 [e :U 1639 ]
 {
 [e = . . _LATAbits 0 6 -> -> 0 `i `uc ]
 }
 [e :U 1638 ]
-[; ;main.c: 83: do { ODCONAbits.ODCA7 = 0; } while(0);
-"83
+[; ;main.c: 92: do { ODCONAbits.ODCA7 = 0; } while(0);
+"92
 [e :U 1642 ]
 {
 [e = . . _ODCONAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 1641 ]
-[; ;main.c: 84: do { LATAbits.LATA7 = 1; } while(0);
-"84
+[; ;main.c: 93: do { LATAbits.LATA7 = 1; } while(0);
+"93
 [e :U 1645 ]
 {
 [e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
 }
 [e :U 1644 ]
-[; ;main.c: 85: do { ODCONBbits.ODCB4 = 1; } while(0);
-"85
+[; ;main.c: 94: do { ODCONBbits.ODCB4 = 1; } while(0);
+"94
 [e :U 1648 ]
 {
 [e = . . _ODCONBbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 1647 ]
-[; ;main.c: 86: do { LATBbits.LATB4 = 1; } while(0);
-"86
+[; ;main.c: 95: do { LATBbits.LATB4 = 1; } while(0);
+"95
 [e :U 1651 ]
 {
 [e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 1650 ]
-[; ;main.c: 88: set_MSSSP1_mode(1);
-"88
+[; ;main.c: 97: set_MSSSP1_mode(1);
+"97
 [e ( _set_MSSSP1_mode (1 -> -> 1 `i `uc ]
-[; ;main.c: 89: _delay((unsigned long)((2)*(32000000/4000.0)));
-"89
+[; ;main.c: 98: _delay((unsigned long)((2)*(32000000/4000.0)));
+"98
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-[; ;main.c: 90: (INTCONbits.GIE = 1);
-"90
+[; ;main.c: 99: (INTCONbits.GIE = 1);
+"99
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 91: (INTCONbits.PEIE = 1);
-"91
+[; ;main.c: 100: (INTCONbits.PEIE = 1);
+"100
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 92: TMR0_Initialize();
-"92
-[e ( _TMR0_Initialize ..  ]
-[; ;main.c: 93: asm("clrwdt");
-"93
-[; <" clrwdt ;# ">
-[; ;main.c: 94: dw_main();
-"94
-[e ( _dw_main ..  ]
-[; ;main.c: 95: while(1)
-"95
-[e :U 1653 ]
-[; ;main.c: 96: {
-"96
-{
-[; ;main.c: 101: pmic_status_read();
+[; ;main.c: 101: TMR0_Initialize();
 "101
-[e ( _pmic_status_read ..  ]
-[; ;main.c: 102: set_MSSSP1_mode(1);
+[e ( _TMR0_Initialize ..  ]
+[; ;main.c: 102: asm("clrwdt");
 "102
-[e ( _set_MSSSP1_mode (1 -> -> 1 `i `uc ]
-[; ;main.c: 103: transmit_beacon_pkt();
+[; <" clrwdt ;# ">
+[; ;main.c: 103: dw_main();
 "103
-[e ( _transmit_beacon_pkt ..  ]
-[; ;main.c: 104: set_led_status();
+[e ( _dw_main ..  ]
+[; ;main.c: 104: while(1)
 "104
-[e ( _set_led_status ..  ]
-[; ;main.c: 105: while(!PORTBbits.RB0);
+[e :U 1653 ]
+[; ;main.c: 105: {
 "105
+{
+[; ;main.c: 110: pmic_status_read();
+"110
+[e ( _pmic_status_read ..  ]
+[; ;main.c: 111: set_MSSSP1_mode(1);
+"111
+[e ( _set_MSSSP1_mode (1 -> -> 1 `i `uc ]
+[; ;main.c: 112: transmit_beacon_pkt();
+"112
+[e ( _transmit_beacon_pkt ..  ]
+[; ;main.c: 113: set_led_status();
+"113
+[e ( _set_led_status ..  ]
+[; ;main.c: 114: while(!PORTBbits.RB0);
+"114
 [e $U 1655  ]
 [e :U 1656 ]
 [e :U 1655 ]
 [e $ ! != -> . . _PORTBbits 0 0 `i -> -> -> 0 `i `Vuc `i 1656  ]
 [e :U 1657 ]
-[; ;main.c: 106: (INTCONbits.GIE = 1);
-"106
-[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 107: if(1 == enable_sleep)
-"107
-[e $ ! == -> 1 `i -> _enable_sleep `i 1658  ]
-[; ;main.c: 108: {
-"108
-{
-[; ;main.c: 109: __nop();
-"109
-[e ( ___nop ..  ]
-[; ;main.c: 110: __nop();
-"110
-[e ( ___nop ..  ]
-[; ;main.c: 111: __nop();
-"111
-[e ( ___nop ..  ]
-[; ;main.c: 112: __nop();
-"112
-[e ( ___nop ..  ]
-[; ;main.c: 113: __nop();
-"113
-[e ( ___nop ..  ]
-[; ;main.c: 114: __nop();
-"114
-[e ( ___nop ..  ]
-[; ;main.c: 115: __nop();
+[; ;main.c: 115: pic_time_counter_ms += 300;
 "115
-[e ( ___nop ..  ]
-[; ;main.c: 116: __nop();
+[e =+ _pic_time_counter_ms -> -> -> 300 `i `l `ul ]
+[; ;main.c: 116: (INTCONbits.GIE = 1);
 "116
-[e ( ___nop ..  ]
-[; ;main.c: 117: __nop();
+[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 117: if(1 == enable_sleep)
 "117
-[e ( ___nop ..  ]
-[; ;main.c: 118: __nop();
+[e $ ! == -> 1 `i -> _enable_sleep `i 1658  ]
+[; ;main.c: 118: {
 "118
-[e ( ___nop ..  ]
-[; ;main.c: 119: asm("sleep");
+{
+[; ;main.c: 119: __nop();
 "119
-[; <" sleep ;# ">
+[e ( ___nop ..  ]
 [; ;main.c: 120: __nop();
 "120
 [e ( ___nop ..  ]
@@ -14537,56 +14523,86 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 125: __nop();
 "125
 [e ( ___nop ..  ]
+[; ;main.c: 126: __nop();
 "126
+[e ( ___nop ..  ]
+[; ;main.c: 127: __nop();
+"127
+[e ( ___nop ..  ]
+[; ;main.c: 128: __nop();
+"128
+[e ( ___nop ..  ]
+[; ;main.c: 129: asm("sleep");
+"129
+[; <" sleep ;# ">
+[; ;main.c: 130: __nop();
+"130
+[e ( ___nop ..  ]
+[; ;main.c: 131: __nop();
+"131
+[e ( ___nop ..  ]
+[; ;main.c: 132: __nop();
+"132
+[e ( ___nop ..  ]
+[; ;main.c: 133: __nop();
+"133
+[e ( ___nop ..  ]
+[; ;main.c: 134: __nop();
+"134
+[e ( ___nop ..  ]
+[; ;main.c: 135: __nop();
+"135
+[e ( ___nop ..  ]
+"136
 }
 [e :U 1658 ]
-"129
+"139
 }
 [e :U 1652 ]
-"95
+"104
 [e $U 1653  ]
 [e :U 1654 ]
-[; ;main.c: 126: }
-[; ;main.c: 129: }
-[; ;main.c: 130: }
-"130
+[; ;main.c: 136: }
+[; ;main.c: 139: }
+[; ;main.c: 140: }
+"140
 [e :UE 1633 ]
 }
-"270
+"280
 [v _Sleep `(v ~T0 @X0 1 ef1`ul ]
-"271
+"281
 {
-[; ;main.c: 270: void Sleep(uint32_t time)
-[; ;main.c: 271: {
+[; ;main.c: 280: void Sleep(uint32_t time)
+[; ;main.c: 281: {
 [e :U _Sleep ]
-"270
+"280
 [v _time `ul ~T0 @X0 1 r1 ]
-"271
+"281
 [f ]
-[; ;main.c: 272: for(volatile uint32_t i=0; i<time; i++)
-"272
+[; ;main.c: 282: for(volatile uint32_t i=0; i<time; i++)
+"282
 {
 [v _i `Vul ~T0 @X0 1 a ]
 [e = _i -> -> -> 0 `i `l `ul ]
 [e $U 1663  ]
-"273
+"283
 [e :U 1660 ]
-[; ;main.c: 273: {
+[; ;main.c: 283: {
 {
-[; ;main.c: 274: _delay((unsigned long)((1)*(32000000/4000.0)));
-"274
+[; ;main.c: 284: _delay((unsigned long)((1)*(32000000/4000.0)));
+"284
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"275
+"285
 }
-"272
+"282
 [e ++ _i -> -> -> 1 `i `l `ul ]
 [e :U 1663 ]
 [e $ < _i _time 1660  ]
 [e :U 1661 ]
-"275
+"285
 }
-[; ;main.c: 275: }
-[; ;main.c: 276: }
-"276
+[; ;main.c: 285: }
+[; ;main.c: 286: }
+"286
 [e :UE 1659 ]
 }

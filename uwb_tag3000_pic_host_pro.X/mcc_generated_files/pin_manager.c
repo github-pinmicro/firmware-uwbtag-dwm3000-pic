@@ -66,7 +66,7 @@ void PIN_MANAGER_Initialize(void)
     TRISE = 0x07;
     TRISA = 0x07;
     TRISB = 0xEF;
-    TRISC = 0x9F;
+    TRISC = 0xDF;
     TRISD = 0xF0;
 
     /**
@@ -125,12 +125,13 @@ void PIN_MANAGER_Initialize(void)
 #endif
     //TRISCbits.TRISC6 = 0;
     EN_3V0_SetLow();
-    EV_3V3_SetHigh();
+    //EV_3V3_SetHigh();
+    EV_3V3_SetDigitalInput();
     
     LED_R1_SetLow();
     LED_G1_SetLow();
     LED_B1_SetLow();
-    Sleep(500);
+    Sleep(300);
     LED_R1_SetHigh();
     LED_G1_SetHigh();
     LED_B1_SetHigh(); 

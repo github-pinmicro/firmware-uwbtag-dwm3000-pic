@@ -10,6 +10,7 @@ uint8_t battery_level;
 uint8_t I2C_read_buff[10];
 uint8_t pic_active_mode = 1;
 uint8_t power_connected = PW_DISCONNECTED;
+uint32_t pic_time_counter_ms;
 
 void set_led_status(void)
 {
@@ -21,9 +22,20 @@ void set_led_status(void)
         tx_led_toggle_count = 0;
         if( power_connected == PW_DISCONNECTED)
         {
-           LED_B1_SetLow();
-           __delay_ms(3);
-           LED_B1_SetHigh();
+           if(battery_level > LOW_BATTERY)
+           {
+                LED_R1_SetHigh();
+                LED_B1_SetLow();
+                __delay_ms(3);
+                LED_B1_SetHigh();
+           }
+           else
+           {
+                LED_B1_SetHigh(); 
+                LED_R1_SetLow();
+                 __delay_ms(3);
+                LED_R1_SetHigh();   
+           }
         }
         else
         {

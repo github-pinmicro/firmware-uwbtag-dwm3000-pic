@@ -13685,8 +13685,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 60: void TMR0_StartTimer(void);
 [; ;tmr0.h: 62: void TMR0_StopTimer(void);
 [; ;tmr0.h: 64: void TMR0_ISR(void);
-[; ;pin_manager.h: 251: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 263: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 252: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 264: void PIN_MANAGER_IOC(void);
 [; ;errno.h: 29: extern int errno;
 [; ;conio.h: 12: extern void init_uart(void);
 [; ;conio.h: 14: extern char getch(void);
@@ -13766,12 +13766,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.h: 63: void print_uint64_t(uint64_t num);
 [; ;main.h: 64: void Sleep(uint32_t time);
 [; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;pic_control_fun.h: 26: extern uint8_t battery_level;
-[; ;pic_control_fun.h: 28: void process_pmic_status(uint8_t * status, uint8_t length);
-[; ;pic_control_fun.h: 29: void pmic_status_read(void);
-[; ;pic_control_fun.h: 30: uint8_t lipo_battery_level(uint16_t battery_volt);
-[; ;pic_control_fun.h: 31: void set_MSSSP1_mode(uint8_t mode);
-[; ;pic_control_fun.h: 32: void set_led_status(void);
+[; ;pic_control_fun.h: 29: extern uint8_t battery_level;
+[; ;pic_control_fun.h: 30: extern uint32_t pic_time_counter_ms;
+[; ;pic_control_fun.h: 32: void process_pmic_status(uint8_t * status, uint8_t length);
+[; ;pic_control_fun.h: 33: void pmic_status_read(void);
+[; ;pic_control_fun.h: 34: uint8_t lipo_battery_level(uint16_t battery_volt);
+[; ;pic_control_fun.h: 35: void set_MSSSP1_mode(uint8_t mode);
+[; ;pic_control_fun.h: 36: void set_led_status(void);
 "55 mcc_generated_files/tmr0.c
 [v _timer0ReloadVal `Vui ~T0 @X0 1 e ]
 [; ;tmr0.c: 55: volatile uint16_t timer0ReloadVal;

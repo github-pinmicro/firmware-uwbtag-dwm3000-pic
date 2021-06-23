@@ -23,7 +23,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _dwt_configuresleep `(v ~T0 @X0 0 ef2`ui`uc ]
 "1439
 [v _dwt_entersleepaftertx `(v ~T0 @X0 0 ef1`i ]
-"129 decawave.c
+"130 decawave.c
 [c E225 0 1 2 .. ]
 [n E225 . DWT_DISABLE_INT DWT_ENABLE_INT DWT_ENABLE_INT_ONLY  ]
 "1523 deca_device_api.h
@@ -51,7 +51,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _dwt_checkidlerc `(uc ~T0 @X0 0 ef ]
 "876
 [v _dwt_restoreconfig `(v ~T0 @X0 0 ef ]
-"26 pic_control_fun.h
+"30 pic_control_fun.h
+[v _pic_time_counter_ms `ul ~T0 @X0 0 e ]
+"29
 [v _battery_level `uc ~T0 @X0 0 e ]
 "1105 deca_device_api.h
 [v _dwt_readsystime `(v ~T0 @X0 0 ef1`*uc ]
@@ -14228,12 +14230,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart.h: 379: void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
 [; ;eusart.h: 397: void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 [; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;pic_control_fun.h: 26: extern uint8_t battery_level;
-[; ;pic_control_fun.h: 28: void process_pmic_status(uint8_t * status, uint8_t length);
-[; ;pic_control_fun.h: 29: void pmic_status_read(void);
-[; ;pic_control_fun.h: 30: uint8_t lipo_battery_level(uint16_t battery_volt);
-[; ;pic_control_fun.h: 31: void set_MSSSP1_mode(uint8_t mode);
-[; ;pic_control_fun.h: 32: void set_led_status(void);
+[; ;pic_control_fun.h: 29: extern uint8_t battery_level;
+[; ;pic_control_fun.h: 30: extern uint32_t pic_time_counter_ms;
+[; ;pic_control_fun.h: 32: void process_pmic_status(uint8_t * status, uint8_t length);
+[; ;pic_control_fun.h: 33: void pmic_status_read(void);
+[; ;pic_control_fun.h: 34: uint8_t lipo_battery_level(uint16_t battery_volt);
+[; ;pic_control_fun.h: 35: void set_MSSSP1_mode(uint8_t mode);
+[; ;pic_control_fun.h: 36: void set_led_status(void);
 "17 decawave.c
 [v _config `S4 ~T0 @X0 1 s ]
 [i _config
@@ -14354,199 +14357,202 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;decawave.c: 49: 0, 0, 0, 0, 0, 0, 0, 0,
 [; ;decawave.c: 50: 0, 0, 0, 0, 0, 0, 0, 0, 0,
 [; ;decawave.c: 51: 0, 0, 0, 0, 0, 0 };
-"67
+"68
 [v _rx_buffer `uc ~T0 @X0 -> 21 `i s ]
-[; ;decawave.c: 67: static uint8_t rx_buffer[21];
-"69
+[; ;decawave.c: 68: static uint8_t rx_buffer[21];
+"70
 [v _status_reg `ul ~T0 @X0 1 s ]
 [i _status_reg
 -> -> -> 0 `i `l `ul
 ]
-[; ;decawave.c: 69: static uint32_t status_reg = 0;
-"72
-[v _poll_tx_ts `S1 ~T0 @X0 1 s ]
-[; ;decawave.c: 72: static uint64_t poll_tx_ts;
+[; ;decawave.c: 70: static uint32_t status_reg = 0;
 "73
-[v _resp_rx_ts `S1 ~T0 @X0 1 s ]
-[; ;decawave.c: 73: static uint64_t resp_rx_ts;
+[v _poll_tx_ts `S1 ~T0 @X0 1 s ]
+[; ;decawave.c: 73: static uint64_t poll_tx_ts;
 "74
-[v _prev_ts `S1 ~T0 @X0 1 s ]
-[; ;decawave.c: 74: static uint64_t prev_ts;
+[v _resp_rx_ts `S1 ~T0 @X0 1 s ]
+[; ;decawave.c: 74: static uint64_t resp_rx_ts;
 "75
-[v _add_time `S1 ~T0 @X0 1 s ]
-[; ;decawave.c: 75: static uint64_t add_time;
+[v _prev_ts `S1 ~T0 @X0 1 s ]
+[; ;decawave.c: 75: static uint64_t prev_ts;
 "76
-[v _TAG_ADDR `ui ~T0 @X0 1 e ]
-[; ;decawave.c: 76: uint16_t TAG_ADDR;
+[v _add_time `S1 ~T0 @X0 1 s ]
+[; ;decawave.c: 76: static uint64_t add_time;
 "77
+[v _TAG_ADDR `ui ~T0 @X0 1 e ]
+[; ;decawave.c: 77: uint16_t TAG_ADDR;
+"78
 [v _RNG_ADDR `ui ~T0 @X0 1 e ]
-[; ;decawave.c: 77: uint16_t RNG_ADDR;
-"87
-[v _dw_main `(v ~T0 @X0 1 ef ]
+[; ;decawave.c: 78: uint16_t RNG_ADDR;
 "88
+[v _dw_main `(v ~T0 @X0 1 ef ]
+"89
 {
-[; ;decawave.c: 87: void dw_main(void)
-[; ;decawave.c: 88: {
+[; ;decawave.c: 88: void dw_main(void)
+[; ;decawave.c: 89: {
 [e :U _dw_main ]
 [f ]
-"89
+"90
 [v _data `uc ~T0 @X0 -> 50 `i a ]
-[; ;decawave.c: 89: char data[50];
-[; ;decawave.c: 96: reset_DWIC();
-"96
+[; ;decawave.c: 90: char data[50];
+[; ;decawave.c: 97: reset_DWIC();
+"97
 [e ( _reset_DWIC ..  ]
-[; ;decawave.c: 99: if (dwt_initialise(0x0) == (-1))
-"99
-[e $ ! == ( _dwt_initialise (1 -> 0 `i -U -> 1 `i 1630  ]
-[; ;decawave.c: 100: {
+[; ;decawave.c: 100: if (dwt_initialise(0x0) == (-1))
 "100
+[e $ ! == ( _dwt_initialise (1 -> 0 `i -U -> 1 `i 1630  ]
+[; ;decawave.c: 101: {
+"101
 {
-[; ;decawave.c: 104: while (1)
-"104
-[e :U 1632 ]
-[; ;decawave.c: 105: { };
+[; ;decawave.c: 105: while (1)
 "105
+[e :U 1632 ]
+[; ;decawave.c: 106: { };
+"106
 {
 }
 [e :U 1631 ]
-"104
+"105
 [e $U 1632  ]
 [e :U 1633 ]
-"106
+"107
 }
 [e :U 1630 ]
-[; ;decawave.c: 106: }
-[; ;decawave.c: 107: if(dwt_configure(&config) < 0)
-"107
-[e $ ! < ( _dwt_configure (1 &U _config -> 0 `i 1634  ]
-[; ;decawave.c: 108: {
+[; ;decawave.c: 107: }
+[; ;decawave.c: 108: if(dwt_configure(&config) < 0)
 "108
+[e $ ! < ( _dwt_configure (1 &U _config -> 0 `i 1634  ]
+[; ;decawave.c: 109: {
+"109
 {
-"112
-}
-[; ;decawave.c: 112: }
-[e $U 1635  ]
 "113
-[e :U 1634 ]
-[; ;decawave.c: 113: else
-[; ;decawave.c: 114: {
+}
+[; ;decawave.c: 113: }
+[e $U 1635  ]
 "114
+[e :U 1634 ]
+[; ;decawave.c: 114: else
+[; ;decawave.c: 115: {
+"115
 {
-"118
+"119
 }
 [e :U 1635 ]
-[; ;decawave.c: 118: }
-[; ;decawave.c: 120: dwt_configuretxrf(&txconfig_options_ch9);
-"120
+[; ;decawave.c: 119: }
+[; ;decawave.c: 121: dwt_configuretxrf(&txconfig_options_ch9);
+"121
 [e ( _dwt_configuretxrf (1 &U _txconfig_options_ch9 ]
-[; ;decawave.c: 124: dwt_configuresleep(0x0001, 0x20 | 0x10 | 0x1);
-"124
+[; ;decawave.c: 125: dwt_configuresleep(0x0001, 0x20 | 0x10 | 0x1);
+"125
 [e ( _dwt_configuresleep (2 , -> -> 1 `i `ui -> | | -> 32 `i -> 16 `i -> 1 `i `uc ]
-[; ;decawave.c: 127: dwt_entersleepaftertx(1);
-"127
+[; ;decawave.c: 128: dwt_entersleepaftertx(1);
+"128
 [e ( _dwt_entersleepaftertx (1 -> 1 `i ]
-[; ;decawave.c: 129: dwt_setinterrupt(0x800000UL, 0, DWT_DISABLE_INT);
-"129
+[; ;decawave.c: 130: dwt_setinterrupt(0x800000UL, 0, DWT_DISABLE_INT);
+"130
 [e ( _dwt_setinterrupt (3 , , -> 8388608 `ul -> -> -> 0 `i `l `ul . `E225 0 ]
-[; ;decawave.c: 131: dwt_setrxantennadelay(16385);
-"131
-[e ( _dwt_setrxantennadelay (1 -> -> 16385 `i `ui ]
-[; ;decawave.c: 132: dwt_settxantennadelay(16385);
+[; ;decawave.c: 132: dwt_setrxantennadelay(16385);
 "132
-[e ( _dwt_settxantennadelay (1 -> -> 16385 `i `ui ]
-[; ;decawave.c: 133: __builtin_memcpy(&tx_blink_msg[5],&ADDR,8);
+[e ( _dwt_setrxantennadelay (1 -> -> 16385 `i `ui ]
+[; ;decawave.c: 133: dwt_settxantennadelay(16385);
 "133
+[e ( _dwt_settxantennadelay (1 -> -> 16385 `i `ui ]
+[; ;decawave.c: 134: __builtin_memcpy(&tx_blink_msg[5],&ADDR,8);
+"134
 [e ( ___builtin_memcpy (3 , , -> &U *U + &U _tx_blink_msg * -> -> -> 5 `i `ui `ux -> -> # *U &U _tx_blink_msg `ui `ux `*v -> &U _ADDR `*Cv -> -> 8 `i `ui ]
-[; ;decawave.c: 138: while (0)
-"138
+[; ;decawave.c: 139: while (0)
+"139
 [e $U 1636  ]
 [e :U 1637 ]
-[; ;decawave.c: 139: {
-"139
+[; ;decawave.c: 140: {
+"140
 {
-[; ;decawave.c: 142: Sleep(1000);
-"142
+[; ;decawave.c: 143: Sleep(1000);
+"143
 [e ( _Sleep (1 -> -> -> 1000 `i `l `ul ]
-[; ;decawave.c: 150: tx_blink_msg[2]++;
-"150
-[e ++ *U + &U _tx_blink_msg * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_blink_msg `ui `ux -> -> 1 `i `uc ]
-[; ;decawave.c: 151: dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
+[; ;decawave.c: 151: tx_blink_msg[2]++;
 "151
-[e ( _dwt_writetxdata (3 , , -> # _tx_blink_msg `ui &U _tx_blink_msg -> -> 0 `i `ui ]
-[; ;decawave.c: 152: dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
+[e ++ *U + &U _tx_blink_msg * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_blink_msg `ui `ux -> -> 1 `i `uc ]
+[; ;decawave.c: 152: dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
 "152
-[e ( _dwt_writetxfctrl (3 , , -> # _tx_blink_msg `ui -> -> 0 `i `ui -> -> 0 `i `uc ]
-[; ;decawave.c: 153: dwt_starttx(0x00);
+[e ( _dwt_writetxdata (3 , , -> # _tx_blink_msg `ui &U _tx_blink_msg -> -> 0 `i `ui ]
+[; ;decawave.c: 153: dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
 "153
+[e ( _dwt_writetxfctrl (3 , , -> # _tx_blink_msg `ui -> -> 0 `i `ui -> -> 0 `i `uc ]
+[; ;decawave.c: 154: dwt_starttx(0x00);
+"154
 [e ( _dwt_starttx (1 -> -> 0 `i `uc ]
-"177
+"178
 }
 [e :U 1636 ]
-"138
+"139
 [e $ != -> 0 `i -> 0 `i 1637  ]
 [e :U 1638 ]
-[; ;decawave.c: 177: }
 [; ;decawave.c: 178: }
-"178
+[; ;decawave.c: 179: }
+"179
 [e :UE 1629 ]
 }
-"180
-[v _transmit_beacon_pkt `(v ~T0 @X0 1 ef ]
 "181
+[v _transmit_beacon_pkt `(v ~T0 @X0 1 ef ]
+"182
 {
-[; ;decawave.c: 180: void transmit_beacon_pkt(void)
-[; ;decawave.c: 181: {
+[; ;decawave.c: 181: void transmit_beacon_pkt(void)
+[; ;decawave.c: 182: {
 [e :U _transmit_beacon_pkt ]
 [f ]
-[; ;decawave.c: 182: dwt_wakeup_ic();
-"182
-[e ( _dwt_wakeup_ic ..  ]
-[; ;decawave.c: 183: while (!dwt_checkidlerc())
+[; ;decawave.c: 183: dwt_wakeup_ic();
 "183
+[e ( _dwt_wakeup_ic ..  ]
+[; ;decawave.c: 184: while (!dwt_checkidlerc())
+"184
 [e $U 1640  ]
 [e :U 1641 ]
-[; ;decawave.c: 184: { };
-"184
+[; ;decawave.c: 185: { };
+"185
 {
 }
 [e :U 1640 ]
-"183
+"184
 [e $ ! != -> ( _dwt_checkidlerc ..  `i -> -> -> 0 `i `uc `i 1641  ]
 [e :U 1642 ]
-[; ;decawave.c: 186: dwt_restoreconfig();
-"186
-[e ( _dwt_restoreconfig ..  ]
-[; ;decawave.c: 187: tx_blink_msg[2]++;
+[; ;decawave.c: 187: dwt_restoreconfig();
 "187
-[e ++ *U + &U _tx_blink_msg * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_blink_msg `ui `ux -> -> 1 `i `uc ]
-[; ;decawave.c: 188: tx_blink_msg[21] = battery_level;
+[e ( _dwt_restoreconfig ..  ]
+[; ;decawave.c: 188: tx_blink_msg[2]++;
 "188
-[e = *U + &U _tx_blink_msg * -> -> -> 21 `i `ui `ux -> -> # *U &U _tx_blink_msg `ui `ux _battery_level ]
-[; ;decawave.c: 189: dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
+[e ++ *U + &U _tx_blink_msg * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_blink_msg `ui `ux -> -> 1 `i `uc ]
+[; ;decawave.c: 189: __builtin_memcpy(&tx_blink_msg[13 + 4],&pic_time_counter_ms,4);
 "189
-[e ( _dwt_writetxdata (3 , , -> # _tx_blink_msg `ui &U _tx_blink_msg -> -> 0 `i `ui ]
-[; ;decawave.c: 190: dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
+[e ( ___builtin_memcpy (3 , , -> &U *U + &U _tx_blink_msg * -> -> + -> 13 `i -> 4 `i `ui `ux -> -> # *U &U _tx_blink_msg `ui `ux `*v -> &U _pic_time_counter_ms `*Cv -> -> 4 `i `ui ]
+[; ;decawave.c: 190: tx_blink_msg[21] = battery_level;
 "190
-[e ( _dwt_writetxfctrl (3 , , -> # _tx_blink_msg `ui -> -> 0 `i `ui -> -> 0 `i `uc ]
-[; ;decawave.c: 191: dwt_starttx(0x00);
+[e = *U + &U _tx_blink_msg * -> -> -> 21 `i `ui `ux -> -> # *U &U _tx_blink_msg `ui `ux _battery_level ]
+[; ;decawave.c: 191: dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
 "191
+[e ( _dwt_writetxdata (3 , , -> # _tx_blink_msg `ui &U _tx_blink_msg -> -> 0 `i `ui ]
+[; ;decawave.c: 192: dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
+"192
+[e ( _dwt_writetxfctrl (3 , , -> # _tx_blink_msg `ui -> -> 0 `i `ui -> -> 0 `i `uc ]
+[; ;decawave.c: 193: dwt_starttx(0x00);
+"193
 [e ( _dwt_starttx (1 -> -> 0 `i `uc ]
-[; ;decawave.c: 214: }
-"214
+[; ;decawave.c: 216: }
+"216
 [e :UE 1639 ]
 }
-"216
+"218
 [v _get_sys_timestamp_u64 `(S1 ~T0 @X0 1 ef ]
-"217
+"219
 {
-[; ;decawave.c: 216: uint64_t get_sys_timestamp_u64(void)
-[; ;decawave.c: 217: {
+[; ;decawave.c: 218: uint64_t get_sys_timestamp_u64(void)
+[; ;decawave.c: 219: {
 [e :U _get_sys_timestamp_u64 ]
 [f ]
-"218
+"220
 [v _ts `S1 ~T0 @X0 1 a ]
-[v F15753 `S1 ~T0 @X0 1 s ]
-[i F15753
+[v F15754 `S1 ~T0 @X0 1 s ]
+[i F15754
 :U ..
 :U ..
 -> -> -> 0 `i `l `ul
@@ -14554,31 +14560,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;decawave.c: 218: uint64_t ts = {0, 0};
-[e = _ts F15753 ]
-[; ;decawave.c: 219: dwt_readsystime((uint8_t*)&ts);
-"219
+[; ;decawave.c: 220: uint64_t ts = {0, 0};
+[e = _ts F15754 ]
+[; ;decawave.c: 221: dwt_readsystime((uint8_t*)&ts);
+"221
 [e ( _dwt_readsystime (1 -> &U _ts `*uc ]
-[; ;decawave.c: 220: return ts;
-"220
+[; ;decawave.c: 222: return ts;
+"222
 [e ) _ts ]
 [e $UE 1643  ]
-[; ;decawave.c: 221: }
-"221
+[; ;decawave.c: 223: }
+"223
 [e :UE 1643 ]
 }
-"223
+"225
 [v _get_tx_timestamp_u64 `(S1 ~T0 @X0 1 ef ]
-"224
+"226
 {
-[; ;decawave.c: 223: uint64_t get_tx_timestamp_u64(void)
-[; ;decawave.c: 224: {
+[; ;decawave.c: 225: uint64_t get_tx_timestamp_u64(void)
+[; ;decawave.c: 226: {
 [e :U _get_tx_timestamp_u64 ]
 [f ]
-"225
+"227
 [v _ts `S1 ~T0 @X0 1 a ]
-[v F15757 `S1 ~T0 @X0 1 s ]
-[i F15757
+[v F15758 `S1 ~T0 @X0 1 s ]
+[i F15758
 :U ..
 :U ..
 -> -> -> 0 `i `l `ul
@@ -14586,31 +14592,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;decawave.c: 225: uint64_t ts = {0, 0};
-[e = _ts F15757 ]
-[; ;decawave.c: 226: dwt_readtxtimestamp((uint8_t*)&ts);
-"226
+[; ;decawave.c: 227: uint64_t ts = {0, 0};
+[e = _ts F15758 ]
+[; ;decawave.c: 228: dwt_readtxtimestamp((uint8_t*)&ts);
+"228
 [e ( _dwt_readtxtimestamp (1 -> &U _ts `*uc ]
-[; ;decawave.c: 231: return ts;
-"231
+[; ;decawave.c: 233: return ts;
+"233
 [e ) _ts ]
 [e $UE 1644  ]
-[; ;decawave.c: 232: }
-"232
+[; ;decawave.c: 234: }
+"234
 [e :UE 1644 ]
 }
-"234
+"236
 [v _get_rx_timestamp_u64 `(S1 ~T0 @X0 1 ef ]
-"235
+"237
 {
-[; ;decawave.c: 234: uint64_t get_rx_timestamp_u64(void)
-[; ;decawave.c: 235: {
+[; ;decawave.c: 236: uint64_t get_rx_timestamp_u64(void)
+[; ;decawave.c: 237: {
 [e :U _get_rx_timestamp_u64 ]
 [f ]
-"236
+"238
 [v _ts `S1 ~T0 @X0 1 a ]
-[v F15761 `S1 ~T0 @X0 1 s ]
-[i F15761
+[v F15762 `S1 ~T0 @X0 1 s ]
+[i F15762
 :U ..
 :U ..
 -> -> -> 0 `i `l `ul
@@ -14618,13 +14624,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;decawave.c: 236: uint64_t ts = {0, 0};
-[e = _ts F15761 ]
-[; ;decawave.c: 242: return ts;
-"242
+[; ;decawave.c: 238: uint64_t ts = {0, 0};
+[e = _ts F15762 ]
+[; ;decawave.c: 244: return ts;
+"244
 [e ) _ts ]
 [e $UE 1645  ]
-[; ;decawave.c: 243: }
-"243
+[; ;decawave.c: 245: }
+"245
 [e :UE 1645 ]
 }

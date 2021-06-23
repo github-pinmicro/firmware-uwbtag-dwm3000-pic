@@ -14138,8 +14138,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;pin_manager.h: 251: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 263: void PIN_MANAGER_IOC(void);
+[; ;pin_manager.h: 252: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 264: void PIN_MANAGER_IOC(void);
 "89 port.c
 [v _peripherals_init `(i ~T0 @X0 1 ef ]
 "90

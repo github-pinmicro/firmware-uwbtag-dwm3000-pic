@@ -19171,8 +19171,9 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 # 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
 typedef int ptrdiff_t;
 
-# 26 "pic_control_fun.h"
+# 29 "pic_control_fun.h"
 extern uint8_t battery_level;
+extern uint32_t pic_time_counter_ms;
 
 void process_pmic_status(uint8_t * status, uint8_t length);
 void pmic_status_read(void);
@@ -19211,12 +19212,12 @@ static uint8_t tx_blink_msg[] = { 0x00, 0x38, 0, 0xCA, 0xDE,
 0, 0, 0, 0, 0, 0, 0, 0, 0,
 0, 0, 0, 0, 0, 0 };
 
-# 67
+# 68
 static uint8_t rx_buffer[21];
 
 static uint32_t status_reg = 0;
 
-# 72
+# 73
 static uint64_t poll_tx_ts;
 static uint64_t resp_rx_ts;
 static uint64_t prev_ts;
@@ -19224,31 +19225,31 @@ static uint64_t add_time;
 uint16_t TAG_ADDR;
 uint16_t RNG_ADDR;
 
-# 87
+# 88
 void dw_main(void)
 {
 char data[50];
 
-# 96
+# 97
 reset_DWIC();
 
 
 if (dwt_initialise(0x0) == (-1))
 {
 
-# 104
+# 105
 while (1)
 { };
 }
 if(dwt_configure(&config) < 0)
 {
 
-# 112
+# 113
 }
 else
 {
 
-# 118
+# 119
 }
 
 dwt_configuretxrf(&txconfig_options_ch9);
@@ -19266,20 +19267,20 @@ dwt_setrxantennadelay(16385);
 dwt_settxantennadelay(16385);
 __builtin_memcpy(&tx_blink_msg[5],&ADDR,8);
 
-# 138
+# 139
 while (0)
 {
 
 
 Sleep(1000);
 
-# 150
+# 151
 tx_blink_msg[2]++;
 dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
 dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
 dwt_starttx(0x00);
 
-# 177
+# 178
 }
 }
 
@@ -19291,12 +19292,13 @@ while (!dwt_checkidlerc())
 
 dwt_restoreconfig();
 tx_blink_msg[2]++;
+__builtin_memcpy(&tx_blink_msg[13 + 4],&pic_time_counter_ms,4);
 tx_blink_msg[21] = battery_level;
 dwt_writetxdata(sizeof(tx_blink_msg), tx_blink_msg, 0);
 dwt_writetxfctrl(sizeof(tx_blink_msg), 0, 0);
 dwt_starttx(0x00);
 
-# 214
+# 216
 }
 
 uint64_t get_sys_timestamp_u64(void)
@@ -19321,7 +19323,7 @@ uint64_t get_rx_timestamp_u64(void)
 {
 uint64_t ts = {0, 0};
 
-# 242
+# 244
 return ts;
 }
 

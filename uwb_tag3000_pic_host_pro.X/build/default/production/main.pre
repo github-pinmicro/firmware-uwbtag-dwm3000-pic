@@ -18120,10 +18120,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 251 "mcc_generated_files/pin_manager.h"
+# 252 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 263
+# 264
 void PIN_MANAGER_IOC(void);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
@@ -19279,8 +19279,9 @@ char i2c_read(char ack);
 char i2c_write(char data);
 void i2c_resync();
 
-# 26 "pic_control_fun.h"
+# 29 "pic_control_fun.h"
 extern uint8_t battery_level;
+extern uint32_t pic_time_counter_ms;
 
 void process_pmic_status(uint8_t * status, uint8_t length);
 void pmic_status_read(void);
@@ -19321,16 +19322,18 @@ void interrupt INTERRUPT_InterruptManager(void);
 
 # 63 "main.c"
 bool timer0_triggered;
-uint8_t ADDR[8] = {0x02, 0x00, 0x00, 0x00, 0x53, 0xD6, 0xF5, 0xC8};
+uint8_t ADDR[8] = {0x01, 0x00, 0x53, 0xFE, 0xFF, 0xD6, 0xF5, 0xC8};
 uint8_t enable_sleep = 1;
 
-# 69
+uint16_t firmware_version[3] = {0x01, 0x01, 0x01};
+
+# 71
 void main(void)
 {
 SYSTEM_Initialize();
 asm("clrwdt");
 
-# 77
+# 86
 set_MSSSP1_mode(2);
 init_bq25895();
 _delay((unsigned long)((50)*(32000000/4000.0)));
@@ -19352,12 +19355,13 @@ dw_main();
 while(1)
 {
 
-# 101
+# 110
 pmic_status_read();
 set_MSSSP1_mode(1);
 transmit_beacon_pkt();
 set_led_status();
 while(!PORTBbits.RB0);
+pic_time_counter_ms += 300;
 (INTCONbits.GIE = 1);
 if(1 == enable_sleep)
 {
@@ -19384,7 +19388,7 @@ __nop();
 }
 }
 
-# 270
+# 280
 void Sleep(uint32_t time)
 {
 for(volatile uint32_t i=0; i<time; i++)

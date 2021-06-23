@@ -1,5 +1,13 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"960 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
+"1146 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
+[s S54 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S54 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"1145
+[u S53 `S54 1 ]
+[n S53 . . ]
+"1157
+[v _LATDbits `VS53 ~T0 @X0 0 e@25 ]
+"960
 [s S48 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S48 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
 "959
@@ -93,11 +101,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S242 . . . . ]
 "5211
 [v _SSP1CON1bits `VS242 ~T0 @X0 0 e@400 ]
-"82 pic_control_fun.c
-[c E15047 0 .. ]
-[n E15047 . SPI1_DEFAULT  ]
+"94 pic_control_fun.c
+[c E15048 0 .. ]
+[n E15048 . SPI1_DEFAULT  ]
 "64 mcc_generated_files/spi1.h
-[v _SPI1_Open `(uc ~T0 @X0 0 ef1`E15047 ]
+[v _SPI1_Open `(uc ~T0 @X0 0 ef1`E15048 ]
 "9 pic_i2c.h
 [v _i2c_init `(v ~T0 @X0 0 ef ]
 "15 bq25895.h
@@ -112,17 +120,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
 "13 bq25895.h
 [v _i2c_multi_read `(*uc ~T0 @X0 0 ef4`uc`uc`*uc`uc ]
-"28 pic_control_fun.h
+"32 pic_control_fun.h
 [v _process_pmic_status `(v ~T0 @X0 0 ef2`*uc`uc ]
-"1146 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
-[s S54 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S54 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
-"1145
-[u S53 `S54 1 ]
-[n S53 . . ]
-"1157
-[v _LATDbits `VS53 ~T0 @X0 0 e@25 ]
-"30 pic_control_fun.h
+"34
 [v _lipo_battery_level `(uc ~T0 @X0 0 ef1`ui ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
@@ -13799,14 +13799,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;pic_control_fun.h: 26: extern uint8_t battery_level;
-[; ;pic_control_fun.h: 28: void process_pmic_status(uint8_t * status, uint8_t length);
-[; ;pic_control_fun.h: 29: void pmic_status_read(void);
-[; ;pic_control_fun.h: 30: uint8_t lipo_battery_level(uint16_t battery_volt);
-[; ;pic_control_fun.h: 31: void set_MSSSP1_mode(uint8_t mode);
-[; ;pic_control_fun.h: 32: void set_led_status(void);
-[; ;pin_manager.h: 251: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 263: void PIN_MANAGER_IOC(void);
+[; ;pic_control_fun.h: 29: extern uint8_t battery_level;
+[; ;pic_control_fun.h: 30: extern uint32_t pic_time_counter_ms;
+[; ;pic_control_fun.h: 32: void process_pmic_status(uint8_t * status, uint8_t length);
+[; ;pic_control_fun.h: 33: void pmic_status_read(void);
+[; ;pic_control_fun.h: 34: uint8_t lipo_battery_level(uint16_t battery_volt);
+[; ;pic_control_fun.h: 35: void set_MSSSP1_mode(uint8_t mode);
+[; ;pic_control_fun.h: 36: void set_led_status(void);
+[; ;pin_manager.h: 252: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 264: void PIN_MANAGER_IOC(void);
 [; ;errno.h: 29: extern int errno;
 [; ;conio.h: 12: extern void init_uart(void);
 [; ;conio.h: 14: extern char getch(void);
@@ -13928,678 +13929,732 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 2 `i `uc
 ]
 [; ;pic_control_fun.c: 12: uint8_t power_connected = 2;
-"14
-[v _set_led_status `(v ~T0 @X0 1 ef ]
+"13
+[v _pic_time_counter_ms `ul ~T0 @X0 1 e ]
+[; ;pic_control_fun.c: 13: uint32_t pic_time_counter_ms;
 "15
+[v _set_led_status `(v ~T0 @X0 1 ef ]
+"16
 {
-[; ;pic_control_fun.c: 14: void set_led_status(void)
-[; ;pic_control_fun.c: 15: {
+[; ;pic_control_fun.c: 15: void set_led_status(void)
+[; ;pic_control_fun.c: 16: {
 [e :U _set_led_status ]
 [f ]
-"16
-[v F15168 `ui ~T0 @X0 1 s tx_led_toggle_count ]
-[i F15168
+"17
+[v F15169 `ui ~T0 @X0 1 s tx_led_toggle_count ]
+[i F15169
 -> -> 30 `i `ui
 ]
-[; ;pic_control_fun.c: 16: static uint16_t tx_led_toggle_count = 30;
-[; ;pic_control_fun.c: 18: tx_led_toggle_count += (300 / 100);
-"18
-[e =+ F15168 -> / -> 300 `i -> 100 `i `ui ]
-[; ;pic_control_fun.c: 19: if(tx_led_toggle_count >= 30)
+[; ;pic_control_fun.c: 17: static uint16_t tx_led_toggle_count = 30;
+[; ;pic_control_fun.c: 19: tx_led_toggle_count += (300 / 100);
 "19
-[e $ ! >= F15168 -> -> 30 `i `ui 1618  ]
-[; ;pic_control_fun.c: 20: {
+[e =+ F15169 -> / -> 300 `i -> 100 `i `ui ]
+[; ;pic_control_fun.c: 20: if(tx_led_toggle_count >= 30)
 "20
-{
-[; ;pic_control_fun.c: 21: tx_led_toggle_count = 0;
+[e $ ! >= F15169 -> -> 30 `i `ui 1618  ]
+[; ;pic_control_fun.c: 21: {
 "21
-[e = F15168 -> -> 0 `i `ui ]
-[; ;pic_control_fun.c: 22: if( power_connected == 2)
-"22
-[e $ ! == -> _power_connected `i -> 2 `i 1619  ]
-[; ;pic_control_fun.c: 23: {
-"23
 {
-[; ;pic_control_fun.c: 24: do { LATAbits.LATA3 = 0; } while(0);
+[; ;pic_control_fun.c: 22: tx_led_toggle_count = 0;
+"22
+[e = F15169 -> -> 0 `i `ui ]
+[; ;pic_control_fun.c: 23: if( power_connected == 2)
+"23
+[e $ ! == -> _power_connected `i -> 2 `i 1619  ]
+[; ;pic_control_fun.c: 24: {
 "24
+{
+[; ;pic_control_fun.c: 25: if(battery_level > 25)
+"25
+[e $ ! > -> _battery_level `i -> 25 `i 1620  ]
+[; ;pic_control_fun.c: 26: {
+"26
+{
+[; ;pic_control_fun.c: 27: do { LATDbits.LATD1 = 1; } while(0);
+"27
+[e :U 1623 ]
+{
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+}
 [e :U 1622 ]
+[; ;pic_control_fun.c: 28: do { LATAbits.LATA3 = 0; } while(0);
+"28
+[e :U 1626 ]
 {
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
 }
-[e :U 1621 ]
-[; ;pic_control_fun.c: 25: _delay((unsigned long)((3)*(32000000/4000.0)));
-"25
-[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-[; ;pic_control_fun.c: 26: do { LATAbits.LATA3 = 1; } while(0);
-"26
 [e :U 1625 ]
-{
-[e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
-}
-[e :U 1624 ]
-"27
-}
-[; ;pic_control_fun.c: 27: }
-[e $U 1626  ]
-"28
-[e :U 1619 ]
-[; ;pic_control_fun.c: 28: else
-[; ;pic_control_fun.c: 29: {
+[; ;pic_control_fun.c: 29: _delay((unsigned long)((3)*(32000000/4000.0)));
 "29
-{
-[; ;pic_control_fun.c: 30: if(!PORTAbits.RA3)
+[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[; ;pic_control_fun.c: 30: do { LATAbits.LATA3 = 1; } while(0);
 "30
-[e $ ! ! != -> . . _PORTAbits 0 3 `i -> -> -> 0 `i `Vuc `i 1627  ]
-[; ;pic_control_fun.c: 31: {
-"31
-{
-[; ;pic_control_fun.c: 32: do { LATAbits.LATA3 = 1; } while(0);
-"32
-[e :U 1630 ]
+[e :U 1629 ]
 {
 [e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
 }
-[e :U 1629 ]
+[e :U 1628 ]
+"31
+}
+[; ;pic_control_fun.c: 31: }
+[e $U 1630  ]
+"32
+[e :U 1620 ]
+[; ;pic_control_fun.c: 32: else
+[; ;pic_control_fun.c: 33: {
 "33
-}
-[e :U 1627 ]
-"34
-}
-[e :U 1626 ]
-"35
-}
-[e :U 1618 ]
-[; ;pic_control_fun.c: 33: }
-[; ;pic_control_fun.c: 34: }
-[; ;pic_control_fun.c: 35: }
-[; ;pic_control_fun.c: 36: }
-"36
-[e :UE 1617 ]
-}
-"38
-[v _set_MSSSP1_mode `(v ~T0 @X0 1 ef1`uc ]
-"39
 {
-[; ;pic_control_fun.c: 38: void set_MSSSP1_mode(uint8_t mode)
-[; ;pic_control_fun.c: 39: {
-[e :U _set_MSSSP1_mode ]
+[; ;pic_control_fun.c: 34: do { LATAbits.LATA3 = 1; } while(0);
+"34
+[e :U 1633 ]
+{
+[e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
+}
+[e :U 1632 ]
+[; ;pic_control_fun.c: 35: do { LATDbits.LATD1 = 0; } while(0);
+"35
+[e :U 1636 ]
+{
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+}
+[e :U 1635 ]
+[; ;pic_control_fun.c: 36: _delay((unsigned long)((3)*(32000000/4000.0)));
+"36
+[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[; ;pic_control_fun.c: 37: do { LATDbits.LATD1 = 1; } while(0);
+"37
+[e :U 1639 ]
+{
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+}
+[e :U 1638 ]
 "38
-[v _mode `uc ~T0 @X0 1 r1 ]
+}
+[e :U 1630 ]
 "39
-[f ]
+}
+[; ;pic_control_fun.c: 38: }
+[; ;pic_control_fun.c: 39: }
+[e $U 1640  ]
 "40
-[v F15171 `uc ~T0 @X0 1 s current_mode ]
-[; ;pic_control_fun.c: 40: static uint8_t current_mode;
-[; ;pic_control_fun.c: 42: if(current_mode != mode)
+[e :U 1619 ]
+[; ;pic_control_fun.c: 40: else
+[; ;pic_control_fun.c: 41: {
+"41
+{
+[; ;pic_control_fun.c: 42: if(!PORTAbits.RA3)
 "42
-[e $ ! != -> F15171 `i -> _mode `i 1632  ]
+[e $ ! ! != -> . . _PORTAbits 0 3 `i -> -> -> 0 `i `Vuc `i 1641  ]
 [; ;pic_control_fun.c: 43: {
 "43
 {
+[; ;pic_control_fun.c: 44: do { LATAbits.LATA3 = 1; } while(0);
 "44
-[v _state `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 44: bool state = (bool)GIE;
-[e = _state -> -> _GIE `i `uc ]
-[; ;pic_control_fun.c: 45: GIE = 0;
-"45
-[e = _GIE -> -> 0 `i `b ]
-[; ;pic_control_fun.c: 46: PPSLOCK = 0x55;
-"46
-[e = _PPSLOCK -> -> 85 `i `uc ]
-[; ;pic_control_fun.c: 47: PPSLOCK = 0xAA;
-"47
-[e = _PPSLOCK -> -> 170 `i `uc ]
-[; ;pic_control_fun.c: 48: PPSLOCKbits.PPSLOCKED = 0x00;
-"48
-[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 49: if(mode == 1)
-"49
-[e $ ! == -> _mode `i -> 1 `i 1633  ]
-[; ;pic_control_fun.c: 50: {
-"50
+[e :U 1644 ]
 {
-[; ;pic_control_fun.c: 54: current_mode = 1;
-"54
-[e = F15171 -> -> 1 `i `uc ]
-[; ;pic_control_fun.c: 56: RC3PPS = 0x0F;
-"56
-[e = _RC3PPS -> -> 15 `i `uc ]
-[; ;pic_control_fun.c: 57: RC4PPS = 0x0F;
-"57
-[e = _RC4PPS -> -> 15 `i `uc ]
-[; ;pic_control_fun.c: 58: SSP1STAT = 0x00;
-"58
-[e = _SSP1STAT -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 59: SSP1CON1 = 0x00;
-"59
-[e = _SSP1CON1 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 60: SSP1CON3 = 0x00;
-"60
-[e = _SSP1CON3 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 61: SSP1ADD = 0x00;
-"61
-[e = _SSP1ADD -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 62: PIR3bits.SSP1IF = 0;
-"62
-[e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 63: PIE3bits.SSP1IE = 0;
-"63
-[e = . . _PIE3bits 0 0 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 64: SSP1BUF = 0x00;
-"64
-[e = _SSP1BUF -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 65: SSP1MSK = 0x00;
-"65
-[e = _SSP1MSK -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 68: SSP1CLKPPS = 0x12;
-"68
-[e = _SSP1CLKPPS -> -> 18 `i `uc ]
-[; ;pic_control_fun.c: 69: RC1PPS = 0x15;
-"69
-[e = _RC1PPS -> -> 21 `i `uc ]
-[; ;pic_control_fun.c: 70: RC2PPS = 0x14;
-"70
-[e = _RC2PPS -> -> 20 `i `uc ]
-[; ;pic_control_fun.c: 71: SSP1DATPPS = 0x10;
-"71
-[e = _SSP1DATPPS -> -> 16 `i `uc ]
-[; ;pic_control_fun.c: 74: SSP1STAT = 0x80;
-"74
-[e = _SSP1STAT -> -> 128 `i `uc ]
-[; ;pic_control_fun.c: 75: SSP1CON1 = 0x00;
-"75
-[e = _SSP1CON1 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 76: SSP1ADD = 0x01;
-"76
-[e = _SSP1ADD -> -> 1 `i `uc ]
-[; ;pic_control_fun.c: 78: TRISCbits.TRISC2 = 0;
-"78
-[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 79: TRISCbits.TRISC0 = 1;
-"79
-[e = . . _TRISCbits 0 0 -> -> 1 `i `uc ]
-[; ;pic_control_fun.c: 80: SSP1CON1bits.SSPEN = 0;
-"80
-[e = . . _SSP1CON1bits 0 2 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 81: _delay((unsigned long)((2)*(32000000/4000.0)));
-"81
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-[; ;pic_control_fun.c: 82: SPI1_Open(0);
-"82
-[e ( _SPI1_Open (1 -> -> 0 `i `E15047 ]
-[; ;pic_control_fun.c: 83: _delay((unsigned long)((2)*(32000000/4000.0)));
-"83
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"84
-}
-[; ;pic_control_fun.c: 84: }
-[e $U 1634  ]
-"85
-[e :U 1633 ]
-[; ;pic_control_fun.c: 85: else if(mode == 2)
-[e $ ! == -> _mode `i -> 2 `i 1635  ]
-[; ;pic_control_fun.c: 86: {
-"86
-{
-[; ;pic_control_fun.c: 90: current_mode = 2;
-"90
-[e = F15171 -> -> 2 `i `uc ]
-[; ;pic_control_fun.c: 92: RC1PPS = 0x0F;
-"92
-[e = _RC1PPS -> -> 15 `i `uc ]
-[; ;pic_control_fun.c: 93: RC2PPS = 0x0F;
-"93
-[e = _RC2PPS -> -> 15 `i `uc ]
-[; ;pic_control_fun.c: 94: SSP1STAT = 0x00;
-"94
-[e = _SSP1STAT -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 95: SSP1CON1 = 0x00;
-"95
-[e = _SSP1CON1 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 96: SSP1CON3 = 0x00;
-"96
-[e = _SSP1CON3 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 97: SSP1ADD = 0x00;
-"97
-[e = _SSP1ADD -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 98: PIR3bits.SSP1IF = 0;
-"98
-[e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 99: PIE3bits.SSP1IE = 0;
-"99
-[e = . . _PIE3bits 0 0 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 100: SSP1BUF = 0x00;
-"100
-[e = _SSP1BUF -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 101: SSP1MSK = 0x00;
-"101
-[e = _SSP1MSK -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 103: RC3PPS = 0x14;
-"103
-[e = _RC3PPS -> -> 20 `i `uc ]
-[; ;pic_control_fun.c: 104: RC4PPS = 0x15;
-"104
-[e = _RC4PPS -> -> 21 `i `uc ]
-[; ;pic_control_fun.c: 105: SSP1CLKPPS = 0x13;
-"105
-[e = _SSP1CLKPPS -> -> 19 `i `uc ]
-[; ;pic_control_fun.c: 106: SSP1DATPPS = 0x14;
-"106
-[e = _SSP1DATPPS -> -> 20 `i `uc ]
-[; ;pic_control_fun.c: 108: i2c_init();
-"108
-[e ( _i2c_init ..  ]
-[; ;pic_control_fun.c: 109: _delay((unsigned long)((2)*(32000000/4000.0)));
-"109
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"110
-}
-[e :U 1635 ]
-"111
-[e :U 1634 ]
-[; ;pic_control_fun.c: 110: }
-[; ;pic_control_fun.c: 111: PPSLOCK = 0x55;
-[e = _PPSLOCK -> -> 85 `i `uc ]
-[; ;pic_control_fun.c: 112: PPSLOCK = 0xAA;
-"112
-[e = _PPSLOCK -> -> 170 `i `uc ]
-[; ;pic_control_fun.c: 113: PPSLOCKbits.PPSLOCKED = 0x01;
-"113
-[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
-[; ;pic_control_fun.c: 114: GIE = state;
-"114
-[e = _GIE -> _state `b ]
-"115
-}
-[e :U 1632 ]
-[; ;pic_control_fun.c: 115: }
-[; ;pic_control_fun.c: 117: }
-"117
-[e :UE 1631 ]
-}
-"118
-[v _pmic_status_read `(v ~T0 @X0 1 ef ]
-"119
-{
-[; ;pic_control_fun.c: 118: void pmic_status_read(void)
-[; ;pic_control_fun.c: 119: {
-[e :U _pmic_status_read ]
-[f ]
-"121
-[v _interrupt_state `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 121: bool interrupt_state = (bool)GIE;
-[e = _interrupt_state -> -> _GIE `i `uc ]
-"122
-[v F15180 `ui ~T0 @X0 1 s pmic_stat_read_time_count ]
-[i F15180
--> -> 50 `i `ui
-]
-"123
-[v F15181 `uc ~T0 @X0 1 s pmic_wdt_clr_count ]
-[i F15181
--> -> 30 `i `uc
-]
-[; ;pic_control_fun.c: 122: static uint16_t pmic_stat_read_time_count = 50;
-[; ;pic_control_fun.c: 123: static uint8_t pmic_wdt_clr_count = 30;
-[; ;pic_control_fun.c: 124: pmic_stat_read_time_count += (300 / 100);
-"124
-[e =+ F15180 -> / -> 300 `i -> 100 `i `ui ]
-[; ;pic_control_fun.c: 126: if(pmic_stat_read_time_count >= 50)
-"126
-[e $ ! >= F15180 -> -> 50 `i `ui 1637  ]
-[; ;pic_control_fun.c: 127: {
-"127
-{
-[; ;pic_control_fun.c: 128: pmic_stat_read_time_count = 0;
-"128
-[e = F15180 -> -> 0 `i `ui ]
-[; ;pic_control_fun.c: 129: pmic_wdt_clr_count++;
-"129
-[e ++ F15181 -> -> 1 `i `uc ]
-[; ;pic_control_fun.c: 130: set_MSSSP1_mode(2);
-"130
-[e ( _set_MSSSP1_mode (1 -> -> 2 `i `uc ]
-[; ;pic_control_fun.c: 131: interrupt_state = (bool)GIE;
-"131
-[e = _interrupt_state -> -> _GIE `i `uc ]
-[; ;pic_control_fun.c: 132: GIE = 0;
-"132
-[e = _GIE -> -> 0 `i `b ]
-[; ;pic_control_fun.c: 134: if(pmic_wdt_clr_count > 5)
-"134
-[e $ ! > -> F15181 `i -> 5 `i 1638  ]
-[; ;pic_control_fun.c: 135: {
-"135
-{
-[; ;pic_control_fun.c: 139: pmic_wdt_clr_count = 0;
-"139
-[e = F15181 -> -> 0 `i `uc ]
-[; ;pic_control_fun.c: 140: I2C_read_buff[0] = i2c_single_read(0xD4, 0x02);
-"140
-[e = *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux ( _i2c_single_read (2 , -> -> 212 `i `uc -> -> 2 `i `uc ]
-[; ;pic_control_fun.c: 141: if((I2C_read_buff[0] & 0b00000001) == 0x01)
-"141
-[e $ ! == & -> *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux `i -> 1 `i -> 1 `i 1639  ]
-[; ;pic_control_fun.c: 142: {
-"142
-{
-[; ;pic_control_fun.c: 146: init_bq25895();
-"146
-[e ( _init_bq25895 ..  ]
-[; ;pic_control_fun.c: 147: _delay((unsigned long)((5)*(32000000/4000.0)));
-"147
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"148
-}
-[e :U 1639 ]
-[; ;pic_control_fun.c: 148: }
-[; ;pic_control_fun.c: 149: I2C_read_buff[0] = (uint8_t)((I2C_read_buff[0] & 0b00111111) | (uint8_t)0b10000000);
-"149
-[e = *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux -> | & -> *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux `i -> 63 `i -> -> -> 128 `i `uc `i `uc ]
-[; ;pic_control_fun.c: 150: i2c_single_write(0xD4, 0x02, I2C_read_buff[0]);
-"150
-[e ( _i2c_single_write (3 , , -> -> 212 `i `uc -> -> 2 `i `uc *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux ]
-[; ;pic_control_fun.c: 151: bq25895_WDT_reset();
-"151
-[e ( _bq25895_WDT_reset ..  ]
-"152
-}
-[e :U 1638 ]
-[; ;pic_control_fun.c: 152: }
-[; ;pic_control_fun.c: 154: memset((void*)I2C_read_buff, 0, 10);
-"154
-[e ( _memset (3 , , -> &U _I2C_read_buff `*v -> 0 `i -> -> 10 `i `ui ]
-[; ;pic_control_fun.c: 155: i2c_multi_read(0xD4, pmic_stat_reg, I2C_read_buff, 10);
-"155
-[e ( _i2c_multi_read (4 , , , -> -> 212 `i `uc _pmic_stat_reg &U _I2C_read_buff -> -> 10 `i `uc ]
-[; ;pic_control_fun.c: 156: GIE = interrupt_state;
-"156
-[e = _GIE -> _interrupt_state `b ]
-[; ;pic_control_fun.c: 158: process_pmic_status(I2C_read_buff, 10);
-"158
-[e ( _process_pmic_status (2 , &U _I2C_read_buff -> -> 10 `i `uc ]
-"159
-}
-[e :U 1637 ]
-[; ;pic_control_fun.c: 159: }
-[; ;pic_control_fun.c: 161: }
-"161
-[e :UE 1636 ]
-}
-"162
-[v _process_pmic_status `(v ~T0 @X0 1 ef2`*uc`uc ]
-"163
-{
-[; ;pic_control_fun.c: 162: void process_pmic_status(uint8_t * status, uint8_t length)
-[; ;pic_control_fun.c: 163: {
-[e :U _process_pmic_status ]
-"162
-[v _status `*uc ~T0 @X0 1 r1 ]
-[v _length `uc ~T0 @X0 1 r2 ]
-"163
-[f ]
-"164
-[v _VBUS_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 164: uint8_t VBUS_STAT = 0;
-[e = _VBUS_STAT -> -> 0 `i `uc ]
-"165
-[v _CHRG_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 165: uint8_t CHRG_STAT = 0;
-[e = _CHRG_STAT -> -> 0 `i `uc ]
-"166
-[v _PG_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 166: uint8_t PG_STAT = 0;
-[e = _PG_STAT -> -> 0 `i `uc ]
-"167
-[v _SDP_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 167: uint8_t SDP_STAT = 0;
-[e = _SDP_STAT -> -> 0 `i `uc ]
-"168
-[v _VSYS_STAT `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 168: uint8_t VSYS_STAT = 0;
-[e = _VSYS_STAT -> -> 0 `i `uc ]
-"169
-[v _battery_volt `ui ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 169: uint16_t battery_volt;
-[; ;pic_control_fun.c: 171: VBUS_STAT = (uint8_t)((status[0] & 0b11100000) >> 5);
-"171
-[e = _VBUS_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 224 `i -> 5 `i `uc ]
-[; ;pic_control_fun.c: 172: CHRG_STAT = (uint8_t)((status[0] & 0b00011000) >> 3);
-"172
-[e = _CHRG_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 24 `i -> 3 `i `uc ]
-[; ;pic_control_fun.c: 173: PG_STAT = (uint8_t)((status[0] & 0b00000100) >> 2);
-"173
-[e = _PG_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 4 `i -> 2 `i `uc ]
-[; ;pic_control_fun.c: 174: SDP_STAT = (uint8_t)((status[0] & 0b00000010) >> 1);
-"174
-[e = _SDP_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 2 `i -> 1 `i `uc ]
-[; ;pic_control_fun.c: 175: VSYS_STAT = (uint8_t)((status[0] & 0b00000001));
-"175
-[e = _VSYS_STAT -> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 1 `i `uc ]
-[; ;pic_control_fun.c: 178: if(1 == PG_STAT)
-"178
-[e $ ! == -> 1 `i -> _PG_STAT `i 1641  ]
-[; ;pic_control_fun.c: 179: {
-"179
-{
-[; ;pic_control_fun.c: 183: power_connected = 1;
-"183
-[e = _power_connected -> -> 1 `i `uc ]
-[; ;pic_control_fun.c: 184: if((0b00000001 == CHRG_STAT) || (0b00000010 == CHRG_STAT))
-"184
-[e $ ! || == -> 1 `i -> _CHRG_STAT `i == -> 2 `i -> _CHRG_STAT `i 1642  ]
-[; ;pic_control_fun.c: 185: {
-"185
-{
-[; ;pic_control_fun.c: 186: if(pic_active_mode == 1)
-"186
-[e $ ! == -> _pic_active_mode `i -> 1 `i 1643  ]
-[; ;pic_control_fun.c: 187: {
-"187
-{
-[; ;pic_control_fun.c: 188: do { LATDbits.LATD1 = 0; } while(0);
-"188
-[e :U 1646 ]
-{
-[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
-}
-[e :U 1645 ]
-[; ;pic_control_fun.c: 189: do { LATDbits.LATD3 = 0; } while(0);
-"189
-[e :U 1649 ]
-{
-[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
-}
-[e :U 1648 ]
-"190
+[e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
 }
 [e :U 1643 ]
-"191
+"45
 }
-[; ;pic_control_fun.c: 190: }
-[; ;pic_control_fun.c: 191: }
-[e $U 1650  ]
-"192
-[e :U 1642 ]
-[; ;pic_control_fun.c: 192: else if(0b00000011 == CHRG_STAT)
-[e $ ! == -> 3 `i -> _CHRG_STAT `i 1651  ]
-[; ;pic_control_fun.c: 193: {
-"193
-{
-[; ;pic_control_fun.c: 194: if(pic_active_mode == 1)
-"194
-[e $ ! == -> _pic_active_mode `i -> 1 `i 1652  ]
-[; ;pic_control_fun.c: 195: {
-"195
-{
-[; ;pic_control_fun.c: 196: do { LATDbits.LATD1 = 1; } while(0);
-"196
-[e :U 1655 ]
-{
-[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[e :U 1641 ]
+"46
 }
-[e :U 1654 ]
-[; ;pic_control_fun.c: 197: do { LATDbits.LATD3 = 0; } while(0);
-"197
-[e :U 1658 ]
-{
-[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[e :U 1640 ]
+"47
 }
-[e :U 1657 ]
-"198
+[e :U 1618 ]
+[; ;pic_control_fun.c: 45: }
+[; ;pic_control_fun.c: 46: }
+[; ;pic_control_fun.c: 47: }
+[; ;pic_control_fun.c: 48: }
+"48
+[e :UE 1617 ]
+}
+"50
+[v _set_MSSSP1_mode `(v ~T0 @X0 1 ef1`uc ]
+"51
+{
+[; ;pic_control_fun.c: 50: void set_MSSSP1_mode(uint8_t mode)
+[; ;pic_control_fun.c: 51: {
+[e :U _set_MSSSP1_mode ]
+"50
+[v _mode `uc ~T0 @X0 1 r1 ]
+"51
+[f ]
+"52
+[v F15173 `uc ~T0 @X0 1 s current_mode ]
+[; ;pic_control_fun.c: 52: static uint8_t current_mode;
+[; ;pic_control_fun.c: 54: if(current_mode != mode)
+"54
+[e $ ! != -> F15173 `i -> _mode `i 1646  ]
+[; ;pic_control_fun.c: 55: {
+"55
+{
+"56
+[v _state `uc ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 56: bool state = (bool)GIE;
+[e = _state -> -> _GIE `i `uc ]
+[; ;pic_control_fun.c: 57: GIE = 0;
+"57
+[e = _GIE -> -> 0 `i `b ]
+[; ;pic_control_fun.c: 58: PPSLOCK = 0x55;
+"58
+[e = _PPSLOCK -> -> 85 `i `uc ]
+[; ;pic_control_fun.c: 59: PPSLOCK = 0xAA;
+"59
+[e = _PPSLOCK -> -> 170 `i `uc ]
+[; ;pic_control_fun.c: 60: PPSLOCKbits.PPSLOCKED = 0x00;
+"60
+[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 61: if(mode == 1)
+"61
+[e $ ! == -> _mode `i -> 1 `i 1647  ]
+[; ;pic_control_fun.c: 62: {
+"62
+{
+[; ;pic_control_fun.c: 66: current_mode = 1;
+"66
+[e = F15173 -> -> 1 `i `uc ]
+[; ;pic_control_fun.c: 68: RC3PPS = 0x0F;
+"68
+[e = _RC3PPS -> -> 15 `i `uc ]
+[; ;pic_control_fun.c: 69: RC4PPS = 0x0F;
+"69
+[e = _RC4PPS -> -> 15 `i `uc ]
+[; ;pic_control_fun.c: 70: SSP1STAT = 0x00;
+"70
+[e = _SSP1STAT -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 71: SSP1CON1 = 0x00;
+"71
+[e = _SSP1CON1 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 72: SSP1CON3 = 0x00;
+"72
+[e = _SSP1CON3 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 73: SSP1ADD = 0x00;
+"73
+[e = _SSP1ADD -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 74: PIR3bits.SSP1IF = 0;
+"74
+[e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 75: PIE3bits.SSP1IE = 0;
+"75
+[e = . . _PIE3bits 0 0 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 76: SSP1BUF = 0x00;
+"76
+[e = _SSP1BUF -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 77: SSP1MSK = 0x00;
+"77
+[e = _SSP1MSK -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 80: SSP1CLKPPS = 0x12;
+"80
+[e = _SSP1CLKPPS -> -> 18 `i `uc ]
+[; ;pic_control_fun.c: 81: RC1PPS = 0x15;
+"81
+[e = _RC1PPS -> -> 21 `i `uc ]
+[; ;pic_control_fun.c: 82: RC2PPS = 0x14;
+"82
+[e = _RC2PPS -> -> 20 `i `uc ]
+[; ;pic_control_fun.c: 83: SSP1DATPPS = 0x10;
+"83
+[e = _SSP1DATPPS -> -> 16 `i `uc ]
+[; ;pic_control_fun.c: 86: SSP1STAT = 0x80;
+"86
+[e = _SSP1STAT -> -> 128 `i `uc ]
+[; ;pic_control_fun.c: 87: SSP1CON1 = 0x00;
+"87
+[e = _SSP1CON1 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 88: SSP1ADD = 0x01;
+"88
+[e = _SSP1ADD -> -> 1 `i `uc ]
+[; ;pic_control_fun.c: 90: TRISCbits.TRISC2 = 0;
+"90
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 91: TRISCbits.TRISC0 = 1;
+"91
+[e = . . _TRISCbits 0 0 -> -> 1 `i `uc ]
+[; ;pic_control_fun.c: 92: SSP1CON1bits.SSPEN = 0;
+"92
+[e = . . _SSP1CON1bits 0 2 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 93: _delay((unsigned long)((2)*(32000000/4000.0)));
+"93
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[; ;pic_control_fun.c: 94: SPI1_Open(0);
+"94
+[e ( _SPI1_Open (1 -> -> 0 `i `E15048 ]
+[; ;pic_control_fun.c: 95: _delay((unsigned long)((2)*(32000000/4000.0)));
+"95
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"96
+}
+[; ;pic_control_fun.c: 96: }
+[e $U 1648  ]
+"97
+[e :U 1647 ]
+[; ;pic_control_fun.c: 97: else if(mode == 2)
+[e $ ! == -> _mode `i -> 2 `i 1649  ]
+[; ;pic_control_fun.c: 98: {
+"98
+{
+[; ;pic_control_fun.c: 102: current_mode = 2;
+"102
+[e = F15173 -> -> 2 `i `uc ]
+[; ;pic_control_fun.c: 104: RC1PPS = 0x0F;
+"104
+[e = _RC1PPS -> -> 15 `i `uc ]
+[; ;pic_control_fun.c: 105: RC2PPS = 0x0F;
+"105
+[e = _RC2PPS -> -> 15 `i `uc ]
+[; ;pic_control_fun.c: 106: SSP1STAT = 0x00;
+"106
+[e = _SSP1STAT -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 107: SSP1CON1 = 0x00;
+"107
+[e = _SSP1CON1 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 108: SSP1CON3 = 0x00;
+"108
+[e = _SSP1CON3 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 109: SSP1ADD = 0x00;
+"109
+[e = _SSP1ADD -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 110: PIR3bits.SSP1IF = 0;
+"110
+[e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 111: PIE3bits.SSP1IE = 0;
+"111
+[e = . . _PIE3bits 0 0 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 112: SSP1BUF = 0x00;
+"112
+[e = _SSP1BUF -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 113: SSP1MSK = 0x00;
+"113
+[e = _SSP1MSK -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 115: RC3PPS = 0x14;
+"115
+[e = _RC3PPS -> -> 20 `i `uc ]
+[; ;pic_control_fun.c: 116: RC4PPS = 0x15;
+"116
+[e = _RC4PPS -> -> 21 `i `uc ]
+[; ;pic_control_fun.c: 117: SSP1CLKPPS = 0x13;
+"117
+[e = _SSP1CLKPPS -> -> 19 `i `uc ]
+[; ;pic_control_fun.c: 118: SSP1DATPPS = 0x14;
+"118
+[e = _SSP1DATPPS -> -> 20 `i `uc ]
+[; ;pic_control_fun.c: 120: i2c_init();
+"120
+[e ( _i2c_init ..  ]
+[; ;pic_control_fun.c: 121: _delay((unsigned long)((2)*(32000000/4000.0)));
+"121
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"122
+}
+[e :U 1649 ]
+"123
+[e :U 1648 ]
+[; ;pic_control_fun.c: 122: }
+[; ;pic_control_fun.c: 123: PPSLOCK = 0x55;
+[e = _PPSLOCK -> -> 85 `i `uc ]
+[; ;pic_control_fun.c: 124: PPSLOCK = 0xAA;
+"124
+[e = _PPSLOCK -> -> 170 `i `uc ]
+[; ;pic_control_fun.c: 125: PPSLOCKbits.PPSLOCKED = 0x01;
+"125
+[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
+[; ;pic_control_fun.c: 126: GIE = state;
+"126
+[e = _GIE -> _state `b ]
+"127
+}
+[e :U 1646 ]
+[; ;pic_control_fun.c: 127: }
+[; ;pic_control_fun.c: 129: }
+"129
+[e :UE 1645 ]
+}
+"130
+[v _pmic_status_read `(v ~T0 @X0 1 ef ]
+"131
+{
+[; ;pic_control_fun.c: 130: void pmic_status_read(void)
+[; ;pic_control_fun.c: 131: {
+[e :U _pmic_status_read ]
+[f ]
+"133
+[v _interrupt_state `uc ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 133: bool interrupt_state = (bool)GIE;
+[e = _interrupt_state -> -> _GIE `i `uc ]
+"134
+[v F15182 `ui ~T0 @X0 1 s pmic_stat_read_time_count ]
+[i F15182
+-> -> 50 `i `ui
+]
+"135
+[v F15183 `uc ~T0 @X0 1 s pmic_wdt_clr_count ]
+[i F15183
+-> -> 30 `i `uc
+]
+[; ;pic_control_fun.c: 134: static uint16_t pmic_stat_read_time_count = 50;
+[; ;pic_control_fun.c: 135: static uint8_t pmic_wdt_clr_count = 30;
+[; ;pic_control_fun.c: 136: pmic_stat_read_time_count += (300 / 100);
+"136
+[e =+ F15182 -> / -> 300 `i -> 100 `i `ui ]
+[; ;pic_control_fun.c: 138: if(pmic_stat_read_time_count >= 50)
+"138
+[e $ ! >= F15182 -> -> 50 `i `ui 1651  ]
+[; ;pic_control_fun.c: 139: {
+"139
+{
+[; ;pic_control_fun.c: 140: pmic_stat_read_time_count = 0;
+"140
+[e = F15182 -> -> 0 `i `ui ]
+[; ;pic_control_fun.c: 141: pmic_wdt_clr_count++;
+"141
+[e ++ F15183 -> -> 1 `i `uc ]
+[; ;pic_control_fun.c: 142: set_MSSSP1_mode(2);
+"142
+[e ( _set_MSSSP1_mode (1 -> -> 2 `i `uc ]
+[; ;pic_control_fun.c: 143: interrupt_state = (bool)GIE;
+"143
+[e = _interrupt_state -> -> _GIE `i `uc ]
+[; ;pic_control_fun.c: 144: GIE = 0;
+"144
+[e = _GIE -> -> 0 `i `b ]
+[; ;pic_control_fun.c: 146: if(pmic_wdt_clr_count > 5)
+"146
+[e $ ! > -> F15183 `i -> 5 `i 1652  ]
+[; ;pic_control_fun.c: 147: {
+"147
+{
+[; ;pic_control_fun.c: 151: pmic_wdt_clr_count = 0;
+"151
+[e = F15183 -> -> 0 `i `uc ]
+[; ;pic_control_fun.c: 152: I2C_read_buff[0] = i2c_single_read(0xD4, 0x02);
+"152
+[e = *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux ( _i2c_single_read (2 , -> -> 212 `i `uc -> -> 2 `i `uc ]
+[; ;pic_control_fun.c: 153: if((I2C_read_buff[0] & 0b00000001) == 0x01)
+"153
+[e $ ! == & -> *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux `i -> 1 `i -> 1 `i 1653  ]
+[; ;pic_control_fun.c: 154: {
+"154
+{
+[; ;pic_control_fun.c: 158: init_bq25895();
+"158
+[e ( _init_bq25895 ..  ]
+[; ;pic_control_fun.c: 159: _delay((unsigned long)((5)*(32000000/4000.0)));
+"159
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"160
+}
+[e :U 1653 ]
+[; ;pic_control_fun.c: 160: }
+[; ;pic_control_fun.c: 161: I2C_read_buff[0] = (uint8_t)((I2C_read_buff[0] & 0b00111111) | (uint8_t)0b10000000);
+"161
+[e = *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux -> | & -> *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux `i -> 63 `i -> -> -> 128 `i `uc `i `uc ]
+[; ;pic_control_fun.c: 162: i2c_single_write(0xD4, 0x02, I2C_read_buff[0]);
+"162
+[e ( _i2c_single_write (3 , , -> -> 212 `i `uc -> -> 2 `i `uc *U + &U _I2C_read_buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _I2C_read_buff `ui `ux ]
+[; ;pic_control_fun.c: 163: bq25895_WDT_reset();
+"163
+[e ( _bq25895_WDT_reset ..  ]
+"164
 }
 [e :U 1652 ]
-"199
+[; ;pic_control_fun.c: 164: }
+[; ;pic_control_fun.c: 166: memset((void*)I2C_read_buff, 0, 10);
+"166
+[e ( _memset (3 , , -> &U _I2C_read_buff `*v -> 0 `i -> -> 10 `i `ui ]
+[; ;pic_control_fun.c: 167: i2c_multi_read(0xD4, pmic_stat_reg, I2C_read_buff, 10);
+"167
+[e ( _i2c_multi_read (4 , , , -> -> 212 `i `uc _pmic_stat_reg &U _I2C_read_buff -> -> 10 `i `uc ]
+[; ;pic_control_fun.c: 168: GIE = interrupt_state;
+"168
+[e = _GIE -> _interrupt_state `b ]
+[; ;pic_control_fun.c: 170: process_pmic_status(I2C_read_buff, 10);
+"170
+[e ( _process_pmic_status (2 , &U _I2C_read_buff -> -> 10 `i `uc ]
+"171
 }
-[; ;pic_control_fun.c: 198: }
-[; ;pic_control_fun.c: 199: }
-[e $U 1659  ]
-"200
 [e :U 1651 ]
-[; ;pic_control_fun.c: 200: else
-[; ;pic_control_fun.c: 201: {
-"201
+[; ;pic_control_fun.c: 171: }
+[; ;pic_control_fun.c: 173: }
+"173
+[e :UE 1650 ]
+}
+"174
+[v _process_pmic_status `(v ~T0 @X0 1 ef2`*uc`uc ]
+"175
 {
-[; ;pic_control_fun.c: 202: if(pic_active_mode == 1)
-"202
-[e $ ! == -> _pic_active_mode `i -> 1 `i 1660  ]
-[; ;pic_control_fun.c: 203: {
-"203
+[; ;pic_control_fun.c: 174: void process_pmic_status(uint8_t * status, uint8_t length)
+[; ;pic_control_fun.c: 175: {
+[e :U _process_pmic_status ]
+"174
+[v _status `*uc ~T0 @X0 1 r1 ]
+[v _length `uc ~T0 @X0 1 r2 ]
+"175
+[f ]
+"176
+[v _VBUS_STAT `uc ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 176: uint8_t VBUS_STAT = 0;
+[e = _VBUS_STAT -> -> 0 `i `uc ]
+"177
+[v _CHRG_STAT `uc ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 177: uint8_t CHRG_STAT = 0;
+[e = _CHRG_STAT -> -> 0 `i `uc ]
+"178
+[v _PG_STAT `uc ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 178: uint8_t PG_STAT = 0;
+[e = _PG_STAT -> -> 0 `i `uc ]
+"179
+[v _SDP_STAT `uc ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 179: uint8_t SDP_STAT = 0;
+[e = _SDP_STAT -> -> 0 `i `uc ]
+"180
+[v _VSYS_STAT `uc ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 180: uint8_t VSYS_STAT = 0;
+[e = _VSYS_STAT -> -> 0 `i `uc ]
+"181
+[v _battery_volt `ui ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 181: uint16_t battery_volt;
+[; ;pic_control_fun.c: 183: VBUS_STAT = (uint8_t)((status[0] & 0b11100000) >> 5);
+"183
+[e = _VBUS_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 224 `i -> 5 `i `uc ]
+[; ;pic_control_fun.c: 184: CHRG_STAT = (uint8_t)((status[0] & 0b00011000) >> 3);
+"184
+[e = _CHRG_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 24 `i -> 3 `i `uc ]
+[; ;pic_control_fun.c: 185: PG_STAT = (uint8_t)((status[0] & 0b00000100) >> 2);
+"185
+[e = _PG_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 4 `i -> 2 `i `uc ]
+[; ;pic_control_fun.c: 186: SDP_STAT = (uint8_t)((status[0] & 0b00000010) >> 1);
+"186
+[e = _SDP_STAT -> >> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 2 `i -> 1 `i `uc ]
+[; ;pic_control_fun.c: 187: VSYS_STAT = (uint8_t)((status[0] & 0b00000001));
+"187
+[e = _VSYS_STAT -> & -> *U + _status * -> -> 0 `i `x -> -> # *U _status `i `x `i -> 1 `i `uc ]
+[; ;pic_control_fun.c: 190: if(1 == PG_STAT)
+"190
+[e $ ! == -> 1 `i -> _PG_STAT `i 1655  ]
+[; ;pic_control_fun.c: 191: {
+"191
 {
-[; ;pic_control_fun.c: 204: do { LATDbits.LATD1 = 0; } while(0);
-"204
-[e :U 1663 ]
+[; ;pic_control_fun.c: 195: power_connected = 1;
+"195
+[e = _power_connected -> -> 1 `i `uc ]
+[; ;pic_control_fun.c: 196: if((0b00000001 == CHRG_STAT) || (0b00000010 == CHRG_STAT))
+"196
+[e $ ! || == -> 1 `i -> _CHRG_STAT `i == -> 2 `i -> _CHRG_STAT `i 1656  ]
+[; ;pic_control_fun.c: 197: {
+"197
+{
+[; ;pic_control_fun.c: 198: if(pic_active_mode == 1)
+"198
+[e $ ! == -> _pic_active_mode `i -> 1 `i 1657  ]
+[; ;pic_control_fun.c: 199: {
+"199
+{
+[; ;pic_control_fun.c: 200: do { LATDbits.LATD1 = 0; } while(0);
+"200
+[e :U 1660 ]
 {
 [e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
 }
-[e :U 1662 ]
-[; ;pic_control_fun.c: 205: do { LATDbits.LATD3 = 1; } while(0);
-"205
-[e :U 1666 ]
-{
-[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
-}
-[e :U 1665 ]
-"206
-}
-[e :U 1660 ]
-"207
-}
 [e :U 1659 ]
-[e :U 1650 ]
-"208
+[; ;pic_control_fun.c: 201: do { LATDbits.LATD3 = 0; } while(0);
+"201
+[e :U 1663 ]
+{
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
 }
-[; ;pic_control_fun.c: 206: }
-[; ;pic_control_fun.c: 207: }
-[; ;pic_control_fun.c: 208: }
-[e $U 1667  ]
-"209
-[e :U 1641 ]
-[; ;pic_control_fun.c: 209: else
-[; ;pic_control_fun.c: 210: {
-"210
+[e :U 1662 ]
+"202
+}
+[e :U 1657 ]
+"203
+}
+[; ;pic_control_fun.c: 202: }
+[; ;pic_control_fun.c: 203: }
+[e $U 1664  ]
+"204
+[e :U 1656 ]
+[; ;pic_control_fun.c: 204: else if(0b00000011 == CHRG_STAT)
+[e $ ! == -> 3 `i -> _CHRG_STAT `i 1665  ]
+[; ;pic_control_fun.c: 205: {
+"205
 {
-[; ;pic_control_fun.c: 214: power_connected = 2;
-"214
-[e = _power_connected -> -> 2 `i `uc ]
-[; ;pic_control_fun.c: 215: if(pic_active_mode == 1)
-"215
-[e $ ! == -> _pic_active_mode `i -> 1 `i 1668  ]
-[; ;pic_control_fun.c: 216: {
-"216
+[; ;pic_control_fun.c: 206: if(pic_active_mode == 1)
+"206
+[e $ ! == -> _pic_active_mode `i -> 1 `i 1666  ]
+[; ;pic_control_fun.c: 207: {
+"207
 {
-[; ;pic_control_fun.c: 217: do { LATDbits.LATD1 = 1; } while(0);
-"217
-[e :U 1671 ]
+[; ;pic_control_fun.c: 208: do { LATDbits.LATD1 = 1; } while(0);
+"208
+[e :U 1669 ]
 {
 [e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
 }
-[e :U 1670 ]
-[; ;pic_control_fun.c: 218: do { LATDbits.LATD3 = 1; } while(0);
-"218
-[e :U 1674 ]
+[e :U 1668 ]
+[; ;pic_control_fun.c: 209: do { LATDbits.LATD3 = 0; } while(0);
+"209
+[e :U 1672 ]
+{
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+}
+[e :U 1671 ]
+"210
+}
+[e :U 1666 ]
+"211
+}
+[; ;pic_control_fun.c: 210: }
+[; ;pic_control_fun.c: 211: }
+[e $U 1673  ]
+"212
+[e :U 1665 ]
+[; ;pic_control_fun.c: 212: else
+[; ;pic_control_fun.c: 213: {
+"213
+{
+[; ;pic_control_fun.c: 214: if(pic_active_mode == 1)
+"214
+[e $ ! == -> _pic_active_mode `i -> 1 `i 1674  ]
+[; ;pic_control_fun.c: 215: {
+"215
+{
+[; ;pic_control_fun.c: 216: do { LATDbits.LATD1 = 0; } while(0);
+"216
+[e :U 1677 ]
+{
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+}
+[e :U 1676 ]
+[; ;pic_control_fun.c: 217: do { LATDbits.LATD3 = 1; } while(0);
+"217
+[e :U 1680 ]
 {
 [e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
 }
-[e :U 1673 ]
+[e :U 1679 ]
+"218
+}
+[e :U 1674 ]
 "219
 }
-[e :U 1668 ]
+[e :U 1673 ]
+[e :U 1664 ]
 "220
 }
-[e :U 1667 ]
+[; ;pic_control_fun.c: 218: }
 [; ;pic_control_fun.c: 219: }
 [; ;pic_control_fun.c: 220: }
-[; ;pic_control_fun.c: 222: battery_volt = (uint16_t)((( status[3] & 0b01111111) * 20) + 2304);
+[e $U 1681  ]
+"221
+[e :U 1655 ]
+[; ;pic_control_fun.c: 221: else
+[; ;pic_control_fun.c: 222: {
 "222
-[e = _battery_volt -> + * & -> *U + _status * -> -> 3 `i `x -> -> # *U _status `i `x `i -> 127 `i -> 20 `i -> 2304 `i `ui ]
-[; ;pic_control_fun.c: 223: battery_level = lipo_battery_level(battery_volt);
-"223
-[e = _battery_level ( _lipo_battery_level (1 _battery_volt ]
-[; ;pic_control_fun.c: 229: }
+{
+[; ;pic_control_fun.c: 226: power_connected = 2;
+"226
+[e = _power_connected -> -> 2 `i `uc ]
+[; ;pic_control_fun.c: 227: if(pic_active_mode == 1)
+"227
+[e $ ! == -> _pic_active_mode `i -> 1 `i 1682  ]
+[; ;pic_control_fun.c: 228: {
+"228
+{
+[; ;pic_control_fun.c: 229: do { LATDbits.LATD1 = 1; } while(0);
 "229
-[e :UE 1640 ]
-}
-"231
-[v _lipo_battery_level `(uc ~T0 @X0 1 ef1`ui ]
-"232
+[e :U 1685 ]
 {
-[; ;pic_control_fun.c: 231: uint8_t lipo_battery_level(uint16_t battery_volt)
-[; ;pic_control_fun.c: 232: {
-[e :U _lipo_battery_level ]
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+}
+[e :U 1684 ]
+[; ;pic_control_fun.c: 230: do { LATDbits.LATD3 = 1; } while(0);
+"230
+[e :U 1688 ]
+{
+[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
+}
+[e :U 1687 ]
 "231
-[v _battery_volt `ui ~T0 @X0 1 r1 ]
+}
+[e :U 1682 ]
 "232
-[f ]
-"233
-[v _battery_level_cal `uc ~T0 @X0 1 a ]
-[; ;pic_control_fun.c: 233: uint8_t battery_level_cal;
-[; ;pic_control_fun.c: 235: if(3500 >= battery_volt)
+}
+[e :U 1681 ]
+[; ;pic_control_fun.c: 231: }
+[; ;pic_control_fun.c: 232: }
+[; ;pic_control_fun.c: 234: battery_volt = (uint16_t)((( status[3] & 0b01111111) * 20) + 2304);
+"234
+[e = _battery_volt -> + * & -> *U + _status * -> -> 3 `i `x -> -> # *U _status `i `x `i -> 127 `i -> 20 `i -> 2304 `i `ui ]
+[; ;pic_control_fun.c: 235: battery_level = lipo_battery_level(battery_volt);
 "235
-[e $ ! >= -> -> 3500 `i `ui _battery_volt 1676  ]
-[; ;pic_control_fun.c: 236: {
-"236
-{
-[; ;pic_control_fun.c: 237: battery_level_cal = 0;
-"237
-[e = _battery_level_cal -> -> 0 `i `uc ]
-"238
-}
-[; ;pic_control_fun.c: 238: }
-[e $U 1677  ]
-"239
-[e :U 1676 ]
-[; ;pic_control_fun.c: 239: else if(4200 < battery_volt)
-[e $ ! < -> -> 4200 `i `ui _battery_volt 1678  ]
-[; ;pic_control_fun.c: 240: {
-"240
-{
-[; ;pic_control_fun.c: 241: battery_level_cal = 100;
+[e = _battery_level ( _lipo_battery_level (1 _battery_volt ]
+[; ;pic_control_fun.c: 241: }
 "241
-[e = _battery_level_cal -> -> 100 `i `uc ]
-"242
+[e :UE 1654 ]
 }
-[; ;pic_control_fun.c: 242: }
-[e $U 1679  ]
 "243
-[e :U 1678 ]
-[; ;pic_control_fun.c: 243: else
-[; ;pic_control_fun.c: 244: {
+[v _lipo_battery_level `(uc ~T0 @X0 1 ef1`ui ]
 "244
 {
-[; ;pic_control_fun.c: 245: battery_level_cal = (battery_volt - 3500)/7;
+[; ;pic_control_fun.c: 243: uint8_t lipo_battery_level(uint16_t battery_volt)
+[; ;pic_control_fun.c: 244: {
+[e :U _lipo_battery_level ]
+"243
+[v _battery_volt `ui ~T0 @X0 1 r1 ]
+"244
+[f ]
 "245
-[e = _battery_level_cal -> / - _battery_volt -> -> 3500 `i `ui -> -> 7 `i `ui `uc ]
-"246
-}
-[e :U 1679 ]
-[e :U 1677 ]
-[; ;pic_control_fun.c: 246: }
-[; ;pic_control_fun.c: 247: return battery_level_cal;
+[v _battery_level_cal `uc ~T0 @X0 1 a ]
+[; ;pic_control_fun.c: 245: uint8_t battery_level_cal;
+[; ;pic_control_fun.c: 247: if(3500 >= battery_volt)
 "247
-[e ) _battery_level_cal ]
-[e $UE 1675  ]
-[; ;pic_control_fun.c: 248: }
+[e $ ! >= -> -> 3500 `i `ui _battery_volt 1690  ]
+[; ;pic_control_fun.c: 248: {
 "248
-[e :UE 1675 ]
+{
+[; ;pic_control_fun.c: 249: battery_level_cal = 0;
+"249
+[e = _battery_level_cal -> -> 0 `i `uc ]
+"250
+}
+[; ;pic_control_fun.c: 250: }
+[e $U 1691  ]
+"251
+[e :U 1690 ]
+[; ;pic_control_fun.c: 251: else if(4200 < battery_volt)
+[e $ ! < -> -> 4200 `i `ui _battery_volt 1692  ]
+[; ;pic_control_fun.c: 252: {
+"252
+{
+[; ;pic_control_fun.c: 253: battery_level_cal = 100;
+"253
+[e = _battery_level_cal -> -> 100 `i `uc ]
+"254
+}
+[; ;pic_control_fun.c: 254: }
+[e $U 1693  ]
+"255
+[e :U 1692 ]
+[; ;pic_control_fun.c: 255: else
+[; ;pic_control_fun.c: 256: {
+"256
+{
+[; ;pic_control_fun.c: 257: battery_level_cal = (battery_volt - 3500)/7;
+"257
+[e = _battery_level_cal -> / - _battery_volt -> -> 3500 `i `ui -> -> 7 `i `ui `uc ]
+"258
+}
+[e :U 1693 ]
+[e :U 1691 ]
+[; ;pic_control_fun.c: 258: }
+[; ;pic_control_fun.c: 259: return battery_level_cal;
+"259
+[e ) _battery_level_cal ]
+[e $UE 1689  ]
+[; ;pic_control_fun.c: 260: }
+"260
+[e :UE 1689 ]
 }

@@ -224,6 +224,7 @@
 #define P_WD_GetValue()           PORTAbits.RA5
 
 // get/set EV_3V3 aliases
+#define EV_3V3_SetDigitalInput()    do { TRISCbits.TRISC6 = 1; } while(0)
 #define EV_3V3_SetHigh()            do { LATCbits.LATC6 = 1; } while(0)
 #define EV_3V3_SetLow()             do { LATCbits.LATC6 = 0; } while(0)
 #define EV_3V3_Toggle()             do { LATCbits.LATC6 = ~LATCbits.LATC6; } while(0)

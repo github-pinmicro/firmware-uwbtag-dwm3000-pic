@@ -21,9 +21,13 @@
 #define TX_INTERVAL_MS 300
 #define PMIC_READ_INCREMENT_VAL (TX_INTERVAL_MS / 100)
 #define TX_LED_TOGGLE_INCREMENT_VAL (TX_INTERVAL_MS / 100)
+
 #define TX_LED_TOGGLE_COUNT 30
 
+#define LOW_BATTERY 25
+
 extern uint8_t battery_level;
+extern uint32_t pic_time_counter_ms;
 
 void process_pmic_status(uint8_t * status, uint8_t length);
 void pmic_status_read(void);

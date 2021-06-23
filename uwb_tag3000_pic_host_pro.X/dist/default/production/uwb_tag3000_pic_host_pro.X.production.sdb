@@ -136,14 +136,14 @@ DWT_STS_LEN_512 4
 DWT_STS_LEN_1024 5
 DWT_STS_LEN_2048 6
 ]
-"129
+"130
 [e E225 . `uc
 DWT_DISABLE_INT 0
 DWT_ENABLE_INT 1
 DWT_ENABLE_INT_ONLY 2
 ]
-"82 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_control_fun.c
-[e E15047 . `uc
+"94 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_control_fun.c
+[e E15048 . `uc
 SPI1_DEFAULT 0
 ]
 "8 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\bq25895.c
@@ -324,13 +324,13 @@ SPI1_DEFAULT 0
 [v _writetospi writetospi `(i  1 e 2 0 ]
 "104
 [v _readfromspi readfromspi `(i  1 e 2 0 ]
-"87 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\decawave.c
+"88 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\decawave.c
 [v _dw_main dw_main `(v  1 e 1 0 ]
-"180
+"181
 [v _transmit_beacon_pkt transmit_beacon_pkt `(v  1 e 1 0 ]
-"69 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\main.c
+"71 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"270
+"280
 [v _Sleep Sleep `(v  1 e 1 0 ]
 "132 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\mcc_generated_files/eusart.c
 [v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
@@ -358,15 +358,15 @@ SPI1_DEFAULT 0
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 "103
 [v _TMR0_Reload TMR0_Reload `(v  1 e 1 0 ]
-"14 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_control_fun.c
+"15 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_control_fun.c
 [v _set_led_status set_led_status `(v  1 e 1 0 ]
-"38
+"50
 [v _set_MSSSP1_mode set_MSSSP1_mode `(v  1 e 1 0 ]
-"118
+"130
 [v _pmic_status_read pmic_status_read `(v  1 e 1 0 ]
-"162
+"174
 [v _process_pmic_status process_pmic_status `(v  1 e 1 0 ]
-"231
+"243
 [v _lipo_battery_level lipo_battery_level `(uc  1 e 1 0 ]
 "5 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_i2c.c
 [v _i2c_init i2c_init `(v  1 e 1 0 ]
@@ -384,15 +384,15 @@ SPI1_DEFAULT 0
 [v _reset_DWIC reset_DWIC `(v  1 e 1 0 ]
 "158
 [v _wakeup_device_with_io wakeup_device_with_io `(v  1 e 1 0 ]
-[s S495 . 1 `uc 1 INTEDG 1 0 :1:0 
+[s S466 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
 "368 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18877.h
-[u S500 . 1 `S495 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES500  1 e 1 @11 ]
-[s S2041 . 1 `uc 1 RA0 1 0 :1:0 
+[u S471 . 1 `S466 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES471  1 e 1 @11 ]
+[s S2027 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -402,9 +402,9 @@ SPI1_DEFAULT 0
 `uc 1 RA7 1 0 :1:7 
 ]
 "405
-[u S2050 . 1 `S2041 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES2050  1 e 1 @12 ]
-[s S700 . 1 `uc 1 RB0 1 0 :1:0 
+[u S2036 . 1 `S2027 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES2036  1 e 1 @12 ]
+[s S671 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -414,8 +414,8 @@ SPI1_DEFAULT 0
 `uc 1 RB7 1 0 :1:7 
 ]
 "467
-[u S709 . 1 `S700 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES709  1 e 1 @13 ]
+[u S680 . 1 `S671 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES680  1 e 1 @13 ]
 "674
 [v _TRISA TRISA `VEuc  1 e 1 @17 ]
 "736
@@ -440,7 +440,7 @@ SPI1_DEFAULT 0
 [v _TRISE TRISE `VEuc  1 e 1 @21 ]
 "954
 [v _LATA LATA `VEuc  1 e 1 @22 ]
-[s S118 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S97 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -450,11 +450,11 @@ SPI1_DEFAULT 0
 `uc 1 LATA7 1 0 :1:7 
 ]
 "971
-[u S127 . 1 `S118 1 . 1 0 ]
-[v _LATAbits LATAbits `VES127  1 e 1 @22 ]
+[u S106 . 1 `S97 1 . 1 0 ]
+[v _LATAbits LATAbits `VES106  1 e 1 @22 ]
 "1016
 [v _LATB LATB `VEuc  1 e 1 @23 ]
-[s S654 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S625 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -464,22 +464,10 @@ SPI1_DEFAULT 0
 `uc 1 LATB7 1 0 :1:7 
 ]
 "1033
-[u S663 . 1 `S654 1 . 1 0 ]
-[v _LATBbits LATBbits `VES663  1 e 1 @23 ]
+[u S634 . 1 `S625 1 . 1 0 ]
+[v _LATBbits LATBbits `VES634  1 e 1 @23 ]
 "1078
 [v _LATC LATC `VEuc  1 e 1 @24 ]
-[s S97 . 1 `uc 1 LATC0 1 0 :1:0 
-`uc 1 LATC1 1 0 :1:1 
-`uc 1 LATC2 1 0 :1:2 
-`uc 1 LATC3 1 0 :1:3 
-`uc 1 LATC4 1 0 :1:4 
-`uc 1 LATC5 1 0 :1:5 
-`uc 1 LATC6 1 0 :1:6 
-`uc 1 LATC7 1 0 :1:7 
-]
-"1095
-[u S106 . 1 `S97 1 . 1 0 ]
-[v _LATCbits LATCbits `VES106  1 e 1 @24 ]
 "1140
 [v _LATD LATD `VEuc  1 e 1 @25 ]
 [s S76 . 1 `uc 1 LATD0 1 0 :1:0 
@@ -502,20 +490,20 @@ SPI1_DEFAULT 0
 [v _TMR0H TMR0H `VEuc  1 e 1 @29 ]
 "1626
 [v _T0CON0 T0CON0 `VEuc  1 e 1 @30 ]
-[s S547 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S518 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T016BIT 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
 "1646
-[s S553 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
+[s S524 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
 `uc 1 T0OUTPS1 1 0 :1:1 
 `uc 1 T0OUTPS2 1 0 :1:2 
 `uc 1 T0OUTPS3 1 0 :1:3 
 ]
-[u S558 . 1 `S547 1 . 1 0 `S553 1 . 1 0 ]
-[v _T0CON0bits T0CON0bits `VES558  1 e 1 @30 ]
+[u S529 . 1 `S518 1 . 1 0 `S524 1 . 1 0 ]
+[v _T0CON0bits T0CON0bits `VES529  1 e 1 @30 ]
 "1691
 [v _T0CON1 T0CON1 `VEuc  1 e 1 @31 ]
 "3762
@@ -528,7 +516,7 @@ SPI1_DEFAULT 0
 [v _SP1BRGH SP1BRGH `VEuc  1 e 1 @284 ]
 "4001
 [v _RC1STA RC1STA `VEuc  1 e 1 @285 ]
-[s S259 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S230 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -538,11 +526,11 @@ SPI1_DEFAULT 0
 `uc 1 SPEN 1 0 :1:7 
 ]
 "4027
-[u S268 . 1 `S259 1 . 1 0 ]
-[v _RC1STAbits RC1STAbits `VES268  1 e 1 @285 ]
+[u S239 . 1 `S230 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES239  1 e 1 @285 ]
 "4181
 [v _TX1STA TX1STA `VEuc  1 e 1 @286 ]
-[s S238 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S209 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -552,8 +540,8 @@ SPI1_DEFAULT 0
 `uc 1 CSRC 1 0 :1:7 
 ]
 "4207
-[u S247 . 1 `S238 1 . 1 0 ]
-[v _TX1STAbits TX1STAbits `VES247  1 e 1 @286 ]
+[u S218 . 1 `S209 1 . 1 0 ]
+[v _TX1STAbits TX1STAbits `VES218  1 e 1 @286 ]
 "4361
 [v _BAUD1CON BAUD1CON `VEuc  1 e 1 @287 ]
 "4607
@@ -564,7 +552,7 @@ SPI1_DEFAULT 0
 [v _SSP1MSK SSP1MSK `VEuc  1 e 1 @398 ]
 "4817
 [v _SSP1STAT SSP1STAT `VEuc  1 e 1 @399 ]
-[s S2332 . 1 `uc 1 BF 1 0 :1:0 
+[s S2307 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -574,33 +562,33 @@ SPI1_DEFAULT 0
 `uc 1 SMP 1 0 :1:7 
 ]
 "4926
-[s S2341 . 1 `uc 1 . 1 0 :2:0 
+[s S2316 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S2346 . 1 `uc 1 . 1 0 :2:0 
+[s S2321 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S2351 . 1 `uc 1 . 1 0 :2:0 
+[s S2326 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S2356 . 1 `uc 1 . 1 0 :2:0 
+[s S2331 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S2361 . 1 `uc 1 . 1 0 :2:0 
+[s S2336 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S2367 . 1 `uc 1 BF1 1 0 :1:0 
+[s S2342 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 R 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
@@ -609,66 +597,66 @@ SPI1_DEFAULT 0
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S2376 . 1 `uc 1 . 1 0 :2:0 
+[s S2351 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S2382 . 1 `uc 1 . 1 0 :2:0 
+[s S2357 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 I2C_START1 1 0 :1:3 
 `uc 1 I2C_STOP2 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S2388 . 1 `uc 1 . 1 0 :2:0 
+[s S2363 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ1 1 0 :1:2 
 `uc 1 S2 1 0 :1:3 
 `uc 1 P2 1 0 :1:4 
 `uc 1 DATA_ADDRESS1 1 0 :1:5 
 ]
-[s S2394 . 1 `uc 1 . 1 0 :2:0 
+[s S2369 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A1 1 0 :1:5 
 ]
-[s S2399 . 1 `uc 1 . 1 0 :2:0 
+[s S2374 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_nA1 1 0 :1:5 
 ]
-[s S2404 . 1 `uc 1 . 1 0 :2:0 
+[s S2379 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_nW1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 I2C_DAT1 1 0 :1:5 
 ]
-[s S2409 . 1 `uc 1 . 1 0 :2:0 
+[s S2384 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA2 1 0 :1:5 
 ]
-[s S2414 . 1 `uc 1 . 1 0 :2:0 
+[s S2389 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS1 1 0 :1:5 
 ]
-[u S2419 . 1 `S2332 1 . 1 0 `S2341 1 . 1 0 `S2346 1 . 1 0 `S2351 1 . 1 0 `S2356 1 . 1 0 `S2361 1 . 1 0 `S2367 1 . 1 0 `S2376 1 . 1 0 `S2382 1 . 1 0 `S2388 1 . 1 0 `S2394 1 . 1 0 `S2399 1 . 1 0 `S2404 1 . 1 0 `S2409 1 . 1 0 `S2414 1 . 1 0 ]
-[v _SSP1STATbits SSP1STATbits `VES2419  1 e 1 @399 ]
+[u S2394 . 1 `S2307 1 . 1 0 `S2316 1 . 1 0 `S2321 1 . 1 0 `S2326 1 . 1 0 `S2331 1 . 1 0 `S2336 1 . 1 0 `S2342 1 . 1 0 `S2351 1 . 1 0 `S2357 1 . 1 0 `S2363 1 . 1 0 `S2369 1 . 1 0 `S2374 1 . 1 0 `S2379 1 . 1 0 `S2384 1 . 1 0 `S2389 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES2394  1 e 1 @399 ]
 "5181
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @400 ]
-[s S372 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S343 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "5211
-[s S378 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S349 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S383 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S354 . 1 `uc 1 SSPM01 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 `uc 1 SSPM21 1 0 :1:2 
 `uc 1 SSPM31 1 0 :1:3 
@@ -677,11 +665,11 @@ SPI1_DEFAULT 0
 `uc 1 SSPOV1 1 0 :1:6 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S392 . 1 `S372 1 . 1 0 `S378 1 . 1 0 `S383 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES392  1 e 1 @400 ]
+[u S363 . 1 `S343 1 . 1 0 `S349 1 . 1 0 `S354 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES363  1 e 1 @400 ]
 "5301
 [v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @401 ]
-[s S2254 . 1 `uc 1 SEN 1 0 :1:0 
+[s S2229 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -691,17 +679,17 @@ SPI1_DEFAULT 0
 `uc 1 GCEN 1 0 :1:7 
 ]
 "5348
-[s S2263 . 1 `uc 1 . 1 0 :1:0 
+[s S2238 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S2266 . 1 `uc 1 . 1 0 :1:0 
+[s S2241 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S2273 . 1 `uc 1 SEN1 1 0 :1:0 
+[s S2248 . 1 `uc 1 SEN1 1 0 :1:0 
 `uc 1 ADMSK11 1 0 :1:1 
 `uc 1 ADMSK21 1 0 :1:2 
 `uc 1 ADMSK31 1 0 :1:3 
@@ -710,26 +698,26 @@ SPI1_DEFAULT 0
 `uc 1 ACKSTAT1 1 0 :1:6 
 `uc 1 GCEN1 1 0 :1:7 
 ]
-[s S2282 . 1 `uc 1 . 1 0 :1:0 
+[s S2257 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN1 1 0 :1:1 
 `uc 1 PEN1 1 0 :1:2 
 `uc 1 RCEN1 1 0 :1:3 
 `uc 1 ADMSK41 1 0 :1:4 
 `uc 1 ADMSK51 1 0 :1:5 
 ]
-[u S2289 . 1 `S2254 1 . 1 0 `S2263 1 . 1 0 `S2266 1 . 1 0 `S2273 1 . 1 0 `S2282 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES2289  1 e 1 @401 ]
+[u S2264 . 1 `S2229 1 . 1 0 `S2238 1 . 1 0 `S2241 1 . 1 0 `S2248 1 . 1 0 `S2257 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES2264  1 e 1 @401 ]
 "5488
 [v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @402 ]
-[s S478 . 1 `uc 1 INTF 1 0 :1:0 
+[s S449 . 1 `uc 1 INTF 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIF 1 0 :1:4 
 `uc 1 TMR0IF 1 0 :1:5 
 ]
 "21383
-[u S483 . 1 `S478 1 . 1 0 ]
-[v _PIR0bits PIR0bits `VES483  1 e 1 @1804 ]
-[s S221 . 1 `uc 1 SSP1IF 1 0 :1:0 
+[u S454 . 1 `S449 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES454  1 e 1 @1804 ]
+[s S192 . 1 `uc 1 SSP1IF 1 0 :1:0 
 `uc 1 BCL1IF 1 0 :1:1 
 `uc 1 SSP2IF 1 0 :1:2 
 `uc 1 BCL2IF 1 0 :1:3 
@@ -737,17 +725,17 @@ SPI1_DEFAULT 0
 `uc 1 RCIF 1 0 :1:5 
 ]
 "21490
-[u S228 . 1 `S221 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES228  1 e 1 @1807 ]
-[s S465 . 1 `uc 1 INTE 1 0 :1:0 
+[u S199 . 1 `S192 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES199  1 e 1 @1807 ]
+[s S436 . 1 `uc 1 INTE 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIE 1 0 :1:4 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
 "21805
-[u S470 . 1 `S465 1 . 1 0 ]
-[v _PIE0bits PIE0bits `VES470  1 e 1 @1814 ]
-[s S2085 . 1 `uc 1 SSP1IE 1 0 :1:0 
+[u S441 . 1 `S436 1 . 1 0 ]
+[v _PIE0bits PIE0bits `VES441  1 e 1 @1814 ]
+[s S2071 . 1 `uc 1 SSP1IE 1 0 :1:0 
 `uc 1 BCL1IE 1 0 :1:1 
 `uc 1 SSP2IE 1 0 :1:2 
 `uc 1 BCL2IE 1 0 :1:3 
@@ -755,8 +743,8 @@ SPI1_DEFAULT 0
 `uc 1 RCIE 1 0 :1:5 
 ]
 "21912
-[u S2092 . 1 `S2085 1 . 1 0 ]
-[v _PIE3bits PIE3bits `VES2092  1 e 1 @1817 ]
+[u S2078 . 1 `S2071 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES2078  1 e 1 @1817 ]
 "22214
 [v _PMD0 PMD0 `VEuc  1 e 1 @1942 ]
 "22271
@@ -810,7 +798,7 @@ SPI1_DEFAULT 0
 [v _WPUA WPUA `VEuc  1 e 1 @7993 ]
 "33726
 [v _ODCONA ODCONA `VEuc  1 e 1 @7994 ]
-[s S600 . 1 `uc 1 ODCA0 1 0 :1:0 
+[s S571 . 1 `uc 1 ODCA0 1 0 :1:0 
 `uc 1 ODCA1 1 0 :1:1 
 `uc 1 ODCA2 1 0 :1:2 
 `uc 1 ODCA3 1 0 :1:3 
@@ -820,17 +808,17 @@ SPI1_DEFAULT 0
 `uc 1 ODCA7 1 0 :1:7 
 ]
 "33743
-[u S609 . 1 `S600 1 . 1 0 ]
+[u S580 . 1 `S571 1 . 1 0 ]
 "33743
 "33743
-[v _ODCONAbits ODCONAbits `VES609  1 e 1 @7994 ]
+[v _ODCONAbits ODCONAbits `VES580  1 e 1 @7994 ]
 "34222
 [v _ANSELB ANSELB `VEuc  1 e 1 @8003 ]
 "34284
 [v _WPUB WPUB `VEuc  1 e 1 @8004 ]
 "34346
 [v _ODCONB ODCONB `VEuc  1 e 1 @8005 ]
-[s S633 . 1 `uc 1 ODCB0 1 0 :1:0 
+[s S604 . 1 `uc 1 ODCB0 1 0 :1:0 
 `uc 1 ODCB1 1 0 :1:1 
 `uc 1 ODCB2 1 0 :1:2 
 `uc 1 ODCB3 1 0 :1:3 
@@ -840,10 +828,10 @@ SPI1_DEFAULT 0
 `uc 1 ODCB7 1 0 :1:7 
 ]
 "34363
-[u S642 . 1 `S633 1 . 1 0 ]
+[u S613 . 1 `S604 1 . 1 0 ]
 "34363
 "34363
-[v _ODCONBbits ODCONBbits `VES642  1 e 1 @8005 ]
+[v _ODCONBbits ODCONBbits `VES613  1 e 1 @8005 ]
 "34842
 [v _ANSELC ANSELC `VEuc  1 e 1 @8014 ]
 "34904
@@ -871,20 +859,20 @@ SPI1_DEFAULT 0
 [v _dev_id dev_id `ul  1 e 4 0 ]
 "43
 [v _sts_length_factors sts_length_factors `DC[7]ui  1 e 14 0 ]
-[s S774 . 9 `ul 1 status 4 0 `ui 1 status_hi 2 4 `ui 1 datalength 2 6 `uc 1 rx_flags 1 8 ]
+[s S747 . 9 `ul 1 status 4 0 `ui 1 status_hi 2 4 `ui 1 datalength 2 6 `uc 1 rx_flags 1 8 ]
 "154
-[s S781 . 46 `ul 1 partID 4 0 `ul 1 lotID 4 4 `uc 1 bias_tune 1 8 `uc 1 dgc_otp_set 1 9 `uc 1 vBatP 1 10 `uc 1 tempP 1 11 `uc 1 longFrames 1 12 `uc 1 otprev 1 13 `uc 1 init_xtrim 1 14 `uc 1 dblbuffon 1 15 `ui 1 sleep_mode 2 16 `i 1 ststhreshold 2 18 `E273 1 spicrc 1 20 `uc 1 stsconfig 1 21 `uc 1 cia_diagnostic 1 22 `S774 1 cbData 9 23 `*.37(v 1 cbSPIRDErr 2 32 `*.37(v 1 cbTxDone 2 34 `*.37(v 1 cbRxOk 2 36 `*.37(v 1 cbRxTo 2 38 `*.37(v 1 cbRxErr 2 40 `*.37(v 1 cbSPIErr 2 42 `*.37(v 1 cbSPIRdy 2 44 ]
-[v _DW3000local DW3000local `[1]S781  1 s 46 DW3000local ]
+[s S754 . 46 `ul 1 partID 4 0 `ul 1 lotID 4 4 `uc 1 bias_tune 1 8 `uc 1 dgc_otp_set 1 9 `uc 1 vBatP 1 10 `uc 1 tempP 1 11 `uc 1 longFrames 1 12 `uc 1 otprev 1 13 `uc 1 init_xtrim 1 14 `uc 1 dblbuffon 1 15 `ui 1 sleep_mode 2 16 `i 1 ststhreshold 2 18 `E273 1 spicrc 1 20 `uc 1 stsconfig 1 21 `uc 1 cia_diagnostic 1 22 `S747 1 cbData 9 23 `*.37(v 1 cbSPIRDErr 2 32 `*.37(v 1 cbTxDone 2 34 `*.37(v 1 cbRxOk 2 36 `*.37(v 1 cbRxTo 2 38 `*.37(v 1 cbRxErr 2 40 `*.37(v 1 cbSPIErr 2 42 `*.37(v 1 cbSPIRdy 2 44 ]
+[v _DW3000local DW3000local `[1]S754  1 s 46 DW3000local ]
 "155
-[v _pdw3000local pdw3000local `*.6S781  1 s 1 pdw3000local ]
+[v _pdw3000local pdw3000local `*.6S754  1 s 1 pdw3000local ]
 "156
 [v _crcTable crcTable `[256]uc  1 s 256 crcTable ]
-[s S951 . 14 `uc 1 chan 1 0 `uc 1 txPreambLength 1 1 `uc 1 rxPAC 1 2 `uc 1 txCode 1 3 `uc 1 rxCode 1 4 `uc 1 sfdType 1 5 `uc 1 dataRate 1 6 `uc 1 phrMode 1 7 `uc 1 phrRate 1 8 `ui 1 sfdTO 2 9 `uc 1 stsMode 1 11 `E295 1 stsLength 1 12 `uc 1 pdoaMode 1 13 ]
+[s S924 . 14 `uc 1 chan 1 0 `uc 1 txPreambLength 1 1 `uc 1 rxPAC 1 2 `uc 1 txCode 1 3 `uc 1 rxCode 1 4 `uc 1 sfdType 1 5 `uc 1 dataRate 1 6 `uc 1 phrMode 1 7 `uc 1 phrRate 1 8 `ui 1 sfdTO 2 9 `uc 1 stsMode 1 11 `E295 1 stsLength 1 12 `uc 1 pdoaMode 1 13 ]
 "17 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\decawave.c
-[v _config config `S951  1 s 14 config ]
-[s S907 . 7 `uc 1 PGdly 1 0 `ul 1 power 4 1 `ui 1 PGcount 2 5 ]
+[v _config config `S924  1 s 14 config ]
+[s S880 . 7 `uc 1 PGdly 1 0 `ul 1 power 4 1 `ui 1 PGcount 2 5 ]
 "33
-[v _txconfig_options_ch9 txconfig_options_ch9 `S907  1 e 7 0 ]
+[v _txconfig_options_ch9 txconfig_options_ch9 `S880  1 e 7 0 ]
 "47
 [v _tx_blink_msg tx_blink_msg `[36]uc  1 s 36 tx_blink_msg ]
 "63 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\main.c
@@ -893,23 +881,23 @@ SPI1_DEFAULT 0
 [v _ADDR ADDR `[8]uc  1 e 8 0 ]
 "65
 [v _enable_sleep enable_sleep `uc  1 e 1 0 ]
-[s S205 . 1 `uc 1 perr 1 0 :1:0 
+[s S176 . 1 `uc 1 perr 1 0 :1:0 
 `uc 1 ferr 1 0 :1:1 
 `uc 1 oerr 1 0 :1:2 
 `uc 1 reserved 1 0 :5:3 
 ]
 "52 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\mcc_generated_files/eusart.c
-[u S210 . 1 `S205 1 . 1 0 `uc 1 status 1 0 ]
-[v _eusartRxLastError eusartRxLastError `VES210  1 e 1 0 ]
+[u S181 . 1 `S176 1 . 1 0 `uc 1 status 1 0 ]
+[v _eusartRxLastError eusartRxLastError `VES181  1 e 1 0 ]
 "58
 [v _EUSART_FramingErrorHandler EUSART_FramingErrorHandler `*.37(v  1 e 2 0 ]
 "59
 [v _EUSART_OverrunErrorHandler EUSART_OverrunErrorHandler `*.37(v  1 e 2 0 ]
 "60
 [v _EUSART_ErrorHandler EUSART_ErrorHandler `*.37(v  1 e 2 0 ]
-[s S341 . 4 `uc 1 con1 1 0 `uc 1 stat 1 1 `uc 1 add 1 2 `uc 1 operation 1 3 ]
+[s S312 . 4 `uc 1 con1 1 0 `uc 1 stat 1 1 `uc 1 add 1 2 `uc 1 operation 1 3 ]
 "60 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\mcc_generated_files/spi1.c
-[v _spi1_configuration spi1_configuration `DC[1]S341  1 s 4 spi1_configuration ]
+[v _spi1_configuration spi1_configuration `DC[1]S312  1 s 4 spi1_configuration ]
 "55 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\mcc_generated_files/tmr0.c
 [v _timer0ReloadVal timer0ReloadVal `VEui  1 e 2 0 ]
 "8 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_control_fun.c
@@ -922,15 +910,17 @@ SPI1_DEFAULT 0
 [v _pic_active_mode pic_active_mode `uc  1 e 1 0 ]
 "12
 [v _power_connected power_connected `uc  1 e 1 0 ]
-"69 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\main.c
+"13
+[v _pic_time_counter_ms pic_time_counter_ms `ul  1 e 4 0 ]
+"71 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"130
+"140
 } 0
-"180 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\decawave.c
+"181 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\decawave.c
 [v _transmit_beacon_pkt transmit_beacon_pkt `(v  1 e 1 0 ]
 {
-"214
+"216
 } 0
 "354 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\deca_device.c
 [v _dwt_wakeup_ic dwt_wakeup_ic `(v  1 e 1 0 ]
@@ -956,37 +946,37 @@ SPI1_DEFAULT 0
 {
 "732
 } 0
-"14 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_control_fun.c
+"15 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_control_fun.c
 [v _set_led_status set_led_status `(v  1 e 1 0 ]
 {
-"16
+"17
 [v set_led_status@tx_led_toggle_count tx_led_toggle_count `ui  1 s 2 tx_led_toggle_count ]
-"36
+"48
 } 0
-"118
+"130
 [v _pmic_status_read pmic_status_read `(v  1 e 1 0 ]
 {
-"121
+"133
 [v pmic_status_read@interrupt_state interrupt_state `uc  1 a 1 18 ]
-"122
+"134
 [v pmic_status_read@pmic_stat_read_time_count pmic_stat_read_time_count `ui  1 s 2 pmic_stat_read_time_count ]
-"123
+"135
 [v pmic_status_read@pmic_wdt_clr_count pmic_wdt_clr_count `uc  1 s 1 pmic_wdt_clr_count ]
-"161
+"173
 } 0
-"38
+"50
 [v _set_MSSSP1_mode set_MSSSP1_mode `(v  1 e 1 0 ]
 {
 [v set_MSSSP1_mode@mode mode `uc  1 a 1 wreg ]
-"44
+"56
 [v set_MSSSP1_mode@state state `uc  1 a 1 8 ]
-"38
+"50
 [v set_MSSSP1_mode@mode mode `uc  1 a 1 wreg ]
-"40
+"52
 [v set_MSSSP1_mode@current_mode current_mode `uc  1 s 1 current_mode ]
-"42
+"54
 [v set_MSSSP1_mode@mode mode `uc  1 a 1 9 ]
-"117
+"129
 } 0
 "5 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_i2c.c
 [v _i2c_init i2c_init `(v  1 e 1 0 ]
@@ -1002,37 +992,37 @@ SPI1_DEFAULT 0
 [v SPI1_Open@spi1UniqueConfiguration spi1UniqueConfiguration `E92  1 a 1 6 ]
 "109
 } 0
-"162 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_control_fun.c
+"174 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\pic_control_fun.c
 [v _process_pmic_status process_pmic_status `(v  1 e 1 0 ]
 {
 [v process_pmic_status@status status `*.5uc  1 a 1 wreg ]
-"169
+"181
 [v process_pmic_status@battery_volt battery_volt `ui  1 a 2 7 ]
-"165
+"177
 [v process_pmic_status@CHRG_STAT CHRG_STAT `uc  1 a 1 10 ]
-"166
+"178
 [v process_pmic_status@PG_STAT PG_STAT `uc  1 a 1 9 ]
-"168
+"180
 [v process_pmic_status@VSYS_STAT VSYS_STAT `uc  1 a 1 6 ]
-"167
+"179
 [v process_pmic_status@SDP_STAT SDP_STAT `uc  1 a 1 5 ]
-"164
+"176
 [v process_pmic_status@VBUS_STAT VBUS_STAT `uc  1 a 1 4 ]
-"162
+"174
 [v process_pmic_status@status status `*.5uc  1 a 1 wreg ]
 [v process_pmic_status@length length `uc  1 p 1 1 ]
-"164
+"176
 [v process_pmic_status@status status `*.5uc  1 a 1 11 ]
-"229
+"241
 } 0
-"231
+"243
 [v _lipo_battery_level lipo_battery_level `(uc  1 e 1 0 ]
 {
-"233
+"245
 [v lipo_battery_level@battery_level_cal battery_level_cal `uc  1 a 1 0 ]
-"231
+"243
 [v lipo_battery_level@battery_volt battery_volt `ui  1 p 2 9 ]
-"248
+"260
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -1179,10 +1169,10 @@ SPI1_DEFAULT 0
 [v copybits8@new_value new_value `uc  1 p 1 2 ]
 [v copybits8@value value `uc  1 a 1 3 ]
 } 0
-"87 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\decawave.c
+"88 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\decawave.c
 [v _dw_main dw_main `(v  1 e 1 0 ]
 {
-"178
+"179
 } 0
 "129 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\port.c
 [v _reset_DWIC reset_DWIC `(v  1 e 1 0 ]
@@ -1309,15 +1299,15 @@ SPI1_DEFAULT 0
 "1099
 [v _dwt_configuretxrf dwt_configuretxrf `(v  1 e 1 0 ]
 {
-[s S907 . 7 `uc 1 PGdly 1 0 `ul 1 power 4 1 `ui 1 PGcount 2 5 ]
-[v dwt_configuretxrf@config config `*.5S907  1 a 1 wreg ]
+[s S880 . 7 `uc 1 PGdly 1 0 `ul 1 power 4 1 `ui 1 PGcount 2 5 ]
+[v dwt_configuretxrf@config config `*.5S880  1 a 1 wreg ]
 "1107
 [v dwt_configuretxrf@channel channel `uc  1 a 1 31 ]
 "1099
-[v dwt_configuretxrf@config config `*.5S907  1 a 1 wreg ]
+[v dwt_configuretxrf@config config `*.5S880  1 a 1 wreg ]
 "1101
 "1099
-[v dwt_configuretxrf@config config `*.5S907  1 a 1 32 ]
+[v dwt_configuretxrf@config config `*.5S880  1 a 1 32 ]
 "1117
 } 0
 "4478
@@ -1364,8 +1354,8 @@ SPI1_DEFAULT 0
 "1335
 [v _dwt_configure dwt_configure `(i  1 e 2 0 ]
 {
-[s S951 . 14 `uc 1 chan 1 0 `uc 1 txPreambLength 1 1 `uc 1 rxPAC 1 2 `uc 1 txCode 1 3 `uc 1 rxCode 1 4 `uc 1 sfdType 1 5 `uc 1 dataRate 1 6 `uc 1 phrMode 1 7 `uc 1 phrRate 1 8 `ui 1 sfdTO 2 9 `uc 1 stsMode 1 11 `E295 1 stsLength 1 12 `uc 1 pdoaMode 1 13 ]
-[v dwt_configure@config config `*.5S951  1 a 1 wreg ]
+[s S924 . 14 `uc 1 chan 1 0 `uc 1 txPreambLength 1 1 `uc 1 rxPAC 1 2 `uc 1 txCode 1 3 `uc 1 rxCode 1 4 `uc 1 sfdType 1 5 `uc 1 dataRate 1 6 `uc 1 phrMode 1 7 `uc 1 phrRate 1 8 `ui 1 sfdTO 2 9 `uc 1 stsMode 1 11 `E295 1 stsLength 1 12 `uc 1 pdoaMode 1 13 ]
+[v dwt_configure@config config `*.5S924  1 a 1 wreg ]
 "1431
 [v dwt_configure@sts_mnth sts_mnth `ui  1 a 2 6 ]
 "1338
@@ -1385,10 +1375,10 @@ SPI1_DEFAULT 0
 "1339
 [v dwt_configure@scp scp `uc  1 a 1 0 ]
 "1335
-[v dwt_configure@config config `*.5S951  1 a 1 wreg ]
+[v dwt_configure@config config `*.5S924  1 a 1 wreg ]
 "1337
 "1335
-[v dwt_configure@config config `*.5S951  1 a 1 20 ]
+[v dwt_configure@config config `*.5S924  1 a 1 20 ]
 "1579
 } 0
 "1174
@@ -1854,16 +1844,16 @@ SPI1_DEFAULT 0
 {
 "99
 [v PIN_MANAGER_Initialize@state state `uc  1 a 1 10 ]
-"137
+"138
 } 0
-"270 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\main.c
+"280 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\main.c
 [v _Sleep Sleep `(v  1 e 1 0 ]
 {
-"272
+"282
 [v Sleep@i i `VEul  1 a 4 6 ]
-"270
+"280
 [v Sleep@time time `ul  1 p 4 1 ]
-"276
+"286
 } 0
 "58 D:\Embedded_programs\PIC_programs\PIC Production Firmware\uwb_tag3000_pic_host_production\git_clone\uwb_tag3000_pic_host_pro.X\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
